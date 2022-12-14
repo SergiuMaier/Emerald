@@ -78,8 +78,8 @@ namespace TCPClient
                 txtBoxData.Enabled = false;
                 txtBoxUnitId.Enabled = false;
 
-                labelStatus.Text = "Not connected";
-                labelStatus.ForeColor = Color.Red;
+                labelStatus2.Text = "Not connected";
+                labelStatus2.ForeColor = Color.Red;
             }
             catch (Exception ex)
             {
@@ -173,9 +173,8 @@ namespace TCPClient
             this.Invoke((MethodInvoker)delegate
             {
                 //txtInfo.Text += $"Connected to [{e.IpPort}].{Environment.NewLine}{Environment.NewLine}";
-
-                labelStatus.Text = "Connected";
-                labelStatus.ForeColor = Color.Green; 
+                labelStatus2.Text = "Connected";
+                labelStatus2.ForeColor = Color.Green; 
                 btnSend.Enabled = true;
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
@@ -188,8 +187,8 @@ namespace TCPClient
             {
                 //txtInfo.Text += $"[{e.IpPort}] disconnected.{Environment.NewLine}";
 
-                labelStatus.Text = "Not connected";
-                labelStatus.ForeColor = Color.Red;
+                labelStatus2.Text = "Not connected";
+                labelStatus2.ForeColor = Color.Red;
                 btnConnect.Enabled = true;
                 txtIP.Enabled = true;
                 txtPort.Enabled = true;
