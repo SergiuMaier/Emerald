@@ -15,8 +15,9 @@ namespace TCPClient
         
         private void FormClient_Load(object sender, EventArgs e)
         {
-            txtBoxTransactionId.CharacterCasing = CharacterCasing.Upper;
-            txtBoxProtocolId.CharacterCasing = CharacterCasing.Upper;
+            //txtBoxTransactionId.CharacterCasing = CharacterCasing.Upper;
+            //txtBoxProtocolId.CharacterCasing = CharacterCasing.Upper;
+
             txtBoxUnitId.CharacterCasing = CharacterCasing.Upper;
             txtBoxFunctionCode.CharacterCasing = CharacterCasing.Upper;
             txtBoxData.CharacterCasing = CharacterCasing.Upper;
@@ -38,10 +39,13 @@ namespace TCPClient
                 txtIP.Enabled = false;
                 txtPort.Enabled = false;
                 txtBoxFunctionCode.Enabled = true;
-                txtBoxTransactionId.Enabled = true;
-                txtBoxProtocolId.Enabled = true;
+
+                //txtBoxTransactionId.Enabled = true;
+                //txtBoxProtocolId.Enabled = true;
+
+                comboFunctionCode.Enabled = true;
                 txtBoxData.Enabled = true;
-                txtBoxUnitId.Enabled = true;                     
+                txtBoxUnitId.Enabled = true;
             }
             catch
             {
@@ -66,10 +70,16 @@ namespace TCPClient
                 txtIP.Enabled = true;
                 txtPort.Enabled = true;
                 txtBoxFunctionCode.Enabled = false;
-                txtBoxTransactionId.Enabled = false;
-                txtBoxProtocolId.Enabled = false;
+
+                //txtBoxTransactionId.Enabled = false;
+                //txtBoxProtocolId.Enabled = false;
+
+                comboFunctionCode.Enabled = false;
                 txtBoxData.Enabled = false;
                 txtBoxUnitId.Enabled = false;
+
+                labelStatus.Text = "Not connected";
+                labelStatus.ForeColor = Color.Red;
             }
             catch (Exception ex)
             {
@@ -93,8 +103,14 @@ namespace TCPClient
             {
                 try
                 {
-                    short transactionId = short.Parse(txtBoxTransactionId.Text, NumberStyles.HexNumber);
-                    short protocolId = short.Parse(txtBoxProtocolId.Text, NumberStyles.HexNumber);
+                    txtRequest.Text = String.Empty;
+                    txtResponse.Text = String.Empty;
+
+                    //short transactionId = short.Parse(txtBoxTransactionId.Text, NumberStyles.HexNumber);
+                    //short protocolId = short.Parse(txtBoxProtocolId.Text, NumberStyles.HexNumber);
+                    short transactionId = 0x0001;
+                    short protocolId = 0x0000;
+                    
                     byte unitId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
                     byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
                     short[] dataFrame = txtBoxData.Text.Split(' ')
@@ -117,15 +133,14 @@ namespace TCPClient
                         indexNumber += 2;
                     }
 
-                    txtInfo.Text += "request: ";
                     foreach (byte element in buffer)
                     {
-                        txtInfo.Text += $" {element:X2}";
+                        txtRequest.Text += $" {element:X2}";
                     }
 
                     client.Send(buffer);
                     
-                    txtInfo.Text += Environment.NewLine;
+                    //txtRequest.Text += Environment.NewLine;
                 }
                 catch
                 {
@@ -149,7 +164,7 @@ namespace TCPClient
                 foreach (var i in e.Data)
                     stringBuilder.Append(i.ToString("X2") + " ");
 
-                txtInfo.Text += $"response: {stringBuilder.ToString()}{Environment.NewLine}{Environment.NewLine}";
+                txtResponse.Text += $" {stringBuilder.ToString()}{Environment.NewLine}{Environment.NewLine}";
             });
         }
 
@@ -157,7 +172,10 @@ namespace TCPClient
         {
             this.Invoke((MethodInvoker)delegate
             {
-                txtInfo.Text += $"Connected to [{e.IpPort}].{Environment.NewLine}{Environment.NewLine}";
+                //txtInfo.Text += $"Connected to [{e.IpPort}].{Environment.NewLine}{Environment.NewLine}";
+
+                labelStatus.Text = "Connected";
+                labelStatus.ForeColor = Color.Green; 
                 btnSend.Enabled = true;
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
@@ -168,7 +186,10 @@ namespace TCPClient
         {
             this.Invoke((MethodInvoker)delegate
             {
-                txtInfo.Text += $"[{e.IpPort}] disconnected.{Environment.NewLine}";
+                //txtInfo.Text += $"[{e.IpPort}] disconnected.{Environment.NewLine}";
+
+                labelStatus.Text = "Not connected";
+                labelStatus.ForeColor = Color.Red;
                 btnConnect.Enabled = true;
                 txtIP.Enabled = true;
                 txtPort.Enabled = true;
@@ -177,8 +198,14 @@ namespace TCPClient
 
         private void txtInfo_TextChanged(object sender, EventArgs e)
         {
-            txtInfo.SelectionStart = txtInfo.TextLength;
-            txtInfo.ScrollToCaret();
+            txtRequest.SelectionStart = txtRequest.TextLength;
+            txtRequest.ScrollToCaret();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtRequest.Text = String.Empty;
+            txtResponse.Text = String.Empty;
         }
     }
 }
