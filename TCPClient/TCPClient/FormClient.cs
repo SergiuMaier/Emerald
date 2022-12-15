@@ -15,7 +15,9 @@ namespace TCPClient
         byte[] bufferRequest;
         byte[] bufferResponse;
 
-        int functionCodeInResponse = 8;
+        private int numberOfRegisters;  
+        private int functionCodeInResponse = 7; 
+        private int exceptionInResponse = 8;
 
         public FormClient()
         {
@@ -42,14 +44,8 @@ namespace TCPClient
 
                 client.Connect();
 
-                txtIP.Enabled = false;
-                txtPort.Enabled = false;
-                txtBoxFunctionCode.Enabled = true;
-                txtBoxUnitId.Enabled = true;
-                comboFunctionCode.Enabled = true;
-                txtDataAddress.Enabled = true;
-                txtDataRegisters.Enabled = true;
-
+                groupBoxFrame.Enabled = true;
+                groupBox03.Enabled = true;
             }
             catch
             {
@@ -82,13 +78,11 @@ namespace TCPClient
                 btnDisconnect.Enabled = false;
                 btnSend.Enabled = false;
 
+                groupBoxFrame.Enabled = false;
+                groupBox03.Enabled = false;
+
                 txtIP.Enabled = true;
                 txtPort.Enabled = true;
-                txtBoxFunctionCode.Enabled = false;
-                txtBoxUnitId.Enabled = false;
-                comboFunctionCode.Enabled = false;
-                txtDataAddress.Enabled = false;
-                txtDataRegisters.Enabled = false;
 
                 labelStatus2.Text = "Not connected";
                 labelStatus2.ForeColor = Color.Red;
@@ -131,7 +125,7 @@ namespace TCPClient
             }
             else if (comboFunctionCode.SelectedIndex == 2)
             {
-                txtBoxFunctionCode.Text = "16";
+                txtBoxFunctionCode.Text = "10";
                 groupBox03.Visible = false;
                 groupBox06.Visible = false;
                 groupBox16.Visible = true;
@@ -215,6 +209,8 @@ namespace TCPClient
                     indexBuffer++;
                 }
 
+                AnalyzeResponse();
+
                 txtInfo.Text += $"[{DateTime.Now}] <-";
                 foreach (byte element in bufferResponse)
                 {
@@ -225,14 +221,41 @@ namespace TCPClient
             });
         }
 
+        private void AnalyzeResponse()
+        {
+            if ((bufferResponse[functionCodeInResponse] == 0x83) || (bufferResponse[functionCodeInResponse] == 0x86) || (bufferResponse[functionCodeInResponse] == 0x90))
+            {
+                if (bufferResponse[exceptionInResponse] == 0x02)
+                    labelInfoFrame.Text = "Exception Code 02: Illegal Data Address";
+                else if (bufferResponse[exceptionInResponse] == 0x03)
+                    labelInfoFrame.Text = "Exception Code 03: Illegal Data Value";
+                else if (bufferResponse[exceptionInResponse] == 0x0A)
+                    labelInfoFrame.Text = "Exception Code 0A: Gateway Path Unavailable";
+                else
+                    labelInfoFrame.Text = "-";
+            }
+        }
+
         private void btnAnalyze_Click(object sender, EventArgs e)
         {
-            if (bufferResponse[functionCodeInResponse] == 0x02)
-                MessageBox.Show("Exception Code 02: Illegal Data Address", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else if (bufferResponse[functionCodeInResponse] == 0x03)
-                MessageBox.Show("Exception Code 03: Illegal Data Value", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else if (bufferResponse[functionCodeInResponse] == 0x0A)
-                MessageBox.Show("Exception Code 0A: Gateway Path Unavailable", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if ((bufferResponse[functionCodeInResponse] == 0x83) || (bufferResponse[functionCodeInResponse] == 0x86) || (bufferResponse[functionCodeInResponse] == 0x90))
+            {
+                if (bufferResponse[exceptionInResponse] == 0x02)
+                {
+                    MessageBox.Show("Exception Code 02: Illegal Data Address \nThe data address received in the query is not an allowable address for the slave." +
+                        "", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (bufferResponse[exceptionInResponse] == 0x03)
+                {
+                    MessageBox.Show("Exception Code 03: Illegal Data Value \nA value contained in the query data field is not an allowable value for the slave." +
+                        "", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (bufferResponse[exceptionInResponse] == 0x0A)
+                {
+                    MessageBox.Show("Exception Code 0A: Gateway Path Unavailable \nThe gateway was unable to allocate an internal communication path from the input port" +
+                        " to the output port for processing the request.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -245,6 +268,26 @@ namespace TCPClient
         {
             txtInfo.SelectionStart = txtInfo.TextLength;
             txtInfo.ScrollToCaret();
+        }
+
+        private void btnMinus_Click(object sender, EventArgs e)
+        {
+            if (numberOfRegisters > 0)
+            {
+                numberOfRegisters--;
+                txtDataRegisters.Text = numberOfRegisters.ToString("X4");
+            }
+            else
+                btnMinus.Enabled = false;
+        }
+
+        private void bntPlus_Click(object sender, EventArgs e)
+        {
+            if (numberOfRegisters > 0)
+                btnMinus.Enabled = true;
+
+            numberOfRegisters++;
+            txtDataRegisters.Text = numberOfRegisters.ToString("X4");
         }
     }
 }

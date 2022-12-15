@@ -41,7 +41,9 @@
             this.labelStatus2 = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxFrame = new System.Windows.Forms.GroupBox();
+            this.labelInfoFrame = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -54,21 +56,23 @@
             this.txtDataRegisters = new System.Windows.Forms.TextBox();
             this.txtDataAddress = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxRq = new System.Windows.Forms.GroupBox();
+            this.groupBoxRsp = new System.Windows.Forms.GroupBox();
             this.txtResponse = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBoxHistory = new System.Windows.Forms.GroupBox();
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.btnAnalyze = new System.Windows.Forms.Button();
             this.groupBox03 = new System.Windows.Forms.GroupBox();
+            this.bntPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
             this.groupBox06 = new System.Windows.Forms.GroupBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.groupBoxFrame.SuspendLayout();
+            this.groupBoxRq.SuspendLayout();
+            this.groupBoxRsp.SuspendLayout();
+            this.groupBoxHistory.SuspendLayout();
             this.groupBox03.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,10 +112,9 @@
             // txtBoxFunctionCode
             // 
             this.txtBoxFunctionCode.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtBoxFunctionCode.Enabled = false;
             this.txtBoxFunctionCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBoxFunctionCode.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBoxFunctionCode.Location = new System.Drawing.Point(116, 101);
+            this.txtBoxFunctionCode.Location = new System.Drawing.Point(116, 66);
             this.txtBoxFunctionCode.MaxLength = 2;
             this.txtBoxFunctionCode.Name = "txtBoxFunctionCode";
             this.txtBoxFunctionCode.Size = new System.Drawing.Size(35, 29);
@@ -121,11 +124,10 @@
             // btnSend
             // 
             this.btnSend.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnSend.Enabled = false;
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSend.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSend.Location = new System.Drawing.Point(293, 136);
+            this.btnSend.Location = new System.Drawing.Point(293, 102);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(71, 29);
             this.btnSend.TabIndex = 5;
@@ -224,33 +226,58 @@
             this.btnDisconnect.UseVisualStyleBackColor = false;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
-            // groupBox2
+            // groupBoxFrame
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.txtBoxFunctionCode);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtBoxUnitId);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.comboFunctionCode);
-            this.groupBox2.Controls.Add(this.btnSend);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox2.Location = new System.Drawing.Point(278, 10);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(374, 176);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Frame";
+            this.groupBoxFrame.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxFrame.Controls.Add(this.labelInfoFrame);
+            this.groupBoxFrame.Controls.Add(this.label9);
+            this.groupBoxFrame.Controls.Add(this.label7);
+            this.groupBoxFrame.Controls.Add(this.textBox2);
+            this.groupBoxFrame.Controls.Add(this.txtBoxFunctionCode);
+            this.groupBoxFrame.Controls.Add(this.textBox1);
+            this.groupBoxFrame.Controls.Add(this.label2);
+            this.groupBoxFrame.Controls.Add(this.label8);
+            this.groupBoxFrame.Controls.Add(this.txtBoxUnitId);
+            this.groupBoxFrame.Controls.Add(this.label6);
+            this.groupBoxFrame.Controls.Add(this.comboFunctionCode);
+            this.groupBoxFrame.Controls.Add(this.btnSend);
+            this.groupBoxFrame.Enabled = false;
+            this.groupBoxFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxFrame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBoxFrame.Location = new System.Drawing.Point(278, 10);
+            this.groupBoxFrame.Name = "groupBoxFrame";
+            this.groupBoxFrame.Size = new System.Drawing.Size(374, 176);
+            this.groupBoxFrame.TabIndex = 10;
+            this.groupBoxFrame.TabStop = false;
+            this.groupBoxFrame.Text = "Frame";
+            // 
+            // labelInfoFrame
+            // 
+            this.labelInfoFrame.AutoSize = true;
+            this.labelInfoFrame.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelInfoFrame.ForeColor = System.Drawing.Color.DarkGray;
+            this.labelInfoFrame.Location = new System.Drawing.Point(38, 151);
+            this.labelInfoFrame.Name = "labelInfoFrame";
+            this.labelInfoFrame.Size = new System.Drawing.Size(25, 17);
+            this.labelInfoFrame.TabIndex = 23;
+            this.labelInfoFrame.Text = " -  ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.DarkGray;
+            this.label9.Location = new System.Drawing.Point(6, 151);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 17);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Info: ";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(49, 71);
+            this.label7.Location = new System.Drawing.Point(49, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 20);
             this.label7.TabIndex = 17;
@@ -288,7 +315,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(8, 105);
+            this.label2.Location = new System.Drawing.Point(8, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 20);
             this.label2.TabIndex = 9;
@@ -298,7 +325,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(179, 37);
+            this.label8.Location = new System.Drawing.Point(181, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 20);
             this.label8.TabIndex = 20;
@@ -307,10 +334,9 @@
             // txtBoxUnitId
             // 
             this.txtBoxUnitId.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtBoxUnitId.Enabled = false;
             this.txtBoxUnitId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBoxUnitId.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBoxUnitId.Location = new System.Drawing.Point(116, 66);
+            this.txtBoxUnitId.Location = new System.Drawing.Point(116, 101);
             this.txtBoxUnitId.MaxLength = 2;
             this.txtBoxUnitId.Name = "txtBoxUnitId";
             this.txtBoxUnitId.Size = new System.Drawing.Size(35, 29);
@@ -322,7 +348,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(6, 37);
+            this.label6.Location = new System.Drawing.Point(9, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 20);
             this.label6.TabIndex = 19;
@@ -330,13 +356,12 @@
             // 
             // comboFunctionCode
             // 
-            this.comboFunctionCode.Enabled = false;
             this.comboFunctionCode.FormattingEnabled = true;
             this.comboFunctionCode.Items.AddRange(new object[] {
             "Read Holding Registers ",
             "Preset Single Register",
             "Preset Multiple Registers"});
-            this.comboFunctionCode.Location = new System.Drawing.Point(157, 101);
+            this.comboFunctionCode.Location = new System.Drawing.Point(157, 66);
             this.comboFunctionCode.Name = "comboFunctionCode";
             this.comboFunctionCode.Size = new System.Drawing.Size(207, 29);
             this.comboFunctionCode.TabIndex = 18;
@@ -356,7 +381,6 @@
             // txtDataRegisters
             // 
             this.txtDataRegisters.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtDataRegisters.Enabled = false;
             this.txtDataRegisters.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDataRegisters.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtDataRegisters.Location = new System.Drawing.Point(120, 66);
@@ -364,12 +388,11 @@
             this.txtDataRegisters.Name = "txtDataRegisters";
             this.txtDataRegisters.Size = new System.Drawing.Size(73, 29);
             this.txtDataRegisters.TabIndex = 19;
-            this.txtDataRegisters.Text = "0004";
+            this.txtDataRegisters.Text = "0001";
             // 
             // txtDataAddress
             // 
             this.txtDataAddress.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtDataAddress.Enabled = false;
             this.txtDataAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDataAddress.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtDataAddress.Location = new System.Drawing.Point(120, 31);
@@ -390,29 +413,29 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Adress:";
             // 
-            // groupBox3
+            // groupBoxRq
             // 
-            this.groupBox3.Controls.Add(this.txtRequest);
-            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox3.Location = new System.Drawing.Point(14, 192);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(638, 70);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Request";
+            this.groupBoxRq.Controls.Add(this.txtRequest);
+            this.groupBoxRq.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxRq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBoxRq.Location = new System.Drawing.Point(14, 192);
+            this.groupBoxRq.Name = "groupBoxRq";
+            this.groupBoxRq.Size = new System.Drawing.Size(638, 70);
+            this.groupBoxRq.TabIndex = 11;
+            this.groupBoxRq.TabStop = false;
+            this.groupBoxRq.Text = "Request";
             // 
-            // groupBox4
+            // groupBoxRsp
             // 
-            this.groupBox4.Controls.Add(this.txtResponse);
-            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox4.Location = new System.Drawing.Point(14, 268);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(638, 70);
-            this.groupBox4.TabIndex = 12;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Response";
+            this.groupBoxRsp.Controls.Add(this.txtResponse);
+            this.groupBoxRsp.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxRsp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBoxRsp.Location = new System.Drawing.Point(14, 268);
+            this.groupBoxRsp.Name = "groupBoxRsp";
+            this.groupBoxRsp.Size = new System.Drawing.Size(638, 70);
+            this.groupBoxRsp.TabIndex = 12;
+            this.groupBoxRsp.TabStop = false;
+            this.groupBoxRsp.Text = "Response";
             // 
             // txtResponse
             // 
@@ -437,18 +460,18 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // groupBox5
+            // groupBoxHistory
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox5.Controls.Add(this.txtInfo);
-            this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox5.Location = new System.Drawing.Point(14, 372);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(638, 223);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "History";
+            this.groupBoxHistory.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxHistory.Controls.Add(this.txtInfo);
+            this.groupBoxHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBoxHistory.Location = new System.Drawing.Point(14, 372);
+            this.groupBoxHistory.Name = "groupBoxHistory";
+            this.groupBoxHistory.Size = new System.Drawing.Size(638, 223);
+            this.groupBoxHistory.TabIndex = 14;
+            this.groupBoxHistory.TabStop = false;
+            this.groupBoxHistory.Text = "History";
             // 
             // txtInfo
             // 
@@ -477,10 +500,13 @@
             // 
             // groupBox03
             // 
+            this.groupBox03.Controls.Add(this.bntPlus);
+            this.groupBox03.Controls.Add(this.btnMinus);
             this.groupBox03.Controls.Add(this.label5);
             this.groupBox03.Controls.Add(this.label4);
             this.groupBox03.Controls.Add(this.txtDataRegisters);
             this.groupBox03.Controls.Add(this.txtDataAddress);
+            this.groupBox03.Enabled = false;
             this.groupBox03.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox03.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox03.Location = new System.Drawing.Point(658, 10);
@@ -488,28 +514,52 @@
             this.groupBox03.Size = new System.Drawing.Size(265, 176);
             this.groupBox03.TabIndex = 21;
             this.groupBox03.TabStop = false;
-            this.groupBox03.Text = "Data (FC = 03)";
+            this.groupBox03.Text = "Data (FC=03)";
+            // 
+            // bntPlus
+            // 
+            this.bntPlus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bntPlus.Location = new System.Drawing.Point(229, 67);
+            this.bntPlus.Name = "bntPlus";
+            this.bntPlus.Size = new System.Drawing.Size(28, 28);
+            this.bntPlus.TabIndex = 22;
+            this.bntPlus.Text = "+";
+            this.bntPlus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bntPlus.UseVisualStyleBackColor = true;
+            this.bntPlus.Click += new System.EventHandler(this.bntPlus_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMinus.Location = new System.Drawing.Point(199, 67);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(28, 28);
+            this.btnMinus.TabIndex = 21;
+            this.btnMinus.Text = "-";
+            this.btnMinus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // groupBox06
             // 
             this.groupBox06.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox06.Location = new System.Drawing.Point(658, 10);
+            this.groupBox06.Location = new System.Drawing.Point(658, 192);
             this.groupBox06.Name = "groupBox06";
             this.groupBox06.Size = new System.Drawing.Size(265, 176);
             this.groupBox06.TabIndex = 22;
             this.groupBox06.TabStop = false;
-            this.groupBox06.Text = "Data (FC = 06)";
+            this.groupBox06.Text = "Data (FC=06)";
             this.groupBox06.Visible = false;
             // 
             // groupBox16
             // 
             this.groupBox16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox16.Location = new System.Drawing.Point(658, 10);
+            this.groupBox16.Location = new System.Drawing.Point(658, 372);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(265, 176);
             this.groupBox16.TabIndex = 23;
             this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Data (FC = 16)";
+            this.groupBox16.Text = "Data (FC=16)";
             this.groupBox16.Visible = false;
             // 
             // FormClient
@@ -523,11 +573,11 @@
             this.Controls.Add(this.groupBox06);
             this.Controls.Add(this.groupBox03);
             this.Controls.Add(this.btnAnalyze);
-            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBoxHistory);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxRsp);
+            this.Controls.Add(this.groupBoxRq);
+            this.Controls.Add(this.groupBoxFrame);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -539,14 +589,14 @@
             this.Load += new System.EventHandler(this.FormClient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBoxFrame.ResumeLayout(false);
+            this.groupBoxFrame.PerformLayout();
+            this.groupBoxRq.ResumeLayout(false);
+            this.groupBoxRq.PerformLayout();
+            this.groupBoxRsp.ResumeLayout(false);
+            this.groupBoxRsp.PerformLayout();
+            this.groupBoxHistory.ResumeLayout(false);
+            this.groupBoxHistory.PerformLayout();
             this.groupBox03.ResumeLayout(false);
             this.groupBox03.PerformLayout();
             this.ResumeLayout(false);
@@ -565,20 +615,20 @@
         private Label label3;
         private GroupBox groupBox1;
         private Button btnDisconnect;
-        private GroupBox groupBox2;
+        private GroupBox groupBoxFrame;
         private Label label2;
         private Label label5;
         private TextBox txtBoxUnitId;
         private Label label7;
         private TextBox txtDataAddress;
-        private GroupBox groupBox3;
+        private GroupBox groupBoxRq;
         private Label labelStatus2;
         private Label labelStatus;
-        private GroupBox groupBox4;
+        private GroupBox groupBoxRsp;
         private TextBox txtResponse;
         private ComboBox comboFunctionCode;
         private Button btnClear;
-        private GroupBox groupBox5;
+        private GroupBox groupBoxHistory;
         private TextBox txtInfo;
         private Label label4;
         private TextBox txtDataRegisters;
@@ -590,5 +640,9 @@
         private Label label6;
         private TextBox textBox2;
         private TextBox textBox1;
+        private Button bntPlus;
+        private Button btnMinus;
+        private Label labelInfoFrame;
+        private Label label9;
     }
 }
