@@ -64,14 +64,6 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.btnAnalyze = new System.Windows.Forms.Button();
             this.groupBox03 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.bntPlus = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.groupBox06 = new System.Windows.Forms.GroupBox();
-            this.txtValue06 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtAddress06 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.txtValues16 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -84,14 +76,22 @@
             this.txtAddress16 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.bntPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.groupBox06 = new System.Windows.Forms.GroupBox();
+            this.txtValue06 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtAddress06 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxFrame.SuspendLayout();
             this.groupBoxRq.SuspendLayout();
             this.groupBoxRsp.SuspendLayout();
             this.groupBoxHistory.SuspendLayout();
             this.groupBox03.SuspendLayout();
-            this.groupBox06.SuspendLayout();
             this.groupBox16.SuspendLayout();
+            this.groupBox06.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -537,100 +537,7 @@
             this.groupBox03.TabIndex = 21;
             this.groupBox03.TabStop = false;
             this.groupBox03.Text = "Data (FC=03)";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(6, 82);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 20);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "registers:";
-            // 
-            // bntPlus
-            // 
-            this.bntPlus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.bntPlus.Location = new System.Drawing.Point(183, 71);
-            this.bntPlus.Name = "bntPlus";
-            this.bntPlus.Size = new System.Drawing.Size(28, 28);
-            this.bntPlus.TabIndex = 22;
-            this.bntPlus.Text = "+";
-            this.bntPlus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.bntPlus.UseVisualStyleBackColor = true;
-            this.bntPlus.Click += new System.EventHandler(this.bntPlus_Click);
-            // 
-            // btnMinus
-            // 
-            this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMinus.Location = new System.Drawing.Point(154, 71);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(28, 28);
-            this.btnMinus.TabIndex = 21;
-            this.btnMinus.Text = "-";
-            this.btnMinus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
-            // 
-            // groupBox06
-            // 
-            this.groupBox06.Controls.Add(this.txtValue06);
-            this.groupBox06.Controls.Add(this.label11);
-            this.groupBox06.Controls.Add(this.txtAddress06);
-            this.groupBox06.Controls.Add(this.label10);
-            this.groupBox06.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox06.Location = new System.Drawing.Point(673, 197);
-            this.groupBox06.Name = "groupBox06";
-            this.groupBox06.Size = new System.Drawing.Size(265, 176);
-            this.groupBox06.TabIndex = 22;
-            this.groupBox06.TabStop = false;
-            this.groupBox06.Text = "Data (FC=06)";
-            this.groupBox06.Visible = false;
-            // 
-            // txtValue06
-            // 
-            this.txtValue06.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtValue06.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtValue06.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValue06.Location = new System.Drawing.Point(75, 72);
-            this.txtValue06.MaxLength = 100;
-            this.txtValue06.Name = "txtValue06";
-            this.txtValue06.Size = new System.Drawing.Size(73, 26);
-            this.txtValue06.TabIndex = 24;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(26, 74);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 20);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Value:";
-            // 
-            // txtAddress06
-            // 
-            this.txtAddress06.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtAddress06.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddress06.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtAddress06.Location = new System.Drawing.Point(75, 32);
-            this.txtAddress06.MaxLength = 4;
-            this.txtAddress06.Name = "txtAddress06";
-            this.txtAddress06.Size = new System.Drawing.Size(73, 26);
-            this.txtAddress06.TabIndex = 17;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(18, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 20);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Adress:";
+            this.groupBox03.Visible = false;
             // 
             // groupBox16
             // 
@@ -646,7 +553,7 @@
             this.groupBox16.Controls.Add(this.label14);
             this.groupBox16.Controls.Add(this.label13);
             this.groupBox16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox16.Location = new System.Drawing.Point(667, 400);
+            this.groupBox16.Location = new System.Drawing.Point(667, 10);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(265, 176);
             this.groupBox16.TabIndex = 23;
@@ -777,6 +684,100 @@
             this.label13.TabIndex = 25;
             this.label13.Text = "Adress of";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label12.Location = new System.Drawing.Point(6, 82);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 20);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "registers:";
+            // 
+            // bntPlus
+            // 
+            this.bntPlus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bntPlus.Location = new System.Drawing.Point(183, 71);
+            this.bntPlus.Name = "bntPlus";
+            this.bntPlus.Size = new System.Drawing.Size(28, 28);
+            this.bntPlus.TabIndex = 22;
+            this.bntPlus.Text = "+";
+            this.bntPlus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bntPlus.UseVisualStyleBackColor = true;
+            this.bntPlus.Click += new System.EventHandler(this.bntPlus_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMinus.Location = new System.Drawing.Point(154, 71);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(28, 28);
+            this.btnMinus.TabIndex = 21;
+            this.btnMinus.Text = "-";
+            this.btnMinus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // groupBox06
+            // 
+            this.groupBox06.Controls.Add(this.txtValue06);
+            this.groupBox06.Controls.Add(this.label11);
+            this.groupBox06.Controls.Add(this.txtAddress06);
+            this.groupBox06.Controls.Add(this.label10);
+            this.groupBox06.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox06.Location = new System.Drawing.Point(667, 10);
+            this.groupBox06.Name = "groupBox06";
+            this.groupBox06.Size = new System.Drawing.Size(265, 176);
+            this.groupBox06.TabIndex = 22;
+            this.groupBox06.TabStop = false;
+            this.groupBox06.Text = "Data (FC=06)";
+            this.groupBox06.Visible = false;
+            // 
+            // txtValue06
+            // 
+            this.txtValue06.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtValue06.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtValue06.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtValue06.Location = new System.Drawing.Point(75, 72);
+            this.txtValue06.MaxLength = 100;
+            this.txtValue06.Name = "txtValue06";
+            this.txtValue06.Size = new System.Drawing.Size(73, 26);
+            this.txtValue06.TabIndex = 24;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(26, 74);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 20);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Value:";
+            // 
+            // txtAddress06
+            // 
+            this.txtAddress06.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtAddress06.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddress06.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtAddress06.Location = new System.Drawing.Point(75, 32);
+            this.txtAddress06.MaxLength = 4;
+            this.txtAddress06.Name = "txtAddress06";
+            this.txtAddress06.Size = new System.Drawing.Size(73, 26);
+            this.txtAddress06.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Location = new System.Drawing.Point(18, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 20);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Adress:";
+            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -785,8 +786,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(948, 606);
             this.Controls.Add(this.groupBox16);
-            this.Controls.Add(this.groupBox06);
             this.Controls.Add(this.groupBox03);
+            this.Controls.Add(this.groupBox06);
             this.Controls.Add(this.btnAnalyze);
             this.Controls.Add(this.groupBoxHistory);
             this.Controls.Add(this.btnClear);
@@ -814,10 +815,10 @@
             this.groupBoxHistory.PerformLayout();
             this.groupBox03.ResumeLayout(false);
             this.groupBox03.PerformLayout();
-            this.groupBox06.ResumeLayout(false);
-            this.groupBox06.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
+            this.groupBox06.ResumeLayout(false);
+            this.groupBox06.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -128,16 +128,27 @@ namespace TCPClient
             selectedItem06 = (comboFunctionCode.SelectedIndex == 1);
             selectedItem16 = (comboFunctionCode.SelectedIndex == 2);
 
-            groupBox03.Visible = selectedItem03;
-            groupBox06.Visible = selectedItem06;
-            groupBox16.Visible = selectedItem16;
-
             if (selectedItem03)
+            {
                 txtBoxFunctionCode.Text = "03";
+                groupBox03.Visible = selectedItem03;
+                groupBox06.Visible = false;
+                groupBox16.Visible = false;
+            }
             else if (selectedItem06)
+            {
                 txtBoxFunctionCode.Text = "06";
+                groupBox06.Visible = selectedItem06;
+                groupBox03.Visible = false;
+                groupBox16.Visible = false;
+            }
             else if (selectedItem16)
+            {
                 txtBoxFunctionCode.Text = "10";
+                groupBox16.Visible = selectedItem16;
+                groupBox03.Visible = false;
+                groupBox06.Visible = false;
+            }
         }
 
         private void buildFrame()
@@ -162,8 +173,6 @@ namespace TCPClient
                 bufferRequest[7] = functionCode;
                 addTwoBytesToBuffer(dataAddress03, bufferRequest, 8);
                 addTwoBytesToBuffer(dataRegisters03, bufferRequest, 10);
-
-                
             }
             else if (selectedItem06)
             {
