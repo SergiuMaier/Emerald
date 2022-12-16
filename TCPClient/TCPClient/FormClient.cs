@@ -107,30 +107,20 @@ namespace TCPClient
 
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboFunctionCode.SelectedIndex == 0)
-            {
+            bool selectedItem03 = (comboFunctionCode.SelectedIndex == 0);
+            bool selectedItem06 = (comboFunctionCode.SelectedIndex == 1);
+            bool selectedItem16 = (comboFunctionCode.SelectedIndex == 2);
+
+            groupBox03.Visible = selectedItem03;
+            groupBox06.Visible = selectedItem06;
+            groupBox16.Visible = selectedItem16;
+
+            if (selectedItem03)
                 txtBoxFunctionCode.Text = "03";
-                groupBox03.Visible = true;
-                groupBox06.Visible = false;
-                groupBox16.Visible = false;
-
-            }
-            else if (comboFunctionCode.SelectedIndex == 1)
-            {
+            else if (selectedItem06)
                 txtBoxFunctionCode.Text = "06";
-                groupBox03.Visible = false;
-                groupBox06.Visible = true;
-                groupBox16.Visible = false;
-
-            }
-            else if (comboFunctionCode.SelectedIndex == 2)
-            {
+            else if (selectedItem16)
                 txtBoxFunctionCode.Text = "10";
-                groupBox03.Visible = false;
-                groupBox06.Visible = false;
-                groupBox16.Visible = true;
-
-            }
         }
 
         public static void addTwoBytesToBuffer(short number, byte[] buffer, int indexBuffer)
@@ -147,6 +137,8 @@ namespace TCPClient
                 {
                     txtRequest.Text = String.Empty;
                     txtResponse.Text = String.Empty;
+
+                    comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
 
                     short transactionId = 0x0001;
                     short protocolId = 0x0000;
