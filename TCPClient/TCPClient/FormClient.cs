@@ -8,14 +8,23 @@ namespace TCPClient
     {     
         SimpleTcpClient client;
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
-
-        public const byte unitIdLength = 0x01;
+        
+        public const byte headerLength = 0x06;
+        public const byte slaveIdLength = 0x01;
         public const byte functionCodeLength = 0x01;
         public const byte dataAddressLength = 0x02;
+        public const byte dataRegisterLength = 0x02;
+        public const byte numberBytesToFollow = 0x01;
+
+        byte bufferRequest03Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
+        byte bufferRequest06Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
+        byte bufferRequest16Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow;
+
         byte[] bufferRequest;
         byte[] bufferResponse;
+        bool selectedItem03, selectedItem06, selectedItem16;
 
-        private int numberOfRegisters;  
+        private int numberOfRegisters, numberOfRegisters16;
         private int functionCodeInResponse = 7; 
         private int exceptionInResponse = 8;
 
@@ -28,7 +37,7 @@ namespace TCPClient
         {
             txtBoxUnitId.CharacterCasing = CharacterCasing.Upper;
             txtBoxFunctionCode.CharacterCasing = CharacterCasing.Upper;
-            txtDataAddress.CharacterCasing = CharacterCasing.Upper;
+            txtAddress03.CharacterCasing = CharacterCasing.Upper;
 
             btnDisconnect.Enabled = false;
         }
@@ -46,6 +55,8 @@ namespace TCPClient
 
                 groupBoxFrame.Enabled = true;
                 groupBox03.Enabled = true;
+
+                comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
             }
             catch
             {
@@ -105,11 +116,17 @@ namespace TCPClient
             });
         }
 
+        public static void addTwoBytesToBuffer(short number, byte[] buffer, int indexBuffer)
+        {
+            buffer[indexBuffer] = (byte)(number >> 8);
+            buffer[indexBuffer + 1] = (byte)(number);
+        }
+
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool selectedItem03 = (comboFunctionCode.SelectedIndex == 0);
-            bool selectedItem06 = (comboFunctionCode.SelectedIndex == 1);
-            bool selectedItem16 = (comboFunctionCode.SelectedIndex == 2);
+            selectedItem03 = (comboFunctionCode.SelectedIndex == 0);
+            selectedItem06 = (comboFunctionCode.SelectedIndex == 1);
+            selectedItem16 = (comboFunctionCode.SelectedIndex == 2);
 
             groupBox03.Visible = selectedItem03;
             groupBox06.Visible = selectedItem06;
@@ -123,10 +140,77 @@ namespace TCPClient
                 txtBoxFunctionCode.Text = "10";
         }
 
-        public static void addTwoBytesToBuffer(short number, byte[] buffer, int indexBuffer)
+        private void buildFrame()
         {
-            buffer[indexBuffer] = (byte)(number >> 8);
-            buffer[indexBuffer + 1] = (byte)(number);
+            short transactionId = short.Parse(txtTransactionId.Text, NumberStyles.HexNumber);
+            short protocolId = short.Parse(txtProtocolId.Text, NumberStyles.HexNumber);
+            byte slaveId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
+            byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
+
+            if (selectedItem03)
+            {
+                short dataAddress03 = short.Parse(txtAddress03.Text, NumberStyles.HexNumber);
+                short dataRegisters03 = short.Parse(txtNrRegisters03.Text, NumberStyles.HexNumber);
+                short lengthOfMessage03 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
+
+                bufferRequest = new byte[bufferRequest03Length];
+
+                addTwoBytesToBuffer(transactionId, bufferRequest, 0);
+                addTwoBytesToBuffer(protocolId, bufferRequest, 2);
+                addTwoBytesToBuffer(lengthOfMessage03, bufferRequest, 4);
+                bufferRequest[6] = slaveId;
+                bufferRequest[7] = functionCode;
+                addTwoBytesToBuffer(dataAddress03, bufferRequest, 8);
+                addTwoBytesToBuffer(dataRegisters03, bufferRequest, 10);
+
+                
+            }
+            else if (selectedItem06)
+            {
+                short dataAddress06 = short.Parse(txtAddress06.Text, NumberStyles.HexNumber);
+                short dataValue06 = short.Parse(txtValue06.Text, NumberStyles.HexNumber);                    
+                short lengthOfMessage06 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
+
+                bufferRequest = new byte[bufferRequest06Length];
+
+                addTwoBytesToBuffer(transactionId, bufferRequest, 0);
+                addTwoBytesToBuffer(protocolId, bufferRequest, 2);
+                addTwoBytesToBuffer(lengthOfMessage06, bufferRequest, 4);
+                bufferRequest[6] = slaveId;
+                bufferRequest[7] = functionCode;
+                addTwoBytesToBuffer(dataAddress06, bufferRequest, 8);
+                addTwoBytesToBuffer(dataValue06, bufferRequest, 10);
+            }
+            else if (selectedItem16)
+            {
+                short dataAddress16 = short.Parse(txtAddress16.Text, NumberStyles.HexNumber);
+                short dataRegisters16 = short.Parse(txtNrRegisters16.Text, NumberStyles.HexNumber);
+                short[] dataValues16 = txtValues16.Text.Split(' ')
+                        .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
+                        .ToArray();
+                short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow + 2 * dataValues16.Length);
+                
+                bufferRequest = new byte[bufferRequest16Length + 2 * dataValues16.Length];
+
+                addTwoBytesToBuffer(transactionId, bufferRequest, 0);
+                addTwoBytesToBuffer(protocolId, bufferRequest, 2);
+                addTwoBytesToBuffer(lengthOfMessage16, bufferRequest, 4);
+                bufferRequest[6] = slaveId;
+                bufferRequest[7] = functionCode;
+                addTwoBytesToBuffer(dataAddress16, bufferRequest, 8);
+                addTwoBytesToBuffer(dataRegisters16, bufferRequest, 10);
+
+                int indexNumber = 13;
+                byte nrOfBytesMore = 0;
+                foreach (short element in dataValues16)
+                {
+                    addTwoBytesToBuffer(element, bufferRequest, indexNumber);
+                    indexNumber += 2;
+                    nrOfBytesMore += 2;
+                }
+
+                bufferRequest[12] = nrOfBytesMore;
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -138,40 +222,8 @@ namespace TCPClient
                     txtRequest.Text = String.Empty;
                     txtResponse.Text = String.Empty;
 
-                    comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
-
-                    short transactionId = 0x0001;
-                    short protocolId = 0x0000;
-                    
-                    byte unitId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
-                    byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
-                    short dataAddress = short.Parse(txtDataAddress.Text, NumberStyles.HexNumber);
-                    short[] dataRegisters = txtDataRegisters.Text.Split(' ')
-                            .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
-                            .ToArray();
-                    short lengthOfMessage = (short)(unitIdLength + functionCodeLength + dataAddressLength + 2 * dataRegisters.Length); //vf asta pe site la FC 
-
-                    bufferRequest = new byte[10 + 2 * dataRegisters.Length]; //256 e mai corect si apoi tin cont de indexul unde
-                                                                                    //se termina mesajul in dataFrame
-                    addTwoBytesToBuffer(transactionId, bufferRequest, 0);
-                    addTwoBytesToBuffer(protocolId, bufferRequest, 2);
-                    addTwoBytesToBuffer(lengthOfMessage, bufferRequest, 4);
-                    bufferRequest[6] = unitId;
-                    bufferRequest[7] = functionCode;
-                    addTwoBytesToBuffer(dataAddress, bufferRequest, 8);
-
-                    int indexNumber = 10;
-                    foreach (short element in dataRegisters)
-                    {
-                        addTwoBytesToBuffer(element, bufferRequest, indexNumber);
-                        indexNumber += 2;
-                    }
-
-                    //-------Sending the request------//
-
+                    buildFrame();
                     client.Send(bufferRequest);
-
-                    //-------Printing the request in text boxes------//
 
                     txtInfo.Text += $"[{DateTime.Now}] ->";
                     foreach (byte element in bufferRequest)
@@ -262,12 +314,31 @@ namespace TCPClient
             txtInfo.ScrollToCaret();
         }
 
+        private void btnMinus16_Click(object sender, EventArgs e)
+        {
+            if (numberOfRegisters16 > 0)
+            {
+                numberOfRegisters16--;
+                txtNrRegisters16.Text = numberOfRegisters16.ToString("X4");
+            }
+            else
+                btnMinus16.Enabled = false;
+        }
+        private void btnPlus16_Click(object sender, EventArgs e)
+        {
+            if (numberOfRegisters16 > 0)
+                btnMinus16.Enabled = true;
+
+            numberOfRegisters16++;
+            txtNrRegisters16.Text = numberOfRegisters16.ToString("X4");
+        }
+
         private void btnMinus_Click(object sender, EventArgs e)
         {
             if (numberOfRegisters > 0)
             {
                 numberOfRegisters--;
-                txtDataRegisters.Text = numberOfRegisters.ToString("X4");
+                txtNrRegisters03.Text = numberOfRegisters.ToString("X4");
             }
             else
                 btnMinus.Enabled = false;
@@ -279,7 +350,7 @@ namespace TCPClient
                 btnMinus.Enabled = true;
 
             numberOfRegisters++;
-            txtDataRegisters.Text = numberOfRegisters.ToString("X4");
+            txtNrRegisters03.Text = numberOfRegisters.ToString("X4");
         }
     }
 }
