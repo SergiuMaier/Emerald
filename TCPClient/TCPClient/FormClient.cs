@@ -8,6 +8,14 @@ namespace TCPClient
     {     
         SimpleTcpClient client;
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
+
+        private int numberOfRegisters, numberOfRegisters16; // counter for btnMinus & btnPlus
+        private int functionCodeInResponse = 7;
+        private int exceptionInResponse = 8;
+
+        public byte functionCode, salveID;
+        public byte slaveCOM100 = 0xFF;
+        public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x16;
         
         public const byte headerLength = 0x06;
         public const byte slaveIdLength = 0x01;
@@ -22,11 +30,8 @@ namespace TCPClient
 
         byte[] bufferRequest;
         byte[] bufferResponse;
-        bool selectedItem03, selectedItem06, selectedItem16;
 
-        private int numberOfRegisters, numberOfRegisters16;
-        private int functionCodeInResponse = 7; 
-        private int exceptionInResponse = 8;
+        bool selectedItem03, selectedItem06, selectedItem16;
 
         public FormClient()
         {
@@ -36,7 +41,6 @@ namespace TCPClient
         private void FormClient_Load(object sender, EventArgs e)
         {
             txtBoxUnitId.CharacterCasing = CharacterCasing.Upper;
-            txtBoxFunctionCode.CharacterCasing = CharacterCasing.Upper;
             txtAddress03.CharacterCasing = CharacterCasing.Upper;
 
             btnDisconnect.Enabled = false;
@@ -130,33 +134,38 @@ namespace TCPClient
 
             if (selectedItem03)
             {
-                txtBoxFunctionCode.Text = "03";
+                functionCode = 0x03;
                 groupBox03.Visible = selectedItem03;
                 groupBox06.Visible = false;
                 groupBox16.Visible = false;
             }
             else if (selectedItem06)
             {
-                txtBoxFunctionCode.Text = "06";
+                functionCode = 0x06;
                 groupBox06.Visible = selectedItem06;
                 groupBox03.Visible = false;
                 groupBox16.Visible = false;
             }
             else if (selectedItem16)
             {
-                txtBoxFunctionCode.Text = "10";
+                functionCode = 0x10;
                 groupBox16.Visible = selectedItem16;
                 groupBox03.Visible = false;
                 groupBox06.Visible = false;
             }
+        }
+        private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboSlave.SelectedIndex == 0)
+                salveID = slaveCOM100;
         }
 
         private void buildFrame()
         {
             short transactionId = short.Parse(txtTransactionId.Text, NumberStyles.HexNumber);
             short protocolId = short.Parse(txtProtocolId.Text, NumberStyles.HexNumber);
-            byte slaveId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
-            byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
+            //byte slaveId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
+            //byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
 
             if (selectedItem03)
             {
@@ -169,7 +178,7 @@ namespace TCPClient
                 addTwoBytesToBuffer(transactionId, bufferRequest, 0);
                 addTwoBytesToBuffer(protocolId, bufferRequest, 2);
                 addTwoBytesToBuffer(lengthOfMessage03, bufferRequest, 4);
-                bufferRequest[6] = slaveId;
+                bufferRequest[6] = salveID;
                 bufferRequest[7] = functionCode;
                 addTwoBytesToBuffer(dataAddress03, bufferRequest, 8);
                 addTwoBytesToBuffer(dataRegisters03, bufferRequest, 10);
@@ -185,7 +194,7 @@ namespace TCPClient
                 addTwoBytesToBuffer(transactionId, bufferRequest, 0);
                 addTwoBytesToBuffer(protocolId, bufferRequest, 2);
                 addTwoBytesToBuffer(lengthOfMessage06, bufferRequest, 4);
-                bufferRequest[6] = slaveId;
+                bufferRequest[6] = salveID;
                 bufferRequest[7] = functionCode;
                 addTwoBytesToBuffer(dataAddress06, bufferRequest, 8);
                 addTwoBytesToBuffer(dataValue06, bufferRequest, 10);
@@ -204,7 +213,7 @@ namespace TCPClient
                 addTwoBytesToBuffer(transactionId, bufferRequest, 0);
                 addTwoBytesToBuffer(protocolId, bufferRequest, 2);
                 addTwoBytesToBuffer(lengthOfMessage16, bufferRequest, 4);
-                bufferRequest[6] = slaveId;
+                bufferRequest[6] = salveID;
                 bufferRequest[7] = functionCode;
                 addTwoBytesToBuffer(dataAddress16, bufferRequest, 8);
                 addTwoBytesToBuffer(dataRegisters16, bufferRequest, 10);
@@ -333,6 +342,7 @@ namespace TCPClient
             else
                 btnMinus16.Enabled = false;
         }
+
         private void btnPlus16_Click(object sender, EventArgs e)
         {
             if (numberOfRegisters16 > 0)
