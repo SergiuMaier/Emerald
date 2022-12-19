@@ -64,8 +64,6 @@ namespace TCPClient
 
                 client.Connect();
 
-                groupBoxMessage.Enabled = true;
-
                 comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
             }
             catch
@@ -98,8 +96,6 @@ namespace TCPClient
                 btnConnect.Enabled = true;
                 btnDisconnect.Enabled = false;
                 btnSend.Enabled = false;
-
-                groupBoxMessage.Enabled = false;
 
                 txtIP.Enabled = true;
                 txtPort.Enabled = true;
