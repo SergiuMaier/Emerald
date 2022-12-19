@@ -1,14 +1,12 @@
 using SuperSimpleTcp;
 using System.Globalization;
 using System.Text;
+using TCPClient.FunctionCode;
 
 namespace TCPClient
 {
-    public partial class FormClient : Form
+    public partial class FormClient : Form 
     {     
-        SimpleTcpClient client;
-        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
-
         private int numberOfRegisters, numberOfRegisters16; // counter for btnMinus & btnPlus
         private int functionCodeInResponse = 7;
         private int exceptionInResponse = 8;
@@ -16,7 +14,7 @@ namespace TCPClient
         public byte functionCode, salveID;
         public byte slaveCOM100 = 0xFF;
         public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x16;
-        
+
         public const byte headerLength = 0x06;
         public const byte slaveIdLength = 0x01;
         public const byte functionCodeLength = 0x01;
@@ -32,6 +30,11 @@ namespace TCPClient
         byte[] bufferResponse;
 
         bool selectedItem03, selectedItem06, selectedItem16;
+        
+        SimpleTcpClient client;
+        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
+
+        List<Panel> listPanel = new List<Panel>();
 
         public FormClient()
         {
@@ -40,10 +43,14 @@ namespace TCPClient
         
         private void FormClient_Load(object sender, EventArgs e)
         {
-            txtBoxUnitId.CharacterCasing = CharacterCasing.Upper;
             txtAddress03.CharacterCasing = CharacterCasing.Upper;
 
             btnDisconnect.Enabled = false;
+
+            listPanel.Add(panel1);
+            listPanel.Add(panel2);
+            listPanel.Add(panel3);
+            listPanel[0].BringToFront();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -57,8 +64,7 @@ namespace TCPClient
 
                 client.Connect();
 
-                groupBoxFrame.Enabled = true;
-                groupBox03.Enabled = true;
+                groupBoxMessage.Enabled = true;
 
                 comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
             }
@@ -93,8 +99,7 @@ namespace TCPClient
                 btnDisconnect.Enabled = false;
                 btnSend.Enabled = false;
 
-                groupBoxFrame.Enabled = false;
-                groupBox03.Enabled = false;
+                groupBoxMessage.Enabled = false;
 
                 txtIP.Enabled = true;
                 txtPort.Enabled = true;
@@ -134,24 +139,18 @@ namespace TCPClient
 
             if (selectedItem03)
             {
-                functionCode = 0x03;
-                groupBox03.Visible = selectedItem03;
-                groupBox06.Visible = false;
-                groupBox16.Visible = false;
+                listPanel[0].BringToFront();
+                functionCode = fc03;
             }
             else if (selectedItem06)
             {
-                functionCode = 0x06;
-                groupBox06.Visible = selectedItem06;
-                groupBox03.Visible = false;
-                groupBox16.Visible = false;
+                listPanel[1].BringToFront();
+                functionCode = fc06;
             }
             else if (selectedItem16)
             {
-                functionCode = 0x10;
-                groupBox16.Visible = selectedItem16;
-                groupBox03.Visible = false;
-                groupBox06.Visible = false;
+                listPanel[2].BringToFront();
+                functionCode = fc16;
             }
         }
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
