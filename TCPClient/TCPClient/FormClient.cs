@@ -27,12 +27,14 @@ namespace TCPClient
         byte bufferRequest06Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
         byte bufferRequest16Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow;
 
-        byte[] bufferRequest;
-        byte[] bufferResponse;
+        public byte[] bufferRequest;
+        public byte[] bufferResponse;
 
         bool selectedItem03, selectedItem06, selectedItem16;
 
         SimpleTcpClient client;
+        FormHistory formHistory = new FormHistory();
+        
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
 
         public FormClient()
@@ -67,6 +69,7 @@ namespace TCPClient
                     MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void Connected(object sender, ConnectionEventArgs e)
         {
             this.Invoke((MethodInvoker)delegate
@@ -129,7 +132,6 @@ namespace TCPClient
 
             if (selectedItem03)
             {
-                //listPanel[0].BringToFront();
                 functionCode = fc03;
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
@@ -137,7 +139,6 @@ namespace TCPClient
             }
             else if (selectedItem06)
             {
-                //listPanel[1].BringToFront();
                 functionCode = fc06;
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
@@ -145,14 +146,14 @@ namespace TCPClient
             }
             else if (selectedItem16)
             {
-                //listPanel[2].BringToFront();
                 functionCode = fc16;
                 panelRegsNumber.Enabled = true;
                 panelValues.Enabled = true;
-                richtxtValues.Width = 451;
+                richtxtValues.Width = 532;
                 richtxtValues.MaxLength = 5 * numberOfRegisters;
             } 
         }
+
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboSlave.SelectedIndex == 0)
@@ -164,9 +165,6 @@ namespace TCPClient
             transactionNumber++;
             richtxtTransactionId.Text = transactionNumber.ToString("X4");
             short transactionId = short.Parse(richtxtTransactionId.Text, NumberStyles.HexNumber);
-            //short protocolId = short.Parse(protocolId, NumberStyles.HexNumber);
-            //byte slaveId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
-            //byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
 
             if (selectedItem03)
             {
@@ -241,17 +239,16 @@ namespace TCPClient
                     richtxtRequest.Text = String.Empty;
                     richtxtResponse.Text = String.Empty;
 
-
                     buildFrame();
                     client.Send(bufferRequest);
 
-                    txtHistory.Text += $"[{DateTime.Now}] ->";
+                    formHistory.toHistory = $"[{DateTime.Now}] ->";
                     foreach (byte element in bufferRequest)
                     {
                         richtxtRequest.Text += $" {element:X2}";
-                        txtHistory.Text += $" {element:X2}";
+                        formHistory.toHistory = $" {element:X2}";
                     }
-                    txtHistory.Text += $"{Environment.NewLine}";
+                    formHistory.toHistory = $"{Environment.NewLine}";
                 }
                 catch
                 {
@@ -275,28 +272,30 @@ namespace TCPClient
 
                 AnalyzeResponse();
 
-                txtHistory.Text += $"[{DateTime.Now}] <-";
+                formHistory.toHistory = $"[{DateTime.Now}] <-";
                 foreach (byte element in bufferResponse)
                 {
                     richtxtResponse.Text += $" {element:X2}";
-                    txtHistory.Text += $" {element:X2}";
+                    formHistory.toHistory = $" {element:X2}";
                 }
-                txtHistory.Text += $"{Environment.NewLine}{Environment.NewLine}";
+                formHistory.toHistory = $"{Environment.NewLine}{Environment.NewLine}";
             });
         }
-
+        
         private void AnalyzeResponse()
         {
             if ((bufferResponse[functionCodeInResponse] == 0x83) || (bufferResponse[functionCodeInResponse] == 0x86) || (bufferResponse[functionCodeInResponse] == 0x90))
             {
+                labelException.Visible = true;
+
                 if (bufferResponse[exceptionInResponse] == 0x02)
-                    labelInfoFrame.Text = "Exception Code 02: Illegal Data Address";
+                    labelException.Text = "Exception Code 02: Illegal Data Address";
                 else if (bufferResponse[exceptionInResponse] == 0x03)
-                    labelInfoFrame.Text = "Exception Code 03: Illegal Data Value";
+                    labelException.Text = "Exception Code 03: Illegal Data Value";
                 else if (bufferResponse[exceptionInResponse] == 0x0A)
-                    labelInfoFrame.Text = "Exception Code 0A: Gateway Path Unavailable";
+                    labelException.Text = "Exception Code 0A: Gateway Path Unavailable";
                 else
-                    labelInfoFrame.Text = "-";
+                    labelException.Text = "-";
             }
         }
 
@@ -328,12 +327,6 @@ namespace TCPClient
             richtxtResponse.Text = String.Empty;
         }
 
-        private void txtInfo_TextChanged(object sender, EventArgs e)
-        {
-            txtHistory.SelectionStart = txtHistory.TextLength;
-            txtHistory.ScrollToCaret();
-        }
-
         private void btnMinus_Click(object sender, EventArgs e)
         {
             if (numberOfRegisters > 0)
@@ -352,6 +345,11 @@ namespace TCPClient
 
             numberOfRegisters++;
             richtxtNumberRegs.Text = numberOfRegisters.ToString("X4");
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            formHistory.ShowDialog();
         }
     }
 }
