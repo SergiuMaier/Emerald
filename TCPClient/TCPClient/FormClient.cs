@@ -5,16 +5,16 @@ using TCPClient.FunctionCode;
 
 namespace TCPClient
 {
-    public partial class FormClient : Form 
-    {     
-        private int numberOfRegisters, numberOfRegisters16, transactionNumber; // counter for btnMinus & btnPlus, transactionId
+    public partial class FormClient : Form
+    {
+        private int numberOfRegisters, transactionNumber; // counter for btnMinus & btnPlus, transactionId
         private int functionCodeInResponse = 7;
         private int exceptionInResponse = 8;
 
         public short protocolId = 0x0000;
         public byte functionCode, salveID;
         public byte slaveCOM100 = 0xFF;
-        public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x16;
+        public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;
 
         public const byte headerLength = 0x06;
         public const byte slaveIdLength = 0x01;
@@ -31,27 +31,19 @@ namespace TCPClient
         byte[] bufferResponse;
 
         bool selectedItem03, selectedItem06, selectedItem16;
-        
+
         SimpleTcpClient client;
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
-
-        List<Panel> listPanel = new List<Panel>();
 
         public FormClient()
         {
             InitializeComponent();
         }
-        
+
         private void FormClient_Load(object sender, EventArgs e)
         {
-            txtAddress03.CharacterCasing = CharacterCasing.Upper;
-
             btnDisconnect.Enabled = false;
-
-            listPanel.Add(panel1);
-            listPanel.Add(panel2);
-            listPanel.Add(panel3);
-            listPanel[0].BringToFront();
+            panelMessage.Enabled = false;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -69,7 +61,7 @@ namespace TCPClient
             }
             catch
             {
-                if((richtxtIP.Text == "") && (richtxtPort.Text == ""))
+                if ((richtxtIP.Text == "") && (richtxtPort.Text == ""))
                     MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -81,6 +73,7 @@ namespace TCPClient
             {
                 labelStatus2.Text = "Connected";
                 labelStatus2.ForeColor = Color.Green;
+                panelMessage.Enabled = true;
                 btnSend.Enabled = true;
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
@@ -136,19 +129,29 @@ namespace TCPClient
 
             if (selectedItem03)
             {
-                listPanel[0].BringToFront();
+                //listPanel[0].BringToFront();
                 functionCode = fc03;
+                panelValues.Enabled = false;
+                panelRegsNumber.Enabled = true;
+                richtxtValues.Width = 62;
             }
             else if (selectedItem06)
             {
-                listPanel[1].BringToFront();
+                //listPanel[1].BringToFront();
                 functionCode = fc06;
+                panelRegsNumber.Enabled = false;
+                panelValues.Enabled = true;
+                richtxtValues.Width = 62;
             }
             else if (selectedItem16)
             {
-                listPanel[2].BringToFront();
+                //listPanel[2].BringToFront();
                 functionCode = fc16;
-            }
+                panelRegsNumber.Enabled = true;
+                panelValues.Enabled = true;
+                richtxtValues.Width = 451;
+                richtxtValues.MaxLength = 5 * numberOfRegisters;
+            } 
         }
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -167,8 +170,8 @@ namespace TCPClient
 
             if (selectedItem03)
             {
-                short dataAddress03 = short.Parse(richTextBox1.Text, NumberStyles.HexNumber);
-                short dataRegisters03 = short.Parse(txtNrRegisters03.Text, NumberStyles.HexNumber);
+                short dataAddress03 = short.Parse(richtxtAddress.Text, NumberStyles.HexNumber);
+                short dataRegisters03 = short.Parse(richtxtNumberRegs.Text, NumberStyles.HexNumber);
                 short lengthOfMessage03 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
 
                 bufferRequest = new byte[bufferRequest03Length];
@@ -183,8 +186,8 @@ namespace TCPClient
             }
             else if (selectedItem06)
             {
-                short dataAddress06 = short.Parse(richTextBox1.Text, NumberStyles.HexNumber);
-                short dataValue06 = short.Parse(txtValue06.Text, NumberStyles.HexNumber);                    
+                short dataAddress06 = short.Parse(richtxtAddress.Text, NumberStyles.HexNumber);
+                short dataValue06 = short.Parse(richtxtValues.Text, NumberStyles.HexNumber);
                 short lengthOfMessage06 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
 
                 bufferRequest = new byte[bufferRequest06Length];
@@ -199,13 +202,13 @@ namespace TCPClient
             }
             else if (selectedItem16)
             {
-                short dataAddress16 = short.Parse(richTextBox1.Text, NumberStyles.HexNumber);
-                short dataRegisters16 = short.Parse(txtNrRegisters16.Text, NumberStyles.HexNumber);
-                short[] dataValues16 = txtValues16.Text.Split(' ')
+                short dataAddress16 = short.Parse(richtxtAddress.Text, NumberStyles.HexNumber);
+                short dataRegisters16 = short.Parse(richtxtNumberRegs.Text, NumberStyles.HexNumber);
+                short[] dataValues16 = richtxtValues.Text.Split(' ')
                         .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
                         .ToArray();
                 short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow + 2 * dataValues16.Length);
-                
+
                 bufferRequest = new byte[bufferRequest16Length + 2 * dataValues16.Length];
 
                 addTwoBytesToBuffer(transactionId, bufferRequest, 0);
@@ -235,24 +238,24 @@ namespace TCPClient
             {
                 try
                 {
-                    txtRequest.Text = String.Empty;
-                    txtResponse.Text = String.Empty;
-                    
+                    richtxtRequest.Text = String.Empty;
+                    richtxtResponse.Text = String.Empty;
+
 
                     buildFrame();
                     client.Send(bufferRequest);
 
-                    txtInfo.Text += $"[{DateTime.Now}] ->";
+                    txtHistory.Text += $"[{DateTime.Now}] ->";
                     foreach (byte element in bufferRequest)
                     {
-                        txtRequest.Text += $" {element:X2}";
-                        txtInfo.Text += $" {element:X2}";
+                        richtxtRequest.Text += $" {element:X2}";
+                        txtHistory.Text += $" {element:X2}";
                     }
-                    txtInfo.Text += $"{Environment.NewLine}";
+                    txtHistory.Text += $"{Environment.NewLine}";
                 }
                 catch
                 {
-                MessageBox.Show("Invalid format", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Invalid format", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -272,13 +275,13 @@ namespace TCPClient
 
                 AnalyzeResponse();
 
-                txtInfo.Text += $"[{DateTime.Now}] <-";
+                txtHistory.Text += $"[{DateTime.Now}] <-";
                 foreach (byte element in bufferResponse)
                 {
-                    txtResponse.Text += $" {element:X2}";
-                    txtInfo.Text += $" {element:X2}";
+                    richtxtResponse.Text += $" {element:X2}";
+                    txtHistory.Text += $" {element:X2}";
                 }
-                txtInfo.Text += $"{Environment.NewLine}{Environment.NewLine}";
+                txtHistory.Text += $"{Environment.NewLine}{Environment.NewLine}";
             });
         }
 
@@ -321,34 +324,14 @@ namespace TCPClient
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtRequest.Text = String.Empty;
-            txtResponse.Text = String.Empty;
+            richtxtRequest.Text = String.Empty;
+            richtxtResponse.Text = String.Empty;
         }
 
         private void txtInfo_TextChanged(object sender, EventArgs e)
         {
-            txtInfo.SelectionStart = txtInfo.TextLength;
-            txtInfo.ScrollToCaret();
-        }
-
-        private void btnMinus16_Click(object sender, EventArgs e)
-        {
-            if (numberOfRegisters16 > 0)
-            {
-                numberOfRegisters16--;
-                txtNrRegisters16.Text = numberOfRegisters16.ToString("X4");
-            }
-            else
-                btnMinus16.Enabled = false;
-        }
-
-        private void btnPlus16_Click(object sender, EventArgs e)
-        {
-            if (numberOfRegisters16 > 0)
-                btnMinus16.Enabled = true;
-
-            numberOfRegisters16++;
-            txtNrRegisters16.Text = numberOfRegisters16.ToString("X4");
+            txtHistory.SelectionStart = txtHistory.TextLength;
+            txtHistory.ScrollToCaret();
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
@@ -356,19 +339,19 @@ namespace TCPClient
             if (numberOfRegisters > 0)
             {
                 numberOfRegisters--;
-                txtNrRegisters03.Text = numberOfRegisters.ToString("X4");
+                richtxtNumberRegs.Text = numberOfRegisters.ToString("X4");
             }
             else
                 btnMinus.Enabled = false;
         }
 
-        private void bntPlus_Click(object sender, EventArgs e)
+        private void btnPlus_Click(object sender, EventArgs e)
         {
             if (numberOfRegisters > 0)
                 btnMinus.Enabled = true;
 
             numberOfRegisters++;
-            txtNrRegisters03.Text = numberOfRegisters.ToString("X4");
+            richtxtNumberRegs.Text = numberOfRegisters.ToString("X4");
         }
     }
 }
