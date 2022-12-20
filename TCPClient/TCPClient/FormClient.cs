@@ -7,10 +7,11 @@ namespace TCPClient
 {
     public partial class FormClient : Form 
     {     
-        private int numberOfRegisters, numberOfRegisters16; // counter for btnMinus & btnPlus
+        private int numberOfRegisters, numberOfRegisters16, transactionNumber; // counter for btnMinus & btnPlus, transactionId
         private int functionCodeInResponse = 7;
         private int exceptionInResponse = 8;
 
+        public short protocolId = 0x0000;
         public byte functionCode, salveID;
         public byte slaveCOM100 = 0xFF;
         public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x16;
@@ -57,7 +58,7 @@ namespace TCPClient
         {
             try
             {
-                client = new SimpleTcpClient(txtIP.Text + ":" + txtPort.Text);
+                client = new SimpleTcpClient(richtxtIP.Text + ":" + richtxtPort.Text);
 
                 client.Events.Connected += Connected;
                 client.Events.DataReceived += DataReceived;
@@ -68,7 +69,7 @@ namespace TCPClient
             }
             catch
             {
-                if((txtIP.Text == "") && (txtPort.Text == ""))
+                if((richtxtIP.Text == "") && (richtxtPort.Text == ""))
                     MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -97,8 +98,8 @@ namespace TCPClient
                 btnDisconnect.Enabled = false;
                 btnSend.Enabled = false;
 
-                txtIP.Enabled = true;
-                txtPort.Enabled = true;
+                richtxtIP.Enabled = true;
+                richtxtPort.Enabled = true;
 
                 labelStatus2.Text = "Not connected";
                 labelStatus2.ForeColor = Color.Red;
@@ -116,8 +117,8 @@ namespace TCPClient
                 labelStatus2.Text = "Not connected";
                 labelStatus2.ForeColor = Color.Red;
                 btnConnect.Enabled = true;
-                txtIP.Enabled = true;
-                txtPort.Enabled = true;
+                richtxtIP.Enabled = true;
+                richtxtPort.Enabled = true;
             });
         }
 
@@ -157,14 +158,16 @@ namespace TCPClient
 
         private void buildFrame()
         {
-            short transactionId = short.Parse(txtTransactionId.Text, NumberStyles.HexNumber);
-            short protocolId = short.Parse(txtProtocolId.Text, NumberStyles.HexNumber);
+            transactionNumber++;
+            richtxtTransactionId.Text = transactionNumber.ToString("X4");
+            short transactionId = short.Parse(richtxtTransactionId.Text, NumberStyles.HexNumber);
+            //short protocolId = short.Parse(protocolId, NumberStyles.HexNumber);
             //byte slaveId = byte.Parse(txtBoxUnitId.Text, NumberStyles.HexNumber);
             //byte functionCode = byte.Parse(txtBoxFunctionCode.Text, NumberStyles.HexNumber);
 
             if (selectedItem03)
             {
-                short dataAddress03 = short.Parse(txtAddress03.Text, NumberStyles.HexNumber);
+                short dataAddress03 = short.Parse(richTextBox1.Text, NumberStyles.HexNumber);
                 short dataRegisters03 = short.Parse(txtNrRegisters03.Text, NumberStyles.HexNumber);
                 short lengthOfMessage03 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
 
@@ -180,7 +183,7 @@ namespace TCPClient
             }
             else if (selectedItem06)
             {
-                short dataAddress06 = short.Parse(txtAddress06.Text, NumberStyles.HexNumber);
+                short dataAddress06 = short.Parse(richTextBox1.Text, NumberStyles.HexNumber);
                 short dataValue06 = short.Parse(txtValue06.Text, NumberStyles.HexNumber);                    
                 short lengthOfMessage06 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
 
@@ -196,7 +199,7 @@ namespace TCPClient
             }
             else if (selectedItem16)
             {
-                short dataAddress16 = short.Parse(txtAddress16.Text, NumberStyles.HexNumber);
+                short dataAddress16 = short.Parse(richTextBox1.Text, NumberStyles.HexNumber);
                 short dataRegisters16 = short.Parse(txtNrRegisters16.Text, NumberStyles.HexNumber);
                 short[] dataValues16 = txtValues16.Text.Split(' ')
                         .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
@@ -234,6 +237,7 @@ namespace TCPClient
                 {
                     txtRequest.Text = String.Empty;
                     txtResponse.Text = String.Empty;
+                    
 
                     buildFrame();
                     client.Send(bufferRequest);
