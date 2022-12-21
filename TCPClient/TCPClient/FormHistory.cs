@@ -19,18 +19,18 @@ namespace TCPClient
             InitializeComponent();
         }
 
-        private void FormHistory_Load(object sender, EventArgs e)
+        public void FormHistory_Load(object sender, EventArgs e)
         {
             textHistory.Text += toHistory;
         }
 
-        private void textHistory_TextChanged(object sender, EventArgs e)
+        public void textHistory_TextChanged(object sender, EventArgs e)
         {
             textHistory.SelectionStart = textHistory.TextLength;
             textHistory.ScrollToCaret();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        public void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

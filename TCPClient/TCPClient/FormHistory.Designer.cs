@@ -70,6 +70,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.textHistory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormHistory";
             this.Text = "History";
             this.ResumeLayout(false);

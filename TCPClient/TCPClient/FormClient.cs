@@ -1,40 +1,43 @@
 using SuperSimpleTcp;
 using System.Globalization;
 using System.Text;
-using TCPClient.FunctionCode;
 
 namespace TCPClient
 {
     public partial class FormClient : Form
     {
-        private int numberOfRegisters, transactionNumber; // counter for btnMinus & btnPlus, transactionId
+        FunctionCodes fc = new FunctionCodes();
+
+        private int numberOfRegisters; // counter for btnMinus & btnPlus
+        public int transactionNumber;
+
         private int functionCodeInResponse = 7;
         private int exceptionInResponse = 8;
 
         public short protocolId = 0x0000;
-        public byte functionCode, salveID;
         public byte slaveCOM100 = 0xFF;
+        public byte functionCode, slaveId;
         public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;
-
-        public const byte headerLength = 0x06;
-        public const byte slaveIdLength = 0x01;
-        public const byte functionCodeLength = 0x01;
-        public const byte dataAddressLength = 0x02;
-        public const byte dataRegisterLength = 0x02;
-        public const byte numberBytesToFollow = 0x01;
-
-        byte bufferRequest03Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
-        byte bufferRequest06Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
-        byte bufferRequest16Length = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow;
 
         public byte[] bufferRequest;
         public byte[] bufferResponse;
 
-        bool selectedItem03, selectedItem06, selectedItem16;
+        bool selected03, selected06, selected16;
+        
+        public const byte headerLength = 0x06;
+        public const byte slaveIdLength = 0x01;
+        public const byte functionCodeLength = 0x01;
+        public const byte firstAddressLength = 0x02;
+        public const byte numberOfRegistersLength = 0x02;
+        public const byte numberBytesToFollow = 0x01;
+
+        byte bufferLength03 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength;
+        byte bufferLength06 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength;
+        byte bufferLength16 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength + numberBytesToFollow;
 
         SimpleTcpClient client;
         FormHistory formHistory = new FormHistory();
-        
+
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
 
         public FormClient()
@@ -118,33 +121,33 @@ namespace TCPClient
             });
         }
 
-        public static void addTwoBytesToBuffer(short number, byte[] buffer, int indexBuffer)
+        private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buffer[indexBuffer] = (byte)(number >> 8);
-            buffer[indexBuffer + 1] = (byte)(number);
+            if (comboSlave.SelectedIndex == 0)
+                slaveId = slaveCOM100;
         }
 
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedItem03 = (comboFunctionCode.SelectedIndex == 0);
-            selectedItem06 = (comboFunctionCode.SelectedIndex == 1);
-            selectedItem16 = (comboFunctionCode.SelectedIndex == 2);
+            selected03 = (comboFunctionCode.SelectedIndex == 0);
+            selected06 = (comboFunctionCode.SelectedIndex == 1);
+            selected16 = (comboFunctionCode.SelectedIndex == 2);
 
-            if (selectedItem03)
+            if (selected03)
             {
                 functionCode = fc03;
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
                 richtxtValues.Width = 62;
             }
-            else if (selectedItem06)
+            else if (selected06)
             {
                 functionCode = fc06;
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
                 richtxtValues.Width = 62;
             }
-            else if (selectedItem16)
+            else if (selected16)
             {
                 functionCode = fc16;
                 panelRegsNumber.Enabled = true;
@@ -154,79 +157,25 @@ namespace TCPClient
             } 
         }
 
-        private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboSlave.SelectedIndex == 0)
-                salveID = slaveCOM100;
-        }
-
-        private void buildFrame()
+        public void buildRequest()
         {
             transactionNumber++;
             richtxtTransactionId.Text = transactionNumber.ToString("X4");
-            short transactionId = short.Parse(richtxtTransactionId.Text, NumberStyles.HexNumber);
 
-            if (selectedItem03)
+            if (selected03)
             {
-                short dataAddress03 = short.Parse(richtxtAddress.Text, NumberStyles.HexNumber);
-                short dataRegisters03 = short.Parse(richtxtNumberRegs.Text, NumberStyles.HexNumber);
-                short lengthOfMessage03 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
-
-                bufferRequest = new byte[bufferRequest03Length];
-
-                addTwoBytesToBuffer(transactionId, bufferRequest, 0);
-                addTwoBytesToBuffer(protocolId, bufferRequest, 2);
-                addTwoBytesToBuffer(lengthOfMessage03, bufferRequest, 4);
-                bufferRequest[6] = salveID;
-                bufferRequest[7] = functionCode;
-                addTwoBytesToBuffer(dataAddress03, bufferRequest, 8);
-                addTwoBytesToBuffer(dataRegisters03, bufferRequest, 10);
+                bufferRequest = new byte[bufferLength03];
+                fc.readHoldingRegisters(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text);
             }
-            else if (selectedItem06)
+            else if (selected06)
             {
-                short dataAddress06 = short.Parse(richtxtAddress.Text, NumberStyles.HexNumber);
-                short dataValue06 = short.Parse(richtxtValues.Text, NumberStyles.HexNumber);
-                short lengthOfMessage06 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
-
-                bufferRequest = new byte[bufferRequest06Length];
-
-                addTwoBytesToBuffer(transactionId, bufferRequest, 0);
-                addTwoBytesToBuffer(protocolId, bufferRequest, 2);
-                addTwoBytesToBuffer(lengthOfMessage06, bufferRequest, 4);
-                bufferRequest[6] = salveID;
-                bufferRequest[7] = functionCode;
-                addTwoBytesToBuffer(dataAddress06, bufferRequest, 8);
-                addTwoBytesToBuffer(dataValue06, bufferRequest, 10);
+                bufferRequest = new byte[bufferLength06];
+                fc.presetSingleRegister(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtValues.Text);
             }
-            else if (selectedItem16)
+            else if (selected16)
             {
-                short dataAddress16 = short.Parse(richtxtAddress.Text, NumberStyles.HexNumber);
-                short dataRegisters16 = short.Parse(richtxtNumberRegs.Text, NumberStyles.HexNumber);
-                short[] dataValues16 = richtxtValues.Text.Split(' ')
-                        .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
-                        .ToArray();
-                short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow + 2 * dataValues16.Length);
-
-                bufferRequest = new byte[bufferRequest16Length + 2 * dataValues16.Length];
-
-                addTwoBytesToBuffer(transactionId, bufferRequest, 0);
-                addTwoBytesToBuffer(protocolId, bufferRequest, 2);
-                addTwoBytesToBuffer(lengthOfMessage16, bufferRequest, 4);
-                bufferRequest[6] = salveID;
-                bufferRequest[7] = functionCode;
-                addTwoBytesToBuffer(dataAddress16, bufferRequest, 8);
-                addTwoBytesToBuffer(dataRegisters16, bufferRequest, 10);
-
-                int indexNumber = 13;
-                byte nrOfBytesMore = 0;
-                foreach (short element in dataValues16)
-                {
-                    addTwoBytesToBuffer(element, bufferRequest, indexNumber);
-                    indexNumber += 2;
-                    nrOfBytesMore += 2;
-                }
-
-                bufferRequest[12] = nrOfBytesMore;
+                bufferRequest = new byte[bufferLength16 + (2 * numberOfRegisters)];
+                fc.presetMultipleRegisters(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text, richtxtValues.Text);
             }
         }
 
@@ -234,26 +183,26 @@ namespace TCPClient
         {
             if (client.IsConnected)
             {
+                richtxtRequest.Text = String.Empty;
+                richtxtResponse.Text = String.Empty;
+
                 try
                 {
-                    richtxtRequest.Text = String.Empty;
-                    richtxtResponse.Text = String.Empty;
-
-                    buildFrame();
+                    buildRequest();
                     client.Send(bufferRequest);
-
-                    formHistory.toHistory = $"[{DateTime.Now}] ->";
-                    foreach (byte element in bufferRequest)
-                    {
-                        richtxtRequest.Text += $" {element:X2}";
-                        formHistory.toHistory = $" {element:X2}";
-                    }
-                    formHistory.toHistory = $"{Environment.NewLine}";
                 }
                 catch
                 {
                     MessageBox.Show("Invalid format", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                formHistory.toHistory = $"[{DateTime.Now}] ->";
+                foreach (byte element in bufferRequest)
+                {
+                    richtxtRequest.Text += $" {element:X2}";
+                    formHistory.toHistory = $" {element:X2}";
+                }
+                formHistory.toHistory = $"{Environment.NewLine}";
             }
         }
 
@@ -294,8 +243,11 @@ namespace TCPClient
                     labelException.Text = "Exception Code 03: Illegal Data Value";
                 else if (bufferResponse[exceptionInResponse] == 0x0A)
                     labelException.Text = "Exception Code 0A: Gateway Path Unavailable";
-                else
-                    labelException.Text = "-";
+            }
+            else
+            {
+                labelException.Text = "-";
+                labelException.Visible = false;
             }
         }
 
@@ -321,12 +273,6 @@ namespace TCPClient
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            richtxtRequest.Text = String.Empty;
-            richtxtResponse.Text = String.Empty;
-        }
-
         private void btnMinus_Click(object sender, EventArgs e)
         {
             if (numberOfRegisters > 0)
@@ -345,6 +291,11 @@ namespace TCPClient
 
             numberOfRegisters++;
             richtxtNumberRegs.Text = numberOfRegisters.ToString("X4");
+        }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            richtxtRequest.Text = String.Empty;
+            richtxtResponse.Text = String.Empty;
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
