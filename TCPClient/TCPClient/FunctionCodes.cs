@@ -9,17 +9,11 @@ namespace TCPClient
 {
     public class FunctionCodes
     {
-        public const byte headerLength = 0x06;
         public const byte slaveIdLength = 0x01;
         public const byte functionCodeLength = 0x01;
-        public const byte dataAddressLength = 0x02;
-        public const byte dataRegisterLength = 0x02;
-        public short protocolId = 0x0000;
+        public const byte firstAddressLength = 0x02;
+        public const byte numberOfRegistersLength = 0x02;
         public const byte numberBytesToFollow = 0x01;
-
-        byte bufferLength03 = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
-        byte bufferLength06 = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength;
-        byte bufferLength16 = headerLength + slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow;
 
         public static void addTwoBytesToBuffer(byte[] buffer, short number, int indexBuffer)
         {
@@ -30,8 +24,6 @@ namespace TCPClient
         //fc 03
         public void readHoldingRegisters(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string numberOfRegistersText)
         {
-            buffer = new byte[bufferLength03];
-
             short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
             addTwoBytesToBuffer(buffer, transactionId, 0);
             
@@ -40,7 +32,7 @@ namespace TCPClient
             short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
             short numberOfRegisters = short.Parse(numberOfRegistersText, NumberStyles.HexNumber);
             
-            short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
+            short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength);
             addTwoBytesToBuffer(buffer, lengthOfMessage, 4);
 
             buffer[6] = slaveId;
@@ -52,8 +44,6 @@ namespace TCPClient
         //fc 06
         public void presetSingleRegister(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string registerValueText)
         {
-            buffer = new byte[bufferLength06];
-
             short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
             addTwoBytesToBuffer(buffer, transactionId, 0);
             addTwoBytesToBuffer(buffer, protocolId, 2);
@@ -61,7 +51,7 @@ namespace TCPClient
             short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
             short registerValue = short.Parse(registerValueText, NumberStyles.HexNumber);
 
-            short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength);
+            short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength);
             addTwoBytesToBuffer(buffer, lengthOfMessage, 4);
             
             buffer[6] = slaveId;
@@ -79,9 +69,7 @@ namespace TCPClient
                         .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
                         .ToArray();
             
-            short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + dataAddressLength + dataRegisterLength + numberBytesToFollow + 2 * registerValue.Length);
-
-            buffer = new byte[bufferLength06 + (2 * registerValue.Length)];
+            short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength + numberBytesToFollow + 2 * registerValue.Length);
 
             short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
             addTwoBytesToBuffer(buffer, transactionId, 0);
