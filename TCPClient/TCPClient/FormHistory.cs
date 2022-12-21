@@ -12,22 +12,20 @@ namespace TCPClient
 {
     public partial class FormHistory : Form
     {
-        public string toHistory { get; set; }
-
         public FormHistory()
         {
             InitializeComponent();
+            textBoxHistory.Text = FormClient.textToHistory;
         }
 
         public void FormHistory_Load(object sender, EventArgs e)
         {
-            textHistory.Text += toHistory;
         }
 
         public void textHistory_TextChanged(object sender, EventArgs e)
         {
-            textHistory.SelectionStart = textHistory.TextLength;
-            textHistory.ScrollToCaret();
+            textBoxHistory.SelectionStart = textBoxHistory.TextLength;
+            textBoxHistory.ScrollToCaret();
         }
 
         public void btnClose_Click(object sender, EventArgs e)

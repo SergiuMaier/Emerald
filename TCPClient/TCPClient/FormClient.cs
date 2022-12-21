@@ -6,7 +6,12 @@ namespace TCPClient
 {
     public partial class FormClient : Form
     {
+        SimpleTcpClient client;
         FunctionCodes fc = new FunctionCodes();
+        
+        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
+
+        public static string textToHistory = "";
 
         private int numberOfRegisters; // counter for btnMinus & btnPlus
         public int transactionNumber;
@@ -15,7 +20,7 @@ namespace TCPClient
         private int exceptionInResponse = 8;
 
         public short protocolId = 0x0000;
-        public byte slaveCOM100 = 0xFF;
+        public byte IdCOM100 = 0xFF;
         public byte functionCode, slaveId;
         public byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;
 
@@ -34,11 +39,6 @@ namespace TCPClient
         byte bufferLength03 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength;
         byte bufferLength06 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength;
         byte bufferLength16 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength + numberBytesToFollow;
-
-        SimpleTcpClient client;
-        FormHistory formHistory = new FormHistory();
-
-        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
 
         public FormClient()
         {
@@ -75,15 +75,12 @@ namespace TCPClient
 
         private void Connected(object sender, ConnectionEventArgs e)
         {
-            this.Invoke((MethodInvoker)delegate
-            {
-                labelStatus2.Text = "Connected";
-                labelStatus2.ForeColor = Color.Green;
-                panelMessage.Enabled = true;
-                btnSend.Enabled = true;
-                btnConnect.Enabled = false;
-                btnDisconnect.Enabled = true;
-            });
+            labelStatus2.Text = "Connected";
+            labelStatus2.ForeColor = Color.Green;
+            panelMessage.Enabled = true;
+            btnSend.Enabled = true;
+            btnConnect.Enabled = false;
+            btnDisconnect.Enabled = true;
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -111,20 +108,17 @@ namespace TCPClient
 
         private void Disconnected(object sender, ConnectionEventArgs e)
         {
-            this.Invoke((MethodInvoker)delegate
-            {
-                labelStatus2.Text = "Not connected";
-                labelStatus2.ForeColor = Color.Red;
-                btnConnect.Enabled = true;
-                richtxtIP.Enabled = true;
-                richtxtPort.Enabled = true;
-            });
+            labelStatus2.Text = "Not connected";
+            labelStatus2.ForeColor = Color.Red;
+            btnConnect.Enabled = true;
+            richtxtIP.Enabled = true;
+            richtxtPort.Enabled = true;
         }
 
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboSlave.SelectedIndex == 0)
-                slaveId = slaveCOM100;
+                slaveId = IdCOM100;
         }
 
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,6 +130,7 @@ namespace TCPClient
             if (selected03)
             {
                 functionCode = fc03;
+                
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
                 richtxtValues.Width = 62;
@@ -143,6 +138,7 @@ namespace TCPClient
             else if (selected06)
             {
                 functionCode = fc06;
+                
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
                 richtxtValues.Width = 62;
@@ -150,6 +146,7 @@ namespace TCPClient
             else if (selected16)
             {
                 functionCode = fc16;
+                
                 panelRegsNumber.Enabled = true;
                 panelValues.Enabled = true;
                 richtxtValues.Width = 532;
@@ -196,13 +193,13 @@ namespace TCPClient
                     MessageBox.Show("Invalid format", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                formHistory.toHistory = $"[{DateTime.Now}] ->";
+                textToHistory += $"[{DateTime.Now}] ->";
                 foreach (byte element in bufferRequest)
                 {
                     richtxtRequest.Text += $" {element:X2}";
-                    formHistory.toHistory = $" {element:X2}";
+                    textToHistory += $" {element:X2}";
                 }
-                formHistory.toHistory = $"{Environment.NewLine}";
+                textToHistory += $"{Environment.NewLine}";
             }
         }
 
@@ -221,13 +218,13 @@ namespace TCPClient
 
                 AnalyzeResponse();
 
-                formHistory.toHistory = $"[{DateTime.Now}] <-";
+                textToHistory += $"[{DateTime.Now}] <-"; 
                 foreach (byte element in bufferResponse)
                 {
                     richtxtResponse.Text += $" {element:X2}";
-                    formHistory.toHistory = $" {element:X2}";
+                    textToHistory += $" {element:X2}";
                 }
-                formHistory.toHistory = $"{Environment.NewLine}{Environment.NewLine}";
+                textToHistory += $"{Environment.NewLine}{Environment.NewLine}";
             });
         }
         
@@ -300,7 +297,8 @@ namespace TCPClient
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
-            formHistory.ShowDialog();
+            FormHistory formHistory = new FormHistory();
+            formHistory.Show();
         }
     }
 }
