@@ -15,7 +15,7 @@ namespace TCPClient
         public FormHistory()
         {
             InitializeComponent();
-            textBoxHistory.Text = FormClient.textToHistory;
+            txtBoxHistory.Text = FormClient.textToHistory;
         }
 
         public void FormHistory_Load(object sender, EventArgs e)
@@ -24,13 +24,22 @@ namespace TCPClient
 
         public void textHistory_TextChanged(object sender, EventArgs e)
         {
-            textBoxHistory.SelectionStart = textBoxHistory.TextLength;
-            textBoxHistory.ScrollToCaret();
+            txtBoxHistory.SelectionStart = txtBoxHistory.TextLength;
+            txtBoxHistory.ScrollToCaret();
         }
 
         public void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to delete the history?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                txtBoxHistory.Text = String.Empty;
+                FormClient.textToHistory = String.Empty;
+            }
         }
     }
 }
