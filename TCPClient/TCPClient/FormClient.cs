@@ -157,7 +157,7 @@ namespace TCPClient
                 
                 panelRegsNumber.Enabled = true;
                 panelValues.Enabled = true;
-                richtxtValues.Width = 532;
+                richtxtValues.Width = 439;
                 richtxtValues.Height = 52;
             } 
         }
