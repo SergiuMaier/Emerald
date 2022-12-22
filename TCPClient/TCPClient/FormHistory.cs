@@ -15,7 +15,7 @@ namespace TCPClient
         public FormHistory()
         {
             InitializeComponent();
-            txtBoxHistory.Text = FormClient.textToHistory;
+            txtBoxHistory.Text = FormClient.messageToHistory;
         }
 
         public void FormHistory_Load(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace TCPClient
             if(MessageBox.Show("Are you sure you want to delete the history?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 txtBoxHistory.Text = String.Empty;
-                FormClient.textToHistory = String.Empty;
+                FormClient.messageToHistory = String.Empty;
             }
         }
     }

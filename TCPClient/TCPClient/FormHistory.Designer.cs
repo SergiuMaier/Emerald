@@ -44,7 +44,7 @@
             this.txtBoxHistory.Name = "txtBoxHistory";
             this.txtBoxHistory.ReadOnly = true;
             this.txtBoxHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxHistory.Size = new System.Drawing.Size(607, 375);
+            this.txtBoxHistory.Size = new System.Drawing.Size(488, 279);
             this.txtBoxHistory.TabIndex = 0;
             this.txtBoxHistory.TextChanged += new System.EventHandler(this.textHistory_TextChanged);
             // 
@@ -56,7 +56,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(544, 393);
+            this.btnClose.Location = new System.Drawing.Point(425, 298);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 29);
             this.btnClose.TabIndex = 14;
@@ -72,7 +72,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(12, 393);
+            this.btnSave.Location = new System.Drawing.Point(12, 298);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 29);
             this.btnSave.TabIndex = 15;
@@ -87,7 +87,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(93, 393);
+            this.btnClear.Location = new System.Drawing.Point(93, 298);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 29);
             this.btnClear.TabIndex = 16;
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(631, 434);
+            this.ClientSize = new System.Drawing.Size(511, 336);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
