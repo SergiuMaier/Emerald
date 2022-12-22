@@ -12,10 +12,16 @@ namespace TCPClient
 {
     public partial class FormHistory : Form
     {
+        string path = @"C:\Users\sergi\OneDrive\Desktop\cercetare\history.txt";
+
         public FormHistory()
         {
             InitializeComponent();
+
             txtBoxHistory.Text = FormClient.messageToHistory;
+            
+            toolTipHistory.SetToolTip(btnClear, "Clear the history");
+            toolTipHistory.SetToolTip(btnSave, "Save the history to a file");
         }
 
         public void FormHistory_Load(object sender, EventArgs e)
@@ -41,5 +47,15 @@ namespace TCPClient
                 FormClient.messageToHistory = String.Empty;
             }
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(path))
+            {
+                File.AppendAllText(path, txtBoxHistory.Text, Encoding.UTF8);
+                MessageBox.Show("The history was successfully saved.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
