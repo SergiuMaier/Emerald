@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClient));
             this.btnSend = new System.Windows.Forms.Button();
             this.labelException = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
             this.panelResponse = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.toolTipForm = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -771,5 +773,6 @@
         private Panel panel1;
         private Panel panel2;
         private RichTextBox richtxtSlaveId;
+        private ToolTip toolTipForm;
     }
 }

@@ -42,6 +42,11 @@ namespace TCPClient
         public FormClient()
         {
             InitializeComponent();
+
+            toolTipForm.SetToolTip(btnConnect, "Connect to the device");
+            toolTipForm.SetToolTip(btnSend, "Send a request");
+            toolTipForm.SetToolTip(btnClear, "Clear request and response messages from text boxes");
+            toolTipForm.SetToolTip(btnHistory, "View message history");
         }
 
         private void FormClient_Load(object sender, EventArgs e)
