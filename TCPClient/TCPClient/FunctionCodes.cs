@@ -9,6 +9,23 @@ namespace TCPClient
 {
     public class FunctionCodes
     {
+        //--------magic numbers--------//
+
+        enum RequestMessageStructure
+        {
+            TransactionId = 0,
+            ProtocolId = 2,
+            Length = 4,
+            SlaveId = 6,
+            FunctionCode = 7,
+            DataAddress = 8,
+            DataRegisters = 10,
+            NumberOfBytesToFollow = 12,
+            FirstValueToWrite = 13
+        }
+
+        //-----------------------------//
+
         public const byte slaveIdLength = 0x01;
         public const byte functionCodeLength = 0x01;
         public const byte firstAddressLength = 0x02;
@@ -40,20 +57,20 @@ namespace TCPClient
         public void ReadHoldingRegisters(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string numberOfRegistersText)
         {
             short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
-            AddTwoBytesToBuffer(buffer, transactionId, 0);
+            AddTwoBytesToBuffer(buffer, transactionId, (int)RequestMessageStructure.TransactionId); //0
             
-            AddTwoBytesToBuffer(buffer, protocolId, 2);
+            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId); //2
 
             short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
             short numberOfRegisters = short.Parse(numberOfRegistersText, NumberStyles.HexNumber);
             
             short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength);
-            AddTwoBytesToBuffer(buffer, lengthOfMessage, 4);
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length); //4
 
-            buffer[6] = slaveId;
-            buffer[7] = functionCode;
-            AddTwoBytesToBuffer(buffer, firstAddress, 8);
-            AddTwoBytesToBuffer(buffer, numberOfRegisters, 10);
+            buffer[(int)RequestMessageStructure.SlaveId] = slaveId; //6
+            buffer[(int)RequestMessageStructure.FunctionCode] = functionCode; //7
+            AddTwoBytesToBuffer(buffer, firstAddress, (int)RequestMessageStructure.DataAddress); //8
+            AddTwoBytesToBuffer(buffer, numberOfRegisters, (int)RequestMessageStructure.DataRegisters); //10
         }
 
         /// <summary>
@@ -69,19 +86,19 @@ namespace TCPClient
         public void PresetSingleRegister(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string registerValueText)
         {
             short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
-            AddTwoBytesToBuffer(buffer, transactionId, 0);
-            AddTwoBytesToBuffer(buffer, protocolId, 2);
+            AddTwoBytesToBuffer(buffer, transactionId, (int)RequestMessageStructure.TransactionId);
+            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId);
 
             short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
             short registerValue = short.Parse(registerValueText, NumberStyles.HexNumber);
 
             short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength);
-            AddTwoBytesToBuffer(buffer, lengthOfMessage, 4);
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length);
             
-            buffer[6] = slaveId;
-            buffer[7] = functionCode;
-            AddTwoBytesToBuffer(buffer, firstAddress, 8);
-            AddTwoBytesToBuffer(buffer, registerValue, 10);
+            buffer[(int)RequestMessageStructure.SlaveId] = slaveId;
+            buffer[(int)RequestMessageStructure.FunctionCode] = functionCode;
+            AddTwoBytesToBuffer(buffer, firstAddress, (int)RequestMessageStructure.DataAddress);
+            AddTwoBytesToBuffer(buffer, registerValue, (int)RequestMessageStructure.DataRegisters);
         }
 
         /// <summary>
@@ -106,27 +123,25 @@ namespace TCPClient
             short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength + numberBytesToFollow + 2 * registerValue.Length);
 
             short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
-            AddTwoBytesToBuffer(buffer, transactionId, 0);
-            AddTwoBytesToBuffer(buffer, protocolId, 2);
 
-            AddTwoBytesToBuffer(buffer, transactionId, 0);
-            AddTwoBytesToBuffer(buffer, protocolId, 2);
-            AddTwoBytesToBuffer(buffer, lengthOfMessage16, 4);
-            buffer[6] = slaveId;
-            buffer[7] = functionCode;
-            AddTwoBytesToBuffer(buffer, firstAddress, 8);
-            AddTwoBytesToBuffer(buffer, numberOfRegisters, 10);
+            AddTwoBytesToBuffer(buffer, transactionId, (int)RequestMessageStructure.TransactionId);
+            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId);
+            AddTwoBytesToBuffer(buffer, lengthOfMessage16, (int)RequestMessageStructure.Length);
+            buffer[(int)RequestMessageStructure.SlaveId] = slaveId;
+            buffer[(int)RequestMessageStructure.FunctionCode] = functionCode;
+            AddTwoBytesToBuffer(buffer, firstAddress, (int)RequestMessageStructure.DataAddress);
+            AddTwoBytesToBuffer(buffer, numberOfRegisters, (int)RequestMessageStructure.DataRegisters);
 
-            int indexNumber = 13;
-            byte nextBytes = 0;
+            int indexOfFirstValue = (int)RequestMessageStructure.FirstValueToWrite;
+            byte bytesCounter = 0;
             foreach (short element in registerValue)
             {
-                AddTwoBytesToBuffer(buffer, element, indexNumber);
-                indexNumber += 2;
-                nextBytes += 2;
+                AddTwoBytesToBuffer(buffer, element, indexOfFirstValue);
+                indexOfFirstValue += 2;
+                bytesCounter += 2;
             }
 
-            buffer[12] = nextBytes;
+            buffer[(int)RequestMessageStructure.NumberOfBytesToFollow] = bytesCounter;
         }
     }
 }
