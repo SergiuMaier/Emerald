@@ -263,22 +263,27 @@ namespace TCPClient
             {
                 if (bufferResponse[(int)Header.SlaveId] == bufferRequest[(int)Header.SlaveId])
                 {
-                    if (bufferResponse[(int)MessageStructure.FunctionCode] == bufferRequest[(int)MessageStructure.FunctionCode])
+                    if (bufferResponse[(int)MessageStructure.FunctionCode] == bufferRequest[(int)MessageStructure.FunctionCode]) 
+                    { 
                         labelException.Text = "Correct response.";
                         // +++
+                    }
                     else
                     {
                         labelException.Text = "Function Code with the highest bit set.";
                         switch (bufferResponse[(int)MessageStructure.ExceptionCode])
                         {
-                            case 0x02:  labelException.Text += "\nException Code 02: Illegal Data Address \nThe data address received in the query is not an allowable address for the slave.";
+                            case 0x02:  labelException.Text += "\nException Code 02: Illegal Data Address " +
+                                                               "\nThe data address received in the query is not an allowable address for the slave.";
                                         break;
                             
-                            case 0x03:  labelException.Text += "\nException Code 03: Illegal Data Value \nA value contained in the query data field is not an allowable value for the slave.";
+                            case 0x03:  labelException.Text += "\nException Code 03: Illegal Data Value " +
+                                                               "\nA value contained in the query data field is not an allowable value for the slave.";
                                         break;
                             
-                            case 0x0A:  labelException.Text += "\nException Code 0A: Gateway Path Unavailable \nThe gateway was unable to allocate an internal communication path from " +
-                                                                "the input port to the output port for processing the request.";
+                            case 0x0A:  labelException.Text += "\nException Code 0A: Gateway Path Unavailable " +
+                                                               "\nThe gateway was unable to allocate an internal communication path from " +
+                                                               "the input port to the output port for processing the request.";
                                         break;
                             
                             default:    labelException.Text = "\nException code in response.";
