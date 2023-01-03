@@ -18,7 +18,7 @@ namespace TCPClient
         {
             InitializeComponent();
 
-            txtBoxHistory.Text = FormClient.messageToHistory;
+            txtBoxHistory.Text = FormClient.addMessageToHistory;
             
             toolTipHistory.SetToolTip(btnClear, "Clear the history");
             toolTipHistory.SetToolTip(btnSave, "Save the history to a file");
@@ -44,7 +44,7 @@ namespace TCPClient
             if(MessageBox.Show("Are you sure you want to delete the history?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 txtBoxHistory.Text = String.Empty;
-                FormClient.messageToHistory = String.Empty;
+                FormClient.addMessageToHistory = String.Empty;
             }
         }
 

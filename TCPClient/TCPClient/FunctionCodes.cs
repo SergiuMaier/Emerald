@@ -9,7 +9,7 @@ namespace TCPClient
 {
     public class FunctionCodes
     {
-        enum RequestMessageStructure
+        enum RequestStructure
         {
             TransactionId = 0,
             ProtocolId = 2,
@@ -54,18 +54,18 @@ namespace TCPClient
         {
             short transaction = short.Parse(transactionId, NumberStyles.HexNumber);
             
-            AddTwoBytesToBuffer(buffer, transaction, (int)RequestMessageStructure.TransactionId); //0
-            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId); //2
+            AddTwoBytesToBuffer(buffer, transaction, (int)RequestStructure.TransactionId); //0
+            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestStructure.ProtocolId); //2
 
             short address = short.Parse(dataAddress, NumberStyles.HexNumber);
             short registers = short.Parse(dataRegister, NumberStyles.HexNumber);
             short lengthOfMessage = (short)(slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length);
             
-            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length); //4
-            buffer[(int)RequestMessageStructure.SlaveId] = slaveId; //6
-            buffer[(int)RequestMessageStructure.FunctionCode] = functionCode; //7
-            AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress); //8
-            AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters); //10
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestStructure.Length); //4
+            buffer[(int)RequestStructure.SlaveId] = slaveId; //6
+            buffer[(int)RequestStructure.FunctionCode] = functionCode; //7
+            AddTwoBytesToBuffer(buffer, address, (int)RequestStructure.DataAddress); //8
+            AddTwoBytesToBuffer(buffer, registers, (int)RequestStructure.DataRegisters); //10
         }
 
         /// <summary>
@@ -82,18 +82,18 @@ namespace TCPClient
         {
             short transaction = short.Parse(transactionId, NumberStyles.HexNumber);
 
-            AddTwoBytesToBuffer(buffer, transaction, (int)RequestMessageStructure.TransactionId);
-            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId);
+            AddTwoBytesToBuffer(buffer, transaction, (int)RequestStructure.TransactionId);
+            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestStructure.ProtocolId);
 
             short address = short.Parse(dataAddress, NumberStyles.HexNumber);
             short registers = short.Parse(dataValue, NumberStyles.HexNumber);
             short lengthOfMessage = (short)(slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length);
             
-            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length);
-            buffer[(int)RequestMessageStructure.SlaveId] = slaveId;
-            buffer[(int)RequestMessageStructure.FunctionCode] = functionCode;
-            AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress);
-            AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters);
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestStructure.Length);
+            buffer[(int)RequestStructure.SlaveId] = slaveId;
+            buffer[(int)RequestStructure.FunctionCode] = functionCode;
+            AddTwoBytesToBuffer(buffer, address, (int)RequestStructure.DataAddress);
+            AddTwoBytesToBuffer(buffer, registers, (int)RequestStructure.DataRegisters);
         }
 
         /// <summary>
@@ -115,15 +115,15 @@ namespace TCPClient
             short lengthOfMessage = (short)(slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length + 2 * registerValue.Length);
             short transaction = short.Parse(transactionId, NumberStyles.HexNumber);
 
-            AddTwoBytesToBuffer(buffer, transaction, (int)RequestMessageStructure.TransactionId);
-            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId);
-            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length);
-            buffer[(int)RequestMessageStructure.SlaveId] = slaveId;
-            buffer[(int)RequestMessageStructure.FunctionCode] = functionCode;
-            AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress);
-            AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters);
+            AddTwoBytesToBuffer(buffer, transaction, (int)RequestStructure.TransactionId);
+            AddTwoBytesToBuffer(buffer, protocolId, (int)RequestStructure.ProtocolId);
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestStructure.Length);
+            buffer[(int)RequestStructure.SlaveId] = slaveId;
+            buffer[(int)RequestStructure.FunctionCode] = functionCode;
+            AddTwoBytesToBuffer(buffer, address, (int)RequestStructure.DataAddress);
+            AddTwoBytesToBuffer(buffer, registers, (int)RequestStructure.DataRegisters);
 
-            int indexOfFirstRegisterValue = (int)RequestMessageStructure.FirstRegisterValue;
+            int indexOfFirstRegisterValue = (int)RequestStructure.FirstRegisterValue;
             byte bytesCounter = 0;
             foreach (short element in registerValue)
             {
@@ -132,7 +132,7 @@ namespace TCPClient
                 bytesCounter += 2;
             }
 
-            buffer[(int)RequestMessageStructure.NumberOfBytesToFollow] = bytesCounter;
+            buffer[(int)RequestStructure.NumberOfBytesToFollow] = bytesCounter;
         }
     }
 }

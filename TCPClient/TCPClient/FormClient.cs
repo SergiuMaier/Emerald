@@ -8,36 +8,45 @@ namespace TCPClient
     {
         SimpleTcpClient client;
         FunctionCodes fc = new FunctionCodes();
-        
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
 
-        public static string messageToHistory = "";
+        public static string addMessageToHistory = "";
 
-        private int numberOfRegisters; // counter for btnMinus & btnPlus
-        public int transactionNumber;
+        private int counterNoOfRegisters; // counter for btnMinus & btnPlus
+        public int counterTransactionId;
         public byte functionCode, slaveId;
 
-        private int functionCodeInResponse = 7;
-        private int exceptionInResponse = 8;
+        enum Header
+        {
+            TransactionId = 0,
+            ProtocolId = 2,
+            SlaveId = 6
+        }
+
+        enum MessageStructure 
+        { 
+            FunctionCode = 7,
+            ExceptionCode = 8
+        }
 
         public const short protocolId = 0x0000;
         public const byte COM100Id = 0xFF;
         public const byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;
-        public const byte headerLength = 0x06;
-        public const byte slaveIdLength = 0x01;
-        public const byte functionCodeLength = 0x01;
-        public const byte firstAddressLength = 0x02;
-        public const byte numberOfRegistersLength = 0x02;
-        public const byte numberBytesToFollow = 0x01;
+        public const byte header_Length = 0x06;
+        public const byte slaveId_Length = 0x01;
+        public const byte functionCode_Length = 0x01;
+        public const byte dataAddress_Length = 0x02;
+        public const byte dataRegisters_Length = 0x02;
+        public const byte numberOfBytesToFollow_Length = 0x01;
 
         public byte[] bufferRequest;
         public byte[] bufferResponse;
 
         bool selected03, selected06, selected16;
         
-        byte bufferLength03 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength;
-        byte bufferLength06 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength;
-        byte bufferLength16 = headerLength + slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength + numberBytesToFollow;
+        byte bufferLength03 = header_Length + slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
+        byte bufferLength06 = header_Length + slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
+        byte bufferLength16 = header_Length + slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
         public FormClient()
         {
@@ -169,8 +178,8 @@ namespace TCPClient
 
         public void BuildRequest()
         {
-            transactionNumber++;
-            richtxtTransactionId.Text = transactionNumber.ToString("X4");
+            counterTransactionId++;
+            richtxtTransactionId.Text = counterTransactionId.ToString("X4");
 
             if(comboSlave.SelectedIndex != 0)
                 slaveId = byte.Parse(richtxtSlaveId.Text, NumberStyles.HexNumber);
@@ -187,7 +196,7 @@ namespace TCPClient
             }
             else if (selected16)
             {
-                bufferRequest = new byte[bufferLength16 + (2 * numberOfRegisters)];
+                bufferRequest = new byte[bufferLength16 + (2 * counterNoOfRegisters)];
                 fc.PresetMultipleRegisters(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text, richtxtValues.Text);
             }
         }
@@ -204,20 +213,18 @@ namespace TCPClient
                     BuildRequest();
                     client.Send(bufferRequest);
 
-                    messageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
+                    addMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
                     foreach (byte element in bufferRequest)
                     {
                         richtxtRequest.Text += $" {element:X2}";
-                        messageToHistory += $" {element:X2}";
+                        addMessageToHistory += $" {element:X2}";
                     }
-                    messageToHistory += $"{Environment.NewLine}";
+                    addMessageToHistory += $"{Environment.NewLine}";
                 }
                 catch
                 {
                     MessageBox.Show("Invalid format", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-               
             }
         }
 
@@ -226,6 +233,8 @@ namespace TCPClient
             this.Invoke((MethodInvoker)delegate
             {
                 bufferResponse = new byte[e.Data.Count];
+
+                //labelException.Text = String.Empty;
 
                 int indexBuffer = 0;
                 foreach (byte element in e.Data)
@@ -236,82 +245,91 @@ namespace TCPClient
 
                 AnalyzeResponse();
 
-                messageToHistory += $"<-"; 
+                addMessageToHistory += $"<-"; 
                 foreach (byte element in bufferResponse)
                 {
                     richtxtResponse.Text += $" {element:X2}";
-                    messageToHistory += $" {element:X2}";
+                    addMessageToHistory += $" {element:X2}";
                 }
-                messageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
+                addMessageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
             });
         }
         
         private void AnalyzeResponse()
         {
-            if ((bufferResponse[functionCodeInResponse] == 0x83) || (bufferResponse[functionCodeInResponse] == 0x86) || (bufferResponse[functionCodeInResponse] == 0x90))
-            {
-                labelException.Visible = true;
+            labelException.Visible = true;
 
-                if (bufferResponse[exceptionInResponse] == 0x02)
-                    labelException.Text = "Exception Code 02: Illegal Data Address";
-                else if (bufferResponse[exceptionInResponse] == 0x03)
-                    labelException.Text = "Exception Code 03: Illegal Data Value";
-                else if (bufferResponse[exceptionInResponse] == 0x0A)
-                    labelException.Text = "Exception Code 0A: Gateway Path Unavailable";
+            if ((bufferResponse[(int)Header.TransactionId] == bufferRequest[(int)Header.TransactionId]) && (bufferResponse[(int)Header.ProtocolId] == bufferRequest[(int)Header.ProtocolId]))
+            {
+                if (bufferResponse[(int)Header.SlaveId] == bufferRequest[(int)Header.SlaveId])
+                {
+                    if (bufferResponse[(int)MessageStructure.FunctionCode] == bufferRequest[(int)MessageStructure.FunctionCode])
+                        labelException.Text = "Correct response.";
+                        // +++
+                    else
+                    {
+                        labelException.Text = "Function Code with the highest bit set.";
+                        switch (bufferResponse[(int)MessageStructure.ExceptionCode])
+                        {
+                            case 0x02:  labelException.Text += "\nException Code 02: Illegal Data Address \nThe data address received in the query is not an allowable address for the slave.";
+                                        break;
+                            
+                            case 0x03:  labelException.Text += "\nException Code 03: Illegal Data Value \nA value contained in the query data field is not an allowable value for the slave.";
+                                        break;
+                            
+                            case 0x0A:  labelException.Text += "\nException Code 0A: Gateway Path Unavailable \nThe gateway was unable to allocate an internal communication path from " +
+                                                                "the input port to the output port for processing the request.";
+                                        break;
+                            
+                            default:    labelException.Text = "\nException code in response.";
+                                        break;
+                        }
+
+                        //if (bufferResponse[(int)MessageStructure.ExceptionCode] == 0x02)
+                        //    labelException.Text += "Exception Code 02: Illegal Data Address \nThe data address received in the query is not an allowable address for the slave.";
+                        //else if (bufferResponse[(int)MessageStructure.ExceptionCode] == 0x03)
+                        //    labelException.Text += "Exception Code 03: Illegal Data Value \nA value contained in the query data field is not an allowable value for the slave.";
+                        //else if (bufferResponse[(int)MessageStructure.ExceptionCode] == 0x0A)
+                        //    labelException.Text += "Exception Code 0A: Gateway Path Unavailable \nThe gateway was unable to allocate an internal communication path from " +
+                        //                            "the input port to the output port for processing the request.";
+                    }
+                }
+                else
+                {
+                    labelException.Text = "Different Slave ID.";
+
+                }
             }
             else
             {
-                labelException.Text = "-";
-                labelException.Visible = false;
+                labelException.Text = "Incorrect response.";
             }
         }
 
-        //private void btnAnalyze_Click(object sender, EventArgs e)
-        //{
-            //if ((bufferResponse[functionCodeInResponse] == 0x83) || (bufferResponse[functionCodeInResponse] == 0x86) || (bufferResponse[functionCodeInResponse] == 0x90))
-            //{
-            //    if (bufferResponse[exceptionInResponse] == 0x02)
-            //    {
-            //        MessageBox.Show("Exception Code 02: Illegal Data Address \nThe data address received in the query is not an allowable address for the slave." +
-            //            "", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else if (bufferResponse[exceptionInResponse] == 0x03)
-            //    {
-            //        MessageBox.Show("Exception Code 03: Illegal Data Value \nA value contained in the query data field is not an allowable value for the slave." +
-            //            "", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else if (bufferResponse[exceptionInResponse] == 0x0A)
-            //    {
-            //        MessageBox.Show("Exception Code 0A: Gateway Path Unavailable \nThe gateway was unable to allocate an internal communication path from the input port" +
-            //            " to the output port for processing the request.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    //}
-            //}
-        //}
-
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            if (numberOfRegisters > 0)
+            if (counterNoOfRegisters > 0)
             {
-                numberOfRegisters--;
-                richtxtNumberRegs.Text = numberOfRegisters.ToString("X4");
+                counterNoOfRegisters--;
+                richtxtNumberRegs.Text = counterNoOfRegisters.ToString("X4");
             }
             else
                 btnMinus.Enabled = false;
 
             if (selected16)
-                richtxtValues.MaxLength = 5 * numberOfRegisters - 1;
+                richtxtValues.MaxLength = 5 * counterNoOfRegisters - 1;
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            if (numberOfRegisters > 0)
+            if (counterNoOfRegisters > 0)
                 btnMinus.Enabled = true;
 
-            numberOfRegisters++;
-            richtxtNumberRegs.Text = numberOfRegisters.ToString("X4");
+            counterNoOfRegisters++;
+            richtxtNumberRegs.Text = counterNoOfRegisters.ToString("X4");
 
             if (selected16)
-                richtxtValues.MaxLength = 5 * numberOfRegisters - 1;
+                richtxtValues.MaxLength = 5 * counterNoOfRegisters - 1;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
