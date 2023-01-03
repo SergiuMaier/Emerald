@@ -21,16 +21,16 @@ namespace TCPClient
             DataAddress = 8,
             DataRegisters = 10,
             NumberOfBytesToFollow = 12,
-            FirstValueToWrite = 13
+            FirstRegisterValue = 13 //fc10
         }
 
         //-----------------------------//
 
-        public const byte slaveIdLength = 0x01;
-        public const byte functionCodeLength = 0x01;
-        public const byte firstAddressLength = 0x02;
-        public const byte numberOfRegistersLength = 0x02;
-        public const byte numberBytesToFollow = 0x01;
+        public const byte slaveId_Length = 0x01;
+        public const byte functionCode_Length = 0x01;
+        public const byte dataAddress_Length = 0x02;
+        public const byte dataRegisters_Length = 0x02;
+        public const byte numberOfBytesToFollow_Length = 0x01;
 
         /// <summary>
         /// Adding two bytes to a buffer.
@@ -48,96 +48,93 @@ namespace TCPClient
         /// Method used to request the content of analog output holding registers. 
         /// </summary>
         /// <param name="buffer">A buffer in which bytes are stored before sending the request</param>
-        /// <param name="transactionText">Used to uniquely identify each request</param>
-        /// <param name="protocolId">It corresponds to the Modbus protocol. It always will be 0000</param>
+        /// <param name="transactionId">Used to uniquely identify each request</param>
+        /// <param name="protocolId">It corresponds to the Modbus protocolId. It always will be 0000</param>
         /// <param name="slaveId">The Slave Address</param>
         /// <param name="functionCode"> The Function Code 3</param>
-        /// <param name="firstAddressText">The Data Address of the first register requested</param>
-        /// <param name="numberOfRegistersText">The total number of registers requested</param>
-        public void ReadHoldingRegisters(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string numberOfRegistersText)
+        /// <param name="dataAddress">The Data Address of the first register requested</param>
+        /// <param name="dataRegister">The total number of registers requested</param>
+        public void ReadHoldingRegisters(byte[] buffer, string transactionId, short protocolId, byte slaveId, byte functionCode, string dataAddress, string dataRegister)
         {
-            short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
-            AddTwoBytesToBuffer(buffer, transactionId, (int)RequestMessageStructure.TransactionId); //0
+            short transaction = short.Parse(transactionId, NumberStyles.HexNumber);
             
+            AddTwoBytesToBuffer(buffer, transaction, (int)RequestMessageStructure.TransactionId); //0
             AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId); //2
 
-            short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
-            short numberOfRegisters = short.Parse(numberOfRegistersText, NumberStyles.HexNumber);
+            short address = short.Parse(dataAddress, NumberStyles.HexNumber);
+            short registers = short.Parse(dataRegister, NumberStyles.HexNumber);
+            short lengthOfMessage = (short)(slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length);
             
-            short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength);
             AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length); //4
-
             buffer[(int)RequestMessageStructure.SlaveId] = slaveId; //6
             buffer[(int)RequestMessageStructure.FunctionCode] = functionCode; //7
-            AddTwoBytesToBuffer(buffer, firstAddress, (int)RequestMessageStructure.DataAddress); //8
-            AddTwoBytesToBuffer(buffer, numberOfRegisters, (int)RequestMessageStructure.DataRegisters); //10
+            AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress); //8
+            AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters); //10
         }
+
 
         /// <summary>
         /// Method used to write the contents of analog output holding register.
         /// </summary>
         /// <param name="buffer"></param>
-        /// <param name="transactionText"></param>
+        /// <param name="transactionId"></param>
         /// <param name="protocolId"></param>
         /// <param name="slaveId"></param>
         /// <param name="functionCode"></param>
-        /// <param name="firstAddressText"></param>
-        /// <param name="registerValueText"></param>
-        public void PresetSingleRegister(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string registerValueText)
+        /// <param name="dataAddress"></param>
+        /// <param name="dataValue"></param>
+        public void PresetSingleRegister(byte[] buffer, string transactionId, short protocolId, byte slaveId, byte functionCode, string dataAddress, string dataValue)
         {
-            short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
-            AddTwoBytesToBuffer(buffer, transactionId, (int)RequestMessageStructure.TransactionId);
+            short transaction = short.Parse(transactionId, NumberStyles.HexNumber);
+
+            AddTwoBytesToBuffer(buffer, transaction, (int)RequestMessageStructure.TransactionId);
             AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId);
 
-            short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
-            short registerValue = short.Parse(registerValueText, NumberStyles.HexNumber);
-
-            short lengthOfMessage = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength);
-            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length);
+            short address = short.Parse(dataAddress, NumberStyles.HexNumber);
+            short registers = short.Parse(dataValue, NumberStyles.HexNumber);
+            short lengthOfMessage = (short)(slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length);
             
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length);
             buffer[(int)RequestMessageStructure.SlaveId] = slaveId;
             buffer[(int)RequestMessageStructure.FunctionCode] = functionCode;
-            AddTwoBytesToBuffer(buffer, firstAddress, (int)RequestMessageStructure.DataAddress);
-            AddTwoBytesToBuffer(buffer, registerValue, (int)RequestMessageStructure.DataRegisters);
+            AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress);
+            AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters);
         }
+
 
         /// <summary>
         /// Method used to write the contents of analog output holding registers.
         /// </summary>
         /// <param name="buffer"></param>
-        /// <param name="transactionText"></param>
+        /// <param name="transactionId"></param>
         /// <param name="protocolId"></param>
         /// <param name="slaveId"></param>
         /// <param name="functionCode"></param>
-        /// <param name="firstAddressText"></param>
-        /// <param name="numberOfRegistersText"></param>
-        /// <param name="registerValueText"></param>
-        public void PresetMultipleRegisters(byte[] buffer, string transactionText, short protocolId, byte slaveId, byte functionCode, string firstAddressText, string numberOfRegistersText, string registerValueText)
+        /// <param name="dataAddress"></param>
+        /// <param name="dataRegisters"></param>
+        /// <param name="dataValue"></param>
+        public void PresetMultipleRegisters(byte[] buffer, string transactionId, short protocolId, byte slaveId, byte functionCode, string dataAddress, string dataRegisters, string dataValue)
         {
-            short firstAddress = short.Parse(firstAddressText, NumberStyles.HexNumber);
-            short numberOfRegisters = short.Parse(numberOfRegistersText, NumberStyles.HexNumber);
-            short[] registerValue = registerValueText.Split(' ')
-                        .Select(hex => short.Parse(hex, NumberStyles.HexNumber))
-                        .ToArray();
-            
-            short lengthOfMessage16 = (short)(slaveIdLength + functionCodeLength + firstAddressLength + numberOfRegistersLength + numberBytesToFollow + 2 * registerValue.Length);
+            short address = short.Parse(dataAddress, NumberStyles.HexNumber);
+            short registers = short.Parse(dataRegisters, NumberStyles.HexNumber);
+            short[] registerValue = dataValue.Split(' ').Select(hex => short.Parse(hex, NumberStyles.HexNumber)).ToArray();
+            short lengthOfMessage = (short)(slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length + 2 * registerValue.Length);
+            short transaction = short.Parse(transactionId, NumberStyles.HexNumber);
 
-            short transactionId = short.Parse(transactionText, NumberStyles.HexNumber);
-
-            AddTwoBytesToBuffer(buffer, transactionId, (int)RequestMessageStructure.TransactionId);
+            AddTwoBytesToBuffer(buffer, transaction, (int)RequestMessageStructure.TransactionId);
             AddTwoBytesToBuffer(buffer, protocolId, (int)RequestMessageStructure.ProtocolId);
-            AddTwoBytesToBuffer(buffer, lengthOfMessage16, (int)RequestMessageStructure.Length);
+            AddTwoBytesToBuffer(buffer, lengthOfMessage, (int)RequestMessageStructure.Length);
             buffer[(int)RequestMessageStructure.SlaveId] = slaveId;
             buffer[(int)RequestMessageStructure.FunctionCode] = functionCode;
-            AddTwoBytesToBuffer(buffer, firstAddress, (int)RequestMessageStructure.DataAddress);
-            AddTwoBytesToBuffer(buffer, numberOfRegisters, (int)RequestMessageStructure.DataRegisters);
+            AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress);
+            AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters);
 
-            int indexOfFirstValue = (int)RequestMessageStructure.FirstValueToWrite;
+            int indexOfFirstRegisterValue = (int)RequestMessageStructure.FirstRegisterValue;
             byte bytesCounter = 0;
             foreach (short element in registerValue)
             {
-                AddTwoBytesToBuffer(buffer, element, indexOfFirstValue);
-                indexOfFirstValue += 2;
+                AddTwoBytesToBuffer(buffer, element, indexOfFirstRegisterValue);
+                indexOfFirstRegisterValue += 2;
                 bytesCounter += 2;
             }
 
