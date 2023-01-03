@@ -9,8 +9,6 @@ namespace TCPClient
 {
     public class FunctionCodes
     {
-        //--------magic numbers--------//
-
         enum RequestMessageStructure
         {
             TransactionId = 0,
@@ -23,8 +21,6 @@ namespace TCPClient
             NumberOfBytesToFollow = 12,
             FirstRegisterValue = 13 //fc10
         }
-
-        //-----------------------------//
 
         public const byte slaveId_Length = 0x01;
         public const byte functionCode_Length = 0x01;
@@ -72,7 +68,6 @@ namespace TCPClient
             AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters); //10
         }
 
-
         /// <summary>
         /// Method used to write the contents of analog output holding register.
         /// </summary>
@@ -100,7 +95,6 @@ namespace TCPClient
             AddTwoBytesToBuffer(buffer, address, (int)RequestMessageStructure.DataAddress);
             AddTwoBytesToBuffer(buffer, registers, (int)RequestMessageStructure.DataRegisters);
         }
-
 
         /// <summary>
         /// Method used to write the contents of analog output holding registers.
