@@ -289,26 +289,13 @@ namespace TCPClient
                             default:    labelException.Text = "\nException code in response.";
                                         break;
                         }
-
-                        //if (bufferResponse[(int)MessageStructure.ExceptionCode] == 0x02)
-                        //    labelException.Text += "Exception Code 02: Illegal Data Address \nThe data address received in the query is not an allowable address for the slave.";
-                        //else if (bufferResponse[(int)MessageStructure.ExceptionCode] == 0x03)
-                        //    labelException.Text += "Exception Code 03: Illegal Data Value \nA value contained in the query data field is not an allowable value for the slave.";
-                        //else if (bufferResponse[(int)MessageStructure.ExceptionCode] == 0x0A)
-                        //    labelException.Text += "Exception Code 0A: Gateway Path Unavailable \nThe gateway was unable to allocate an internal communication path from " +
-                        //                            "the input port to the output port for processing the request.";
                     }
                 }
                 else
-                {
                     labelException.Text = "Different Slave ID.";
-
-                }
             }
             else
-            {
                 labelException.Text = "Incorrect response.";
-            }
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
