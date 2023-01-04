@@ -8,41 +8,37 @@ namespace TCPClient
 {
     public partial class FormClient
     {
-        enum Header
-        {
-            TransactionId = 0,
-            ProtocolId = 2,
-            SlaveId = 6
-        }
+        enum Header { TransactionId = 0, ProtocolId = 2, SlaveId = 6 }
+        enum MessageStructure { FunctionCode = 7, ExceptionCode = 8 }
 
-        enum MessageStructure
-        {
-            FunctionCode = 7,
-            ExceptionCode = 8
-        }
-        public static string addMessageToHistory = "";
-   
-        public int counterNoOfRegisters;
-        public int counterTransactionId;
-        public byte functionCode, slaveId;
+        public int counterTransactionId;    //this counter is incremented for each request. 
+        public int counterNoOfRegisters;    //the value can increase or decrease, to get the desired number of registers.
 
-        public const short protocolId = 0x0000;
-        public const byte COM100Id = 0xFF;
-        public const byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;
-        public const byte header_Length = 0x06;
-        public const byte slaveId_Length = 0x01;
-        public const byte functionCode_Length = 0x01;
-        public const byte dataAddress_Length = 0x02;
-        public const byte dataRegisters_Length = 0x02;
+        bool selected03, selected06, selected16;  //flags set when one of the commands is selected
+        
+        public byte[] bufferRequest;    //buffer used to store all bytes from the request message
+        public byte[] bufferResponse;   //buffer used to store all bytes from the response message
+
+        public const byte COM100Id = 0xFF;    //1 byte, uniquely identify the Slave device.
+
+        public const short protocolId = 0x0000;                   //2 bytes, Modbus protocol, will allways be 00 00.
+        public const byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;  //1 byte, function codes.
+        public byte functionCode, slaveId;                        //the bytes for function code and slave id are stored here.
+
+        public const byte header_Length = 0x07;                 //7 bytes, MBAP Header (transactionID + protocolID + Length + SlaveId)   
+
+        //the number of bytes for each element in the message that follow after the header
+        public const byte functionCode_Length = 0x01;             
+        public const byte dataAddress_Length = 0x02;             
+        public const byte dataRegisters_Length = 0x02;            
         public const byte numberOfBytesToFollow_Length = 0x01;
 
-        public byte[] bufferRequest;
-        public byte[] bufferResponse;
+        //the buffer length varies depending on the selected function code 
+        byte bufferLength03 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
+        byte bufferLength06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
+        byte bufferLength16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
-        bool selected03, selected06, selected16;
+        public static string addMessageToHistory = "";  //the desired message is sent to FormHistory
 
-        byte bufferLength03 = header_Length + slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
-        byte bufferLength06 = header_Length + slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
-        byte bufferLength16 = header_Length + slaveId_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
     }
 }
