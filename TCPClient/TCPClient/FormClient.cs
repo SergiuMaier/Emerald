@@ -9,7 +9,6 @@ namespace TCPClient
         SimpleTcpClient client;
         FunctionCodes fc = new FunctionCodes();
         System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
-
        
         public FormClient()
         {
@@ -58,6 +57,52 @@ namespace TCPClient
             btnConnect.Enabled = false;
             btnDisconnect.Enabled = true;
         }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            if (client.IsConnected)
+            {
+                richtxtRequest.Text = String.Empty;
+                richtxtResponse.Text = String.Empty;
+                richtxtAnalyzeResponse.Text = String.Empty;
+
+                try
+                {
+                    BuildRequest();
+                    client.Send(bufferRequest);
+
+                    foreach (byte element in bufferRequest)
+                        richtxtRequest.Text += $" {element:X2}";
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    richtxtAnalyzeResponse.Text = "Invalid format.";
+
+                }
+            }
+        }
+
+        private void DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                bufferResponse = new byte[e.Data.Count];
+
+                int indexBuffer = 0;
+                foreach (byte element in e.Data)
+                {
+                    bufferResponse[indexBuffer] = element;
+                    indexBuffer++;
+                }
+
+                foreach (byte element in bufferResponse)
+                    richtxtResponse.Text += $" {element:X2}";
+
+                AnalyzeResponse(bufferResponse, bufferRequest);
+            });
+        }
+
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
@@ -114,8 +159,6 @@ namespace TCPClient
                 
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
-                //richtxtValues.Width = 62;
-                //richtxtValues.Height = 26;
                 richtxtValues.MaxLength = 4;
             }
             else if (selected06)
@@ -124,8 +167,6 @@ namespace TCPClient
                 
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
-                //richtxtValues.Width = 62;
-                //richtxtValues.Height = 26;
                 richtxtValues.MaxLength = 4;
             }
             else if (selected16)
@@ -134,8 +175,6 @@ namespace TCPClient
                 
                 panelRegsNumber.Enabled = true;
                 panelValues.Enabled = true;
-                //richtxtValues.Width = 439;
-                //richtxtValues.Height = 52;
             } 
         }
 
@@ -144,7 +183,7 @@ namespace TCPClient
             counterTransactionId++;
             richtxtTransactionId.Text = counterTransactionId.ToString("X4");
 
-            if(comboSlave.SelectedIndex != 0)
+            if (comboSlave.SelectedIndex != 0)
                 slaveId = byte.Parse(richtxtSlaveId.Text, NumberStyles.HexNumber);
 
             if (selected03)
@@ -163,114 +202,7 @@ namespace TCPClient
                 fc.PresetMultipleRegisters(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text, richtxtValues.Text);
             }
         }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            if (client.IsConnected)
-            {
-                richtxtRequest.Text = String.Empty;
-                richtxtResponse.Text = String.Empty;
-                richtxtAnalyzeResponse.Text = String.Empty;
-
-                try
-                {
-                    BuildRequest();
-                    client.Send(bufferRequest);
-
-                    foreach (byte element in bufferRequest)
-                        richtxtRequest.Text += $" {element:X2}";
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    richtxtAnalyzeResponse.Text = "Invalid format.";
-
-                }
-            }
-        }
-
-        private void DataReceived(object sender, DataReceivedEventArgs e)
-        {
-            this.Invoke((MethodInvoker)delegate
-            {
-                bufferResponse = new byte[e.Data.Count];
-
-                int indexBuffer = 0;
-                foreach (byte element in e.Data)
-                {
-                    bufferResponse[indexBuffer] = element;
-                    indexBuffer++;
-                }
-
-                foreach (byte element in bufferResponse)
-                    richtxtResponse.Text += $" {element:X2}";
-
-                AnalyzeResponse(bufferResponse, bufferRequest);
-            });
-        }
-
-        private void AddToHistory(byte[] request, byte[] response)
-        {
-            addMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
-            
-            foreach (byte element in request)
-                addMessageToHistory += $" {element:X2}";
-            addMessageToHistory += $"{Environment.NewLine}";
-            
-            addMessageToHistory += $"<-";
-            foreach (byte element in response)
-                addMessageToHistory += $" {element:X2}";
-            addMessageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
-        }
-
-        private void AnalyzeResponse(byte[] response, byte[] request)
-        {
-            richtxtAnalyzeResponse.Enabled = true;
-
-            if ((response[(int)Header.TransactionId] == request[(int)Header.TransactionId]) && (response[(int)Header.ProtocolId] == request[(int)Header.ProtocolId]))
-            {
-                if (response[(int)Header.SlaveId] == request[(int)Header.SlaveId])
-                {
-                    if (response[(int)MessageStructure.FunctionCode] == request[(int)MessageStructure.FunctionCode]) 
-                    { 
-                        richtxtAnalyzeResponse.Text = "Correct response.";
-                        
-                        AddToHistory(request, response);
-                        // add to history only the correct responses?
-                    }
-                    else if ( response[(int)MessageStructure.FunctionCode] == highestBitSet + request[(int)MessageStructure.FunctionCode] )
-                    {
-                        richtxtAnalyzeResponse.Text = "The function code in the response has its highest bit set.";
-
-                        switch (response[(int)MessageStructure.ExceptionCode])
-                        {
-                            case 0x02:  richtxtAnalyzeResponse.Text += "\nException Code 02: Illegal Data Address. " +
-                                                               "\n\n'The data address received in the query is not an allowable address for the slave.'";
-                                        break;
-                            
-                            case 0x03:  richtxtAnalyzeResponse.Text += "\nException Code 03: Illegal Data Value. " +
-                                                               "\n\n'A value contained in the query data field is not an allowable value for the slave.'";
-                                        break;
-                            
-                            case 0x0A:  richtxtAnalyzeResponse.Text += "\nException Code 0A: Gateway Path Unavailable. " +
-                                                               "\n\n'The gateway was unable to allocate an internal communication path from " +
-                                                               "the input port to the output port for processing the request.'";
-                                        break;
-                            
-                            default:    richtxtAnalyzeResponse.Text = "\nException response.";
-                                        break;
-                        }
-                    }
-                    else
-                        richtxtAnalyzeResponse.Text = "Incorrect response.";
-                }
-                else
-                    richtxtAnalyzeResponse.Text = "Different Slave ID in the response.";
-            }
-            else
-                richtxtAnalyzeResponse.Text = "Incorrect response.";
-        }
-
+        
         private void btnMinus_Click(object sender, EventArgs e)
         {
             if (counterNoOfRegisters > 0)
