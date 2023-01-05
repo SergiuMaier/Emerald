@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -53,9 +54,13 @@ namespace TCPClient
             if (File.Exists(path))
             {
                 File.AppendAllText(path, txtBoxHistory.Text, Encoding.UTF8);
-                MessageBox.Show("The history was successfully saved.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The history was successfully saved to file.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+        }
     }
 }

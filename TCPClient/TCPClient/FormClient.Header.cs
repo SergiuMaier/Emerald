@@ -25,13 +25,14 @@ namespace TCPClient
         public const byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;  //1 byte, function codes.
         public byte functionCode, slaveId;                        //the bytes for function code and slave id are stored here.
 
-        public const byte header_Length = 0x07;                 //7 bytes, MBAP Header (transactionID + protocolID + Length + SlaveId)   
+        public const byte header_Length = 0x07;   //7 bytes, MBAP Header (transactionID + protocolID + Length + SlaveId)   
 
         //the number of bytes for each element in the message that follow after the header
         public const byte functionCode_Length = 0x01;             
         public const byte dataAddress_Length = 0x02;             
         public const byte dataRegisters_Length = 0x02;            
         public const byte numberOfBytesToFollow_Length = 0x01;
+        public const byte highestBitSet = 0x80;
 
         //the buffer length varies depending on the selected function code 
         byte bufferLength03 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;

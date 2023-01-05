@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClient));
             this.btnSend = new System.Windows.Forms.Button();
-            this.labelException = new System.Windows.Forms.Label();
             this.comboSlave = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,6 +76,7 @@
             this.richtxtRequest = new System.Windows.Forms.RichTextBox();
             this.panelResponse = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.richtxtAnalyzeResponse = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolTipForm = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
@@ -102,7 +102,7 @@
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(430, 101);
+            this.btnSend.Location = new System.Drawing.Point(606, 127);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 29);
             this.btnSend.TabIndex = 5;
@@ -110,18 +110,6 @@
             this.btnSend.UseCompatibleTextRendering = true;
             this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
-            // labelException
-            // 
-            this.labelException.AutoSize = true;
-            this.labelException.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelException.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.labelException.Location = new System.Drawing.Point(34, 119);
-            this.labelException.Name = "labelException";
-            this.labelException.Size = new System.Drawing.Size(13, 17);
-            this.labelException.TabIndex = 23;
-            this.labelException.Text = "-";
-            this.labelException.Visible = false;
             // 
             // comboSlave
             // 
@@ -131,7 +119,7 @@
             this.comboSlave.Items.AddRange(new object[] {
             "COM100",
             "New Device"});
-            this.comboSlave.Location = new System.Drawing.Point(261, 12);
+            this.comboSlave.Location = new System.Drawing.Point(261, 15);
             this.comboSlave.Name = "comboSlave";
             this.comboSlave.Size = new System.Drawing.Size(103, 28);
             this.comboSlave.TabIndex = 24;
@@ -141,7 +129,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(204, 15);
+            this.label7.Location = new System.Drawing.Point(204, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 20);
             this.label7.TabIndex = 17;
@@ -151,7 +139,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(47, 59);
+            this.label2.Location = new System.Drawing.Point(408, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 9;
@@ -166,9 +154,9 @@
             "Read Holding Registers ",
             "Preset Single Register",
             "Preset Multiple Registers"});
-            this.comboFunctionCode.Location = new System.Drawing.Point(128, 56);
+            this.comboFunctionCode.Location = new System.Drawing.Point(489, 15);
             this.comboFunctionCode.Name = "comboFunctionCode";
-            this.comboFunctionCode.Size = new System.Drawing.Size(236, 28);
+            this.comboFunctionCode.Size = new System.Drawing.Size(192, 28);
             this.comboFunctionCode.TabIndex = 18;
             this.comboFunctionCode.SelectedIndexChanged += new System.EventHandler(this.comboFunctionCode_SelectedIndexChanged);
             // 
@@ -233,7 +221,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(63, 105);
+            this.label10.Location = new System.Drawing.Point(63, 60);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 20);
             this.label10.TabIndex = 14;
@@ -243,7 +231,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(22, 15);
+            this.label6.Location = new System.Drawing.Point(22, 18);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 20);
             this.label6.TabIndex = 19;
@@ -257,7 +245,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(586, 10);
+            this.btnClear.Location = new System.Drawing.Point(606, 12);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 29);
             this.btnClear.TabIndex = 13;
@@ -326,7 +314,7 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.label17);
-            this.panel6.Location = new System.Drawing.Point(0, 287);
+            this.panel6.Location = new System.Drawing.Point(0, 230);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(119, 50);
             this.panel6.TabIndex = 27;
@@ -368,7 +356,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel7.Controls.Add(this.label19);
-            this.panel7.Location = new System.Drawing.Point(0, 339);
+            this.panel7.Location = new System.Drawing.Point(0, 282);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(119, 50);
             this.panel7.TabIndex = 28;
@@ -377,7 +365,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel8.Controls.Add(this.label20);
-            this.panel8.Location = new System.Drawing.Point(0, 483);
+            this.panel8.Location = new System.Drawing.Point(0, 426);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(119, 50);
             this.panel8.TabIndex = 29;
@@ -478,7 +466,7 @@
             this.labelStatus2.AutoSize = true;
             this.labelStatus2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStatus2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.labelStatus2.Location = new System.Drawing.Point(577, 16);
+            this.labelStatus2.Location = new System.Drawing.Point(593, 16);
             this.labelStatus2.Name = "labelStatus2";
             this.labelStatus2.Size = new System.Drawing.Size(94, 17);
             this.labelStatus2.TabIndex = 11;
@@ -496,7 +484,7 @@
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(122, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(682, 50);
+            this.panel9.Size = new System.Drawing.Size(745, 50);
             this.panel9.TabIndex = 30;
             // 
             // panel11
@@ -512,7 +500,7 @@
             this.richtxtTransactionId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.richtxtTransactionId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richtxtTransactionId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtTransactionId.Location = new System.Drawing.Point(128, 14);
+            this.richtxtTransactionId.Location = new System.Drawing.Point(128, 17);
             this.richtxtTransactionId.MaxLength = 4;
             this.richtxtTransactionId.Name = "richtxtTransactionId";
             this.richtxtTransactionId.ReadOnly = true;
@@ -525,7 +513,7 @@
             this.richtxtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.richtxtAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richtxtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtAddress.Location = new System.Drawing.Point(128, 103);
+            this.richtxtAddress.Location = new System.Drawing.Point(128, 58);
             this.richtxtAddress.MaxLength = 4;
             this.richtxtAddress.Name = "richtxtAddress";
             this.richtxtAddress.Size = new System.Drawing.Size(63, 26);
@@ -550,7 +538,7 @@
             this.panelRegsNumber.Controls.Add(this.richtxtNumberRegs);
             this.panelRegsNumber.Controls.Add(this.btnMinus);
             this.panelRegsNumber.Controls.Add(this.btnPlus);
-            this.panelRegsNumber.Location = new System.Drawing.Point(218, 97);
+            this.panelRegsNumber.Location = new System.Drawing.Point(218, 52);
             this.panelRegsNumber.Name = "panelRegsNumber";
             this.panelRegsNumber.Size = new System.Drawing.Size(206, 42);
             this.panelRegsNumber.TabIndex = 37;
@@ -559,9 +547,9 @@
             // 
             this.panelValues.Controls.Add(this.richtxtValues);
             this.panelValues.Controls.Add(this.label18);
-            this.panelValues.Location = new System.Drawing.Point(72, 142);
+            this.panelValues.Location = new System.Drawing.Point(72, 97);
             this.panelValues.Name = "panelValues";
-            this.panelValues.Size = new System.Drawing.Size(512, 81);
+            this.panelValues.Size = new System.Drawing.Size(528, 81);
             this.panelValues.TabIndex = 38;
             // 
             // richtxtValues
@@ -572,7 +560,7 @@
             this.richtxtValues.Location = new System.Drawing.Point(56, 7);
             this.richtxtValues.MaxLength = 4;
             this.richtxtValues.Name = "richtxtValues";
-            this.richtxtValues.Size = new System.Drawing.Size(62, 26);
+            this.richtxtValues.Size = new System.Drawing.Size(466, 52);
             this.richtxtValues.TabIndex = 39;
             this.richtxtValues.Text = "";
             // 
@@ -591,9 +579,9 @@
             this.panelMessage.Controls.Add(this.label10);
             this.panelMessage.Controls.Add(this.label2);
             this.panelMessage.Controls.Add(this.comboSlave);
-            this.panelMessage.Location = new System.Drawing.Point(122, 52);
+            this.panelMessage.Location = new System.Drawing.Point(122, 50);
             this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(682, 236);
+            this.panelMessage.Size = new System.Drawing.Size(745, 228);
             this.panelMessage.TabIndex = 39;
             // 
             // richtxtSlaveId
@@ -601,7 +589,7 @@
             this.richtxtSlaveId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.richtxtSlaveId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richtxtSlaveId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtSlaveId.Location = new System.Drawing.Point(374, 12);
+            this.richtxtSlaveId.Location = new System.Drawing.Point(368, 15);
             this.richtxtSlaveId.MaxLength = 2;
             this.richtxtSlaveId.Name = "richtxtSlaveId";
             this.richtxtSlaveId.Size = new System.Drawing.Size(36, 28);
@@ -614,9 +602,9 @@
             this.panelRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.panelRequest.Controls.Add(this.richtxtResponse);
             this.panelRequest.Controls.Add(this.btnClear);
-            this.panelRequest.Location = new System.Drawing.Point(0, 49);
+            this.panelRequest.Location = new System.Drawing.Point(0, 54);
             this.panelRequest.Name = "panelRequest";
-            this.panelRequest.Size = new System.Drawing.Size(682, 50);
+            this.panelRequest.Size = new System.Drawing.Size(745, 50);
             this.panelRequest.TabIndex = 40;
             // 
             // richtxtResponse
@@ -627,7 +615,7 @@
             this.richtxtResponse.Location = new System.Drawing.Point(22, 13);
             this.richtxtResponse.MaxLength = 4;
             this.richtxtResponse.Name = "richtxtResponse";
-            this.richtxtResponse.Size = new System.Drawing.Size(546, 26);
+            this.richtxtResponse.Size = new System.Drawing.Size(572, 26);
             this.richtxtResponse.TabIndex = 43;
             this.richtxtResponse.Text = "";
             // 
@@ -639,7 +627,7 @@
             this.richtxtRequest.Location = new System.Drawing.Point(22, 13);
             this.richtxtRequest.MaxLength = 4;
             this.richtxtRequest.Name = "richtxtRequest";
-            this.richtxtRequest.Size = new System.Drawing.Size(546, 26);
+            this.richtxtRequest.Size = new System.Drawing.Size(572, 26);
             this.richtxtRequest.TabIndex = 42;
             this.richtxtRequest.Text = "";
             // 
@@ -647,29 +635,41 @@
             // 
             this.panelResponse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.panelResponse.Controls.Add(this.richtxtRequest);
-            this.panelResponse.Location = new System.Drawing.Point(0, -3);
+            this.panelResponse.Location = new System.Drawing.Point(0, 2);
             this.panelResponse.Name = "panelResponse";
-            this.panelResponse.Size = new System.Drawing.Size(682, 50);
+            this.panelResponse.Size = new System.Drawing.Size(745, 50);
             this.panelResponse.TabIndex = 41;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.labelException);
+            this.panel1.Controls.Add(this.richtxtAnalyzeResponse);
             this.panel1.Controls.Add(this.panelRequest);
             this.panel1.Controls.Add(this.panelResponse);
-            this.panel1.Location = new System.Drawing.Point(122, 290);
+            this.panel1.Location = new System.Drawing.Point(122, 228);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(684, 158);
+            this.panel1.Size = new System.Drawing.Size(700, 203);
             this.panel1.TabIndex = 40;
+            // 
+            // richtxtAnalyzeResponse
+            // 
+            this.richtxtAnalyzeResponse.BackColor = System.Drawing.Color.White;
+            this.richtxtAnalyzeResponse.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtAnalyzeResponse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtAnalyzeResponse.Location = new System.Drawing.Point(22, 112);
+            this.richtxtAnalyzeResponse.MaxLength = 4;
+            this.richtxtAnalyzeResponse.Name = "richtxtAnalyzeResponse";
+            this.richtxtAnalyzeResponse.Size = new System.Drawing.Size(572, 77);
+            this.richtxtAnalyzeResponse.TabIndex = 44;
+            this.richtxtAnalyzeResponse.Text = "";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.btnHistory);
-            this.panel2.Location = new System.Drawing.Point(122, 483);
+            this.panel2.Location = new System.Drawing.Point(122, 426);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(684, 50);
+            this.panel2.Size = new System.Drawing.Size(745, 50);
             this.panel2.TabIndex = 41;
             // 
             // FormClient
@@ -678,7 +678,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(798, 533);
+            this.ClientSize = new System.Drawing.Size(816, 477);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMessage);
@@ -718,7 +718,6 @@
             this.panelRequest.ResumeLayout(false);
             this.panelResponse.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -731,7 +730,6 @@
         private ComboBox comboFunctionCode;
         private Button btnClear;
         private Label label6;
-        private Label labelException;
         private Label label10;
         private Button btnPlus;
         private Button btnMinus;
@@ -774,5 +772,6 @@
         private Panel panel2;
         private RichTextBox richtxtSlaveId;
         private ToolTip toolTipForm;
+        private RichTextBox richtxtAnalyzeResponse;
     }
 }
