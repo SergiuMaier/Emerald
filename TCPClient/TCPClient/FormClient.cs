@@ -177,13 +177,8 @@ namespace TCPClient
                     BuildRequest();
                     client.Send(bufferRequest);
 
-                    addMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
                     foreach (byte element in bufferRequest)
-                    {
                         richtxtRequest.Text += $" {element:X2}";
-                        addMessageToHistory += $" {element:X2}";
-                    }
-                    addMessageToHistory += $"{Environment.NewLine}";
                 }
                 catch
                 {
@@ -207,37 +202,47 @@ namespace TCPClient
                     indexBuffer++;
                 }
 
-                AnalyzeResponse();
-
-                addMessageToHistory += $"<-"; 
                 foreach (byte element in bufferResponse)
-                {
                     richtxtResponse.Text += $" {element:X2}";
-                    addMessageToHistory += $" {element:X2}";
-                }
-                addMessageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
+
+                AnalyzeResponse(bufferResponse, bufferRequest);
             });
         }
-        
-        private void AnalyzeResponse()
+
+        private void AddToHistory(byte[] request, byte[] response)
+        {
+            addMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
+            
+            foreach (byte element in request)
+                addMessageToHistory += $" {element:X2}";
+            addMessageToHistory += $"{Environment.NewLine}";
+            
+            addMessageToHistory += $"<-";
+            foreach (byte element in response)
+                addMessageToHistory += $" {element:X2}";
+            addMessageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
+        }
+
+        private void AnalyzeResponse(byte[] response, byte[] request)
         {
             richtxtAnalyzeResponse.Enabled = true;
 
-            if ((bufferResponse[(int)Header.TransactionId] == bufferRequest[(int)Header.TransactionId]) && (bufferResponse[(int)Header.ProtocolId] == bufferRequest[(int)Header.ProtocolId]))
+            if ((response[(int)Header.TransactionId] == request[(int)Header.TransactionId]) && (response[(int)Header.ProtocolId] == request[(int)Header.ProtocolId]))
             {
-                if (bufferResponse[(int)Header.SlaveId] == bufferRequest[(int)Header.SlaveId])
+                if (response[(int)Header.SlaveId] == request[(int)Header.SlaveId])
                 {
-                    if (bufferResponse[(int)MessageStructure.FunctionCode] == bufferRequest[(int)MessageStructure.FunctionCode]) 
+                    if (response[(int)MessageStructure.FunctionCode] == request[(int)MessageStructure.FunctionCode]) 
                     { 
                         richtxtAnalyzeResponse.Text = "Correct response.";
                         
+                        AddToHistory(request, response);
                         // add to history only the correct responses?
                     }
-                    else if ( bufferResponse[(int)MessageStructure.FunctionCode] == highestBitSet + bufferRequest[(int)MessageStructure.FunctionCode] )
+                    else if ( response[(int)MessageStructure.FunctionCode] == highestBitSet + request[(int)MessageStructure.FunctionCode] )
                     {
                         richtxtAnalyzeResponse.Text = "The function code in the response has its highest bit set.";
 
-                        switch (bufferResponse[(int)MessageStructure.ExceptionCode])
+                        switch (response[(int)MessageStructure.ExceptionCode])
                         {
                             case 0x02:  richtxtAnalyzeResponse.Text += "\nException Code 02: Illegal Data Address. " +
                                                                "\n\n'The data address received in the query is not an allowable address for the slave.'";
