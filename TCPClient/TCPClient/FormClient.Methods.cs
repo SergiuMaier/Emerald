@@ -44,21 +44,21 @@ namespace TCPClient
         {
             switch (response[index])
             {
-                case 0x02:  richtxtAnalyzeResponse.Text += "\nException Code 02: Illegal Data Address. " +
-                                                   "\n\n'The data address received in the query is not an allowable address for the slave.'";
+                case 0x02:  richtxtAnalyzeResponse.Text += "\n\nException Code 02: Illegal Data Address. " +
+                                                   "\n'The data address received in the query is not an allowable address for the slave.'";
                             break;
 
-                case 0x03:  richtxtAnalyzeResponse.Text += "\nException Code 03: Illegal Data Value. " +
-                                                   "\n\n'A value contained in the query data field is not an allowable value for the slave.'";
+                case 0x03:  richtxtAnalyzeResponse.Text += "\n\nException Code 03: Illegal Data Value. " +
+                                                   "\n'A value contained in the query data field is not an allowable value for the slave.'";
                             break;
 
-                case 0x04:  richtxtAnalyzeResponse.Text += "\nException Code 04: Slave Device Failure. " +
-                                                   "\n\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                case 0x04:  richtxtAnalyzeResponse.Text += "\n\nException Code 04: Slave Device Failure. " +
+                                                   "\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
                             break;
 
-                case 0x0A:  richtxtAnalyzeResponse.Text += "\nException Code 0A: Gateway Path Unavailable. " +
-                                                   "\n\n'The gateway was unable to allocate an internal communication path from " +
-                                                   "the input port to the output port for processing the request.'";
+                case 0x0A:  richtxtAnalyzeResponse.Text += "\n\nException Code 0A: Gateway Path Unavailable. " +
+                                                   "\n'The gateway was unable to allocate an internal communication path from the input port to the " +
+                                                   "output port for processing the request.'";
                             break;
 
                 default:    richtxtAnalyzeResponse.Text = "\nException response.";
@@ -66,23 +66,61 @@ namespace TCPClient
             }
         }
 
+        public void ReadDataFromResponse(byte[] response)
+        {
+            int counterRegisters = 0;
+
+            if (selected03)
+            {
+                richtxtAnalyzeResponse.Text = "The number of data bytes to follow: ";
+                richtxtAnalyzeResponse.Text += $"{Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
+
+                richtxtAnalyzeResponse.Text += "\nThe contents of requested registers: ";
+
+                for (int index = (int)Message.ContentOfFirstRegister; index <= (response.Length - 1); index++)
+                {
+                    if (counterRegisters % 2 == 0)
+                    {
+                        richtxtAnalyzeResponse.Text += $"\n register no.{counterRegisters / 2 + 1}: ";
+                        richtxtAnalyzeResponse.Text += $"{response[index]:X2} "; ;
+                    }
+                    else
+                        richtxtAnalyzeResponse.Text += $"{response[index]:X2}"; ;
+
+                    counterRegisters++;
+                }
+            }
+            else if (selected06)
+            {
+                richtxtAnalyzeResponse.Text = "From response: ";
+                richtxtAnalyzeResponse.Text += $"Value {response[(int)(DataField.HiByteOfRegister)]} {response[(int)(DataField.LoByteOfRegister)]} " +
+                                                $"written at address {response[(int)(DataField.HiRegisterAddressByte)]} {response[(int)(DataField.LoRegisterAddressByte)]}";
+            }
+            else if (selected16)
+            {
+                richtxtAnalyzeResponse.Text = "From response: ";
+                richtxtAnalyzeResponse.Text += $"{Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers" +
+                                                $"written starting with address {response[(int)(DataField.HiRegisterAddressByte)]} {response[(int)(DataField.LoRegisterAddressByte)]}";
+            }
+        }
+
         public void AnalyzeResponse(byte[] response, byte[] request)
         {
             richtxtAnalyzeResponse.Enabled = true;
 
-            if ((response[(int)Header.TransactionId] == request[(int)Header.TransactionId]) && (response[(int)Header.ProtocolId] == request[(int)Header.ProtocolId]))
+            if ((response[(int)Message.TransactionId] == request[(int)Message.TransactionId]) && (response[(int)Message.ProtocolId] == request[(int)Message.ProtocolId]))
             {
-                if (response[(int)Header.SlaveId] == request[(int)Header.SlaveId])
+                if (response[(int)Message.SlaveId] == request[(int)Message.SlaveId])
                 {
-                    if (response[(int)MessageStructure.FunctionCode] == request[(int)MessageStructure.FunctionCode])
+                    if (response[(int)Message.FunctionCode] == request[(int)Message.FunctionCode])
                     {
-                        richtxtAnalyzeResponse.Text = "Correct response.";
+                        ReadDataFromResponse(response);
                         AddToHistory(request, response);
                     }
-                    else if (response[(int)MessageStructure.FunctionCode] == highestBitSet + request[(int)MessageStructure.FunctionCode])
+                    else if (response[(int)Message.FunctionCode] == highestBitSet + request[(int)Message.FunctionCode])
                     {
                         richtxtAnalyzeResponse.Text = "The function code in the response has its highest bit set.";
-                        VerifyExceptionCode(response, (int)MessageStructure.ExceptionCode);
+                        VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
                     }
                     else
                         richtxtAnalyzeResponse.Text = "Incorrect response.";

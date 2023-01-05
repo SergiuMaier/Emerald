@@ -8,8 +8,22 @@ namespace TCPClient
 {
     public partial class FormClient
     {
-        enum Header { TransactionId = 0, ProtocolId = 2, SlaveId = 6 }
-        enum MessageStructure { FunctionCode = 7, ExceptionCode = 8 }
+        enum Message 
+        { 
+            TransactionId = 0, 
+            ProtocolId = 2, 
+            SlaveId = 6, 
+            FunctionCode = 7, 
+            NumberOfBytes = 8, 
+            ContentOfFirstRegister = 9 
+        }
+        enum DataField 
+        {
+            HiRegisterAddressByte = 8,
+            LoRegisterAddressByte = 9,
+            HiByteOfRegister = 10,
+            LoByteOfRegister = 11
+        }
 
         public int counterTransactionId;    //this counter is incremented for each request. 
         public int counterNoOfRegisters;    //the value can increase or decrease, to get the desired number of registers.
