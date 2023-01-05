@@ -9,6 +9,25 @@ namespace TCPClient
 {
     public partial class FormClient
     {
+        FunctionCodes fc = new FunctionCodes();
+        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
+
+        public void BuildRequest(byte[] request)
+        {
+            counterTransactionId++;
+            richtxtTransactionId.Text = counterTransactionId.ToString("X4");
+
+            if (comboSlave.SelectedIndex != 0)
+                slaveId = byte.Parse(richtxtSlaveId.Text, NumberStyles.HexNumber);
+
+            if (selected03)
+                fc.ReadHoldingRegisters(request, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text);
+            else if (selected06)
+                fc.PresetSingleRegister(request, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtValues.Text);
+            else if (selected16)
+                fc.PresetMultipleRegisters(request, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text, richtxtValues.Text);
+        }
+
         public void AddToHistory(byte[] request, byte[] response)
         {
             addMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
@@ -32,9 +51,7 @@ namespace TCPClient
                     if (response[(int)MessageStructure.FunctionCode] == request[(int)MessageStructure.FunctionCode])
                     {
                         richtxtAnalyzeResponse.Text = "Correct response.";
-
                         AddToHistory(request, response);
-                        // add to history only the correct responses?
                     }
                     else if (response[(int)MessageStructure.FunctionCode] == highestBitSet + request[(int)MessageStructure.FunctionCode])
                     {
@@ -72,6 +89,5 @@ namespace TCPClient
             else
                 richtxtAnalyzeResponse.Text = "Incorrect response.";
         }
-
     }
 }

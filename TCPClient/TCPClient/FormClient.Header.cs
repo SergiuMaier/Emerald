@@ -35,9 +35,10 @@ namespace TCPClient
         public const byte highestBitSet = 0x80;
 
         //the buffer length varies depending on the selected function code 
-        byte bufferLength03 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
-        byte bufferLength06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
-        byte bufferLength16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
+        byte bufferLength;
+        byte lengthCase03 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
+        byte lengthCase06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
+        byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
         public static string addMessageToHistory = "";  //the desired message is sent to FormHistory
 

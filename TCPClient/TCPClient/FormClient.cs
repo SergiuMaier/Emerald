@@ -7,8 +7,6 @@ namespace TCPClient
     public partial class FormClient : Form
     {
         SimpleTcpClient client;
-        FunctionCodes fc = new FunctionCodes();
-        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
        
         public FormClient()
         {
@@ -68,7 +66,9 @@ namespace TCPClient
 
                 try
                 {
-                    BuildRequest();
+                    bufferRequest = new byte[bufferLength];
+
+                    BuildRequest(bufferRequest);
                     client.Send(bufferRequest);
 
                     foreach (byte element in bufferRequest)
@@ -78,7 +78,6 @@ namespace TCPClient
                 {
                     MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     richtxtAnalyzeResponse.Text = "Invalid format.";
-
                 }
             }
         }
@@ -102,7 +101,6 @@ namespace TCPClient
                 AnalyzeResponse(bufferResponse, bufferRequest);
             });
         }
-
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
@@ -156,7 +154,8 @@ namespace TCPClient
             if (selected03)
             {
                 functionCode = fc03;
-                
+                bufferLength = lengthCase03;
+
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
                 richtxtValues.MaxLength = 4;
@@ -164,7 +163,8 @@ namespace TCPClient
             else if (selected06)
             {
                 functionCode = fc06;
-                
+                bufferLength = lengthCase06;
+
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
                 richtxtValues.MaxLength = 4;
@@ -172,35 +172,10 @@ namespace TCPClient
             else if (selected16)
             {
                 functionCode = fc16;
-                
+
                 panelRegsNumber.Enabled = true;
                 panelValues.Enabled = true;
             } 
-        }
-
-        public void BuildRequest()
-        {
-            counterTransactionId++;
-            richtxtTransactionId.Text = counterTransactionId.ToString("X4");
-
-            if (comboSlave.SelectedIndex != 0)
-                slaveId = byte.Parse(richtxtSlaveId.Text, NumberStyles.HexNumber);
-
-            if (selected03)
-            {
-                bufferRequest = new byte[bufferLength03];
-                fc.ReadHoldingRegisters(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text);
-            }
-            else if (selected06)
-            {
-                bufferRequest = new byte[bufferLength06];
-                fc.PresetSingleRegister(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtValues.Text);
-            }
-            else if (selected16)
-            {
-                bufferRequest = new byte[bufferLength16 + (2 * counterNoOfRegisters)];
-                fc.PresetMultipleRegisters(bufferRequest, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtAddress.Text, richtxtNumberRegs.Text, richtxtValues.Text);
-            }
         }
         
         private void btnMinus_Click(object sender, EventArgs e)
@@ -214,7 +189,10 @@ namespace TCPClient
                 btnMinus.Enabled = false;
 
             if (selected16)
+            {
                 richtxtValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
+            }
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
@@ -226,7 +204,10 @@ namespace TCPClient
             richtxtNumberRegs.Text = counterNoOfRegisters.ToString("X4");
 
             if (selected16)
+            {
                 richtxtValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
