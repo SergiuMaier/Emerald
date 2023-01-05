@@ -68,6 +68,11 @@ namespace TCPClient
                                 richtxtAnalyzeResponse.Text += "\nException Code 03: Illegal Data Value. " +
                                                                "\n\n'A value contained in the query data field is not an allowable value for the slave.'";
                                 break;
+                            
+                            case 0x04:
+                                richtxtAnalyzeResponse.Text += "\nException Code 04: Slave Device Failure. " +
+                                                               "\n\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                                break;
 
                             case 0x0A:
                                 richtxtAnalyzeResponse.Text += "\nException Code 0A: Gateway Path Unavailable. " +
