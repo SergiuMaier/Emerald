@@ -64,19 +64,19 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.richtxtTransactionId = new System.Windows.Forms.RichTextBox();
-            this.richtxtAddress = new System.Windows.Forms.RichTextBox();
-            this.richtxtNumberRegs = new System.Windows.Forms.RichTextBox();
+            this.richtxtDataAddress = new System.Windows.Forms.RichTextBox();
+            this.richtxtDataRegisters = new System.Windows.Forms.RichTextBox();
             this.panelRegsNumber = new System.Windows.Forms.Panel();
             this.panelValues = new System.Windows.Forms.Panel();
-            this.richtxtValues = new System.Windows.Forms.RichTextBox();
+            this.richtxtDataValues = new System.Windows.Forms.RichTextBox();
             this.panelMessage = new System.Windows.Forms.Panel();
             this.richtxtSlaveId = new System.Windows.Forms.RichTextBox();
             this.panelRequest = new System.Windows.Forms.Panel();
-            this.richtxtResponse = new System.Windows.Forms.RichTextBox();
-            this.richtxtRequest = new System.Windows.Forms.RichTextBox();
+            this.richtxtPrintResponse = new System.Windows.Forms.RichTextBox();
+            this.richtxtPrintRequest = new System.Windows.Forms.RichTextBox();
             this.panelResponse = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richtxtAnalyzeResponse = new System.Windows.Forms.RichTextBox();
+            this.richtxtPrintAnalyze = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolTipForm = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
@@ -508,34 +508,34 @@
             this.richtxtTransactionId.TabIndex = 27;
             this.richtxtTransactionId.Text = "0001";
             // 
-            // richtxtAddress
+            // richtxtDataAddress
             // 
-            this.richtxtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.richtxtAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richtxtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtAddress.Location = new System.Drawing.Point(128, 60);
-            this.richtxtAddress.MaxLength = 4;
-            this.richtxtAddress.Name = "richtxtAddress";
-            this.richtxtAddress.Size = new System.Drawing.Size(63, 26);
-            this.richtxtAddress.TabIndex = 32;
-            this.richtxtAddress.Text = "0097";
+            this.richtxtDataAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.richtxtDataAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtDataAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtDataAddress.Location = new System.Drawing.Point(128, 60);
+            this.richtxtDataAddress.MaxLength = 4;
+            this.richtxtDataAddress.Name = "richtxtDataAddress";
+            this.richtxtDataAddress.Size = new System.Drawing.Size(63, 26);
+            this.richtxtDataAddress.TabIndex = 32;
+            this.richtxtDataAddress.Text = "0097";
             // 
-            // richtxtNumberRegs
+            // richtxtDataRegisters
             // 
-            this.richtxtNumberRegs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.richtxtNumberRegs.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richtxtNumberRegs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtNumberRegs.Location = new System.Drawing.Point(86, 6);
-            this.richtxtNumberRegs.MaxLength = 4;
-            this.richtxtNumberRegs.Name = "richtxtNumberRegs";
-            this.richtxtNumberRegs.Size = new System.Drawing.Size(60, 26);
-            this.richtxtNumberRegs.TabIndex = 36;
-            this.richtxtNumberRegs.Text = "0001";
+            this.richtxtDataRegisters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.richtxtDataRegisters.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtDataRegisters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtDataRegisters.Location = new System.Drawing.Point(86, 6);
+            this.richtxtDataRegisters.MaxLength = 4;
+            this.richtxtDataRegisters.Name = "richtxtDataRegisters";
+            this.richtxtDataRegisters.Size = new System.Drawing.Size(60, 26);
+            this.richtxtDataRegisters.TabIndex = 36;
+            this.richtxtDataRegisters.Text = "0001";
             // 
             // panelRegsNumber
             // 
             this.panelRegsNumber.Controls.Add(this.label12);
-            this.panelRegsNumber.Controls.Add(this.richtxtNumberRegs);
+            this.panelRegsNumber.Controls.Add(this.richtxtDataRegisters);
             this.panelRegsNumber.Controls.Add(this.btnMinus);
             this.panelRegsNumber.Controls.Add(this.btnPlus);
             this.panelRegsNumber.Location = new System.Drawing.Point(218, 54);
@@ -545,24 +545,24 @@
             // 
             // panelValues
             // 
-            this.panelValues.Controls.Add(this.richtxtValues);
+            this.panelValues.Controls.Add(this.richtxtDataValues);
             this.panelValues.Controls.Add(this.label18);
             this.panelValues.Location = new System.Drawing.Point(72, 97);
             this.panelValues.Name = "panelValues";
             this.panelValues.Size = new System.Drawing.Size(528, 81);
             this.panelValues.TabIndex = 38;
             // 
-            // richtxtValues
+            // richtxtDataValues
             // 
-            this.richtxtValues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.richtxtValues.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richtxtValues.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtValues.Location = new System.Drawing.Point(56, 7);
-            this.richtxtValues.MaxLength = 4;
-            this.richtxtValues.Name = "richtxtValues";
-            this.richtxtValues.Size = new System.Drawing.Size(466, 64);
-            this.richtxtValues.TabIndex = 39;
-            this.richtxtValues.Text = "";
+            this.richtxtDataValues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.richtxtDataValues.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtDataValues.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtDataValues.Location = new System.Drawing.Point(56, 7);
+            this.richtxtDataValues.MaxLength = 4;
+            this.richtxtDataValues.Name = "richtxtDataValues";
+            this.richtxtDataValues.Size = new System.Drawing.Size(466, 64);
+            this.richtxtDataValues.TabIndex = 39;
+            this.richtxtDataValues.Text = "";
             // 
             // panelMessage
             // 
@@ -574,7 +574,7 @@
             this.panelMessage.Controls.Add(this.richtxtTransactionId);
             this.panelMessage.Controls.Add(this.panelRegsNumber);
             this.panelMessage.Controls.Add(this.label7);
-            this.panelMessage.Controls.Add(this.richtxtAddress);
+            this.panelMessage.Controls.Add(this.richtxtDataAddress);
             this.panelMessage.Controls.Add(this.comboFunctionCode);
             this.panelMessage.Controls.Add(this.label10);
             this.panelMessage.Controls.Add(this.label2);
@@ -600,41 +600,41 @@
             // panelRequest
             // 
             this.panelRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.panelRequest.Controls.Add(this.richtxtResponse);
+            this.panelRequest.Controls.Add(this.richtxtPrintResponse);
             this.panelRequest.Controls.Add(this.btnClear);
             this.panelRequest.Location = new System.Drawing.Point(0, 54);
             this.panelRequest.Name = "panelRequest";
             this.panelRequest.Size = new System.Drawing.Size(745, 50);
             this.panelRequest.TabIndex = 40;
             // 
-            // richtxtResponse
+            // richtxtPrintResponse
             // 
-            this.richtxtResponse.BackColor = System.Drawing.Color.White;
-            this.richtxtResponse.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richtxtResponse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtResponse.Location = new System.Drawing.Point(22, 13);
-            this.richtxtResponse.MaxLength = 4;
-            this.richtxtResponse.Name = "richtxtResponse";
-            this.richtxtResponse.Size = new System.Drawing.Size(572, 26);
-            this.richtxtResponse.TabIndex = 43;
-            this.richtxtResponse.Text = "";
+            this.richtxtPrintResponse.BackColor = System.Drawing.Color.White;
+            this.richtxtPrintResponse.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtPrintResponse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtPrintResponse.Location = new System.Drawing.Point(22, 13);
+            this.richtxtPrintResponse.MaxLength = 4;
+            this.richtxtPrintResponse.Name = "richtxtPrintResponse";
+            this.richtxtPrintResponse.Size = new System.Drawing.Size(572, 26);
+            this.richtxtPrintResponse.TabIndex = 43;
+            this.richtxtPrintResponse.Text = "";
             // 
-            // richtxtRequest
+            // richtxtPrintRequest
             // 
-            this.richtxtRequest.BackColor = System.Drawing.Color.White;
-            this.richtxtRequest.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richtxtRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtRequest.Location = new System.Drawing.Point(22, 13);
-            this.richtxtRequest.MaxLength = 4;
-            this.richtxtRequest.Name = "richtxtRequest";
-            this.richtxtRequest.Size = new System.Drawing.Size(572, 26);
-            this.richtxtRequest.TabIndex = 42;
-            this.richtxtRequest.Text = "";
+            this.richtxtPrintRequest.BackColor = System.Drawing.Color.White;
+            this.richtxtPrintRequest.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtPrintRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtPrintRequest.Location = new System.Drawing.Point(22, 13);
+            this.richtxtPrintRequest.MaxLength = 4;
+            this.richtxtPrintRequest.Name = "richtxtPrintRequest";
+            this.richtxtPrintRequest.Size = new System.Drawing.Size(572, 26);
+            this.richtxtPrintRequest.TabIndex = 42;
+            this.richtxtPrintRequest.Text = "";
             // 
             // panelResponse
             // 
             this.panelResponse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.panelResponse.Controls.Add(this.richtxtRequest);
+            this.panelResponse.Controls.Add(this.richtxtPrintRequest);
             this.panelResponse.Location = new System.Drawing.Point(0, 2);
             this.panelResponse.Name = "panelResponse";
             this.panelResponse.Size = new System.Drawing.Size(745, 50);
@@ -643,7 +643,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.richtxtAnalyzeResponse);
+            this.panel1.Controls.Add(this.richtxtPrintAnalyze);
             this.panel1.Controls.Add(this.panelRequest);
             this.panel1.Controls.Add(this.panelResponse);
             this.panel1.Location = new System.Drawing.Point(122, 228);
@@ -651,17 +651,17 @@
             this.panel1.Size = new System.Drawing.Size(700, 228);
             this.panel1.TabIndex = 40;
             // 
-            // richtxtAnalyzeResponse
+            // richtxtPrintAnalyze
             // 
-            this.richtxtAnalyzeResponse.BackColor = System.Drawing.Color.White;
-            this.richtxtAnalyzeResponse.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richtxtAnalyzeResponse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.richtxtAnalyzeResponse.Location = new System.Drawing.Point(22, 112);
-            this.richtxtAnalyzeResponse.MaxLength = 4;
-            this.richtxtAnalyzeResponse.Name = "richtxtAnalyzeResponse";
-            this.richtxtAnalyzeResponse.Size = new System.Drawing.Size(572, 105);
-            this.richtxtAnalyzeResponse.TabIndex = 44;
-            this.richtxtAnalyzeResponse.Text = "";
+            this.richtxtPrintAnalyze.BackColor = System.Drawing.Color.White;
+            this.richtxtPrintAnalyze.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richtxtPrintAnalyze.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
+            this.richtxtPrintAnalyze.Location = new System.Drawing.Point(22, 112);
+            this.richtxtPrintAnalyze.MaxLength = 4;
+            this.richtxtPrintAnalyze.Name = "richtxtPrintAnalyze";
+            this.richtxtPrintAnalyze.Size = new System.Drawing.Size(572, 105);
+            this.richtxtPrintAnalyze.TabIndex = 44;
+            this.richtxtPrintAnalyze.Text = "";
             // 
             // panel2
             // 
@@ -757,21 +757,21 @@
         private Panel panel9;
         private Panel panel11;
         private RichTextBox richtxtTransactionId;
-        private RichTextBox richtxtAddress;
-        private RichTextBox richtxtNumberRegs;
+        private RichTextBox richtxtDataAddress;
+        private RichTextBox richtxtDataRegisters;
         private Panel panelRegsNumber;
         private Panel panelValues;
-        private RichTextBox richtxtValues;
+        private RichTextBox richtxtDataValues;
         private Panel panelMessage;
         private Panel panelRequest;
         private Label label4;
         private Panel panelResponse;
-        private RichTextBox richtxtRequest;
-        private RichTextBox richtxtResponse;
+        private RichTextBox richtxtPrintRequest;
+        private RichTextBox richtxtPrintResponse;
         private Panel panel1;
         private Panel panel2;
         private RichTextBox richtxtSlaveId;
         private ToolTip toolTipForm;
-        private RichTextBox richtxtAnalyzeResponse;
+        private RichTextBox richtxtPrintAnalyze;
     }
 }

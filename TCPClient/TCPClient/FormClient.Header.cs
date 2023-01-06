@@ -30,8 +30,8 @@ namespace TCPClient
 
         bool selected03, selected06, selected16;  //flags set when one of the commands is selected
         
-        public byte[] bufferRequest;    //buffer used to store all bytes from the request message
-        public byte[] bufferResponse;   //buffer used to store all bytes from the response message
+        public byte[] requestBuffer;    //buffer used to store all bytes from the request message
+        public byte[] responseBuffer;   //buffer used to store all bytes from the response message
 
         public const byte COM100Id = 0xFF;    //1 byte, uniquely identify the Slave device.
 

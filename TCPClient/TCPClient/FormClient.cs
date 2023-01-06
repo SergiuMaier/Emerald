@@ -60,24 +60,27 @@ namespace TCPClient
         {
             if (client.IsConnected)
             {
-                richtxtRequest.Text = String.Empty;
-                richtxtResponse.Text = String.Empty;
-                richtxtAnalyzeResponse.Text = String.Empty;
+                richtxtPrintRequest.Text = String.Empty;
+                richtxtPrintResponse.Text = String.Empty;
+                richtxtPrintAnalyze.Text = String.Empty;
 
                 try
                 {
-                    bufferRequest = new byte[bufferLength];
+                    counterTransactionId++;
+                    richtxtTransactionId.Text = counterTransactionId.ToString("X4"); //testeaza daca e buna pusa
 
-                    BuildRequest(bufferRequest);
-                    client.Send(bufferRequest);
+                    requestBuffer = new byte[bufferLength];
 
-                    foreach (byte element in bufferRequest)
-                        richtxtRequest.Text += $" {element:X2}";
+                    BuildRequest(requestBuffer, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtDataAddress.Text, richtxtDataRegisters.Text, richtxtDataValues.Text);
+                    client.Send(requestBuffer);
+
+                    foreach (byte element in requestBuffer)
+                        richtxtPrintRequest.Text += $" {element:X2}";
                 }
                 catch
                 {
                     MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    richtxtAnalyzeResponse.Text = "Invalid format.";
+                    richtxtPrintAnalyze.Text = "Invalid format.";
                 }
             }
         }
@@ -86,19 +89,19 @@ namespace TCPClient
         {
             this.Invoke((MethodInvoker)delegate
             {
-                bufferResponse = new byte[e.Data.Count];
+                responseBuffer = new byte[e.Data.Count];
 
                 int indexBuffer = 0;
                 foreach (byte element in e.Data)
                 {
-                    bufferResponse[indexBuffer] = element;
+                    responseBuffer[indexBuffer] = element;
                     indexBuffer++;
                 }
 
-                foreach (byte element in bufferResponse)
-                    richtxtResponse.Text += $" {element:X2}";
+                foreach (byte element in responseBuffer)
+                    richtxtPrintResponse.Text += $" {element:X2}";
 
-                AnalyzeResponse(bufferResponse, bufferRequest);
+                AnalyzeResponse(responseBuffer, requestBuffer);
             });
         }
 
@@ -141,8 +144,11 @@ namespace TCPClient
                 slaveId = COM100Id;
                 richtxtSlaveId.Visible = false;
             }
-            else
+            else  //test si aici 
+            {
                 richtxtSlaveId.Visible = true;
+                slaveId = byte.Parse(richtxtSlaveId.Text, NumberStyles.HexNumber);
+            }
         }
 
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,7 +164,7 @@ namespace TCPClient
 
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
-                richtxtValues.MaxLength = 4;
+                richtxtDataValues.MaxLength = 4;
             }
             else if (selected06)
             {
@@ -167,7 +173,7 @@ namespace TCPClient
 
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
-                richtxtValues.MaxLength = 4;
+                richtxtDataValues.MaxLength = 4;
             }
             else if (selected16)
             {
@@ -183,14 +189,14 @@ namespace TCPClient
             if (counterNoOfRegisters > 0)
             {
                 counterNoOfRegisters--;
-                richtxtNumberRegs.Text = counterNoOfRegisters.ToString("X4");
+                richtxtDataRegisters.Text = counterNoOfRegisters.ToString("X4");
             }
             else
                 btnMinus.Enabled = false;
 
             if (selected16)
             {
-                richtxtValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                richtxtDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
             }
         }
@@ -201,19 +207,19 @@ namespace TCPClient
                 btnMinus.Enabled = true;
 
             counterNoOfRegisters++;
-            richtxtNumberRegs.Text = counterNoOfRegisters.ToString("X4");
+            richtxtDataRegisters.Text = counterNoOfRegisters.ToString("X4");
 
             if (selected16)
             {
-                richtxtValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                richtxtDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            richtxtRequest.Text = String.Empty;
-            richtxtResponse.Text = String.Empty;
+            richtxtPrintRequest.Text = String.Empty;
+            richtxtPrintResponse.Text = String.Empty;
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
