@@ -38,9 +38,9 @@
             // labelException
             // 
             this.labelException.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelException.Location = new System.Drawing.Point(13, 60);
+            this.labelException.Location = new System.Drawing.Point(12, 60);
             this.labelException.Name = "labelException";
-            this.labelException.Size = new System.Drawing.Size(446, 87);
+            this.labelException.Size = new System.Drawing.Size(467, 68);
             this.labelException.TabIndex = 0;
             this.labelException.Text = "label1";
             // 
@@ -50,7 +50,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 48);
+            this.panel1.Size = new System.Drawing.Size(495, 48);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -69,7 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(471, 163);
+            this.ClientSize = new System.Drawing.Size(491, 139);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelException);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

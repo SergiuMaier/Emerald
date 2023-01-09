@@ -71,14 +71,13 @@ namespace TCPClient
                     counterTransactionId++;
                     richtxtTransactionId.Text = counterTransactionId.ToString("X4"); //testeaza daca e buna pusa
 
-                    requestBuffer = new byte[bufferLength];
+                    requestBuffer = new byte[bufferLength]; 
 
                     BuildRequest(requestBuffer, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtDataAddress.Text, richtxtDataRegisters.Text, richtxtDataValues.Text);
                     client.Send(requestBuffer);
 
                     foreach (byte element in requestBuffer)
                         richtxtPrintRequest.Text += $" {element:X2}";
-
                     //richtxtPrintRequest.Text = $"{BitConverter.ToString(requestBuffer)}";
                 }
                 catch
