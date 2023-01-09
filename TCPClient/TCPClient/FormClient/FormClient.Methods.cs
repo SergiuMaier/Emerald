@@ -41,24 +41,29 @@ namespace TCPClient
         {
             switch (response[index])
             {
+                case 0x01:
+                    richtxtPrintAnalyze.Text += "\n\nException Code 01: Illegal Function. " +
+                                                "\n'The function code received in the query is not an allowable action for the slave.'";
+                    break;
+
                 case 0x02:
                     richtxtPrintAnalyze.Text += "\n\nException Code 02: Illegal Data Address. " +
-                                                   "\n'The data address received in the query is not an allowable address for the slave.'";
+                                                "\n'The data address received in the query is not an allowable address for the slave.'";
                     break;
 
                 case 0x03:
                     richtxtPrintAnalyze.Text += "\n\nException Code 03: Illegal Data Value. " +
-                                                   "\n'A value contained in the query data field is not an allowable value for the slave.'";
+                                                "\n'A value contained in the query data field is not an allowable value for the slave.'";
                     break;
 
                 case 0x04:
                     richtxtPrintAnalyze.Text += "\n\nException Code 04: Slave Device Failure. " +
-                                                   "\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                                                "\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
                     break;
 
                 case 0x0A:
                     richtxtPrintAnalyze.Text += "\n\nException Code 0A: Gateway Path Unavailable. " +
-                                                   "\n'The gateway was unable to allocate an internal communication path from the input port to the " +
+                                                "\n'The gateway was unable to allocate an internal communication path from the input port to the " +
                                                    "output port for processing the request.'";
                     break;
 
@@ -84,7 +89,19 @@ namespace TCPClient
                     else if (response[(int)Message.FunctionCode] == highestBitSet + request[(int)Message.FunctionCode])
                     {
                         richtxtPrintAnalyze.Text = "The function code in the response has its highest bit set.";
+
+                        try
+                        {
+                            //FormException formException = new FormException();
+                            //formException.Show();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("An error occurred.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
                         VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
+                        AddToHistory(request, response);
                     }
                     else
                         richtxtPrintAnalyze.Text = "Incorrect response.";
@@ -102,17 +119,16 @@ namespace TCPClient
 
             if (selected03)
             {
-                richtxtPrintAnalyze.Text = "The number of data bytes in respons to follow: ";
-                richtxtPrintAnalyze.Text += $"{Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
-
-                richtxtPrintAnalyze.Text += "\nThe contents of requested registers: ";
+                richtxtPrintAnalyze.Text = $"FC 03: Read Holding Registers\n Address: {richtxtDataAddress.Text}\n Number of registers: {Convert.ToInt32(richtxtDataRegisters.Text)}\n\n";
+                richtxtPrintAnalyze.Text += "In response: ";
+                richtxtPrintAnalyze.Text += $"\n The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
 
                 for (int index = (int)Message.ContentOfFirstRegister; index <= (response.Length - 1); index++)
                 {
                     if (counterRegisters % 2 == 0)
                     {
-                        richtxtPrintAnalyze.Text += $"\n register no.{counterRegisters / 2 + 1}: ";
-                        richtxtPrintAnalyze.Text += $"{response[index]:X2} "; ;
+                        richtxtPrintAnalyze.Text += $"\n -register no.{counterRegisters / 2 + 1}: ";
+                        richtxtPrintAnalyze.Text += $"{response[index]:X2}"; ;
                     }
                     else
                         richtxtPrintAnalyze.Text += $"{response[index]:X2}"; ;
@@ -122,13 +138,15 @@ namespace TCPClient
             }
             else if (selected06)
             {
-                richtxtPrintAnalyze.Text += $"From response: value {response[(int)(DataField.HiByteOfRegister)]} {response[(int)(DataField.LoByteOfRegister)]} " +
-                                                $"written at address {response[(int)(DataField.HiRegisterAddressByte)]} {response[(int)(DataField.LoRegisterAddressByte)]}";
+                richtxtPrintAnalyze.Text = "FC 06: Preset Single Register\n\n";
+                richtxtPrintAnalyze.Text += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
+                                            $"was written at address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
             }
             else if (selected16)
             {
-                richtxtPrintAnalyze.Text += $"From response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written" +
-                                                $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]} {response[(int)(DataField.LoRegisterAddressByte)]}";
+                richtxtPrintAnalyze.Text = "FC 16: Preset Multiple Registers\n\n";
+                richtxtPrintAnalyze.Text += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
+                                            $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}";
             }
         }
 

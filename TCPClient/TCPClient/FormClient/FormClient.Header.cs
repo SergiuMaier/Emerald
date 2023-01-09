@@ -33,9 +33,9 @@ namespace TCPClient
         public byte[] requestBuffer;    //buffer used to store all bytes from the request message
         public byte[] responseBuffer;   //buffer used to store all bytes from the response message
 
-        public const byte COM100Id = 0xFF;    //1 byte, uniquely identify the Slave device.
+        public short protocolId = 0000;     //2 bytes, Modbus protocol, will allways be 00 00.
+        public const byte COM100Id = 0xFF;          //1 byte, uniquely identify the Slave device.
 
-        public const short protocolId = 0x0000;                   //2 bytes, Modbus protocol, will allways be 00 00.
         public const byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;  //1 byte, function codes.
         public byte functionCode, slaveId;                        //the bytes for function code and slave id are stored here.
 
@@ -55,6 +55,6 @@ namespace TCPClient
         byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
         public static string addMessageToHistory = "";  //the desired message is sent to FormHistory
-
+        public static string exceptionMessage = "";     //used to send the exception message to FormException
     }
 }

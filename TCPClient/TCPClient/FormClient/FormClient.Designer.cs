@@ -365,7 +365,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel8.Controls.Add(this.label20);
-            this.panel8.Location = new System.Drawing.Point(0, 451);
+            this.panel8.Location = new System.Drawing.Point(0, 511);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(119, 50);
             this.panel8.TabIndex = 29;
@@ -490,9 +490,9 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(153)))));
-            this.panel11.Location = new System.Drawing.Point(119, -5);
+            this.panel11.Location = new System.Drawing.Point(119, -2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(3, 550);
+            this.panel11.Size = new System.Drawing.Size(3, 565);
             this.panel11.TabIndex = 31;
             // 
             // richtxtTransactionId
@@ -648,7 +648,7 @@
             this.panel1.Controls.Add(this.panelResponse);
             this.panel1.Location = new System.Drawing.Point(122, 228);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 228);
+            this.panel1.Size = new System.Drawing.Size(700, 288);
             this.panel1.TabIndex = 40;
             // 
             // richtxtPrintAnalyze
@@ -659,7 +659,7 @@
             this.richtxtPrintAnalyze.Location = new System.Drawing.Point(22, 112);
             this.richtxtPrintAnalyze.MaxLength = 4;
             this.richtxtPrintAnalyze.Name = "richtxtPrintAnalyze";
-            this.richtxtPrintAnalyze.Size = new System.Drawing.Size(572, 105);
+            this.richtxtPrintAnalyze.Size = new System.Drawing.Size(572, 165);
             this.richtxtPrintAnalyze.TabIndex = 44;
             this.richtxtPrintAnalyze.Text = "";
             // 
@@ -667,7 +667,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.btnHistory);
-            this.panel2.Location = new System.Drawing.Point(122, 451);
+            this.panel2.Location = new System.Drawing.Point(122, 511);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(745, 50);
             this.panel2.TabIndex = 41;
@@ -678,7 +678,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(816, 502);
+            this.ClientSize = new System.Drawing.Size(816, 561);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMessage);

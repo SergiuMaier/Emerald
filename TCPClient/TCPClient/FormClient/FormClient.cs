@@ -50,6 +50,8 @@ namespace TCPClient
         {
             labelStatus2.Text = "Connected";
             labelStatus2.ForeColor = Color.Green;
+            comboFunctionCode.SelectedIndex = 0;
+            comboSlave.SelectedIndex = 0;
             panelMessage.Enabled = true;
             btnSend.Enabled = true;
             btnConnect.Enabled = false;
@@ -76,6 +78,8 @@ namespace TCPClient
 
                     foreach (byte element in requestBuffer)
                         richtxtPrintRequest.Text += $" {element:X2}";
+
+                    //richtxtPrintRequest.Text = $"{BitConverter.ToString(requestBuffer)}";
                 }
                 catch
                 {
@@ -100,6 +104,7 @@ namespace TCPClient
 
                 foreach (byte element in responseBuffer)
                     richtxtPrintResponse.Text += $" {element:X2}";
+                //richtxtPrintResponse.Text = $"{BitConverter.ToString(responseBuffer)}";
 
                 AnalyzeResponse(responseBuffer, requestBuffer);
             });
@@ -162,6 +167,10 @@ namespace TCPClient
                 functionCode = fc03;
                 bufferLength = lengthCase03;
 
+                richtxtDataValues.Text = String.Empty;
+                richtxtPrintRequest.Text = String.Empty;
+                richtxtPrintResponse.Text = String.Empty;
+                richtxtPrintAnalyze.Text = String.Empty;    
                 panelValues.Enabled = false;
                 panelRegsNumber.Enabled = true;
                 richtxtDataValues.MaxLength = 4;
@@ -171,6 +180,10 @@ namespace TCPClient
                 functionCode = fc06;
                 bufferLength = lengthCase06;
 
+                richtxtDataValues.Text = String.Empty;
+                richtxtPrintRequest.Text = String.Empty;
+                richtxtPrintResponse.Text = String.Empty;
+                richtxtPrintAnalyze.Text = String.Empty;
                 panelRegsNumber.Enabled = false;
                 panelValues.Enabled = true;
                 richtxtDataValues.MaxLength = 4;
@@ -179,6 +192,10 @@ namespace TCPClient
             {
                 functionCode = fc16;
 
+                richtxtDataValues.Text = String.Empty;
+                richtxtPrintRequest.Text = String.Empty;
+                richtxtPrintResponse.Text = String.Empty;
+                richtxtPrintAnalyze.Text = String.Empty;
                 panelRegsNumber.Enabled = true;
                 panelValues.Enabled = true;
             } 
