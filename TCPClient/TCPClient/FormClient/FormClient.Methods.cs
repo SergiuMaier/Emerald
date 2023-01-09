@@ -42,29 +42,29 @@ namespace TCPClient
             switch (response[index])
             {
                 case 0x01:
-                    richtxtPrintAnalyze.Text += "\n\nException Code 01: Illegal Function. " +
-                                                "\n'The function code received in the query is not an allowable action for the slave.'";
+                    exceptionMessage = "Exception Code 01: Illegal Function. " +
+                                     "\n'The function code received in the query is not an allowable action for the slave.'";
                     break;
 
                 case 0x02:
-                    richtxtPrintAnalyze.Text += "\n\nException Code 02: Illegal Data Address. " +
-                                                "\n'The data address received in the query is not an allowable address for the slave.'";
+                    exceptionMessage = "Exception Code 02: Illegal Data Address. " +
+                                     "\n'The data address received in the query is not an allowable address for the slave.'";
                     break;
 
                 case 0x03:
-                    richtxtPrintAnalyze.Text += "\n\nException Code 03: Illegal Data Value. " +
-                                                "\n'A value contained in the query data field is not an allowable value for the slave.'";
+                    exceptionMessage = "Exception Code 03: Illegal Data Value. " +
+                                     "\n'A value contained in the query data field is not an allowable value for the slave.'";
                     break;
 
                 case 0x04:
-                    richtxtPrintAnalyze.Text += "\n\nException Code 04: Slave Device Failure. " +
-                                                "\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                    exceptionMessage = "Exception Code 04: Slave Device Failure. " +
+                                     "\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
                     break;
 
                 case 0x0A:
-                    richtxtPrintAnalyze.Text += "\n\nException Code 0A: Gateway Path Unavailable. " +
-                                                "\n'The gateway was unable to allocate an internal communication path from the input port to the " +
-                                                   "output port for processing the request.'";
+                    exceptionMessage = "Exception Code 0A: Gateway Path Unavailable. " +
+                                     "\n'The gateway was unable to allocate an internal communication path from the input port to the " +
+                                        "output port for processing the request.'";
                     break;
 
                 default:
@@ -90,18 +90,23 @@ namespace TCPClient
                     {
                         richtxtPrintAnalyze.Text = "The function code in the response has its highest bit set.";
 
+                        VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
+                        AddToHistory(request, response);
+
+                        richtxtPrintRequest.Text = String.Empty;
+                        richtxtPrintResponse.Text = String.Empty;
+                        richtxtPrintAnalyze.Text = String.Empty;
+
                         try
                         {
-                            //FormException formException = new FormException();
-                            //formException.Show();
+                            FormExceptionCode formException = new FormExceptionCode();
+                            formException.Show();
                         }
                         catch
                         {
                             MessageBox.Show("An error occurred.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-
-                        VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
-                        AddToHistory(request, response);
+                        
                     }
                     else
                         richtxtPrintAnalyze.Text = "Incorrect response.";
