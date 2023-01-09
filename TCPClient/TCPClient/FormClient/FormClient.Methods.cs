@@ -124,7 +124,7 @@ namespace TCPClient
 
             if (selected03)
             {
-                richtxtPrintAnalyze.Text = $"FC 03: Read Holding Registers\n Address: {richtxtDataAddress.Text}\n Number of registers: {Convert.ToInt32(richtxtDataRegisters.Text)}\n\n";
+                richtxtPrintAnalyze.Text = $"Device: {comboSlave.SelectedItem}\nFC 03: Read Holding Registers\nAddress: {richtxtDataAddress.Text}\nNumber of registers: {Convert.ToInt32(richtxtDataRegisters.Text)}\n\n";
                 richtxtPrintAnalyze.Text += "In response: ";
                 richtxtPrintAnalyze.Text += $"\n The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
 
@@ -143,15 +143,15 @@ namespace TCPClient
             }
             else if (selected06)
             {
-                richtxtPrintAnalyze.Text = "FC 06: Preset Single Register\n\n";
+                richtxtPrintAnalyze.Text = $"Device: {comboSlave.SelectedItem}\nFC06: Preset Single Register\n\n";
                 richtxtPrintAnalyze.Text += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
                                             $"was written at address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
             }
             else if (selected16)
             {
-                richtxtPrintAnalyze.Text = "FC 16: Preset Multiple Registers\n\n";
+                richtxtPrintAnalyze.Text = $"Device: {comboSlave.SelectedItem}\nFC 16: Preset Multiple Registers\nValues: {richtxtDataValues.Text}\n\n";
                 richtxtPrintAnalyze.Text += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
-                                            $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}";
+                                            $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
             }
         }
 

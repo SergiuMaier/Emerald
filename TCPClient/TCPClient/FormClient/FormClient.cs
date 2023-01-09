@@ -191,6 +191,8 @@ namespace TCPClient
             else if (selected16)
             {
                 functionCode = fc16;
+                richtxtDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
 
                 richtxtDataValues.Text = String.Empty;
                 richtxtPrintRequest.Text = String.Empty;
@@ -203,7 +205,7 @@ namespace TCPClient
         
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            if (counterNoOfRegisters > 0)
+            if (counterNoOfRegisters > 1)
             {
                 counterNoOfRegisters--;
                 richtxtDataRegisters.Text = counterNoOfRegisters.ToString("X4");
@@ -220,7 +222,7 @@ namespace TCPClient
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            if (counterNoOfRegisters > 0)
+            if (counterNoOfRegisters > 1)
                 btnMinus.Enabled = true;
 
             counterNoOfRegisters++;
