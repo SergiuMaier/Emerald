@@ -55,6 +55,7 @@ namespace TCPClient
         byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
         public static string addMessageToHistory = "";  //the desired message is sent to FormHistory
+        public static string exceptionTitle = "";     //used to send the exception message to FormException
         public static string exceptionMessage = "";     //used to send the exception message to FormException
     }
 }

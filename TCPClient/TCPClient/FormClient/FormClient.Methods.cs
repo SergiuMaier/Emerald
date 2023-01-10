@@ -42,28 +42,28 @@ namespace TCPClient
             switch (response[index])
             {
                 case 0x01:
-                    exceptionMessage = "Exception Code 01: Illegal Function. " +
-                                     "\n'The function code received in the query is not an allowable action for the slave.'";
+                    exceptionTitle = "Exception Code 01: Illegal Function";
+                    exceptionMessage = "'The function code received in the query is not an allowable action for the slave.'";
                     break;
 
                 case 0x02:
-                    exceptionMessage = "Exception Code 02: Illegal Data Address. " +
-                                     "\n'The data address received in the query is not an allowable address for the slave.'";
+                    exceptionTitle = "Exception Code 02: Illegal Data Address";
+                    exceptionMessage = "'The data address received in the query is not an allowable address for the slave.'";
                     break;
 
                 case 0x03:
-                    exceptionMessage = "Exception Code 03: Illegal Data Value. " +
-                                     "\n'A value contained in the query data field is not an allowable value for the slave.'";
+                    exceptionTitle = "Exception Code 03: Illegal Data Value.";
+                    exceptionMessage = "'A value contained in the query data field is not an allowable value for the slave.'";
                     break;
 
                 case 0x04:
-                    exceptionMessage = "Exception Code 04: Slave Device Failure. " +
-                                     "\n'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                    exceptionTitle = "Exception Code 04: Slave Device Failure.";
+                    exceptionMessage = "'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
                     break;
 
                 case 0x0A:
-                    exceptionMessage = "Exception Code 0A: Gateway Path Unavailable. " +
-                                     "\n'The gateway was unable to allocate an internal communication path from the input port to the " +
+                    exceptionTitle = "Exception Code 0A: Gateway Path Unavailable.";
+                    exceptionMessage = "'The gateway was unable to allocate an internal communication path from the input port to the " +
                                         "output port for processing the request.'";
                     break;
 

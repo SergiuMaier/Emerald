@@ -15,8 +15,9 @@ namespace TCPClient
         public FormExceptionCode()
         {
             InitializeComponent();
-
-            labelException.Text = FormClient.exceptionMessage;
+           
+            labelExceptionTitle.Text = FormClient.exceptionTitle;
+            labelExceptionText.Text = FormClient.exceptionMessage;
         }
 
         private void FormExceptionCode_Closing(object sender, System.ComponentModel.CancelEventArgs e)

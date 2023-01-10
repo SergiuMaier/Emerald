@@ -12,7 +12,7 @@ namespace TCPClient
         {
             InitializeComponent();
 
-            toolTipForm.SetToolTip(btnConnect, "Connect to the device");
+            toolTipForm.SetToolTip(buttonConnect, "Connect to the device");
             toolTipForm.SetToolTip(btnSend, "Send a request");
             toolTipForm.SetToolTip(btnClear, "Clear request and response messages from text boxes");
             toolTipForm.SetToolTip(btnHistory, "View message history");
@@ -20,11 +20,11 @@ namespace TCPClient
 
         private void FormClient_Load(object sender, EventArgs e)
         {
-            btnDisconnect.Enabled = false;
+            buttonDisconnect.Enabled = false;
             panelMessage.Enabled = false;
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void buttonConnect_Click(object sender, EventArgs e)
         {
             try
             {
@@ -54,8 +54,8 @@ namespace TCPClient
             comboSlave.SelectedIndex = 0;
             panelMessage.Enabled = true;
             btnSend.Enabled = true;
-            btnConnect.Enabled = false;
-            btnDisconnect.Enabled = true;
+            buttonConnect.Enabled = false;
+            buttonDisconnect.Enabled = true;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -108,16 +108,15 @@ namespace TCPClient
                 AnalyzeResponse(responseBuffer, requestBuffer);
             });
         }
-
-        private void btnDisconnect_Click(object sender, EventArgs e)
+        private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             try
             {
                 client.Events.Disconnected += Disconnected;
                 //client.Disconnect(); //crash
 
-                btnConnect.Enabled = true;
-                btnDisconnect.Enabled = false;
+                buttonConnect.Enabled = true;
+                buttonDisconnect.Enabled = false;
                 btnSend.Enabled = false;
 
                 richtxtIP.Enabled = true;
@@ -136,7 +135,7 @@ namespace TCPClient
         {
             labelStatus2.Text = "Not connected";
             labelStatus2.ForeColor = Color.Red;
-            btnConnect.Enabled = true;
+            buttonConnect.Enabled = true;
             richtxtIP.Enabled = true;
             richtxtPort.Enabled = true;
         }
@@ -255,5 +254,7 @@ namespace TCPClient
                 }
             //}
         }
+
+       
     }
 }

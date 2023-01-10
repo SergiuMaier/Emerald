@@ -23,6 +23,7 @@ namespace TCPClient
             
             toolTipHistory.SetToolTip(btnClear, "Clear the history");
             toolTipHistory.SetToolTip(btnSave, "Save the history to a file");
+            toolTipHistory.SetToolTip(btnOpenFile, "Open the file");
         }
 
         public void FormHistory_Load(object sender, EventArgs e)
@@ -61,6 +62,18 @@ namespace TCPClient
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+        }
+
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            btnClose.ForeColor = Color.White;
+            btnClose.BackColor = Color.Red;
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.ForeColor = Color.FromArgb(0, 153, 153);
+            btnClose.BackColor = Color.Black;
         }
     }
 }
