@@ -267,5 +267,10 @@ namespace TCPClient
             }
             //}
         }
+
+        private void panelMessage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

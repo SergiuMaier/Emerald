@@ -359,7 +359,7 @@
             this.labelStatus2.AutoSize = true;
             this.labelStatus2.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStatus2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(128)))));
-            this.labelStatus2.Location = new System.Drawing.Point(634, 18);
+            this.labelStatus2.Location = new System.Drawing.Point(602, 18);
             this.labelStatus2.Name = "labelStatus2";
             this.labelStatus2.Size = new System.Drawing.Size(90, 15);
             this.labelStatus2.TabIndex = 11;
@@ -429,7 +429,7 @@
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisconnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonDisconnect.ForeColor = System.Drawing.Color.White;
-            this.buttonDisconnect.Location = new System.Drawing.Point(510, 7);
+            this.buttonDisconnect.Location = new System.Drawing.Point(495, 7);
             this.buttonDisconnect.Name = "buttonDisconnect";
             this.buttonDisconnect.Size = new System.Drawing.Size(96, 34);
             this.buttonDisconnect.TabIndex = 41;
@@ -449,7 +449,7 @@
             this.buttonConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonConnect.ForeColor = System.Drawing.Color.White;
-            this.buttonConnect.Location = new System.Drawing.Point(408, 7);
+            this.buttonConnect.Location = new System.Drawing.Point(395, 7);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(96, 34);
             this.buttonConnect.TabIndex = 43;
@@ -544,6 +544,7 @@
             this.panelMessage.Name = "panelMessage";
             this.panelMessage.Size = new System.Drawing.Size(745, 228);
             this.panelMessage.TabIndex = 39;
+            this.panelMessage.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMessage_Paint);
             // 
             // buttonSend
             // 
@@ -731,8 +732,9 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.buttonHistory);
+            this.panel2.ForeColor = System.Drawing.Color.White;
             this.panel2.Location = new System.Drawing.Point(122, 511);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(745, 50);
@@ -764,7 +766,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(867, 561);
+            this.ClientSize = new System.Drawing.Size(822, 561);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMessage);
