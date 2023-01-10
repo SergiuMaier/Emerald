@@ -18,6 +18,8 @@ namespace TCPClient.CustomControls
         private Color borderColor = Color.FromArgb(0, 191, 191);
         private int borderSize = 2;
         private bool underlinedStyle = false;
+        private Color borderFocusColor = Color.Red;
+        private bool isFocused = false;
 
         //Constructor
         public CustomTextBox()
@@ -38,6 +40,20 @@ namespace TCPClient.CustomControls
             {
                 borderColor = value;
                 this.Invalidate();
+            }
+        }
+
+        [Category("Custom Control")]
+        public Color BorderFocusColor
+        {
+            get
+            {
+                return borderFocusColor;
+            }
+
+            set
+            {
+                borderFocusColor = value;
             }
         }
 
@@ -160,6 +176,8 @@ namespace TCPClient.CustomControls
             }
         }
 
+        
+
         //Methods
 
         protected override void OnPaint(PaintEventArgs e)
@@ -172,10 +190,22 @@ namespace TCPClient.CustomControls
             {
                 penBorder.Alignment = PenAlignment.Inset;
 
-                if (underlinedStyle)
-                    graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                if (!isFocused)
+                {
+                    if (underlinedStyle)
+                        graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                    else
+                        graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
+                }
                 else
-                    graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
+                {
+                    penBorder.Color = borderFocusColor;
+                    
+                    if (underlinedStyle)
+                        graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                    else
+                        graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
+                }
             }
         }
 
@@ -203,6 +233,38 @@ namespace TCPClient.CustomControls
 
                 this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
             }
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            this.OnClick(e);
+        }
+
+        private void textBox1_MouseEnter(object sender, EventArgs e)
+        {
+            this.OnMouseEnter(e);
+        }
+
+        private void textBox1_MouseLeave(object sender, EventArgs e)
+        {
+            this.OnMouseLeave(e);
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.OnKeyPress(e);
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            isFocused = true;
+            this.Invalidate();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            isFocused = false;
+            this.Invalidate();
         }
     }
 }
