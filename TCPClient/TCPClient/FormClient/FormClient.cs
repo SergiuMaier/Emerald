@@ -1,27 +1,25 @@
 using SuperSimpleTcp;
 using System.Globalization;
 using System.Text;
+using TCPClient.CustomControls;
 
 namespace TCPClient
 {
     public partial class FormClient : Form
     {
         SimpleTcpClient client;
-       
+
         public FormClient()
         {
             InitializeComponent();
-
-            toolTipForm.SetToolTip(buttonConnect, "Connect to the device");
-            toolTipForm.SetToolTip(buttonSend, "Send a request");
-            toolTipForm.SetToolTip(buttonClear, "Clear request and response messages from text boxes");
-            toolTipForm.SetToolTip(buttonHistory, "View message history");
         }
 
         private void FormClient_Load(object sender, EventArgs e)
         {
-            buttonDisconnect.Enabled = false;
-            panelMessage.Enabled = false;
+            toolTipForm.SetToolTip(buttonConnect, "Connect to the device");
+            toolTipForm.SetToolTip(buttonSend, "Send a request");
+            toolTipForm.SetToolTip(buttonClear, "Clear request and response messages from text boxes");
+            toolTipForm.SetToolTip(buttonHistory, "View message history");
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
@@ -35,7 +33,7 @@ namespace TCPClient
 
                 client.Connect();
 
-                comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
+                //comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
             }
             catch
             {
@@ -47,28 +45,33 @@ namespace TCPClient
         }
 
         private void Connected(object sender, ConnectionEventArgs e)
-        {
+        {   
+            //panel Connection
+            customTextBoxIP.Enable = false;
+            customTextBoxPort.Enable = false;
+            buttonConnect.Enabled = false;
+            buttonDisconnect.Enabled = true;
             labelStatus2.Text = "Connected";
             labelStatus2.ForeColor = Color.Green;
+            
+            //panel Message
             comboFunctionCode.SelectedIndex = 0;
             comboSlave.SelectedIndex = 0;
             panelMessage.Enabled = true;
             buttonSend.Enabled = true;
-            buttonConnect.Enabled = false;
-            buttonDisconnect.Enabled = true;
+          
+            //panel Options
+            buttonHistory.Enabled = true;
         }
+
         private void buttonSend_Click(object sender, EventArgs e)
         {
             if (client.IsConnected)
             {
-                customTextBoxPrintRequest.Texts = String.Empty;
-                customTextBoxPrintResponse.Texts = String.Empty;
-                customTextBoxPrintAnalyze.Texts = String.Empty;
-
                 try
                 {
                     counterTransactionId++;
-                    customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4"); //testeaza daca e buna pusa
+                    customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4"); 
 
                     requestBuffer = new byte[bufferLength];
 
@@ -77,12 +80,10 @@ namespace TCPClient
 
                     foreach (byte element in requestBuffer)
                         customTextBoxPrintRequest.Texts += $" {element:X2}";
-                    //richtxtPrintRequest.Text = $"{BitConverter.ToString(requestBuffer)}";
                 }
                 catch
                 {
                     MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    customTextBoxPrintAnalyze.Texts = "Invalid format.";
                 }
             }
         }
@@ -102,27 +103,17 @@ namespace TCPClient
 
                 foreach (byte element in responseBuffer)
                     customTextBoxPrintResponse.Texts += $" {element:X2}";
-                //richtxtPrintResponse.Text = $"{BitConverter.ToString(responseBuffer)}";
 
                 AnalyzeResponse(responseBuffer, requestBuffer);
             });
         }
+
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             try
             {
                 client.Events.Disconnected += Disconnected;
                 //client.Disconnect(); //crash
-
-                buttonConnect.Enabled = true;
-                buttonDisconnect.Enabled = false;
-                buttonSend.Enabled = false;
-
-                customTextBoxIP.Enabled = true;
-                customTextBoxPort.Enabled = true;
-
-                labelStatus2.Text = "Not connected";
-                labelStatus2.ForeColor = Color.Red;
             }
             catch (Exception ex)
             {
@@ -132,13 +123,20 @@ namespace TCPClient
 
         private void Disconnected(object sender, ConnectionEventArgs e)
         {
-            labelStatus2.Text = "Not connected";
-            labelStatus2.ForeColor = Color.Red;
-            
-            buttonConnect.Enabled = true;
-            
+            //panel Connection
             customTextBoxIP.Enabled = true;
             customTextBoxPort.Enabled = true;
+            buttonConnect.Enabled = true;
+            buttonDisconnect.Enabled = false;
+            labelStatus2.Text = "Not connected";
+            labelStatus2.ForeColor = Color.Red;
+
+            //panel Message
+            buttonSend.Enabled = false;
+            buttonConnect.Enabled = true;
+
+            //panel Options
+            buttonHistory.Enabled = false;
         }
 
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
@@ -148,7 +146,7 @@ namespace TCPClient
                 slaveId = COM100Id;
                 customTextBoxSlaveId.Enable = false;
             }
-            else  
+            else
             {
                 slaveId = byte.Parse(customTextBoxSlaveId.Texts, NumberStyles.HexNumber);
                 customTextBoxSlaveId.Enable = true;
@@ -157,63 +155,56 @@ namespace TCPClient
 
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //falgs
             selected03 = (comboFunctionCode.SelectedIndex == 0);
             selected06 = (comboFunctionCode.SelectedIndex == 1);
             selected16 = (comboFunctionCode.SelectedIndex == 2);
+
+            //clear the fields every time a new command is selected
+            customTextBoxPrintRequest.Texts = String.Empty;
+            customTextBoxPrintResponse.Texts = String.Empty;
+            customTextBoxPrintAnalyze.Texts = String.Empty;
 
             if (selected03)
             {
                 functionCode = fc03;
                 bufferLength = lengthCase03;
 
-                customTextBoxDataValues.Texts = String.Empty;
-                customTextBoxPrintRequest.Texts = String.Empty;
-                customTextBoxPrintResponse.Texts = String.Empty;
-                customTextBoxPrintAnalyze.Texts = String.Empty;
-
                 panelRegsNumber.Enabled = true;
                 customTextBoxDataRegisters.BorderColor = Color.FromArgb(0, 153, 153);
-            
+
                 panelValues.Enabled = false;
                 customTextBoxDataValues.BorderColor = Color.Gray;
-                customTextBoxDataValues.MaxLength = 4;
+                customTextBoxDataValues.Texts = String.Empty;
             }
             else if (selected06)
             {
                 functionCode = fc06;
                 bufferLength = lengthCase06;
 
-                customTextBoxDataValues.Texts = String.Empty;
-                customTextBoxPrintRequest.Text = String.Empty;
-                customTextBoxPrintResponse.Text = String.Empty;
-                customTextBoxPrintAnalyze.Text = String.Empty;
-                
                 panelRegsNumber.Enabled = false;
                 customTextBoxDataRegisters.BorderColor = Color.Gray;
-                
+
                 panelValues.Enabled = true;
                 customTextBoxDataValues.BorderColor = Color.FromArgb(0, 153, 153);
                 customTextBoxDataValues.MaxLength = 4;
+                customTextBoxDataValues.Texts = String.Empty;
             }
             else if (selected16)
             {
                 functionCode = fc16;
-                customTextBoxDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
 
-                customTextBoxDataValues.Texts = String.Empty;
-                customTextBoxPrintRequest.Text = String.Empty;
-                customTextBoxPrintResponse.Text = String.Empty;
-                customTextBoxPrintAnalyze.Text = String.Empty;
-                
                 panelRegsNumber.Enabled = true;
                 customTextBoxDataRegisters.BorderColor = Color.FromArgb(0, 153, 153);
 
                 panelValues.Enabled = true;
                 customTextBoxDataValues.BorderColor = Color.FromArgb(0, 153, 153);
+                customTextBoxDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                customTextBoxDataValues.Texts = String.Empty;
             }
         }
-        
+
         private void btnMinus_Click(object sender, EventArgs e)
         {
             if (counterNoOfRegisters > 1)
@@ -233,12 +224,14 @@ namespace TCPClient
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
+            //enableing the button
             if (counterNoOfRegisters > 1)
                 btnMinus.Enabled = true;
 
             counterNoOfRegisters++;
             customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString("X4");
-
+            
+            //changeing text box property and buffer lenght depending on the selected command
             if (selected16)
             {
                 customTextBoxDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
@@ -254,8 +247,6 @@ namespace TCPClient
 
         private void buttonHistory_Click(object sender, EventArgs e)
         {
-            //if (client.IsConnected)
-            //{
             try
             {
                 FormHistory formHistory = new FormHistory();
@@ -263,14 +254,8 @@ namespace TCPClient
             }
             catch
             {
-                MessageBox.Show("Device disconnected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //}
-        }
-
-        private void panelMessage_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

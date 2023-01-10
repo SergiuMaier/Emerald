@@ -13,13 +13,13 @@ namespace TCPClient
 {
     public partial class FormHistory : Form
     {
-        string path = @"C:\Users\sergi\OneDrive\Desktop\cercetare\history.txt";
+        readonly string path = @"C:\Users\sergi\OneDrive\Desktop\cercetare\history.txt";
 
         public FormHistory()
         {
             InitializeComponent();
 
-            txtBoxHistory.Text = FormClient.addMessageToHistory;
+            txtBoxHistory.Text = FormClient.AddMessageToHistory;
             
             toolTipHistory.SetToolTip(btnClear, "Clear the history");
             toolTipHistory.SetToolTip(btnSave, "Save the history to a file");
@@ -46,7 +46,7 @@ namespace TCPClient
             if(MessageBox.Show("Are you sure you want to delete the history?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 txtBoxHistory.Text = String.Empty;
-                FormClient.addMessageToHistory = String.Empty;
+                FormClient.AddMessageToHistory = String.Empty;
             }
         }
 

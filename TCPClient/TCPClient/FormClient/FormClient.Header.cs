@@ -25,19 +25,21 @@ namespace TCPClient
             LoByteOfRegister = 11
         }
 
-        public int counterTransactionId;    //this counter is incremented for each request. 
-        public int counterNoOfRegisters = 1;    //the value can increase or decrease, to get the desired number of registers.
+        //Fields
+        private int counterTransactionId;        //this counter is incremented for each request. 
+        private int counterNoOfRegisters = 1;    //the value can increase or decrease, to get the desired number of registers.
 
-        bool selected03, selected06, selected16;  //flags set when one of the commands is selected
-        
-        public byte[] requestBuffer;    //buffer used to store all bytes from the request message
-        public byte[] responseBuffer;   //buffer used to store all bytes from the response message
+        bool selected03, selected06, selected16; //flags set when one of the commands is selected
 
-        public short protocolId = 0x0000;     //2 bytes, Modbus protocol, will allways be 00 00.
-        public const byte COM100Id = 0xFF;          //1 byte, uniquely identify the Slave device.
+        private byte[] requestBuffer;    //buffer used to store all bytes from the request message
+        private byte[] responseBuffer;   //buffer used to store all bytes from the response message
+
+        private short protocolId;            //2 bytes, Modbus protocol, will allways be 00 00.
+        public const byte COM100Id = 0xFF;   //1 byte, uniquely identify the Slave device.
 
         public const byte fc03 = 0x03, fc06 = 0x06, fc16 = 0x10;  //1 byte, function codes.
-        public byte functionCode, slaveId;                        //the bytes for function code and slave id are stored here.
+        private byte functionCode;
+        private byte slaveId;                     //the bytes for function code and slave id are stored here.
 
         public const byte header_Length = 0x07;   //7 bytes, MBAP Header (transactionID + protocolID + Length + SlaveId)   
 
@@ -48,14 +50,62 @@ namespace TCPClient
         public const byte numberOfBytesToFollow_Length = 0x01;
         public const byte highestBitSet = 0x80;
 
-        //the buffer length varies depending on the selected function code 
+        //the buffer length varies depending on the selected command
         byte bufferLength;
         byte lengthCase03 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
         byte lengthCase06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
         byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
-        public static string addMessageToHistory = "";  //the desired message is sent to FormHistory
-        public static string exceptionTitle = "";     //used to send the exception message to FormException
-        public static string exceptionMessage = "";     //used to send the exception message to FormException
+        private static string addMessageToHistory;  // = "";  //the desired message is sent to FormHistory
+        private static string exceptionTitle;       //used to send the exception message to FormException
+        private static string exceptionMessage;     //used to send the exception message to FormException
+
+        //Properties
+        public static string AddMessageToHistory
+        {
+            get
+            {
+                return addMessageToHistory;
+            }
+
+            set
+            {
+                addMessageToHistory = value;
+            }
+        }
+
+        public static string ExceptionTitle
+        {
+            get
+            {
+                return exceptionTitle;
+            }
+
+            set
+            {
+                exceptionTitle = value;
+            }
+        }
+
+        public static string ExceptionMessage
+        {
+            get
+            {
+                return exceptionMessage;
+            }
+
+            set
+            {
+                exceptionMessage = value;
+            }
+        }
+
+        public int CounterTransactionId { get => counterTransactionId; set => counterTransactionId = value; }
+        public int CounterNoOfRegisters { get => counterNoOfRegisters; set => counterNoOfRegisters = value; }
+        public byte[] RequestBuffer { get => requestBuffer; set => requestBuffer = value; }
+        public byte[] ResponseBuffer { get => responseBuffer; set => responseBuffer = value; }
+        public short ProtocolId { get => protocolId; set => protocolId = value; }
+        public byte FunctionCode { get => functionCode; set => functionCode = value; }
+        public byte SlaveId { get => slaveId; set => slaveId = value; }
     }
 }

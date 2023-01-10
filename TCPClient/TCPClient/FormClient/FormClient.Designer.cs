@@ -425,6 +425,7 @@
             this.buttonDisconnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonDisconnect.BorderRadius = 25;
             this.buttonDisconnect.BorderSize = 0;
+            this.buttonDisconnect.Enabled = false;
             this.buttonDisconnect.FlatAppearance.BorderSize = 0;
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisconnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -539,12 +540,12 @@
             this.panelMessage.Controls.Add(this.label10);
             this.panelMessage.Controls.Add(this.label2);
             this.panelMessage.Controls.Add(this.comboSlave);
+            this.panelMessage.Enabled = false;
             this.panelMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.panelMessage.Location = new System.Drawing.Point(122, 50);
             this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(745, 228);
+            this.panelMessage.Size = new System.Drawing.Size(700, 228);
             this.panelMessage.TabIndex = 39;
-            this.panelMessage.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMessage_Paint);
             // 
             // buttonSend
             // 
@@ -553,6 +554,7 @@
             this.buttonSend.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonSend.BorderRadius = 25;
             this.buttonSend.BorderSize = 0;
+            this.buttonSend.Enabled = false;
             this.buttonSend.FlatAppearance.BorderSize = 0;
             this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSend.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -747,6 +749,7 @@
             this.buttonHistory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonHistory.BorderRadius = 25;
             this.buttonHistory.BorderSize = 0;
+            this.buttonHistory.Enabled = false;
             this.buttonHistory.FlatAppearance.BorderSize = 0;
             this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHistory.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

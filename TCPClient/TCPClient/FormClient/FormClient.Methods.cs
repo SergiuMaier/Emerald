@@ -24,17 +24,17 @@ namespace TCPClient
 
         public void AddToHistory(byte[] request, byte[] response)
         {
-            addMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
+            AddMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
 
             foreach (byte element in request)
-                addMessageToHistory += $" {element:X2}";
+                AddMessageToHistory += $" {element:X2}";
 
-            addMessageToHistory += $"{Environment.NewLine}<-";
+            AddMessageToHistory += $"{Environment.NewLine}<-";
 
             foreach (byte element in response)
-                addMessageToHistory += $" {element:X2}";
+                AddMessageToHistory += $" {element:X2}";
 
-            addMessageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
+            AddMessageToHistory += $"{Environment.NewLine}{Environment.NewLine}";
         }
 
         public void VerifyExceptionCode(byte[] response, int index)
@@ -42,28 +42,28 @@ namespace TCPClient
             switch (response[index])
             {
                 case 0x01:
-                    exceptionTitle = "Exception Code 01: Illegal Function";
-                    exceptionMessage = "'The function code received in the query is not an allowable action for the slave.'";
+                    ExceptionTitle = "Exception Code 01: Illegal Function";
+                    ExceptionMessage = "'The function code received in the query is not an allowable action for the slave.'";
                     break;
 
                 case 0x02:
-                    exceptionTitle = "Exception Code 02: Illegal Data Address";
-                    exceptionMessage = "'The data address received in the query is not an allowable address for the slave.'";
+                    ExceptionTitle = "Exception Code 02: Illegal Data Address";
+                    ExceptionMessage = "'The data address received in the query is not an allowable address for the slave.'";
                     break;
 
                 case 0x03:
-                    exceptionTitle = "Exception Code 03: Illegal Data Value.";
-                    exceptionMessage = "'A value contained in the query data field is not an allowable value for the slave.'";
+                    ExceptionTitle = "Exception Code 03: Illegal Data Value.";
+                    ExceptionMessage = "'A value contained in the query data field is not an allowable value for the slave.'";
                     break;
 
                 case 0x04:
-                    exceptionTitle = "Exception Code 04: Slave Device Failure.";
-                    exceptionMessage = "'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                    ExceptionTitle = "Exception Code 04: Slave Device Failure.";
+                    ExceptionMessage = "'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
                     break;
 
                 case 0x0A:
-                    exceptionTitle = "Exception Code 0A: Gateway Path Unavailable.";
-                    exceptionMessage = "'The gateway was unable to allocate an internal communication path from the input port to the " +
+                    ExceptionTitle = "Exception Code 0A: Gateway Path Unavailable.";
+                    ExceptionMessage = "'The gateway was unable to allocate an internal communication path from the input port to the " +
                                         "output port for processing the request.'";
                     break;
 
