@@ -24,23 +24,42 @@ namespace TCPClient
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
-            try
+            if (!connectionStatus)
             {
-                client = new SimpleTcpClient(customTextBoxIP.Texts + ":" + customTextBoxPort.Texts);
+                connectionStatus = true;
 
-                client.Events.Connected += Connected;
-                client.Events.DataReceived += DataReceived;
+                try
+                {
+                    client = new SimpleTcpClient(customTextBoxIP.Texts + ":" + customTextBoxPort.Texts);
 
-                client.Connect();
+                    client.Events.Connected += Connected;
+                    client.Events.DataReceived += DataReceived;
 
-                //comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
+                    client.Connect();
+
+                    //comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
+                }
+                catch
+                {
+                    if ((customTextBoxIP.Texts == String.Empty) && (customTextBoxPort.Text == String.Empty))
+                        MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch
+            else
             {
-                if ((customTextBoxIP.Texts == "") && (customTextBoxPort.Text == ""))
-                    MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                    MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connectionStatus = false;
+
+                try
+                {
+                    client.Events.Disconnected += Disconnected;
+                    //client.Disconnect(); //crash
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -49,7 +68,7 @@ namespace TCPClient
             //panel Connection
             customTextBoxIP.Enable = false;
             customTextBoxPort.Enable = false;
-            buttonConnect.Enabled = false;
+            buttonConnect.Text = "Dis";
             buttonDisconnect.Enabled = true;
             labelStatus2.Text = "Connected";
             labelStatus2.ForeColor = Color.Green;
@@ -62,6 +81,29 @@ namespace TCPClient
           
             //panel Options
             buttonHistory.Enabled = true;
+        }
+
+        private void buttonDisconnect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Disconnected(object sender, ConnectionEventArgs e)
+        {
+            //panel Connection
+            customTextBoxIP.Enabled = true;
+            customTextBoxPort.Enabled = true;
+            buttonConnect.Text = "Connect";
+            buttonDisconnect.Enabled = false;
+            labelStatus2.Text = "Not connected";
+            labelStatus2.ForeColor = Color.Red;
+
+            //panel Message
+            buttonSend.Enabled = false;
+            buttonConnect.Enabled = true;
+
+            //panel Options
+            buttonHistory.Enabled = false;
         }
 
         private void buttonSend_Click(object sender, EventArgs e)
@@ -106,37 +148,6 @@ namespace TCPClient
 
                 AnalyzeResponse(responseBuffer, requestBuffer);
             });
-        }
-
-        private void buttonDisconnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                client.Events.Disconnected += Disconnected;
-                //client.Disconnect(); //crash
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Disconnected(object sender, ConnectionEventArgs e)
-        {
-            //panel Connection
-            customTextBoxIP.Enabled = true;
-            customTextBoxPort.Enabled = true;
-            buttonConnect.Enabled = true;
-            buttonDisconnect.Enabled = false;
-            labelStatus2.Text = "Not connected";
-            labelStatus2.ForeColor = Color.Red;
-
-            //panel Message
-            buttonSend.Enabled = false;
-            buttonConnect.Enabled = true;
-
-            //panel Options
-            buttonHistory.Enabled = false;
         }
 
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace TCPClient.CustomControls
         //Fields
         private int borderSize = 0;
         private int borderRadius = 40;
-        private Color borderColor = Color.FromArgb(0, 153, 153);
+        private Color borderColor = Color.FromArgb(0, 191, 191);
 
         //Properties
         [Category("Custom Button")]
@@ -98,7 +98,7 @@ namespace TCPClient.CustomControls
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
             this.Size = new Size(150, 40);
-            this.BackColor = Color.FromArgb(0, 191, 191);
+            this.BackColor = Color.FromArgb(0, 153, 153);
             this.ForeColor = Color.White;
             this.Resize += new EventHandler(Button_Resize);
         }
