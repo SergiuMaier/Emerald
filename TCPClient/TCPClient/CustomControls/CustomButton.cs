@@ -100,6 +100,13 @@ namespace TCPClient.CustomControls
             this.Size = new Size(150, 40);
             this.BackColor = Color.FromArgb(0, 191, 191);
             this.ForeColor = Color.White;
+            this.Resize += new EventHandler(Button_Resize);
+        }
+
+        private void Button_Resize(object sender, EventArgs e)
+        {
+            if(borderRadius > this.Height)
+                BorderRadius = this.Height;
         }
 
         //Methods
