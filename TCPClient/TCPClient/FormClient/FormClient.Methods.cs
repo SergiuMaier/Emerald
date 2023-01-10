@@ -68,14 +68,14 @@ namespace TCPClient
                     break;
 
                 default:
-                    richtxtPrintAnalyze.Text = "\nException response.";
+                    customTextBoxPrintAnalyze.Texts = "Exception response.";
                     break;
             }
         }
 
         public void AnalyzeResponse(byte[] response, byte[] request)
         {
-            richtxtPrintAnalyze.Enabled = true;
+            customTextBoxPrintAnalyze.Enable = true;
 
             if ((response[(int)Message.TransactionId] == request[(int)Message.TransactionId]) && (response[(int)Message.ProtocolId] == request[(int)Message.ProtocolId]))
             {
@@ -88,14 +88,14 @@ namespace TCPClient
                     }
                     else if (response[(int)Message.FunctionCode] == highestBitSet + request[(int)Message.FunctionCode])
                     {
-                        richtxtPrintAnalyze.Text = "The function code in the response has its highest bit set.";
+                        customTextBoxPrintAnalyze.Texts = $"The function code in the response has its highest bit set. {Environment.NewLine}";
 
                         VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
                         AddToHistory(request, response);
 
-                        richtxtPrintRequest.Text = String.Empty;
-                        richtxtPrintResponse.Text = String.Empty;
-                        richtxtPrintAnalyze.Text = String.Empty;
+                        customTextBoxPrintRequest.Texts = String.Empty;
+                        customTextBoxPrintResponse.Texts = String.Empty;
+                        customTextBoxPrintAnalyze.Texts = String.Empty;
 
                         try
                         {
@@ -109,13 +109,13 @@ namespace TCPClient
                         
                     }
                     else
-                        richtxtPrintAnalyze.Text = "Incorrect response.";
+                        customTextBoxPrintAnalyze.Texts = "Incorrect response.";
                 }
                 else
-                    richtxtPrintAnalyze.Text = "Different Slave ID in the response.";
+                    customTextBoxPrintAnalyze.Texts = "Different Slave ID in the response.";
             }
             else
-                richtxtPrintAnalyze.Text = "Incorrect response.";
+                customTextBoxPrintAnalyze.Texts = "Incorrect response.";
         }
 
         public void ReadDataFromResponse(byte[] response)
@@ -124,33 +124,34 @@ namespace TCPClient
 
             if (selected03)
             {
-                richtxtPrintAnalyze.Text = $"Device: {comboSlave.SelectedItem}\nFC 03: Read Holding Registers\nAddress: {customTextBoxDataAddress.Texts}\nNumber of registers: {Convert.ToInt32(customTextBoxDataRegisters.Texts)}\n\n";
-                richtxtPrintAnalyze.Text += "In response: ";
-                richtxtPrintAnalyze.Text += $"\n The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}FC 03: Read Holding Registers {Environment.NewLine}" +
+                                                  $"Address: {customTextBoxDataAddress.Texts} {Environment.NewLine}Number of registers: {Convert.ToInt32(customTextBoxDataRegisters.Texts)} {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts += $"In response: {Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts += $"The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
 
                 for (int index = (int)Message.ContentOfFirstRegister; index <= (response.Length - 1); index++)
                 {
                     if (counterRegisters % 2 == 0)
                     {
-                        richtxtPrintAnalyze.Text += $"\n -register no.{counterRegisters / 2 + 1}: ";
-                        richtxtPrintAnalyze.Text += $"{response[index]:X2}"; ;
+                        customTextBoxPrintAnalyze.Texts += $"{Environment.NewLine}-register no.{counterRegisters / 2 + 1}: ";
+                        customTextBoxPrintAnalyze.Texts += $"{response[index]:X2}"; ;
                     }
                     else
-                        richtxtPrintAnalyze.Text += $"{response[index]:X2}"; ;
+                        customTextBoxPrintAnalyze.Texts += $"{response[index]:X2}"; ;
 
                     counterRegisters++;
                 }
             }
             else if (selected06)
             {
-                richtxtPrintAnalyze.Text = $"Device: {comboSlave.SelectedItem}\nFC06: Preset Single Register\n\n";
-                richtxtPrintAnalyze.Text += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}FC06: Preset Single Register {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
                                             $"was written at address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
             }
             else if (selected16)
             {
-                richtxtPrintAnalyze.Text = $"Device: {comboSlave.SelectedItem}\nFC 16: Preset Multiple Registers\nValues: {customTextBoxDataValues.Texts}\n\n";
-                richtxtPrintAnalyze.Text += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}FC 16: Preset Multiple Registers {Environment.NewLine}Values: {customTextBoxDataValues.Texts} {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
                                             $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
             }
         }

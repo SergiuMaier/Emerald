@@ -13,9 +13,9 @@ namespace TCPClient
             InitializeComponent();
 
             toolTipForm.SetToolTip(buttonConnect, "Connect to the device");
-            toolTipForm.SetToolTip(btnSend, "Send a request");
-            toolTipForm.SetToolTip(btnClear, "Clear request and response messages from text boxes");
-            toolTipForm.SetToolTip(btnHistory, "View message history");
+            toolTipForm.SetToolTip(buttonSend, "Send a request");
+            toolTipForm.SetToolTip(buttonClear, "Clear request and response messages from text boxes");
+            toolTipForm.SetToolTip(buttonHistory, "View message history");
         }
 
         private void FormClient_Load(object sender, EventArgs e)
@@ -53,37 +53,36 @@ namespace TCPClient
             comboFunctionCode.SelectedIndex = 0;
             comboSlave.SelectedIndex = 0;
             panelMessage.Enabled = true;
-            btnSend.Enabled = true;
+            buttonSend.Enabled = true;
             buttonConnect.Enabled = false;
             buttonDisconnect.Enabled = true;
         }
-
-        private void btnSend_Click(object sender, EventArgs e)
+        private void buttonSend_Click(object sender, EventArgs e)
         {
             if (client.IsConnected)
             {
-                richtxtPrintRequest.Text = String.Empty;
-                richtxtPrintResponse.Text = String.Empty;
-                richtxtPrintAnalyze.Text = String.Empty;
+                customTextBoxPrintRequest.Texts = String.Empty;
+                customTextBoxPrintResponse.Texts = String.Empty;
+                customTextBoxPrintAnalyze.Texts = String.Empty;
 
                 try
                 {
                     counterTransactionId++;
                     customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4"); //testeaza daca e buna pusa
 
-                    requestBuffer = new byte[bufferLength]; 
+                    requestBuffer = new byte[bufferLength];
 
                     BuildRequest(requestBuffer, customTextBoxTransactionId.Texts, protocolId, slaveId, functionCode, customTextBoxDataAddress.Texts, customTextBoxDataRegisters.Texts, customTextBoxDataValues.Texts);
                     client.Send(requestBuffer);
 
                     foreach (byte element in requestBuffer)
-                        richtxtPrintRequest.Text += $" {element:X2}";
+                        customTextBoxPrintRequest.Texts += $" {element:X2}";
                     //richtxtPrintRequest.Text = $"{BitConverter.ToString(requestBuffer)}";
                 }
                 catch
                 {
                     MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    richtxtPrintAnalyze.Text = "Invalid format.";
+                    customTextBoxPrintAnalyze.Texts = "Invalid format.";
                 }
             }
         }
@@ -102,7 +101,7 @@ namespace TCPClient
                 }
 
                 foreach (byte element in responseBuffer)
-                    richtxtPrintResponse.Text += $" {element:X2}";
+                    customTextBoxPrintResponse.Texts += $" {element:X2}";
                 //richtxtPrintResponse.Text = $"{BitConverter.ToString(responseBuffer)}";
 
                 AnalyzeResponse(responseBuffer, requestBuffer);
@@ -117,7 +116,7 @@ namespace TCPClient
 
                 buttonConnect.Enabled = true;
                 buttonDisconnect.Enabled = false;
-                btnSend.Enabled = false;
+                buttonSend.Enabled = false;
 
                 customTextBoxIP.Enabled = true;
                 customTextBoxPort.Enabled = true;
@@ -168,9 +167,9 @@ namespace TCPClient
                 bufferLength = lengthCase03;
 
                 customTextBoxDataValues.Texts = String.Empty;
-                richtxtPrintRequest.Text = String.Empty;
-                richtxtPrintResponse.Text = String.Empty;
-                richtxtPrintAnalyze.Text = String.Empty;
+                customTextBoxPrintRequest.Texts = String.Empty;
+                customTextBoxPrintResponse.Texts = String.Empty;
+                customTextBoxPrintAnalyze.Texts = String.Empty;
 
                 panelRegsNumber.Enabled = true;
                 customTextBoxDataRegisters.BorderColor = Color.FromArgb(0, 153, 153);
@@ -185,9 +184,9 @@ namespace TCPClient
                 bufferLength = lengthCase06;
 
                 customTextBoxDataValues.Texts = String.Empty;
-                richtxtPrintRequest.Text = String.Empty;
-                richtxtPrintResponse.Text = String.Empty;
-                richtxtPrintAnalyze.Text = String.Empty;
+                customTextBoxPrintRequest.Text = String.Empty;
+                customTextBoxPrintResponse.Text = String.Empty;
+                customTextBoxPrintAnalyze.Text = String.Empty;
                 
                 panelRegsNumber.Enabled = false;
                 customTextBoxDataRegisters.BorderColor = Color.Gray;
@@ -203,9 +202,9 @@ namespace TCPClient
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
 
                 customTextBoxDataValues.Texts = String.Empty;
-                richtxtPrintRequest.Text = String.Empty;
-                richtxtPrintResponse.Text = String.Empty;
-                richtxtPrintAnalyze.Text = String.Empty;
+                customTextBoxPrintRequest.Text = String.Empty;
+                customTextBoxPrintResponse.Text = String.Empty;
+                customTextBoxPrintAnalyze.Text = String.Empty;
                 
                 panelRegsNumber.Enabled = true;
                 customTextBoxDataRegisters.BorderColor = Color.FromArgb(0, 153, 153);
@@ -246,28 +245,27 @@ namespace TCPClient
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
             }
         }
-
-        private void btnClear_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
-            richtxtPrintRequest.Text = String.Empty;
-            richtxtPrintResponse.Text = String.Empty;
+            customTextBoxPrintRequest.Texts = String.Empty;
+            customTextBoxPrintResponse.Texts = String.Empty;
+            customTextBoxPrintAnalyze.Texts = String.Empty;
         }
 
-        private void btnHistory_Click(object sender, EventArgs e)
+        private void buttonHistory_Click(object sender, EventArgs e)
         {
             //if (client.IsConnected)
             //{
-                try
-                {
-                    FormHistory formHistory = new FormHistory();
-                    formHistory.Show();
-                }
-                catch
-                {
-                    MessageBox.Show("Device disconnected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            try
+            {
+                FormHistory formHistory = new FormHistory();
+                formHistory.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Device disconnected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             //}
         }
-
     }
 }
