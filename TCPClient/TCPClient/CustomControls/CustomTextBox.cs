@@ -176,10 +176,7 @@ namespace TCPClient.CustomControls
             }
         }
 
-        
-
         //Methods
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
