@@ -35,9 +35,11 @@
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
             this.textBox1.Location = new System.Drawing.Point(7, 7);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 17);
+            this.textBox1.Size = new System.Drawing.Size(236, 19);
             this.textBox1.TabIndex = 0;
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);

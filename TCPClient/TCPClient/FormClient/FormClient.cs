@@ -28,7 +28,7 @@ namespace TCPClient
         {
             try
             {
-                client = new SimpleTcpClient(richtxtIP.Text + ":" + richtxtPort.Text);
+                client = new SimpleTcpClient(customTextBoxIP.Texts + ":" + customTextBoxPort.Texts);
 
                 client.Events.Connected += Connected;
                 client.Events.DataReceived += DataReceived;
@@ -39,7 +39,7 @@ namespace TCPClient
             }
             catch
             {
-                if ((richtxtIP.Text == "") && (richtxtPort.Text == ""))
+                if ((customTextBoxIP.Texts == "") && (customTextBoxPort.Text == ""))
                     MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -69,11 +69,11 @@ namespace TCPClient
                 try
                 {
                     counterTransactionId++;
-                    richtxtTransactionId.Text = counterTransactionId.ToString("X4"); //testeaza daca e buna pusa
+                    customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4"); //testeaza daca e buna pusa
 
                     requestBuffer = new byte[bufferLength]; 
 
-                    BuildRequest(requestBuffer, richtxtTransactionId.Text, protocolId, slaveId, functionCode, richtxtDataAddress.Text, richtxtDataRegisters.Text, richtxtDataValues.Text);
+                    BuildRequest(requestBuffer, customTextBoxTransactionId.Texts, protocolId, slaveId, functionCode, customTextBoxDataAddress.Texts, customTextBoxDataRegisters.Texts, customTextBoxDataValues.Texts);
                     client.Send(requestBuffer);
 
                     foreach (byte element in requestBuffer)
@@ -119,8 +119,8 @@ namespace TCPClient
                 buttonDisconnect.Enabled = false;
                 btnSend.Enabled = false;
 
-                richtxtIP.Enabled = true;
-                richtxtPort.Enabled = true;
+                customTextBoxIP.Enabled = true;
+                customTextBoxPort.Enabled = true;
 
                 labelStatus2.Text = "Not connected";
                 labelStatus2.ForeColor = Color.Red;
@@ -135,9 +135,11 @@ namespace TCPClient
         {
             labelStatus2.Text = "Not connected";
             labelStatus2.ForeColor = Color.Red;
+            
             buttonConnect.Enabled = true;
-            richtxtIP.Enabled = true;
-            richtxtPort.Enabled = true;
+            
+            customTextBoxIP.Enabled = true;
+            customTextBoxPort.Enabled = true;
         }
 
         private void comboSlave_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,12 +147,12 @@ namespace TCPClient
             if (comboSlave.SelectedIndex == 0)
             {
                 slaveId = COM100Id;
-                richtxtSlaveId.Visible = false;
+                customTextBoxSlaveId.Enable = false;
             }
-            else  //test si aici 
+            else  
             {
-                richtxtSlaveId.Visible = true;
-                slaveId = byte.Parse(richtxtSlaveId.Text, NumberStyles.HexNumber);
+                slaveId = byte.Parse(customTextBoxSlaveId.Texts, NumberStyles.HexNumber);
+                customTextBoxSlaveId.Enable = true;
             }
         }
 
@@ -165,40 +167,52 @@ namespace TCPClient
                 functionCode = fc03;
                 bufferLength = lengthCase03;
 
-                richtxtDataValues.Text = String.Empty;
+                customTextBoxDataValues.Texts = String.Empty;
                 richtxtPrintRequest.Text = String.Empty;
                 richtxtPrintResponse.Text = String.Empty;
-                richtxtPrintAnalyze.Text = String.Empty;    
-                panelValues.Enabled = false;
+                richtxtPrintAnalyze.Text = String.Empty;
+
                 panelRegsNumber.Enabled = true;
-                richtxtDataValues.MaxLength = 4;
+                customTextBoxDataRegisters.BorderColor = Color.FromArgb(0, 153, 153);
+            
+                panelValues.Enabled = false;
+                customTextBoxDataValues.BorderColor = Color.Gray;
+                customTextBoxDataValues.MaxLength = 4;
             }
             else if (selected06)
             {
                 functionCode = fc06;
                 bufferLength = lengthCase06;
 
-                richtxtDataValues.Text = String.Empty;
+                customTextBoxDataValues.Texts = String.Empty;
                 richtxtPrintRequest.Text = String.Empty;
                 richtxtPrintResponse.Text = String.Empty;
                 richtxtPrintAnalyze.Text = String.Empty;
+                
                 panelRegsNumber.Enabled = false;
+                customTextBoxDataRegisters.BorderColor = Color.Gray;
+                
                 panelValues.Enabled = true;
-                richtxtDataValues.MaxLength = 4;
+                customTextBoxDataValues.BorderColor = Color.FromArgb(0, 153, 153);
+                customTextBoxDataValues.MaxLength = 4;
             }
             else if (selected16)
             {
                 functionCode = fc16;
-                richtxtDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                customTextBoxDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
 
-                richtxtDataValues.Text = String.Empty;
+                customTextBoxDataValues.Texts = String.Empty;
                 richtxtPrintRequest.Text = String.Empty;
                 richtxtPrintResponse.Text = String.Empty;
                 richtxtPrintAnalyze.Text = String.Empty;
+                
                 panelRegsNumber.Enabled = true;
+                customTextBoxDataRegisters.BorderColor = Color.FromArgb(0, 153, 153);
+
                 panelValues.Enabled = true;
-            } 
+                customTextBoxDataValues.BorderColor = Color.FromArgb(0, 153, 153);
+            }
         }
         
         private void btnMinus_Click(object sender, EventArgs e)
@@ -206,14 +220,14 @@ namespace TCPClient
             if (counterNoOfRegisters > 1)
             {
                 counterNoOfRegisters--;
-                richtxtDataRegisters.Text = counterNoOfRegisters.ToString("X4");
+                customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString("X4");
             }
             else
                 btnMinus.Enabled = false;
 
             if (selected16)
             {
-                richtxtDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                customTextBoxDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
             }
         }
@@ -224,11 +238,11 @@ namespace TCPClient
                 btnMinus.Enabled = true;
 
             counterNoOfRegisters++;
-            richtxtDataRegisters.Text = counterNoOfRegisters.ToString("X4");
+            customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString("X4");
 
             if (selected16)
             {
-                richtxtDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
+                customTextBoxDataValues.MaxLength = 5 * counterNoOfRegisters - 1;
                 bufferLength = (byte)(lengthCase16 + (2 * counterNoOfRegisters));
             }
         }
