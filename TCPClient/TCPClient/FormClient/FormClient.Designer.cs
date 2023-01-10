@@ -702,7 +702,6 @@
             this.Name = "FormClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MODBUS TCP Client";
-            this.Load += new System.EventHandler(this.FormClient_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);

@@ -255,6 +255,5 @@ namespace TCPClient
             //}
         }
 
-       
     }
 }
