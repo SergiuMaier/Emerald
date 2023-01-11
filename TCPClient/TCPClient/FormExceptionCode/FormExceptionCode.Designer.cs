@@ -38,10 +38,10 @@
             // 
             // labelExceptionText
             // 
-            this.labelExceptionText.Font = new System.Drawing.Font("Candara Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelExceptionText.Location = new System.Drawing.Point(12, 89);
+            this.labelExceptionText.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelExceptionText.Location = new System.Drawing.Point(10, 89);
             this.labelExceptionText.Name = "labelExceptionText";
-            this.labelExceptionText.Size = new System.Drawing.Size(467, 43);
+            this.labelExceptionText.Size = new System.Drawing.Size(476, 43);
             this.labelExceptionText.TabIndex = 0;
             this.labelExceptionText.Text = "info";
             // 
@@ -51,26 +51,26 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(495, 48);
+            this.panel1.Size = new System.Drawing.Size(502, 48);
             this.panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Candara", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(14, 11);
+            this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 26);
+            this.label1.Size = new System.Drawing.Size(250, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Exception Code in response";
             // 
             // labelExceptionTitle
             // 
-            this.labelExceptionTitle.Font = new System.Drawing.Font("Candara Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelExceptionTitle.Location = new System.Drawing.Point(12, 57);
+            this.labelExceptionTitle.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelExceptionTitle.Location = new System.Drawing.Point(10, 60);
             this.labelExceptionTitle.Name = "labelExceptionTitle";
-            this.labelExceptionTitle.Size = new System.Drawing.Size(467, 25);
+            this.labelExceptionTitle.Size = new System.Drawing.Size(471, 25);
             this.labelExceptionTitle.TabIndex = 2;
             this.labelExceptionTitle.Text = "title";
             // 
@@ -79,7 +79,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(491, 139);
+            this.ClientSize = new System.Drawing.Size(498, 142);
             this.Controls.Add(this.labelExceptionTitle);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelExceptionText);
