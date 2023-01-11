@@ -268,6 +268,5 @@ namespace TCPClient
                 MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
