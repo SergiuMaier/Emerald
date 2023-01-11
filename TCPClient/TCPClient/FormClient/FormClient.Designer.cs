@@ -100,7 +100,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label7.Location = new System.Drawing.Point(35, 18);
+            this.label7.Location = new System.Drawing.Point(36, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 18);
             this.label7.TabIndex = 17;
@@ -110,7 +110,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(15, 19);
+            this.label2.Location = new System.Drawing.Point(17, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 9;
@@ -148,7 +148,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label18.Location = new System.Drawing.Point(1, 5);
+            this.label18.Location = new System.Drawing.Point(3, 5);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(54, 18);
             this.label18.TabIndex = 33;
@@ -201,7 +201,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(15, 64);
+            this.label6.Location = new System.Drawing.Point(17, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 18);
             this.label6.TabIndex = 19;
@@ -223,7 +223,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label1.Location = new System.Drawing.Point(252, 19);
+            this.label1.Location = new System.Drawing.Point(258, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 18);
             this.label1.TabIndex = 0;
@@ -457,7 +457,7 @@
             this.customTextBoxTransactionId.Enable = true;
             this.customTextBoxTransactionId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxTransactionId.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxTransactionId.Location = new System.Drawing.Point(116, 57);
+            this.customTextBoxTransactionId.Location = new System.Drawing.Point(118, 57);
             this.customTextBoxTransactionId.MaxLength = 4;
             this.customTextBoxTransactionId.Multiline = false;
             this.customTextBoxTransactionId.Name = "customTextBoxTransactionId";

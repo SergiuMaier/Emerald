@@ -29,154 +29,160 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtBoxHistory = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.toolTipHistory = new System.Windows.Forms.ToolTip(this.components);
-            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.customTextBoxHistory = new TCPClient.CustomControls.CustomTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonOpenFile = new TCPClient.CustomControls.CustomButton();
+            this.buttonSave = new TCPClient.CustomControls.CustomButton();
+            this.customButton1 = new TCPClient.CustomControls.CustomButton();
+            this.buttonClear = new TCPClient.CustomControls.CustomButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtBoxHistory
+            // customTextBoxHistory
             // 
-            this.txtBoxHistory.BackColor = System.Drawing.Color.White;
-            this.txtBoxHistory.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoxHistory.ForeColor = System.Drawing.Color.Black;
-            this.txtBoxHistory.Location = new System.Drawing.Point(12, 90);
-            this.txtBoxHistory.Multiline = true;
-            this.txtBoxHistory.Name = "txtBoxHistory";
-            this.txtBoxHistory.ReadOnly = true;
-            this.txtBoxHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxHistory.Size = new System.Drawing.Size(616, 248);
-            this.txtBoxHistory.TabIndex = 0;
-            this.txtBoxHistory.TextChanged += new System.EventHandler(this.textHistory_TextChanged);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Black;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("MS PGothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.btnClose.Location = new System.Drawing.Point(592, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(48, 31);
-            this.btnClose.TabIndex = 14;
-            this.btnClose.Text = "X";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
-            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.Black;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(290, 0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(72, 42);
-            this.btnSave.TabIndex = 15;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.Black;
-            this.btnClear.FlatAppearance.BorderSize = 0;
-            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.btnClear.Location = new System.Drawing.Point(400, 0);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(72, 42);
-            this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.BackColor = System.Drawing.Color.Black;
-            this.btnOpenFile.FlatAppearance.BorderSize = 0;
-            this.btnOpenFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.btnOpenFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenFile.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOpenFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.btnOpenFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOpenFile.Location = new System.Drawing.Point(180, 0);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(72, 42);
-            this.btnOpenFile.TabIndex = 17;
-            this.btnOpenFile.Text = "FILE";
-            this.btnOpenFile.UseVisualStyleBackColor = false;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            this.customTextBoxHistory.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxHistory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.customTextBoxHistory.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.customTextBoxHistory.BorderSize = 2;
+            this.customTextBoxHistory.Enable = true;
+            this.customTextBoxHistory.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.customTextBoxHistory.ForeColor = System.Drawing.Color.Black;
+            this.customTextBoxHistory.Location = new System.Drawing.Point(10, 12);
+            this.customTextBoxHistory.MaxLength = 4;
+            this.customTextBoxHistory.Multiline = true;
+            this.customTextBoxHistory.Name = "customTextBoxHistory";
+            this.customTextBoxHistory.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxHistory.Size = new System.Drawing.Size(622, 259);
+            this.customTextBoxHistory.TabIndex = 43;
+            this.customTextBoxHistory.Texts = "";
+            this.customTextBoxHistory.UnderlinedStyle = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.buttonOpenFile);
+            this.panel1.Controls.Add(this.buttonSave);
+            this.panel1.Controls.Add(this.customButton1);
+            this.panel1.Controls.Add(this.buttonClear);
+            this.panel1.Location = new System.Drawing.Point(-4, 277);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 29);
-            this.panel1.TabIndex = 18;
+            this.panel1.Size = new System.Drawing.Size(652, 55);
+            this.panel1.TabIndex = 44;
             // 
-            // panel2
+            // buttonOpenFile
             // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Controls.Add(this.btnClear);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.btnOpenFile);
-            this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(0, 31);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(640, 42);
-            this.panel2.TabIndex = 19;
+            this.buttonOpenFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.buttonOpenFile.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.buttonOpenFile.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.buttonOpenFile.BorderRadius = 25;
+            this.buttonOpenFile.BorderSize = 0;
+            this.buttonOpenFile.FlatAppearance.BorderSize = 0;
+            this.buttonOpenFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenFile.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonOpenFile.ForeColor = System.Drawing.Color.White;
+            this.buttonOpenFile.Location = new System.Drawing.Point(83, 7);
+            this.buttonOpenFile.Name = "buttonOpenFile";
+            this.buttonOpenFile.Size = new System.Drawing.Size(63, 37);
+            this.buttonOpenFile.TabIndex = 49;
+            this.buttonOpenFile.Text = "File";
+            this.buttonOpenFile.TextColor = System.Drawing.Color.White;
+            this.buttonOpenFile.UseVisualStyleBackColor = false;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.buttonSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.buttonSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.buttonSave.BorderRadius = 25;
+            this.buttonSave.BorderSize = 0;
+            this.buttonSave.FlatAppearance.BorderSize = 0;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSave.ForeColor = System.Drawing.Color.White;
+            this.buttonSave.Location = new System.Drawing.Point(14, 7);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(63, 37);
+            this.buttonSave.TabIndex = 48;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.TextColor = System.Drawing.Color.White;
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // customButton1
+            // 
+            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.customButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.customButton1.BorderRadius = 25;
+            this.customButton1.BorderSize = 0;
+            this.customButton1.FlatAppearance.BorderSize = 0;
+            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.customButton1.ForeColor = System.Drawing.Color.White;
+            this.customButton1.Location = new System.Drawing.Point(573, 7);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.Size = new System.Drawing.Size(63, 37);
+            this.customButton1.TabIndex = 47;
+            this.customButton1.Text = "Close";
+            this.customButton1.TextColor = System.Drawing.Color.White;
+            this.customButton1.UseVisualStyleBackColor = false;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.buttonClear.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.buttonClear.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.buttonClear.BorderRadius = 25;
+            this.buttonClear.BorderSize = 0;
+            this.buttonClear.FlatAppearance.BorderSize = 0;
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClear.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonClear.ForeColor = System.Drawing.Color.White;
+            this.buttonClear.Location = new System.Drawing.Point(152, 7);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(63, 37);
+            this.buttonClear.TabIndex = 46;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.TextColor = System.Drawing.Color.White;
+            this.buttonClear.UseVisualStyleBackColor = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Location = new System.Drawing.Point(-3, 277);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(645, 2);
+            this.panel3.TabIndex = 46;
             // 
             // FormHistory
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.ClientSize = new System.Drawing.Size(640, 354);
-            this.Controls.Add(this.panel2);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(640, 327);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.txtBoxHistory);
+            this.Controls.Add(this.customTextBoxHistory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FormHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "History";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Button btnClose;
-        private TextBox txtBoxHistory;
-        private Button btnSave;
-        private Button btnClear;
         private ToolTip toolTipHistory;
-        private Button btnOpenFile;
+        private CustomControls.CustomTextBox customTextBoxHistory;
         private Panel panel1;
-        private Panel panel2;
+        private CustomControls.CustomButton buttonClear;
+        private CustomControls.CustomButton buttonSave;
+        private CustomControls.CustomButton customButton1;
+        private CustomControls.CustomButton buttonOpenFile;
+        private Panel panel3;
     }
 }
