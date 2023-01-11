@@ -125,7 +125,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(18, 23);
+            this.label2.Location = new System.Drawing.Point(18, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 9;
@@ -141,7 +141,7 @@
             "Read Holding Registers ",
             "Preset Single Register",
             "Preset Multiple Registers"});
-            this.comboFunctionCode.Location = new System.Drawing.Point(95, 20);
+            this.comboFunctionCode.Location = new System.Drawing.Point(95, 16);
             this.comboFunctionCode.Name = "comboFunctionCode";
             this.comboFunctionCode.Size = new System.Drawing.Size(192, 28);
             this.comboFunctionCode.TabIndex = 18;
@@ -208,7 +208,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label10.Location = new System.Drawing.Point(32, 68);
+            this.label10.Location = new System.Drawing.Point(229, 65);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 18);
             this.label10.TabIndex = 14;
@@ -218,7 +218,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(306, 23);
+            this.label6.Location = new System.Drawing.Point(306, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 18);
             this.label6.TabIndex = 19;
@@ -269,7 +269,7 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.label17);
-            this.panel6.Location = new System.Drawing.Point(0, 263);
+            this.panel6.Location = new System.Drawing.Point(0, 267);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(119, 50);
             this.panel6.TabIndex = 27;
@@ -311,7 +311,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel7.Controls.Add(this.label19);
-            this.panel7.Location = new System.Drawing.Point(0, 315);
+            this.panel7.Location = new System.Drawing.Point(0, 319);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(119, 50);
             this.panel7.TabIndex = 28;
@@ -320,7 +320,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             this.panel8.Controls.Add(this.label20);
-            this.panel8.Location = new System.Drawing.Point(0, 511);
+            this.panel8.Location = new System.Drawing.Point(0, 515);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(119, 50);
             this.panel8.TabIndex = 29;
@@ -330,7 +330,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(153)))));
-            this.label20.Location = new System.Drawing.Point(18, 12);
+            this.label20.Location = new System.Drawing.Point(18, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(75, 23);
             this.label20.TabIndex = 0;
@@ -497,7 +497,7 @@
             this.panelRegsNumber.Controls.Add(this.label12);
             this.panelRegsNumber.Controls.Add(this.btnMinus);
             this.panelRegsNumber.Controls.Add(this.btnPlus);
-            this.panelRegsNumber.Location = new System.Drawing.Point(171, 55);
+            this.panelRegsNumber.Location = new System.Drawing.Point(17, 55);
             this.panelRegsNumber.Name = "panelRegsNumber";
             this.panelRegsNumber.Size = new System.Drawing.Size(206, 42);
             this.panelRegsNumber.TabIndex = 37;
@@ -525,9 +525,9 @@
             // 
             this.panelValues.Controls.Add(this.label18);
             this.panelValues.Controls.Add(this.customTextBoxDataValues);
-            this.panelValues.Location = new System.Drawing.Point(32, 103);
+            this.panelValues.Location = new System.Drawing.Point(18, 103);
             this.panelValues.Name = "panelValues";
-            this.panelValues.Size = new System.Drawing.Size(562, 102);
+            this.panelValues.Size = new System.Drawing.Size(582, 102);
             this.panelValues.TabIndex = 38;
             // 
             // customTextBoxDataValues
@@ -539,12 +539,12 @@
             this.customTextBoxDataValues.Enable = true;
             this.customTextBoxDataValues.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxDataValues.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxDataValues.Location = new System.Drawing.Point(1, 26);
+            this.customTextBoxDataValues.Location = new System.Drawing.Point(4, 26);
             this.customTextBoxDataValues.MaxLength = 4;
             this.customTextBoxDataValues.Multiline = true;
             this.customTextBoxDataValues.Name = "customTextBoxDataValues";
             this.customTextBoxDataValues.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxDataValues.Size = new System.Drawing.Size(558, 64);
+            this.customTextBoxDataValues.Size = new System.Drawing.Size(572, 64);
             this.customTextBoxDataValues.TabIndex = 42;
             this.customTextBoxDataValues.Texts = "";
             this.customTextBoxDataValues.UnderlinedStyle = false;
@@ -566,7 +566,7 @@
             this.panelMessage.Controls.Add(this.label2);
             this.panelMessage.Enabled = false;
             this.panelMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.panelMessage.Location = new System.Drawing.Point(122, 56);
+            this.panelMessage.Location = new System.Drawing.Point(122, 60);
             this.panelMessage.Name = "panelMessage";
             this.panelMessage.Size = new System.Drawing.Size(884, 222);
             this.panelMessage.TabIndex = 39;
@@ -591,7 +591,7 @@
             this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSend.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSend.ForeColor = System.Drawing.Color.White;
-            this.buttonSend.Location = new System.Drawing.Point(606, 166);
+            this.buttonSend.Location = new System.Drawing.Point(606, 160);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(62, 33);
             this.buttonSend.TabIndex = 44;
@@ -609,7 +609,7 @@
             this.customTextBoxDataAddress.Enable = true;
             this.customTextBoxDataAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxDataAddress.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxDataAddress.Location = new System.Drawing.Point(96, 60);
+            this.customTextBoxDataAddress.Location = new System.Drawing.Point(293, 57);
             this.customTextBoxDataAddress.MaxLength = 4;
             this.customTextBoxDataAddress.Multiline = false;
             this.customTextBoxDataAddress.Name = "customTextBoxDataAddress";
@@ -628,7 +628,7 @@
             this.customTextBoxTransactionId.Enable = true;
             this.customTextBoxTransactionId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxTransactionId.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxTransactionId.Location = new System.Drawing.Point(412, 15);
+            this.customTextBoxTransactionId.Location = new System.Drawing.Point(412, 11);
             this.customTextBoxTransactionId.MaxLength = 4;
             this.customTextBoxTransactionId.Multiline = false;
             this.customTextBoxTransactionId.Name = "customTextBoxTransactionId";
@@ -642,7 +642,7 @@
             // 
             this.panelRequest.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelRequest.Controls.Add(this.customTextBoxPrintResponse);
-            this.panelRequest.Location = new System.Drawing.Point(0, 54);
+            this.panelRequest.Location = new System.Drawing.Point(0, 58);
             this.panelRequest.Name = "panelRequest";
             this.panelRequest.Size = new System.Drawing.Size(884, 50);
             this.panelRequest.TabIndex = 40;
@@ -670,7 +670,7 @@
             // 
             this.panelResponse.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelResponse.Controls.Add(this.customTextBoxPrintRequest);
-            this.panelResponse.Location = new System.Drawing.Point(0, 2);
+            this.panelResponse.Location = new System.Drawing.Point(0, 6);
             this.panelResponse.Name = "panelResponse";
             this.panelResponse.Size = new System.Drawing.Size(884, 50);
             this.panelResponse.TabIndex = 41;
@@ -701,7 +701,7 @@
             this.panel1.Controls.Add(this.customTextBoxPrintAnalyze);
             this.panel1.Controls.Add(this.panelRequest);
             this.panel1.Controls.Add(this.panelResponse);
-            this.panel1.Location = new System.Drawing.Point(122, 261);
+            this.panel1.Location = new System.Drawing.Point(122, 265);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(884, 288);
             this.panel1.TabIndex = 40;
@@ -750,7 +750,7 @@
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.buttonHistory);
             this.panel2.ForeColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(122, 544);
+            this.panel2.Location = new System.Drawing.Point(122, 548);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(884, 52);
             this.panel2.TabIndex = 41;

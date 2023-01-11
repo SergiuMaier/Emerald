@@ -26,7 +26,6 @@ namespace TCPClient
             LoByteOfRegister = 11
         }
 
-        //Fields
         public bool connectionStatus = false;
         private int counterTransactionId;        //this counter is incremented for each request. 
         private int counterNoOfRegisters = 1;    //the value can increase or decrease, to get the desired number of registers.
