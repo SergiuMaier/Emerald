@@ -16,9 +16,9 @@ namespace TCPClient
 
         private void FormClient_Load(object sender, EventArgs e)
         {
-            toolTipForm.SetToolTip(buttonConnect, "Connect to the device");
+            toolTipForm.SetToolTip(buttonConnect, "Connect to a device");
             toolTipForm.SetToolTip(buttonSend, "Send a request");
-            toolTipForm.SetToolTip(buttonClear, "Clear request and response messages from text boxes");
+            toolTipForm.SetToolTip(buttonClear, "Clear text boxes");
             toolTipForm.SetToolTip(buttonHistory, "View message history");
         }
 
@@ -68,7 +68,7 @@ namespace TCPClient
             //panel Connection
             customTextBoxIP.Enable = false;
             customTextBoxPort.Enable = false;
-            buttonConnect.Text = "Dis";
+            buttonConnect.Text = "Disconnect";
             buttonDisconnect.Enabled = true;
             labelStatus2.Text = "Connected";
             labelStatus2.ForeColor = Color.Green;
@@ -110,11 +110,15 @@ namespace TCPClient
         {
             if (client.IsConnected)
             {
+                customTextBoxPrintRequest.Texts = String.Empty;
+                customTextBoxPrintResponse.Texts = String.Empty;
+                customTextBoxPrintAnalyze.Texts = String.Empty;
+
+                counterTransactionId++;
+                customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4");
+
                 try
                 {
-                    counterTransactionId++;
-                    customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4"); 
-
                     requestBuffer = new byte[bufferLength];
 
                     BuildRequest(requestBuffer, customTextBoxTransactionId.Texts, protocolId, slaveId, functionCode, customTextBoxDataAddress.Texts, customTextBoxDataRegisters.Texts, customTextBoxDataValues.Texts);

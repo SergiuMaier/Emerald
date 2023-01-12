@@ -98,11 +98,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label7.Location = new System.Drawing.Point(36, 18);
+            this.label7.Location = new System.Drawing.Point(33, 18);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 18);
+            this.label7.Size = new System.Drawing.Size(58, 19);
             this.label7.TabIndex = 17;
             this.label7.Text = "Device:";
             // 
@@ -110,7 +110,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(17, 19);
+            this.label2.Location = new System.Drawing.Point(18, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 9;
@@ -126,7 +126,7 @@
             "Read Holding Registers ",
             "Preset Single Register",
             "Preset Multiple Registers"});
-            this.comboFunctionCode.Location = new System.Drawing.Point(92, 16);
+            this.comboFunctionCode.Location = new System.Drawing.Point(92, 14);
             this.comboFunctionCode.Name = "comboFunctionCode";
             this.comboFunctionCode.Size = new System.Drawing.Size(192, 28);
             this.comboFunctionCode.TabIndex = 18;
@@ -137,22 +137,23 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label12.Location = new System.Drawing.Point(3, 12);
+            this.label12.Location = new System.Drawing.Point(7, 13);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(110, 18);
+            this.label12.Size = new System.Drawing.Size(81, 18);
             this.label12.TabIndex = 35;
-            this.label12.Text = "No. of registers:";
+            this.label12.Text = "No. of regs:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label18.Location = new System.Drawing.Point(3, 5);
+            this.label18.Location = new System.Drawing.Point(3, 7);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 18);
+            this.label18.Size = new System.Drawing.Size(50, 18);
             this.label18.TabIndex = 33;
-            this.label18.Text = "Values:";
+            this.label18.Text = "Values";
             // 
             // btnPlus
             // 
@@ -161,7 +162,7 @@
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPlus.ForeColor = System.Drawing.Color.White;
-            this.btnPlus.Location = new System.Drawing.Point(188, 15);
+            this.btnPlus.Location = new System.Drawing.Point(162, 15);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(15, 15);
             this.btnPlus.TabIndex = 31;
@@ -177,7 +178,7 @@
             this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinus.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMinus.ForeColor = System.Drawing.Color.White;
-            this.btnMinus.Location = new System.Drawing.Point(173, 15);
+            this.btnMinus.Location = new System.Drawing.Point(147, 15);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(15, 15);
             this.btnMinus.TabIndex = 30;
@@ -191,7 +192,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label10.Location = new System.Drawing.Point(187, 64);
+            this.label10.Location = new System.Drawing.Point(58, 102);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 18);
             this.label10.TabIndex = 14;
@@ -201,7 +202,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(17, 64);
+            this.label6.Location = new System.Drawing.Point(18, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 18);
             this.label6.TabIndex = 19;
@@ -210,22 +211,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label3.Location = new System.Drawing.Point(511, 19);
+            this.label3.Location = new System.Drawing.Point(506, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 18);
+            this.label3.Size = new System.Drawing.Size(43, 19);
             this.label3.TabIndex = 8;
             this.label3.Text = "Port:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label1.Location = new System.Drawing.Point(258, 19);
+            this.label1.Location = new System.Drawing.Point(253, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 18);
+            this.label1.Size = new System.Drawing.Size(85, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "IP Address:";
             // 
@@ -234,7 +235,7 @@
             this.labelStatus2.AutoSize = true;
             this.labelStatus2.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStatus2.ForeColor = System.Drawing.Color.Black;
-            this.labelStatus2.Location = new System.Drawing.Point(634, 61);
+            this.labelStatus2.Location = new System.Drawing.Point(535, 2);
             this.labelStatus2.Name = "labelStatus2";
             this.labelStatus2.Size = new System.Drawing.Size(90, 15);
             this.labelStatus2.TabIndex = 11;
@@ -248,11 +249,13 @@
             this.panel9.Controls.Add(this.customTextBoxSlaveId);
             this.panel9.Controls.Add(this.label1);
             this.panel9.Controls.Add(this.label3);
+            this.panel9.Controls.Add(this.buttonConnect);
             this.panel9.Controls.Add(this.label7);
             this.panel9.Controls.Add(this.comboSlave);
+            this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.panel9.Location = new System.Drawing.Point(-4, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(629, 60);
+            this.panel9.Size = new System.Drawing.Size(746, 60);
             this.panel9.TabIndex = 30;
             // 
             // customTextBoxPort
@@ -316,14 +319,14 @@
             // 
             this.buttonConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonConnect.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.buttonConnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.buttonConnect.BorderRadius = 25;
-            this.buttonConnect.BorderSize = 0;
+            this.buttonConnect.BorderColor = System.Drawing.Color.Silver;
+            this.buttonConnect.BorderRadius = 35;
+            this.buttonConnect.BorderSize = 1;
             this.buttonConnect.FlatAppearance.BorderSize = 0;
             this.buttonConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonConnect.ForeColor = System.Drawing.Color.White;
-            this.buttonConnect.Location = new System.Drawing.Point(631, 10);
+            this.buttonConnect.Location = new System.Drawing.Point(635, 12);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(96, 37);
             this.buttonConnect.TabIndex = 43;
@@ -337,19 +340,19 @@
             this.buttonDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonDisconnect.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonDisconnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.buttonDisconnect.BorderRadius = 25;
+            this.buttonDisconnect.BorderRadius = 34;
             this.buttonDisconnect.BorderSize = 0;
             this.buttonDisconnect.Enabled = false;
             this.buttonDisconnect.FlatAppearance.BorderSize = 0;
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisconnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonDisconnect.ForeColor = System.Drawing.Color.White;
-            this.buttonDisconnect.Location = new System.Drawing.Point(631, 95);
+            this.buttonDisconnect.ForeColor = System.Drawing.Color.Black;
+            this.buttonDisconnect.Location = new System.Drawing.Point(631, 194);
             this.buttonDisconnect.Name = "buttonDisconnect";
             this.buttonDisconnect.Size = new System.Drawing.Size(96, 34);
             this.buttonDisconnect.TabIndex = 41;
             this.buttonDisconnect.Text = "Disconnect";
-            this.buttonDisconnect.TextColor = System.Drawing.Color.White;
+            this.buttonDisconnect.TextColor = System.Drawing.Color.Black;
             this.buttonDisconnect.UseVisualStyleBackColor = false;
             this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
@@ -359,9 +362,9 @@
             this.panelRegsNumber.Controls.Add(this.label12);
             this.panelRegsNumber.Controls.Add(this.btnMinus);
             this.panelRegsNumber.Controls.Add(this.btnPlus);
-            this.panelRegsNumber.Location = new System.Drawing.Point(322, 52);
+            this.panelRegsNumber.Location = new System.Drawing.Point(33, 134);
             this.panelRegsNumber.Name = "panelRegsNumber";
-            this.panelRegsNumber.Size = new System.Drawing.Size(230, 42);
+            this.panelRegsNumber.Size = new System.Drawing.Size(182, 42);
             this.panelRegsNumber.TabIndex = 37;
             // 
             // customTextBoxDataRegisters
@@ -373,7 +376,7 @@
             this.customTextBoxDataRegisters.Enable = true;
             this.customTextBoxDataRegisters.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxDataRegisters.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxDataRegisters.Location = new System.Drawing.Point(114, 5);
+            this.customTextBoxDataRegisters.Location = new System.Drawing.Point(87, 6);
             this.customTextBoxDataRegisters.MaxLength = 4;
             this.customTextBoxDataRegisters.Multiline = false;
             this.customTextBoxDataRegisters.Name = "customTextBoxDataRegisters";
@@ -387,9 +390,9 @@
             // 
             this.panelValues.Controls.Add(this.label18);
             this.panelValues.Controls.Add(this.customTextBoxDataValues);
-            this.panelValues.Location = new System.Drawing.Point(15, 100);
+            this.panelValues.Location = new System.Drawing.Point(222, 50);
             this.panelValues.Name = "panelValues";
-            this.panelValues.Size = new System.Drawing.Size(605, 102);
+            this.panelValues.Size = new System.Drawing.Size(399, 141);
             this.panelValues.TabIndex = 38;
             // 
             // customTextBoxDataValues
@@ -406,7 +409,7 @@
             this.customTextBoxDataValues.Multiline = true;
             this.customTextBoxDataValues.Name = "customTextBoxDataValues";
             this.customTextBoxDataValues.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxDataValues.Size = new System.Drawing.Size(595, 64);
+            this.customTextBoxDataValues.Size = new System.Drawing.Size(388, 100);
             this.customTextBoxDataValues.TabIndex = 42;
             this.customTextBoxDataValues.Texts = "";
             this.customTextBoxDataValues.UnderlinedStyle = false;
@@ -416,6 +419,7 @@
             this.panelMessage.BackColor = System.Drawing.Color.White;
             this.panelMessage.Controls.Add(this.customTextBoxDataAddress);
             this.panelMessage.Controls.Add(this.customTextBoxTransactionId);
+            this.panelMessage.Controls.Add(this.labelStatus2);
             this.panelMessage.Controls.Add(this.label6);
             this.panelMessage.Controls.Add(this.panelValues);
             this.panelMessage.Controls.Add(this.panelRegsNumber);
@@ -426,7 +430,7 @@
             this.panelMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.panelMessage.Location = new System.Drawing.Point(-4, 61);
             this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(628, 208);
+            this.panelMessage.Size = new System.Drawing.Size(628, 187);
             this.panelMessage.TabIndex = 39;
             // 
             // customTextBoxDataAddress
@@ -438,7 +442,7 @@
             this.customTextBoxDataAddress.Enable = true;
             this.customTextBoxDataAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxDataAddress.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxDataAddress.Location = new System.Drawing.Point(249, 57);
+            this.customTextBoxDataAddress.Location = new System.Drawing.Point(120, 95);
             this.customTextBoxDataAddress.MaxLength = 4;
             this.customTextBoxDataAddress.Multiline = false;
             this.customTextBoxDataAddress.Name = "customTextBoxDataAddress";
@@ -457,7 +461,7 @@
             this.customTextBoxTransactionId.Enable = true;
             this.customTextBoxTransactionId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxTransactionId.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxTransactionId.Location = new System.Drawing.Point(118, 57);
+            this.customTextBoxTransactionId.Location = new System.Drawing.Point(120, 50);
             this.customTextBoxTransactionId.MaxLength = 4;
             this.customTextBoxTransactionId.Multiline = false;
             this.customTextBoxTransactionId.Name = "customTextBoxTransactionId";
@@ -469,10 +473,10 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.Location = new System.Drawing.Point(-5, 59);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(630, 2);
+            this.panel3.Size = new System.Drawing.Size(750, 1);
             this.panel3.TabIndex = 45;
             // 
             // buttonSend
@@ -480,16 +484,16 @@
             this.buttonSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonSend.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonSend.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.buttonSend.BorderRadius = 25;
+            this.buttonSend.BorderRadius = 35;
             this.buttonSend.BorderSize = 0;
             this.buttonSend.Enabled = false;
             this.buttonSend.FlatAppearance.BorderSize = 0;
             this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSend.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSend.ForeColor = System.Drawing.Color.White;
-            this.buttonSend.Location = new System.Drawing.Point(631, 211);
+            this.buttonSend.Location = new System.Drawing.Point(631, 66);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(96, 37);
+            this.buttonSend.Size = new System.Drawing.Size(96, 36);
             this.buttonSend.TabIndex = 44;
             this.buttonSend.Text = "Send";
             this.buttonSend.TextColor = System.Drawing.Color.White;
@@ -501,37 +505,38 @@
             this.panelRequest.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelRequest.Controls.Add(this.label8);
             this.panelRequest.Controls.Add(this.customTextBoxPrintResponse);
-            this.panelRequest.Location = new System.Drawing.Point(0, 58);
+            this.panelRequest.Location = new System.Drawing.Point(0, 66);
             this.panelRequest.Name = "panelRequest";
-            this.panelRequest.Size = new System.Drawing.Size(627, 50);
+            this.panelRequest.Size = new System.Drawing.Size(629, 60);
             this.panelRequest.TabIndex = 40;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label8.Location = new System.Drawing.Point(19, 15);
+            this.label8.Location = new System.Drawing.Point(19, 1);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 18);
+            this.label8.Size = new System.Drawing.Size(69, 18);
             this.label8.TabIndex = 47;
-            this.label8.Text = "Response:";
+            this.label8.Text = "Response";
             // 
             // customTextBoxPrintResponse
             // 
             this.customTextBoxPrintResponse.BackColor = System.Drawing.SystemColors.Window;
             this.customTextBoxPrintResponse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxPrintResponse.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxPrintResponse.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintResponse.BorderSize = 2;
             this.customTextBoxPrintResponse.Enable = true;
             this.customTextBoxPrintResponse.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxPrintResponse.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxPrintResponse.Location = new System.Drawing.Point(91, 9);
+            this.customTextBoxPrintResponse.Location = new System.Drawing.Point(19, 20);
             this.customTextBoxPrintResponse.MaxLength = 1;
             this.customTextBoxPrintResponse.Multiline = false;
             this.customTextBoxPrintResponse.Name = "customTextBoxPrintResponse";
             this.customTextBoxPrintResponse.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxPrintResponse.Size = new System.Drawing.Size(523, 33);
+            this.customTextBoxPrintResponse.Size = new System.Drawing.Size(595, 33);
             this.customTextBoxPrintResponse.TabIndex = 47;
             this.customTextBoxPrintResponse.Texts = "";
             this.customTextBoxPrintResponse.UnderlinedStyle = true;
@@ -541,37 +546,38 @@
             this.panelResponse.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelResponse.Controls.Add(this.label9);
             this.panelResponse.Controls.Add(this.customTextBoxPrintRequest);
-            this.panelResponse.Location = new System.Drawing.Point(0, 1);
+            this.panelResponse.Location = new System.Drawing.Point(0, 2);
             this.panelResponse.Name = "panelResponse";
-            this.panelResponse.Size = new System.Drawing.Size(627, 50);
+            this.panelResponse.Size = new System.Drawing.Size(629, 60);
             this.panelResponse.TabIndex = 41;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label9.Location = new System.Drawing.Point(26, 14);
+            this.label9.Location = new System.Drawing.Point(18, 2);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 18);
+            this.label9.Size = new System.Drawing.Size(60, 18);
             this.label9.TabIndex = 48;
-            this.label9.Text = "Request:";
+            this.label9.Text = "Request";
             // 
             // customTextBoxPrintRequest
             // 
             this.customTextBoxPrintRequest.BackColor = System.Drawing.SystemColors.Window;
             this.customTextBoxPrintRequest.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxPrintRequest.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxPrintRequest.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintRequest.BorderSize = 2;
             this.customTextBoxPrintRequest.Enable = true;
             this.customTextBoxPrintRequest.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxPrintRequest.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxPrintRequest.Location = new System.Drawing.Point(91, 9);
+            this.customTextBoxPrintRequest.Location = new System.Drawing.Point(19, 19);
             this.customTextBoxPrintRequest.MaxLength = 1;
             this.customTextBoxPrintRequest.Multiline = false;
             this.customTextBoxPrintRequest.Name = "customTextBoxPrintRequest";
             this.customTextBoxPrintRequest.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxPrintRequest.Size = new System.Drawing.Size(523, 33);
+            this.customTextBoxPrintRequest.Size = new System.Drawing.Size(595, 33);
             this.customTextBoxPrintRequest.TabIndex = 46;
             this.customTextBoxPrintRequest.Texts = "";
             this.customTextBoxPrintRequest.UnderlinedStyle = true;
@@ -583,9 +589,9 @@
             this.panel1.Controls.Add(this.customTextBoxPrintAnalyze);
             this.panel1.Controls.Add(this.panelRequest);
             this.panel1.Controls.Add(this.panelResponse);
-            this.panel1.Location = new System.Drawing.Point(-4, 265);
+            this.panel1.Location = new System.Drawing.Point(-4, 243);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 308);
+            this.panel1.Size = new System.Drawing.Size(628, 362);
             this.panel1.TabIndex = 40;
             // 
             // label5
@@ -593,27 +599,27 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label5.Location = new System.Drawing.Point(18, 116);
+            this.label5.Location = new System.Drawing.Point(18, 130);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 18);
+            this.label5.Size = new System.Drawing.Size(121, 18);
             this.label5.TabIndex = 46;
-            this.label5.Text = "Response analysis:";
+            this.label5.Text = "Response analysis";
             // 
             // customTextBoxPrintAnalyze
             // 
             this.customTextBoxPrintAnalyze.BackColor = System.Drawing.SystemColors.Window;
             this.customTextBoxPrintAnalyze.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxPrintAnalyze.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxPrintAnalyze.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintAnalyze.BorderSize = 2;
             this.customTextBoxPrintAnalyze.Enable = true;
             this.customTextBoxPrintAnalyze.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxPrintAnalyze.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxPrintAnalyze.Location = new System.Drawing.Point(18, 138);
+            this.customTextBoxPrintAnalyze.Location = new System.Drawing.Point(19, 150);
             this.customTextBoxPrintAnalyze.MaxLength = 1;
             this.customTextBoxPrintAnalyze.Multiline = true;
             this.customTextBoxPrintAnalyze.Name = "customTextBoxPrintAnalyze";
             this.customTextBoxPrintAnalyze.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxPrintAnalyze.Size = new System.Drawing.Size(596, 152);
+            this.customTextBoxPrintAnalyze.Size = new System.Drawing.Size(595, 195);
             this.customTextBoxPrintAnalyze.TabIndex = 43;
             this.customTextBoxPrintAnalyze.Texts = "";
             this.customTextBoxPrintAnalyze.UnderlinedStyle = false;
@@ -623,14 +629,14 @@
             this.buttonHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonHistory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.buttonHistory.BorderRadius = 25;
+            this.buttonHistory.BorderRadius = 35;
             this.buttonHistory.BorderSize = 0;
             this.buttonHistory.Enabled = false;
             this.buttonHistory.FlatAppearance.BorderSize = 0;
             this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHistory.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
-            this.buttonHistory.Location = new System.Drawing.Point(631, 516);
+            this.buttonHistory.Location = new System.Drawing.Point(631, 151);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(96, 37);
             this.buttonHistory.TabIndex = 46;
@@ -644,13 +650,13 @@
             this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonClear.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonClear.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.buttonClear.BorderRadius = 25;
+            this.buttonClear.BorderRadius = 35;
             this.buttonClear.BorderSize = 0;
             this.buttonClear.FlatAppearance.BorderSize = 0;
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(631, 473);
+            this.buttonClear.Location = new System.Drawing.Point(631, 108);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(96, 37);
             this.buttonClear.TabIndex = 45;
@@ -661,10 +667,11 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.LightGray;
-            this.panel4.Location = new System.Drawing.Point(623, 0);
+            this.panel4.BackColor = System.Drawing.Color.Silver;
+            this.panel4.ForeColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(623, 61);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 600);
+            this.panel4.Size = new System.Drawing.Size(1, 606);
             this.panel4.TabIndex = 46;
             // 
             // FormClient
@@ -673,13 +680,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(733, 569);
+            this.ClientSize = new System.Drawing.Size(734, 602);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.labelStatus2);
-            this.Controls.Add(this.buttonHistory);
-            this.Controls.Add(this.buttonConnect);
             this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonHistory);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.panel1);
@@ -707,7 +712,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
