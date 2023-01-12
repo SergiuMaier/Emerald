@@ -12,14 +12,19 @@ namespace TCPClient
         public FormClient()
         {
             InitializeComponent();
-        }
 
-        private void FormClient_Load(object sender, EventArgs e)
-        {
             toolTipForm.SetToolTip(buttonConnect, "Connect to a device");
             toolTipForm.SetToolTip(buttonSend, "Send a request");
             toolTipForm.SetToolTip(buttonClear, "Clear text boxes");
             toolTipForm.SetToolTip(buttonHistory, "View message history");
+
+            comboSlave.Enabled = true;
+            comboSlave.SelectedIndex = 0; //load with COM100 by default
+            customTextBoxSlaveId.Texts = "FF";
+        }
+
+        private void FormClient_Load(object sender, EventArgs e)
+        {
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
@@ -40,7 +45,7 @@ namespace TCPClient
                     comboFunctionCode.SelectedIndexChanged += comboFunctionCode_SelectedIndexChanged;
                 }
                 catch
-                {
+                {   
                     if ((customTextBoxIP.Texts == String.Empty) && (customTextBoxPort.Text == String.Empty))
                         MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
@@ -84,6 +89,7 @@ namespace TCPClient
         {
             //panel Connection
             comboSlave.Enabled = false;
+            customTextBoxSlaveId.Enable = false;
             customTextBoxIP.Enable = false;
             customTextBoxPort.Enable = false;
             buttonConnect.Text = "Disconnect";
@@ -103,7 +109,6 @@ namespace TCPClient
         private void Disconnected(object sender, ConnectionEventArgs e)
         {
             //panel Connection
-            comboSlave.SelectedIndex = 0;
             customTextBoxIP.Enable = true;
             customTextBoxPort.Enable = true;
             buttonConnect.Text = "Connect";
@@ -172,12 +177,14 @@ namespace TCPClient
             if (comboSlave.SelectedIndex == 0)
             {
                 slaveId = COM100Id;
+                customTextBoxSlaveId.Texts = "FF";
                 customTextBoxSlaveId.Enable = false;
             }
             else
             {
-                slaveId = byte.Parse(customTextBoxSlaveId.Texts, NumberStyles.HexNumber);
+                customTextBoxSlaveId.Texts = "00";
                 customTextBoxSlaveId.Enable = true;
+                slaveId = byte.Parse(customTextBoxSlaveId.Texts, NumberStyles.HexNumber);
             }
         }
 

@@ -368,7 +368,7 @@
             // 
             this.panelValues.Controls.Add(this.label18);
             this.panelValues.Controls.Add(this.customTextBoxDataValues);
-            this.panelValues.Location = new System.Drawing.Point(222, 50);
+            this.panelValues.Location = new System.Drawing.Point(222, 48);
             this.panelValues.Name = "panelValues";
             this.panelValues.Size = new System.Drawing.Size(399, 141);
             this.panelValues.TabIndex = 38;
@@ -630,6 +630,7 @@
             this.buttonClear.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.buttonClear.BorderRadius = 35;
             this.buttonClear.BorderSize = 0;
+            this.buttonClear.Enabled = false;
             this.buttonClear.FlatAppearance.BorderSize = 0;
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
