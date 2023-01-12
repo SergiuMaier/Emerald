@@ -190,6 +190,20 @@ namespace TCPClient.CustomControls
             }
         }
 
+        [Category("Custom Control")]
+        public int SelectionStartIndex
+        {
+            get
+            {
+                return textBox1.SelectionStart;
+            }
+
+            set
+            {
+                textBox1.SelectionStart = value;
+            }
+        }
+
         //Methods
         protected override void OnPaint(PaintEventArgs e)
         {

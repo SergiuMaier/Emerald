@@ -20,6 +20,7 @@ namespace TCPClient
             InitializeComponent();
 
             customTextBoxHistory.Texts = FormClient.AddMessageToHistory;
+            customTextBoxHistory.SelectionStartIndex = 0; //overrided SelectionStart property for customTextBox. Fixed text highlighted bug when the form is displayed
             
             toolTipHistory.SetToolTip(buttonClear, "Clear the history");
             toolTipHistory.SetToolTip(buttonSave, "Save the history to a file");
