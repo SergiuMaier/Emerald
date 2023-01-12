@@ -36,7 +36,6 @@
             this.buttonSave = new TCPClient.CustomControls.CustomButton();
             this.customButton1 = new TCPClient.CustomControls.CustomButton();
             this.buttonClear = new TCPClient.CustomControls.CustomButton();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +53,7 @@
             this.customTextBoxHistory.Multiline = true;
             this.customTextBoxHistory.Name = "customTextBoxHistory";
             this.customTextBoxHistory.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxHistory.SelectionStartIndex = 0;
             this.customTextBoxHistory.Size = new System.Drawing.Size(622, 259);
             this.customTextBoxHistory.TabIndex = 43;
             this.customTextBoxHistory.Texts = "";
@@ -61,14 +61,14 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
             this.panel1.Controls.Add(this.buttonOpenFile);
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.customButton1);
             this.panel1.Controls.Add(this.buttonClear);
-            this.panel1.Location = new System.Drawing.Point(-4, 277);
+            this.panel1.Location = new System.Drawing.Point(10, 279);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(652, 55);
+            this.panel1.Size = new System.Drawing.Size(622, 53);
             this.panel1.TabIndex = 44;
             // 
             // buttonOpenFile
@@ -82,7 +82,7 @@
             this.buttonOpenFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenFile.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonOpenFile.ForeColor = System.Drawing.Color.White;
-            this.buttonOpenFile.Location = new System.Drawing.Point(83, 7);
+            this.buttonOpenFile.Location = new System.Drawing.Point(76, 7);
             this.buttonOpenFile.Name = "buttonOpenFile";
             this.buttonOpenFile.Size = new System.Drawing.Size(63, 37);
             this.buttonOpenFile.TabIndex = 49;
@@ -102,7 +102,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(14, 7);
+            this.buttonSave.Location = new System.Drawing.Point(7, 7);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(63, 37);
             this.buttonSave.TabIndex = 48;
@@ -122,7 +122,7 @@
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(573, 7);
+            this.customButton1.Location = new System.Drawing.Point(551, 8);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(63, 37);
             this.customButton1.TabIndex = 47;
@@ -141,7 +141,7 @@
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(152, 7);
+            this.buttonClear.Location = new System.Drawing.Point(145, 7);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(63, 37);
             this.buttonClear.TabIndex = 46;
@@ -150,20 +150,11 @@
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.LightGray;
-            this.panel3.Location = new System.Drawing.Point(-3, 277);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(645, 2);
-            this.panel3.TabIndex = 46;
-            // 
             // FormHistory
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(640, 327);
-            this.Controls.Add(this.panel3);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.ClientSize = new System.Drawing.Size(640, 340);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.customTextBoxHistory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -184,6 +175,5 @@
         private CustomControls.CustomButton buttonSave;
         private CustomControls.CustomButton customButton1;
         private CustomControls.CustomButton buttonOpenFile;
-        private Panel panel3;
     }
 }
