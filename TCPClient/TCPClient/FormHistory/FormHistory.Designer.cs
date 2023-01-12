@@ -47,7 +47,7 @@
             this.customTextBoxHistory.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxHistory.BorderSize = 2;
             this.customTextBoxHistory.Enable = true;
-            this.customTextBoxHistory.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.customTextBoxHistory.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxHistory.ForeColor = System.Drawing.Color.Black;
             this.customTextBoxHistory.Location = new System.Drawing.Point(10, 12);
             this.customTextBoxHistory.MaxLength = 4;
@@ -148,6 +148,7 @@
             this.buttonClear.Text = "Clear";
             this.buttonClear.TextColor = System.Drawing.Color.White;
             this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // panel3
             // 

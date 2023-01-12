@@ -354,7 +354,6 @@
             this.buttonDisconnect.Text = "Disconnect";
             this.buttonDisconnect.TextColor = System.Drawing.Color.Black;
             this.buttonDisconnect.UseVisualStyleBackColor = false;
-            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
             // panelRegsNumber
             // 

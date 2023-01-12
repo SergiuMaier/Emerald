@@ -52,23 +52,23 @@ namespace TCPClient
                     break;
 
                 case 0x03:
-                    ExceptionTitle = "Exception Code 03: Illegal Data Value.";
+                    ExceptionTitle = "Exception Code 03: Illegal Data Value";
                     ExceptionMessage = "'A value contained in the query data field is not an allowable value for the slave.'";
                     break;
 
                 case 0x04:
-                    ExceptionTitle = "Exception Code 04: Slave Device Failure.";
+                    ExceptionTitle = "Exception Code 04: Slave Device Failure";
                     ExceptionMessage = "'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
                     break;
 
                 case 0x0A:
-                    ExceptionTitle = "Exception Code 0A: Gateway Path Unavailable.";
+                    ExceptionTitle = "Exception Code 0A: Gateway Path Unavailable";
                     ExceptionMessage = "'The gateway was unable to allocate an internal communication path from the input port to the " +
                                         "output port for processing the request.'";
                     break;
 
                 default:
-                    customTextBoxPrintAnalyze.Texts = "Exception response.";
+                    customTextBoxPrintAnalyze.Texts = "Exception code in response.";
                     break;
             }
         }
@@ -124,7 +124,7 @@ namespace TCPClient
 
             if (selected03)
             {
-                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}FC 03: Read Holding Registers {Environment.NewLine}" +
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Read Holding Registers {Environment.NewLine}" +
                                                   $"Address: {customTextBoxDataAddress.Texts} {Environment.NewLine}Number of registers: {Convert.ToInt32(customTextBoxDataRegisters.Texts)} {Environment.NewLine}{Environment.NewLine}";
                 customTextBoxPrintAnalyze.Texts += $"In response: {Environment.NewLine}";
                 customTextBoxPrintAnalyze.Texts += $"The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
@@ -144,13 +144,13 @@ namespace TCPClient
             }
             else if (selected06)
             {
-                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}FC06: Preset Single Register {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Preset Single Register {Environment.NewLine}{Environment.NewLine}";
                 customTextBoxPrintAnalyze.Texts += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
                                             $"was written at address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
             }
             else if (selected16)
             {
-                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}FC 16: Preset Multiple Registers {Environment.NewLine}Values: {customTextBoxDataValues.Texts} {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Preset Multiple Registers {Environment.NewLine}Values: {customTextBoxDataValues.Texts} {Environment.NewLine}{Environment.NewLine}";
                 customTextBoxPrintAnalyze.Texts += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
                                             $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
             }
