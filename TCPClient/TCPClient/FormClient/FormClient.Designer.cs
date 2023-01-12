@@ -55,7 +55,6 @@
             this.panelMessage = new System.Windows.Forms.Panel();
             this.customTextBoxDataAddress = new TCPClient.CustomControls.CustomTextBox();
             this.customTextBoxTransactionId = new TCPClient.CustomControls.CustomTextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSend = new TCPClient.CustomControls.CustomButton();
             this.panelRequest = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,7 +68,7 @@
             this.buttonHistory = new TCPClient.CustomControls.CustomButton();
             this.buttonClear = new TCPClient.CustomControls.CustomButton();
             this.toolTipForm = new System.Windows.Forms.ToolTip(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel9.SuspendLayout();
             this.panelRegsNumber.SuspendLayout();
             this.panelValues.SuspendLayout();
@@ -77,20 +76,21 @@
             this.panelRequest.SuspendLayout();
             this.panelResponse.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboSlave
             // 
-            this.comboSlave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSlave.BackColor = System.Drawing.Color.White;
             this.comboSlave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboSlave.ForeColor = System.Drawing.Color.Black;
             this.comboSlave.FormattingEnabled = true;
             this.comboSlave.Items.AddRange(new object[] {
             "COM100",
             "New Device"});
-            this.comboSlave.Location = new System.Drawing.Point(92, 15);
+            this.comboSlave.Location = new System.Drawing.Point(85, 15);
             this.comboSlave.Name = "comboSlave";
-            this.comboSlave.Size = new System.Drawing.Size(103, 28);
+            this.comboSlave.Size = new System.Drawing.Size(111, 28);
             this.comboSlave.TabIndex = 24;
             this.comboSlave.SelectedIndexChanged += new System.EventHandler(this.comboSlave_SelectedIndexChanged);
             // 
@@ -99,7 +99,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label7.Location = new System.Drawing.Point(33, 18);
+            this.label7.Location = new System.Drawing.Point(26, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 19);
             this.label7.TabIndex = 17;
@@ -109,7 +109,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(18, 19);
+            this.label2.Location = new System.Drawing.Point(11, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 9;
@@ -117,7 +117,7 @@
             // 
             // comboFunctionCode
             // 
-            this.comboFunctionCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFunctionCode.BackColor = System.Drawing.Color.White;
             this.comboFunctionCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboFunctionCode.ForeColor = System.Drawing.Color.Black;
             this.comboFunctionCode.FormattingEnabled = true;
@@ -125,7 +125,7 @@
             "Read Holding Registers ",
             "Preset Single Register",
             "Preset Multiple Registers"});
-            this.comboFunctionCode.Location = new System.Drawing.Point(92, 14);
+            this.comboFunctionCode.Location = new System.Drawing.Point(85, 14);
             this.comboFunctionCode.Name = "comboFunctionCode";
             this.comboFunctionCode.Size = new System.Drawing.Size(192, 28);
             this.comboFunctionCode.TabIndex = 18;
@@ -157,6 +157,7 @@
             // btnPlus
             // 
             this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.btnPlus.FlatAppearance.BorderSize = 0;
             this.btnPlus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -173,11 +174,12 @@
             // btnMinus
             // 
             this.btnMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.btnMinus.FlatAppearance.BorderSize = 0;
             this.btnMinus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinus.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMinus.ForeColor = System.Drawing.Color.White;
-            this.btnMinus.Location = new System.Drawing.Point(147, 15);
+            this.btnMinus.Location = new System.Drawing.Point(146, 15);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(15, 15);
             this.btnMinus.TabIndex = 30;
@@ -191,7 +193,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label10.Location = new System.Drawing.Point(58, 102);
+            this.label10.Location = new System.Drawing.Point(51, 102);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 18);
             this.label10.TabIndex = 14;
@@ -201,7 +203,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(18, 57);
+            this.label6.Location = new System.Drawing.Point(11, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 18);
             this.label6.TabIndex = 19;
@@ -234,7 +236,7 @@
             this.labelStatus2.AutoSize = true;
             this.labelStatus2.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStatus2.ForeColor = System.Drawing.Color.Black;
-            this.labelStatus2.Location = new System.Drawing.Point(535, 2);
+            this.labelStatus2.Location = new System.Drawing.Point(524, 5);
             this.labelStatus2.Name = "labelStatus2";
             this.labelStatus2.Size = new System.Drawing.Size(90, 15);
             this.labelStatus2.TabIndex = 11;
@@ -242,7 +244,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
             this.panel9.Controls.Add(this.customTextBoxPort);
             this.panel9.Controls.Add(this.customTextBoxIP);
             this.panel9.Controls.Add(this.customTextBoxSlaveId);
@@ -252,14 +254,14 @@
             this.panel9.Controls.Add(this.label7);
             this.panel9.Controls.Add(this.comboSlave);
             this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.panel9.Location = new System.Drawing.Point(-4, 0);
+            this.panel9.Location = new System.Drawing.Point(8, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(746, 60);
+            this.panel9.Size = new System.Drawing.Size(733, 60);
             this.panel9.TabIndex = 30;
             // 
             // customTextBoxPort
             // 
-            this.customTextBoxPort.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxPort.BackColor = System.Drawing.Color.White;
             this.customTextBoxPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPort.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxPort.BorderSize = 2;
@@ -271,6 +273,7 @@
             this.customTextBoxPort.Multiline = false;
             this.customTextBoxPort.Name = "customTextBoxPort";
             this.customTextBoxPort.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxPort.SelectionStartIndex = 0;
             this.customTextBoxPort.Size = new System.Drawing.Size(65, 33);
             this.customTextBoxPort.TabIndex = 42;
             this.customTextBoxPort.Texts = "502";
@@ -278,7 +281,7 @@
             // 
             // customTextBoxIP
             // 
-            this.customTextBoxIP.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxIP.BackColor = System.Drawing.Color.White;
             this.customTextBoxIP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxIP.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxIP.BorderSize = 2;
@@ -290,6 +293,7 @@
             this.customTextBoxIP.Multiline = false;
             this.customTextBoxIP.Name = "customTextBoxIP";
             this.customTextBoxIP.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxIP.SelectionStartIndex = 0;
             this.customTextBoxIP.Size = new System.Drawing.Size(160, 33);
             this.customTextBoxIP.TabIndex = 45;
             this.customTextBoxIP.Texts = "192.168.88.100";
@@ -297,7 +301,7 @@
             // 
             // customTextBoxSlaveId
             // 
-            this.customTextBoxSlaveId.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxSlaveId.BackColor = System.Drawing.Color.White;
             this.customTextBoxSlaveId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxSlaveId.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxSlaveId.BorderSize = 2;
@@ -309,6 +313,7 @@
             this.customTextBoxSlaveId.Multiline = false;
             this.customTextBoxSlaveId.Name = "customTextBoxSlaveId";
             this.customTextBoxSlaveId.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxSlaveId.SelectionStartIndex = 0;
             this.customTextBoxSlaveId.Size = new System.Drawing.Size(36, 33);
             this.customTextBoxSlaveId.TabIndex = 43;
             this.customTextBoxSlaveId.Texts = "00";
@@ -318,14 +323,14 @@
             // 
             this.buttonConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.buttonConnect.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.buttonConnect.BorderColor = System.Drawing.Color.Silver;
+            this.buttonConnect.BorderColor = System.Drawing.Color.Empty;
             this.buttonConnect.BorderRadius = 35;
             this.buttonConnect.BorderSize = 1;
             this.buttonConnect.FlatAppearance.BorderSize = 0;
             this.buttonConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonConnect.ForeColor = System.Drawing.Color.White;
-            this.buttonConnect.Location = new System.Drawing.Point(635, 12);
+            this.buttonConnect.Location = new System.Drawing.Point(630, 12);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(96, 37);
             this.buttonConnect.TabIndex = 43;
@@ -340,14 +345,14 @@
             this.panelRegsNumber.Controls.Add(this.label12);
             this.panelRegsNumber.Controls.Add(this.btnMinus);
             this.panelRegsNumber.Controls.Add(this.btnPlus);
-            this.panelRegsNumber.Location = new System.Drawing.Point(33, 134);
+            this.panelRegsNumber.Location = new System.Drawing.Point(26, 134);
             this.panelRegsNumber.Name = "panelRegsNumber";
             this.panelRegsNumber.Size = new System.Drawing.Size(182, 42);
             this.panelRegsNumber.TabIndex = 37;
             // 
             // customTextBoxDataRegisters
             // 
-            this.customTextBoxDataRegisters.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxDataRegisters.BackColor = System.Drawing.Color.White;
             this.customTextBoxDataRegisters.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxDataRegisters.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxDataRegisters.BorderSize = 2;
@@ -359,6 +364,7 @@
             this.customTextBoxDataRegisters.Multiline = false;
             this.customTextBoxDataRegisters.Name = "customTextBoxDataRegisters";
             this.customTextBoxDataRegisters.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxDataRegisters.SelectionStartIndex = 0;
             this.customTextBoxDataRegisters.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxDataRegisters.TabIndex = 44;
             this.customTextBoxDataRegisters.Texts = "0001";
@@ -368,14 +374,14 @@
             // 
             this.panelValues.Controls.Add(this.label18);
             this.panelValues.Controls.Add(this.customTextBoxDataValues);
-            this.panelValues.Location = new System.Drawing.Point(222, 48);
+            this.panelValues.Location = new System.Drawing.Point(215, 48);
             this.panelValues.Name = "panelValues";
-            this.panelValues.Size = new System.Drawing.Size(399, 141);
+            this.panelValues.Size = new System.Drawing.Size(399, 128);
             this.panelValues.TabIndex = 38;
             // 
             // customTextBoxDataValues
             // 
-            this.customTextBoxDataValues.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxDataValues.BackColor = System.Drawing.Color.White;
             this.customTextBoxDataValues.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxDataValues.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxDataValues.BorderSize = 2;
@@ -387,6 +393,7 @@
             this.customTextBoxDataValues.Multiline = true;
             this.customTextBoxDataValues.Name = "customTextBoxDataValues";
             this.customTextBoxDataValues.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxDataValues.SelectionStartIndex = 0;
             this.customTextBoxDataValues.Size = new System.Drawing.Size(388, 100);
             this.customTextBoxDataValues.TabIndex = 42;
             this.customTextBoxDataValues.Texts = "";
@@ -394,7 +401,7 @@
             // 
             // panelMessage
             // 
-            this.panelMessage.BackColor = System.Drawing.Color.White;
+            this.panelMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
             this.panelMessage.Controls.Add(this.customTextBoxDataAddress);
             this.panelMessage.Controls.Add(this.customTextBoxTransactionId);
             this.panelMessage.Controls.Add(this.labelStatus2);
@@ -406,25 +413,26 @@
             this.panelMessage.Controls.Add(this.label2);
             this.panelMessage.Enabled = false;
             this.panelMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.panelMessage.Location = new System.Drawing.Point(-4, 61);
+            this.panelMessage.Location = new System.Drawing.Point(8, 72);
             this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(628, 187);
+            this.panelMessage.Size = new System.Drawing.Size(618, 188);
             this.panelMessage.TabIndex = 39;
             // 
             // customTextBoxDataAddress
             // 
-            this.customTextBoxDataAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxDataAddress.BackColor = System.Drawing.Color.White;
             this.customTextBoxDataAddress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxDataAddress.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxDataAddress.BorderSize = 2;
             this.customTextBoxDataAddress.Enable = true;
             this.customTextBoxDataAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxDataAddress.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxDataAddress.Location = new System.Drawing.Point(120, 95);
+            this.customTextBoxDataAddress.Location = new System.Drawing.Point(113, 95);
             this.customTextBoxDataAddress.MaxLength = 4;
             this.customTextBoxDataAddress.Multiline = false;
             this.customTextBoxDataAddress.Name = "customTextBoxDataAddress";
             this.customTextBoxDataAddress.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxDataAddress.SelectionStartIndex = 0;
             this.customTextBoxDataAddress.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxDataAddress.TabIndex = 43;
             this.customTextBoxDataAddress.Texts = "0097";
@@ -432,30 +440,23 @@
             // 
             // customTextBoxTransactionId
             // 
-            this.customTextBoxTransactionId.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxTransactionId.BackColor = System.Drawing.Color.White;
             this.customTextBoxTransactionId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxTransactionId.BorderFocusColor = System.Drawing.Color.Red;
             this.customTextBoxTransactionId.BorderSize = 2;
             this.customTextBoxTransactionId.Enable = true;
             this.customTextBoxTransactionId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxTransactionId.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxTransactionId.Location = new System.Drawing.Point(120, 50);
+            this.customTextBoxTransactionId.Location = new System.Drawing.Point(113, 50);
             this.customTextBoxTransactionId.MaxLength = 4;
             this.customTextBoxTransactionId.Multiline = false;
             this.customTextBoxTransactionId.Name = "customTextBoxTransactionId";
             this.customTextBoxTransactionId.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxTransactionId.SelectionStartIndex = 0;
             this.customTextBoxTransactionId.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxTransactionId.TabIndex = 42;
             this.customTextBoxTransactionId.Texts = "0001";
             this.customTextBoxTransactionId.UnderlinedStyle = true;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Location = new System.Drawing.Point(-5, 59);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(750, 1);
-            this.panel3.TabIndex = 45;
             // 
             // buttonSend
             // 
@@ -469,7 +470,7 @@
             this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSend.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSend.ForeColor = System.Drawing.Color.White;
-            this.buttonSend.Location = new System.Drawing.Point(631, 66);
+            this.buttonSend.Location = new System.Drawing.Point(6, 91);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(96, 36);
             this.buttonSend.TabIndex = 44;
@@ -480,12 +481,12 @@
             // 
             // panelRequest
             // 
-            this.panelRequest.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
             this.panelRequest.Controls.Add(this.label8);
             this.panelRequest.Controls.Add(this.customTextBoxPrintResponse);
-            this.panelRequest.Location = new System.Drawing.Point(0, 66);
+            this.panelRequest.Location = new System.Drawing.Point(8, 332);
             this.panelRequest.Name = "panelRequest";
-            this.panelRequest.Size = new System.Drawing.Size(629, 60);
+            this.panelRequest.Size = new System.Drawing.Size(618, 60);
             this.panelRequest.TabIndex = 40;
             // 
             // label8
@@ -494,7 +495,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label8.Location = new System.Drawing.Point(19, 1);
+            this.label8.Location = new System.Drawing.Point(12, 1);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 18);
             this.label8.TabIndex = 47;
@@ -502,31 +503,32 @@
             // 
             // customTextBoxPrintResponse
             // 
-            this.customTextBoxPrintResponse.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxPrintResponse.BackColor = System.Drawing.Color.White;
             this.customTextBoxPrintResponse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintResponse.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintResponse.BorderSize = 2;
             this.customTextBoxPrintResponse.Enable = true;
             this.customTextBoxPrintResponse.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxPrintResponse.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxPrintResponse.Location = new System.Drawing.Point(19, 20);
+            this.customTextBoxPrintResponse.Location = new System.Drawing.Point(11, 20);
             this.customTextBoxPrintResponse.MaxLength = 1;
             this.customTextBoxPrintResponse.Multiline = false;
             this.customTextBoxPrintResponse.Name = "customTextBoxPrintResponse";
             this.customTextBoxPrintResponse.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxPrintResponse.Size = new System.Drawing.Size(595, 33);
+            this.customTextBoxPrintResponse.SelectionStartIndex = 0;
+            this.customTextBoxPrintResponse.Size = new System.Drawing.Size(596, 33);
             this.customTextBoxPrintResponse.TabIndex = 47;
             this.customTextBoxPrintResponse.Texts = "";
             this.customTextBoxPrintResponse.UnderlinedStyle = true;
             // 
             // panelResponse
             // 
-            this.panelResponse.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelResponse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
             this.panelResponse.Controls.Add(this.label9);
             this.panelResponse.Controls.Add(this.customTextBoxPrintRequest);
-            this.panelResponse.Location = new System.Drawing.Point(0, 2);
+            this.panelResponse.Location = new System.Drawing.Point(8, 266);
             this.panelResponse.Name = "panelResponse";
-            this.panelResponse.Size = new System.Drawing.Size(629, 60);
+            this.panelResponse.Size = new System.Drawing.Size(618, 60);
             this.panelResponse.TabIndex = 41;
             // 
             // label9
@@ -535,7 +537,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label9.Location = new System.Drawing.Point(18, 2);
+            this.label9.Location = new System.Drawing.Point(12, 2);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 18);
             this.label9.TabIndex = 48;
@@ -543,33 +545,32 @@
             // 
             // customTextBoxPrintRequest
             // 
-            this.customTextBoxPrintRequest.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxPrintRequest.BackColor = System.Drawing.Color.White;
             this.customTextBoxPrintRequest.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintRequest.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintRequest.BorderSize = 2;
             this.customTextBoxPrintRequest.Enable = true;
             this.customTextBoxPrintRequest.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxPrintRequest.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxPrintRequest.Location = new System.Drawing.Point(19, 19);
+            this.customTextBoxPrintRequest.Location = new System.Drawing.Point(11, 19);
             this.customTextBoxPrintRequest.MaxLength = 1;
             this.customTextBoxPrintRequest.Multiline = false;
             this.customTextBoxPrintRequest.Name = "customTextBoxPrintRequest";
             this.customTextBoxPrintRequest.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxPrintRequest.Size = new System.Drawing.Size(595, 33);
+            this.customTextBoxPrintRequest.SelectionStartIndex = 0;
+            this.customTextBoxPrintRequest.Size = new System.Drawing.Size(596, 33);
             this.customTextBoxPrintRequest.TabIndex = 46;
             this.customTextBoxPrintRequest.Texts = "";
             this.customTextBoxPrintRequest.UnderlinedStyle = true;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.customTextBoxPrintAnalyze);
-            this.panel1.Controls.Add(this.panelRequest);
-            this.panel1.Controls.Add(this.panelResponse);
-            this.panel1.Location = new System.Drawing.Point(-4, 243);
+            this.panel1.Location = new System.Drawing.Point(8, 398);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 362);
+            this.panel1.Size = new System.Drawing.Size(618, 231);
             this.panel1.TabIndex = 40;
             // 
             // label5
@@ -577,7 +578,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label5.Location = new System.Drawing.Point(18, 130);
+            this.label5.Location = new System.Drawing.Point(12, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 18);
             this.label5.TabIndex = 46;
@@ -585,19 +586,20 @@
             // 
             // customTextBoxPrintAnalyze
             // 
-            this.customTextBoxPrintAnalyze.BackColor = System.Drawing.SystemColors.Window;
+            this.customTextBoxPrintAnalyze.BackColor = System.Drawing.Color.White;
             this.customTextBoxPrintAnalyze.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintAnalyze.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.customTextBoxPrintAnalyze.BorderSize = 2;
             this.customTextBoxPrintAnalyze.Enable = true;
             this.customTextBoxPrintAnalyze.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxPrintAnalyze.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxPrintAnalyze.Location = new System.Drawing.Point(19, 150);
+            this.customTextBoxPrintAnalyze.Location = new System.Drawing.Point(11, 25);
             this.customTextBoxPrintAnalyze.MaxLength = 1;
             this.customTextBoxPrintAnalyze.Multiline = true;
             this.customTextBoxPrintAnalyze.Name = "customTextBoxPrintAnalyze";
             this.customTextBoxPrintAnalyze.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxPrintAnalyze.Size = new System.Drawing.Size(595, 195);
+            this.customTextBoxPrintAnalyze.SelectionStartIndex = 0;
+            this.customTextBoxPrintAnalyze.Size = new System.Drawing.Size(596, 195);
             this.customTextBoxPrintAnalyze.TabIndex = 43;
             this.customTextBoxPrintAnalyze.Texts = "";
             this.customTextBoxPrintAnalyze.UnderlinedStyle = false;
@@ -614,7 +616,7 @@
             this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHistory.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
-            this.buttonHistory.Location = new System.Drawing.Point(631, 151);
+            this.buttonHistory.Location = new System.Drawing.Point(6, 5);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(96, 37);
             this.buttonHistory.TabIndex = 46;
@@ -635,7 +637,7 @@
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(631, 108);
+            this.buttonClear.Location = new System.Drawing.Point(6, 48);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(96, 37);
             this.buttonClear.TabIndex = 45;
@@ -644,27 +646,27 @@
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // panel4
+            // panel2
             // 
-            this.panel4.BackColor = System.Drawing.Color.Silver;
-            this.panel4.ForeColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(623, 61);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 606);
-            this.panel4.TabIndex = 46;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(248)))));
+            this.panel2.Controls.Add(this.buttonHistory);
+            this.panel2.Controls.Add(this.buttonClear);
+            this.panel2.Controls.Add(this.buttonSend);
+            this.panel2.Location = new System.Drawing.Point(632, 72);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(109, 254);
+            this.panel2.TabIndex = 47;
             // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(734, 602);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.buttonClear);
-            this.Controls.Add(this.buttonHistory);
-            this.Controls.Add(this.buttonSend);
+            this.ClientSize = new System.Drawing.Size(749, 638);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelRequest);
+            this.Controls.Add(this.panelResponse);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMessage);
             this.Controls.Add(this.panel9);
@@ -689,6 +691,7 @@
             this.panelResponse.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -729,10 +732,9 @@
         private CustomControls.CustomButton buttonSend;
         private CustomControls.CustomButton buttonClear;
         private CustomControls.CustomButton buttonHistory;
-        private Panel panel3;
         private Label label8;
         private Label label9;
         private Label label5;
-        private Panel panel4;
+        private Panel panel2;
     }
 }
