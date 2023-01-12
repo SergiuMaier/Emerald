@@ -48,7 +48,6 @@
             this.customTextBoxIP = new TCPClient.CustomControls.CustomTextBox();
             this.customTextBoxSlaveId = new TCPClient.CustomControls.CustomTextBox();
             this.buttonConnect = new TCPClient.CustomControls.CustomButton();
-            this.buttonDisconnect = new TCPClient.CustomControls.CustomButton();
             this.panelRegsNumber = new System.Windows.Forms.Panel();
             this.customTextBoxDataRegisters = new TCPClient.CustomControls.CustomTextBox();
             this.panelValues = new System.Windows.Forms.Panel();
@@ -334,26 +333,6 @@
             this.buttonConnect.TextColor = System.Drawing.Color.White;
             this.buttonConnect.UseVisualStyleBackColor = false;
             this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
-            // 
-            // buttonDisconnect
-            // 
-            this.buttonDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.buttonDisconnect.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.buttonDisconnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.buttonDisconnect.BorderRadius = 34;
-            this.buttonDisconnect.BorderSize = 0;
-            this.buttonDisconnect.Enabled = false;
-            this.buttonDisconnect.FlatAppearance.BorderSize = 0;
-            this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDisconnect.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonDisconnect.ForeColor = System.Drawing.Color.Black;
-            this.buttonDisconnect.Location = new System.Drawing.Point(631, 194);
-            this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(96, 34);
-            this.buttonDisconnect.TabIndex = 41;
-            this.buttonDisconnect.Text = "Disconnect";
-            this.buttonDisconnect.TextColor = System.Drawing.Color.Black;
-            this.buttonDisconnect.UseVisualStyleBackColor = false;
             // 
             // panelRegsNumber
             // 
@@ -684,7 +663,6 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonHistory);
-            this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMessage);
@@ -737,7 +715,6 @@
         private Panel panel1;
         private ToolTip toolTipForm;
         private CustomControls.CustomButton buttonConnect;
-        private CustomControls.CustomButton buttonDisconnect;
         private CustomControls.CustomTextBox customTextBoxIP;
         private CustomControls.CustomTextBox customTextBoxPort;
         private CustomControls.CustomTextBox customTextBoxTransactionId;
