@@ -43,7 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelStatus2 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.panelConnect = new System.Windows.Forms.Panel();
             this.customTextBoxPort = new TCPClient.CustomControls.CustomTextBox();
             this.customTextBoxIP = new TCPClient.CustomControls.CustomTextBox();
             this.customTextBoxSlaveId = new TCPClient.CustomControls.CustomTextBox();
@@ -75,7 +75,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel9.SuspendLayout();
+            this.panelConnect.SuspendLayout();
             this.panelRegsNumber.SuspendLayout();
             this.panelValues.SuspendLayout();
             this.panelMessage.SuspendLayout();
@@ -248,29 +248,30 @@
             // labelStatus2
             // 
             this.labelStatus2.AutoSize = true;
+            this.labelStatus2.BackColor = System.Drawing.Color.Transparent;
             this.labelStatus2.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStatus2.ForeColor = System.Drawing.Color.Black;
-            this.labelStatus2.Location = new System.Drawing.Point(518, 3);
+            this.labelStatus2.Location = new System.Drawing.Point(526, 3);
             this.labelStatus2.Name = "labelStatus2";
-            this.labelStatus2.Size = new System.Drawing.Size(90, 15);
+            this.labelStatus2.Size = new System.Drawing.Size(82, 15);
             this.labelStatus2.TabIndex = 11;
-            this.labelStatus2.Text = "Not connected";
+            this.labelStatus2.Text = "Disconnected";
             // 
-            // panel9
+            // panelConnect
             // 
-            this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Controls.Add(this.customTextBoxPort);
-            this.panel9.Controls.Add(this.customTextBoxIP);
-            this.panel9.Controls.Add(this.customTextBoxSlaveId);
-            this.panel9.Controls.Add(this.label1);
-            this.panel9.Controls.Add(this.label3);
-            this.panel9.Controls.Add(this.comboSlave);
-            this.panel9.Controls.Add(this.label7);
-            this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(609, 67);
-            this.panel9.TabIndex = 30;
+            this.panelConnect.BackColor = System.Drawing.Color.White;
+            this.panelConnect.Controls.Add(this.customTextBoxPort);
+            this.panelConnect.Controls.Add(this.customTextBoxIP);
+            this.panelConnect.Controls.Add(this.customTextBoxSlaveId);
+            this.panelConnect.Controls.Add(this.label1);
+            this.panelConnect.Controls.Add(this.label3);
+            this.panelConnect.Controls.Add(this.comboSlave);
+            this.panelConnect.Controls.Add(this.label7);
+            this.panelConnect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.panelConnect.Location = new System.Drawing.Point(0, 0);
+            this.panelConnect.Name = "panelConnect";
+            this.panelConnect.Size = new System.Drawing.Size(609, 67);
+            this.panelConnect.TabIndex = 30;
             // 
             // customTextBoxPort
             // 
@@ -678,7 +679,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel3.Controls.Add(this.panel9);
+            this.panel3.Controls.Add(this.panelConnect);
             this.panel3.Location = new System.Drawing.Point(168, 16);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(612, 70);
@@ -762,8 +763,8 @@
             this.Name = "FormClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MODBUS TCP Client";
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
+            this.panelConnect.ResumeLayout(false);
+            this.panelConnect.PerformLayout();
             this.panelRegsNumber.ResumeLayout(false);
             this.panelRegsNumber.PerformLayout();
             this.panelValues.ResumeLayout(false);
@@ -801,7 +802,7 @@
         private Label label3;
         private Label label1;
         private Label labelStatus2;
-        private Panel panel9;
+        private Panel panelConnect;
         private Panel panelRegsNumber;
         private Panel panelValues;
         private Panel panelMessage;

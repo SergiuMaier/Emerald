@@ -60,7 +60,7 @@ namespace TCPClient
                 try
                 {
                     client.Events.Disconnected += Disconnected;
-                    //client.Disconnect(); //crash
+                    client.DisconnectAsync(); //crash
                 }
                 catch (Exception ex)
                 {
@@ -68,18 +68,18 @@ namespace TCPClient
                 }
 
                 //panel Connection
-                comboSlave.Enabled = true;
-                comboSlave.SelectedIndex = 0;
-                customTextBoxIP.Enable = true;
-                customTextBoxPort.Enable = true;
+                //panelConnect.Enabled = true;
+                //comboSlave.Enabled = true;
+                //comboSlave.SelectedIndex = 0;
+                //customTextBoxIP.Enable = true;
+                //customTextBoxPort.Enable = true;
                 buttonConnect.Text = "   Connect";
                 labelStatus2.Text = "Disconnected";
-                labelStatus2.ForeColor = Color.Red;
 
                 //panel Message
                 panelMessage.Enabled = false;
 
-                //panel Options
+                ////panel Options
                 buttonHistory.Enabled = false;
                 buttonSend.Enabled = false;
                 buttonClear.Enabled = false;
@@ -88,19 +88,19 @@ namespace TCPClient
 
         private void Connected(object sender, ConnectionEventArgs e)
         {
-            //panel Connection
-            comboSlave.Enabled = false;
-            customTextBoxSlaveId.Enable = false;
-            customTextBoxIP.Enable = false;
-            customTextBoxPort.Enable = false;
+            ////panel Connection
+            //panelConnect.Enabled = false;
+            //comboSlave.Enabled = false;
+            //customTextBoxSlaveId.Enable = false;
+            //customTextBoxIP.Enable = false;
+            //customTextBoxPort.Enable = false;
             buttonConnect.Text = "Disconnect";
-            labelStatus2.Text = "Connected";
-            labelStatus2.ForeColor = Color.Green;
-            
+            labelStatus2.Text =  "   Connected";
+
             //panel Message
             comboFunctionCode.SelectedIndex = 0;
             panelMessage.Enabled = true;
-          
+
             //panel Options
             buttonHistory.Enabled = true;
             buttonSend.Enabled = true;
@@ -110,13 +110,14 @@ namespace TCPClient
         private void Disconnected(object sender, ConnectionEventArgs e)
         {
             //panel Connection
-            customTextBoxIP.Enable = true;
-            customTextBoxPort.Enable = true;
-            buttonConnect.Text = "   Connect";
-            labelStatus2.Text = "Disconnected";
-            labelStatus2.ForeColor = Color.Red;
+            //panelConnect.Enabled = true;
 
-            //panel Message
+            //    customTextBoxIP.Enable = true;
+            //    customTextBoxPort.Enable = true;
+            buttonConnect.Text = "   Connect";
+            labelStatus2.Text = "Disonnected";
+
+            //    //panel Message
             panelMessage.Enabled = false;
 
             //panel Options

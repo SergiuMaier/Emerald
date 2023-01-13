@@ -49,7 +49,7 @@
             this.customTextBoxHistory.Enable = true;
             this.customTextBoxHistory.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxHistory.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxHistory.Location = new System.Drawing.Point(10, 10);
+            this.customTextBoxHistory.Location = new System.Drawing.Point(12, 12);
             this.customTextBoxHistory.MaxLength = 4;
             this.customTextBoxHistory.Multiline = true;
             this.customTextBoxHistory.Name = "customTextBoxHistory";
@@ -78,10 +78,10 @@
             this.buttonOpenFile.BackColor = System.Drawing.Color.Transparent;
             this.buttonOpenFile.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonOpenFile.BorderColor = System.Drawing.Color.White;
-            this.buttonOpenFile.BorderRadius = 30;
+            this.buttonOpenFile.BorderRadius = 5;
             this.buttonOpenFile.BorderSize = 1;
             this.buttonOpenFile.FlatAppearance.BorderSize = 0;
-            this.buttonOpenFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.buttonOpenFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(63)))));
             this.buttonOpenFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenFile.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonOpenFile.ForeColor = System.Drawing.Color.White;
@@ -99,7 +99,7 @@
             this.buttonSave.BackColor = System.Drawing.Color.Transparent;
             this.buttonSave.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonSave.BorderColor = System.Drawing.Color.White;
-            this.buttonSave.BorderRadius = 30;
+            this.buttonSave.BorderRadius = 5;
             this.buttonSave.BorderSize = 1;
             this.buttonSave.FlatAppearance.BorderSize = 0;
             this.buttonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
@@ -120,10 +120,10 @@
             this.buttonClear.BackColor = System.Drawing.Color.Transparent;
             this.buttonClear.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonClear.BorderColor = System.Drawing.Color.White;
-            this.buttonClear.BorderRadius = 30;
+            this.buttonClear.BorderRadius = 5;
             this.buttonClear.BorderSize = 1;
             this.buttonClear.FlatAppearance.BorderSize = 0;
-            this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(63)))));
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
@@ -140,15 +140,15 @@
             // 
             this.customButton1.BackColor = System.Drawing.Color.Transparent;
             this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton1.BorderColor = System.Drawing.Color.White;
-            this.customButton1.BorderRadius = 30;
+            this.customButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.customButton1.BorderRadius = 5;
             this.customButton1.BorderSize = 1;
             this.customButton1.FlatAppearance.BorderSize = 0;
             this.customButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(562, 9);
+            this.customButton1.Location = new System.Drawing.Point(563, 9);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(74, 37);
             this.customButton1.TabIndex = 47;
