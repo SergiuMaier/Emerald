@@ -72,6 +72,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.customButton2 = new TCPClient.CustomControls.CustomButton();
+            this.customButton1 = new TCPClient.CustomControls.CustomButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -277,7 +279,7 @@
             // 
             this.customTextBoxPort.BackColor = System.Drawing.Color.White;
             this.customTextBoxPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxPort.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxPort.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxPort.BorderSize = 2;
             this.customTextBoxPort.Enable = true;
             this.customTextBoxPort.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -297,7 +299,7 @@
             // 
             this.customTextBoxIP.BackColor = System.Drawing.Color.White;
             this.customTextBoxIP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxIP.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxIP.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxIP.BorderSize = 2;
             this.customTextBoxIP.Enable = true;
             this.customTextBoxIP.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -317,7 +319,7 @@
             // 
             this.customTextBoxSlaveId.BackColor = System.Drawing.Color.White;
             this.customTextBoxSlaveId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxSlaveId.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxSlaveId.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxSlaveId.BorderSize = 2;
             this.customTextBoxSlaveId.Enable = false;
             this.customTextBoxSlaveId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -346,7 +348,7 @@
             this.buttonConnect.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonConnect.ForeColor = System.Drawing.Color.White;
             this.buttonConnect.Image = ((System.Drawing.Image)(resources.GetObject("buttonConnect.Image")));
-            this.buttonConnect.Location = new System.Drawing.Point(9, 23);
+            this.buttonConnect.Location = new System.Drawing.Point(9, 337);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(135, 45);
             this.buttonConnect.TabIndex = 43;
@@ -372,7 +374,7 @@
             // 
             this.customTextBoxDataRegisters.BackColor = System.Drawing.Color.White;
             this.customTextBoxDataRegisters.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxDataRegisters.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxDataRegisters.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxDataRegisters.BorderSize = 2;
             this.customTextBoxDataRegisters.Enable = true;
             this.customTextBoxDataRegisters.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -401,7 +403,7 @@
             // 
             this.customTextBoxDataValues.BackColor = System.Drawing.Color.White;
             this.customTextBoxDataValues.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxDataValues.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxDataValues.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxDataValues.BorderSize = 2;
             this.customTextBoxDataValues.Enable = true;
             this.customTextBoxDataValues.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -440,7 +442,7 @@
             // 
             this.customTextBoxDataAddress.BackColor = System.Drawing.Color.White;
             this.customTextBoxDataAddress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxDataAddress.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxDataAddress.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxDataAddress.BorderSize = 2;
             this.customTextBoxDataAddress.Enable = true;
             this.customTextBoxDataAddress.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -460,7 +462,7 @@
             // 
             this.customTextBoxTransactionId.BackColor = System.Drawing.Color.White;
             this.customTextBoxTransactionId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.customTextBoxTransactionId.BorderFocusColor = System.Drawing.Color.Red;
+            this.customTextBoxTransactionId.BorderFocusColor = System.Drawing.Color.Orange;
             this.customTextBoxTransactionId.BorderSize = 2;
             this.customTextBoxTransactionId.Enable = true;
             this.customTextBoxTransactionId.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -490,7 +492,7 @@
             this.buttonSend.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSend.ForeColor = System.Drawing.Color.White;
             this.buttonSend.Image = ((System.Drawing.Image)(resources.GetObject("buttonSend.Image")));
-            this.buttonSend.Location = new System.Drawing.Point(9, 199);
+            this.buttonSend.Location = new System.Drawing.Point(9, 484);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(135, 45);
             this.buttonSend.TabIndex = 44;
@@ -640,7 +642,7 @@
             this.buttonHistory.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
             this.buttonHistory.Image = ((System.Drawing.Image)(resources.GetObject("buttonHistory.Image")));
-            this.buttonHistory.Location = new System.Drawing.Point(9, 103);
+            this.buttonHistory.Location = new System.Drawing.Point(9, 388);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(135, 45);
             this.buttonHistory.TabIndex = 46;
@@ -665,7 +667,7 @@
             this.buttonClear.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
             this.buttonClear.Image = ((System.Drawing.Image)(resources.GetObject("buttonClear.Image")));
-            this.buttonClear.Location = new System.Drawing.Point(9, 151);
+            this.buttonClear.Location = new System.Drawing.Point(9, 436);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(135, 45);
             this.buttonClear.TabIndex = 45;
@@ -706,6 +708,8 @@
             // panel7
             // 
             this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
+            this.panel7.Controls.Add(this.customButton2);
+            this.panel7.Controls.Add(this.customButton1);
             this.panel7.Controls.Add(this.buttonConnect);
             this.panel7.Controls.Add(this.buttonHistory);
             this.panel7.Controls.Add(this.buttonClear);
@@ -714,6 +718,48 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(150, 728);
             this.panel7.TabIndex = 52;
+            // 
+            // customButton2
+            // 
+            this.customButton2.BackColor = System.Drawing.Color.Transparent;
+            this.customButton2.BackgroundColor = System.Drawing.Color.Transparent;
+            this.customButton2.BorderColor = System.Drawing.Color.White;
+            this.customButton2.BorderRadius = 5;
+            this.customButton2.BorderSize = 1;
+            this.customButton2.FlatAppearance.BorderSize = 0;
+            this.customButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton2.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.customButton2.ForeColor = System.Drawing.Color.White;
+            this.customButton2.Location = new System.Drawing.Point(9, 149);
+            this.customButton2.Name = "customButton2";
+            this.customButton2.Size = new System.Drawing.Size(135, 45);
+            this.customButton2.TabIndex = 57;
+            this.customButton2.Text = "PROFINET";
+            this.customButton2.TextColor = System.Drawing.Color.White;
+            this.customButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.customButton2.UseVisualStyleBackColor = false;
+            // 
+            // customButton1
+            // 
+            this.customButton1.BackColor = System.Drawing.Color.Transparent;
+            this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
+            this.customButton1.BorderColor = System.Drawing.Color.White;
+            this.customButton1.BorderRadius = 5;
+            this.customButton1.BorderSize = 1;
+            this.customButton1.FlatAppearance.BorderSize = 0;
+            this.customButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton1.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.customButton1.ForeColor = System.Drawing.Color.White;
+            this.customButton1.Location = new System.Drawing.Point(9, 98);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.Size = new System.Drawing.Size(135, 45);
+            this.customButton1.TabIndex = 56;
+            this.customButton1.Text = "MODBUS";
+            this.customButton1.TextColor = System.Drawing.Color.White;
+            this.customButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.customButton1.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
@@ -749,7 +795,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(797, 722);
+            this.ClientSize = new System.Drawing.Size(791, 722);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel8);
@@ -834,5 +880,7 @@
         private Panel panel8;
         private Panel panel4;
         private Panel panel2;
+        private CustomControls.CustomButton customButton2;
+        private CustomControls.CustomButton customButton1;
     }
 }
