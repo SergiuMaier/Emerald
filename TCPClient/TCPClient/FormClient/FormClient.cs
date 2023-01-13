@@ -21,6 +21,7 @@ namespace TCPClient
             comboSlave.Enabled = true;
             comboSlave.SelectedIndex = 0; //load with COM100 by default
             customTextBoxSlaveId.Texts = "FF";
+            buttonHistory.ForeColor = Color.White;
         }
 
         private void FormClient_Load(object sender, EventArgs e)
@@ -71,7 +72,7 @@ namespace TCPClient
                 comboSlave.SelectedIndex = 0;
                 customTextBoxIP.Enable = true;
                 customTextBoxPort.Enable = true;
-                buttonConnect.Text = "Connect";
+                buttonConnect.Text = "   Connect";
                 labelStatus2.Text = "Disconnected";
                 labelStatus2.ForeColor = Color.Red;
 
@@ -111,7 +112,7 @@ namespace TCPClient
             //panel Connection
             customTextBoxIP.Enable = true;
             customTextBoxPort.Enable = true;
-            buttonConnect.Text = "Connect";
+            buttonConnect.Text = "   Connect";
             labelStatus2.Text = "Disconnected";
             labelStatus2.ForeColor = Color.Red;
 
