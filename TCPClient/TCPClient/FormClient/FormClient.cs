@@ -66,64 +66,49 @@ namespace TCPClient
                 {
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                //panel Connection
-                //panelConnect.Enabled = true;
-                //comboSlave.Enabled = true;
-                //comboSlave.SelectedIndex = 0;
-                //customTextBoxIP.Enable = true;
-                //customTextBoxPort.Enable = true;
-                buttonConnect.Text = "   Connect";
-                labelStatus2.Text = "Disconnected";
-
-                //panel Message
-                panelMessage.Enabled = false;
-
-                ////panel Options
-                buttonHistory.Enabled = false;
-                buttonSend.Enabled = false;
-                buttonClear.Enabled = false;
             }
         }
 
         private void Connected(object sender, ConnectionEventArgs e)
         {
-            ////panel Connection
-            //panelConnect.Enabled = false;
-            //comboSlave.Enabled = false;
-            //customTextBoxSlaveId.Enable = false;
-            //customTextBoxIP.Enable = false;
-            //customTextBoxPort.Enable = false;
-            buttonConnect.Text = "Disconnect";
-            labelStatus2.Text =  "   Connected";
+            this.Invoke((MethodInvoker)delegate
+            {
+                //panel Connection
+                panelConnect.Enabled = false;
+                comboSlave.Enabled = false;
+                customTextBoxSlaveId.Enable = false;
+                buttonConnect.Text = "Disconnect";
+                labelStatus2.Text = "   Connected";
 
-            //panel Message
-            comboFunctionCode.SelectedIndex = 0;
-            panelMessage.Enabled = true;
+                //panel Message
+                comboFunctionCode.SelectedIndex = 0;
+                panelMessage.Enabled = true;
 
-            //panel Options
-            buttonHistory.Enabled = true;
-            buttonSend.Enabled = true;
-            buttonClear.Enabled = true;
+                //panel Options
+                buttonHistory.Enabled = true;
+                buttonSend.Enabled = true;
+                buttonClear.Enabled = true;
+            });
         }
 
         private void Disconnected(object sender, ConnectionEventArgs e)
         {
-            //panel Connection
-            //panelConnect.Enabled = true;
+            this.Invoke((MethodInvoker)delegate
+            {
+                //panel Connection
+                panelConnect.Enabled = true;
+                comboSlave.Enabled = true;
+                buttonConnect.Text = "   Connect";
+                labelStatus2.Text = "Disonnected";
 
-            //    customTextBoxIP.Enable = true;
-            //    customTextBoxPort.Enable = true;
-            buttonConnect.Text = "   Connect";
-            labelStatus2.Text = "Disonnected";
+                //panel Message
+                panelMessage.Enabled = false;
 
-            //    //panel Message
-            panelMessage.Enabled = false;
-
-            //panel Options
-            buttonHistory.Enabled = false;
-            buttonSend.Enabled = false;
-            buttonClear.Enabled = false;
+                //panel Options
+                buttonHistory.Enabled = false;
+                buttonSend.Enabled = false;
+                buttonClear.Enabled = false;
+            });
         }
 
         private void buttonSend_Click(object sender, EventArgs e)
