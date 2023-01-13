@@ -167,11 +167,11 @@
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.label18.Location = new System.Drawing.Point(3, 7);
+            this.label18.Location = new System.Drawing.Point(3, 16);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(50, 18);
+            this.label18.Size = new System.Drawing.Size(54, 18);
             this.label18.TabIndex = 33;
-            this.label18.Text = "Values";
+            this.label18.Text = "Values:";
             // 
             // btnPlus
             // 
@@ -390,7 +390,7 @@
             this.customTextBoxDataRegisters.SelectionStartIndex = 0;
             this.customTextBoxDataRegisters.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxDataRegisters.TabIndex = 44;
-            this.customTextBoxDataRegisters.Texts = "0001";
+            this.customTextBoxDataRegisters.Texts = "1";
             this.customTextBoxDataRegisters.UnderlinedStyle = true;
             // 
             // panelValues
@@ -411,13 +411,13 @@
             this.customTextBoxDataValues.Enable = true;
             this.customTextBoxDataValues.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxDataValues.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxDataValues.Location = new System.Drawing.Point(4, 26);
+            this.customTextBoxDataValues.Location = new System.Drawing.Point(4, 35);
             this.customTextBoxDataValues.MaxLength = 4;
             this.customTextBoxDataValues.Multiline = true;
             this.customTextBoxDataValues.Name = "customTextBoxDataValues";
             this.customTextBoxDataValues.Padding = new System.Windows.Forms.Padding(7);
             this.customTextBoxDataValues.SelectionStartIndex = 0;
-            this.customTextBoxDataValues.Size = new System.Drawing.Size(373, 100);
+            this.customTextBoxDataValues.Size = new System.Drawing.Size(373, 91);
             this.customTextBoxDataValues.TabIndex = 42;
             this.customTextBoxDataValues.Texts = "";
             this.customTextBoxDataValues.UnderlinedStyle = false;

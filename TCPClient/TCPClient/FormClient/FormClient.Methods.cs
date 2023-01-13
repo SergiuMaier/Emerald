@@ -24,13 +24,16 @@ namespace TCPClient
 
         public void AddToHistory(byte[] request, byte[] response)
         {
+            //printing date and time 
             AddMessageToHistory += $"[{DateTime.Now}]{Environment.NewLine}->";
 
+            //Adding the Request message
             foreach (byte element in request)
                 AddMessageToHistory += $" {element:X2}";
 
             AddMessageToHistory += $"{Environment.NewLine}<-";
 
+            //Adding the Response message
             foreach (byte element in response)
                 AddMessageToHistory += $" {element:X2}";
 
@@ -41,6 +44,7 @@ namespace TCPClient
         {
             switch (response[index])
             {
+                //HERE ADD NEW INFO BESIDES THIS
                 case 0x01:
                     ExceptionTitle = "Exception Code 01: Illegal Function";
                     ExceptionMessage = "'The function code received in the query is not an allowable action for the slave.'";
@@ -68,7 +72,7 @@ namespace TCPClient
                     break;
 
                 default:
-                    customTextBoxPrintAnalyze.Texts = "Exception code in response.";
+                    customTextBoxPrintAnalyze.Texts = "Another exception code in response.";
                     break;
             }
         }
@@ -88,6 +92,7 @@ namespace TCPClient
                     }
                     else if (response[(int)Message.FunctionCode] == highestBitSet + request[(int)Message.FunctionCode])
                     {
+                        //this message goes to switch -> in the Exception Form (eg FC: 83 -> ....) 
                         customTextBoxPrintAnalyze.Texts = $"The function code in the response has its highest bit set. {Environment.NewLine}";
 
                         VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
@@ -104,12 +109,12 @@ namespace TCPClient
                         }
                         catch
                         {
-                            MessageBox.Show("An error occurred.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("An error occurred while opening the exception message.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         
                     }
                     else
-                        customTextBoxPrintAnalyze.Texts = "Incorrect response.";
+                        customTextBoxPrintAnalyze.Texts = "Incorrect Function Code in the response.";
                 }
                 else
                     customTextBoxPrintAnalyze.Texts = "Different Slave ID in the response.";
@@ -120,39 +125,44 @@ namespace TCPClient
 
         public void ReadDataFromResponse(byte[] response)
         {
-            int counterRegisters = 0;
-
             if (selected03)
             {
-                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Read Holding Registers {Environment.NewLine}" +
-                                                  $"Address: {customTextBoxDataAddress.Texts} {Environment.NewLine}Number of registers: {Convert.ToInt32(customTextBoxDataRegisters.Texts)} {Environment.NewLine}{Environment.NewLine}";
-                customTextBoxPrintAnalyze.Texts += $"In response: {Environment.NewLine}";
-                customTextBoxPrintAnalyze.Texts += $"The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}" +
+                                                  $"Command: Read Holding Registers {Environment.NewLine}" +
+                                                  $"Address: {customTextBoxDataAddress.Texts} {Environment.NewLine}" +
+                                                  $"Number of registers: {customTextBoxDataRegisters.Texts} {Environment.NewLine}{Environment.NewLine}";
 
-                for (int index = (int)Message.ContentOfFirstRegister; index <= (response.Length - 1); index++)
+                customTextBoxPrintAnalyze.Texts += $"In response: {Environment.NewLine}" +
+                                                   $"The contents of requested registers: {Convert.ToInt32(response[(int)Message.NumberOfBytes])} bytes";
+
+                int counterRegisters = 0; //used for printing the format "-register no. X" only on even cases
+
+                for (int index = (int)Message.ContentOfFirstRegister; index <= (response.Length - 1); index++) //int index = 9;
                 {
                     if (counterRegisters % 2 == 0)
-                    {
-                        customTextBoxPrintAnalyze.Texts += $"{Environment.NewLine}-register no.{counterRegisters / 2 + 1}: ";
-                        customTextBoxPrintAnalyze.Texts += $"{response[index]:X2}"; ;
-                    }
+                        customTextBoxPrintAnalyze.Texts += $"{Environment.NewLine} -register no.{counterRegisters / 2 + 1}: {response[index]:X2}"; // for eg. when counterRegisters = 4, index = 3 => 4/2+1 = 3 
                     else
-                        customTextBoxPrintAnalyze.Texts += $"{response[index]:X2}"; ;
+                        customTextBoxPrintAnalyze.Texts += $"{response[index]:X2}";
 
                     counterRegisters++;
                 }
             }
             else if (selected06)
             {
-                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Preset Single Register {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}" +
+                                                  $"Command: Preset Single Register   {Environment.NewLine}{Environment.NewLine}";
+
                 customTextBoxPrintAnalyze.Texts += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
-                                            $"was written at the address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
+                                                   $"was written at the address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
             }
             else if (selected16)
             {
-                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Preset Multiple Registers {Environment.NewLine}Values: {customTextBoxDataValues.Texts} {Environment.NewLine}{Environment.NewLine}";
+                customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}" +
+                                                  $"Command: Preset Multiple Registers {Environment.NewLine}" +
+                                                  $"Values: {customTextBoxDataValues.Texts} {Environment.NewLine}{Environment.NewLine}";
+
                 customTextBoxPrintAnalyze.Texts += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
-                                            $"with the starting address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
+                                                   $"with the starting address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
             }
         }
 

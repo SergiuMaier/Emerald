@@ -126,7 +126,7 @@ namespace TCPClient
                 {
                     requestBuffer = new byte[bufferLength];
 
-                    BuildRequest(requestBuffer, customTextBoxTransactionId.Texts, protocolId, slaveId, functionCode, customTextBoxDataAddress.Texts, customTextBoxDataRegisters.Texts, customTextBoxDataValues.Texts);
+                    BuildRequest(requestBuffer, customTextBoxTransactionId.Texts, protocolId, slaveId, functionCode, customTextBoxDataAddress.Texts, NumberOfRegisters, customTextBoxDataValues.Texts);
                     client.Send(requestBuffer);
 
                     foreach (byte element in requestBuffer)
@@ -134,7 +134,7 @@ namespace TCPClient
                 }
                 catch
                 {
-                    MessageBox.Show("Invalid format.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Fill in all required text boxes.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -232,7 +232,8 @@ namespace TCPClient
             if (counterNoOfRegisters > 1)
             {
                 counterNoOfRegisters--;
-                customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString("X4");
+                customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString(); //Showing the counter in int
+                NumberOfRegisters = counterNoOfRegisters.ToString("X4"); //using the counter in short/hex
             }
             else
                 btnMinus.Enabled = false;
@@ -251,8 +252,9 @@ namespace TCPClient
                 btnMinus.Enabled = true;
 
             counterNoOfRegisters++;
-            customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString("X4");
-            
+            customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString();
+            NumberOfRegisters = counterNoOfRegisters.ToString("X4");    //using the counter in short/hex
+
             //changeing text box property and buffer lenght depending on the selected command
             if (selected16)
             {

@@ -57,6 +57,7 @@ namespace TCPClient
         byte lengthCase06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
         byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
+        private static string numberOfRegisters;
         private static string addMessageToHistory;  // = "";  //the desired message is sent to FormHistory
         private static string exceptionTitle;       //used to send the exception message to FormException
         private static string exceptionMessage;     //used to send the exception message to FormException
@@ -108,5 +109,6 @@ namespace TCPClient
         public short ProtocolId { get => protocolId; set => protocolId = value; }
         public byte FunctionCode { get => functionCode; set => functionCode = value; }
         public byte SlaveId { get => slaveId; set => slaveId = value; }
+        public static string NumberOfRegisters { get => numberOfRegisters; set => numberOfRegisters = value; }
     }
 }
