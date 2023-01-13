@@ -337,15 +337,15 @@
             this.buttonConnect.BackColor = System.Drawing.Color.Transparent;
             this.buttonConnect.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonConnect.BorderColor = System.Drawing.Color.White;
-            this.buttonConnect.BorderRadius = 20;
+            this.buttonConnect.BorderRadius = 5;
             this.buttonConnect.BorderSize = 1;
             this.buttonConnect.FlatAppearance.BorderSize = 0;
-            this.buttonConnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.buttonConnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(63)))));
             this.buttonConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnect.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonConnect.ForeColor = System.Drawing.Color.White;
             this.buttonConnect.Image = ((System.Drawing.Image)(resources.GetObject("buttonConnect.Image")));
-            this.buttonConnect.Location = new System.Drawing.Point(9, 21);
+            this.buttonConnect.Location = new System.Drawing.Point(9, 23);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(135, 45);
             this.buttonConnect.TabIndex = 43;
@@ -480,7 +480,7 @@
             this.buttonSend.BackColor = System.Drawing.Color.Transparent;
             this.buttonSend.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonSend.BorderColor = System.Drawing.Color.White;
-            this.buttonSend.BorderRadius = 20;
+            this.buttonSend.BorderRadius = 5;
             this.buttonSend.BorderSize = 1;
             this.buttonSend.Enabled = false;
             this.buttonSend.FlatAppearance.BorderSize = 0;
@@ -630,7 +630,7 @@
             this.buttonHistory.BackColor = System.Drawing.Color.Transparent;
             this.buttonHistory.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonHistory.BorderColor = System.Drawing.Color.White;
-            this.buttonHistory.BorderRadius = 20;
+            this.buttonHistory.BorderRadius = 5;
             this.buttonHistory.BorderSize = 1;
             this.buttonHistory.Enabled = false;
             this.buttonHistory.FlatAppearance.BorderSize = 0;
@@ -655,7 +655,7 @@
             this.buttonClear.BackColor = System.Drawing.Color.Transparent;
             this.buttonClear.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonClear.BorderColor = System.Drawing.Color.White;
-            this.buttonClear.BorderRadius = 20;
+            this.buttonClear.BorderRadius = 5;
             this.buttonClear.BorderSize = 1;
             this.buttonClear.Enabled = false;
             this.buttonClear.FlatAppearance.BorderSize = 0;

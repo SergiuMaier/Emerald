@@ -146,13 +146,13 @@ namespace TCPClient
             {
                 customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Preset Single Register {Environment.NewLine}{Environment.NewLine}";
                 customTextBoxPrintAnalyze.Texts += $"In response: The value {response[(int)(DataField.HiByteOfRegister)]}{response[(int)(DataField.LoByteOfRegister)]} " +
-                                            $"was written at address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
+                                            $"was written at the address {response[(int)(DataField.HiRegisterAddressByte)]}{response[(int)(DataField.LoRegisterAddressByte)]}";
             }
             else if (selected16)
             {
                 customTextBoxPrintAnalyze.Texts = $"Device: {comboSlave.SelectedItem} {Environment.NewLine}Command: Preset Multiple Registers {Environment.NewLine}Values: {customTextBoxDataValues.Texts} {Environment.NewLine}{Environment.NewLine}";
                 customTextBoxPrintAnalyze.Texts += $"In response: {Convert.ToInt32(response[(int)(DataField.LoByteOfRegister)])} registers written " +
-                                            $"starting with address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
+                                            $"with the starting address {response[(int)(DataField.HiRegisterAddressByte)]:X2}{response[(int)(DataField.LoRegisterAddressByte)]:X2}\n";
             }
         }
 
