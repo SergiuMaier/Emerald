@@ -357,7 +357,6 @@
             this.buttonConnect.Size = new System.Drawing.Size(160, 45);
             this.buttonConnect.TabIndex = 43;
             this.buttonConnect.Text = "  Connect";
-            this.buttonConnect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonConnect.TextColor = System.Drawing.Color.White;
             this.buttonConnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonConnect.UseVisualStyleBackColor = false;
@@ -496,12 +495,11 @@
             this.buttonSend.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSend.ForeColor = System.Drawing.Color.White;
             this.buttonSend.Image = ((System.Drawing.Image)(resources.GetObject("buttonSend.Image")));
-            this.buttonSend.Location = new System.Drawing.Point(17, 110);
+            this.buttonSend.Location = new System.Drawing.Point(17, 109);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(160, 45);
             this.buttonSend.TabIndex = 44;
             this.buttonSend.Text = "   Send";
-            this.buttonSend.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSend.TextColor = System.Drawing.Color.White;
             this.buttonSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSend.UseVisualStyleBackColor = false;
@@ -646,12 +644,11 @@
             this.buttonHistory.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
             this.buttonHistory.Image = ((System.Drawing.Image)(resources.GetObject("buttonHistory.Image")));
-            this.buttonHistory.Location = new System.Drawing.Point(17, 225);
+            this.buttonHistory.Location = new System.Drawing.Point(17, 224);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(160, 45);
             this.buttonHistory.TabIndex = 46;
             this.buttonHistory.Text = "   History";
-            this.buttonHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHistory.TextColor = System.Drawing.Color.White;
             this.buttonHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonHistory.UseVisualStyleBackColor = false;
@@ -671,12 +668,11 @@
             this.buttonClear.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
             this.buttonClear.Image = ((System.Drawing.Image)(resources.GetObject("buttonClear.Image")));
-            this.buttonClear.Location = new System.Drawing.Point(17, 168);
+            this.buttonClear.Location = new System.Drawing.Point(17, 167);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(160, 45);
             this.buttonClear.TabIndex = 45;
             this.buttonClear.Text = "   Clear";
-            this.buttonClear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonClear.TextColor = System.Drawing.Color.White;
             this.buttonClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonClear.UseVisualStyleBackColor = false;
@@ -717,9 +713,9 @@
             this.panel7.Controls.Add(this.buttonConnect);
             this.panel7.Controls.Add(this.buttonHistory);
             this.panel7.Controls.Add(this.buttonClear);
-            this.panel7.Location = new System.Drawing.Point(-1, 71);
+            this.panel7.Location = new System.Drawing.Point(-1, 72);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(192, 728);
+            this.panel7.Size = new System.Drawing.Size(192, 733);
             this.panel7.TabIndex = 52;
             // 
             // panel9
@@ -754,7 +750,7 @@
             this.buttonProfinet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProfinet.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonProfinet.ForeColor = System.Drawing.Color.White;
-            this.buttonProfinet.Location = new System.Drawing.Point(360, 14);
+            this.buttonProfinet.Location = new System.Drawing.Point(349, 14);
             this.buttonProfinet.Name = "buttonProfinet";
             this.buttonProfinet.Size = new System.Drawing.Size(100, 45);
             this.buttonProfinet.TabIndex = 57;
@@ -814,13 +810,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(850, 72);
+            this.panel2.Size = new System.Drawing.Size(848, 72);
             this.panel2.TabIndex = 55;
             // 
             // panelProfinetSelected
             // 
             this.panelProfinetSelected.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelProfinetSelected.Location = new System.Drawing.Point(360, 44);
+            this.panelProfinetSelected.Location = new System.Drawing.Point(349, 44);
             this.panelProfinetSelected.Name = "panelProfinetSelected";
             this.panelProfinetSelected.Size = new System.Drawing.Size(100, 31);
             this.panelProfinetSelected.TabIndex = 61;
@@ -840,7 +836,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(850, 797);
+            this.ClientSize = new System.Drawing.Size(848, 803);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);

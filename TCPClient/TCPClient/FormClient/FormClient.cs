@@ -18,15 +18,42 @@ namespace TCPClient
             toolTipForm.SetToolTip(buttonClear, "Clear text boxes");
             toolTipForm.SetToolTip(buttonHistory, "View message history");
 
-            buttonModbus.BackColor = Color.WhiteSmoke;
-            buttonModbus.ForeColor = Color.DarkSlateGray;
+            buttonModbus.Enabled = false;    //load with Modbus page enabled
+            buttonModbus.BackColor = Color.WhiteSmoke; 
 
-            comboSlave.SelectedIndex = 0; //load with COM100 by default
+            comboSlave.SelectedIndex = 0;    //load with COM100 by default
             customTextBoxSlaveId.Texts = "FF";
         }
 
         private void FormClient_Load(object sender, EventArgs e)
         {
+        }
+
+        private void buttonModbus_Click(object sender, EventArgs e)
+        {
+            //Menu
+            buttonModbus.Enabled = false;
+            panelModbusSelected.Visible = true;
+            buttonModbus.BackColor = Color.WhiteSmoke;
+            buttonModbus.ForeColor = Color.FromArgb(0, 153, 153);
+
+            buttonProfinet.Enabled = true;
+            panelProfinetSelected.Visible = false;
+            buttonProfinet.BackColor = Color.Transparent;
+            buttonProfinet.ForeColor = Color.White;
+        }
+
+        private void buttonProfinet_Click(object sender, EventArgs e)
+        {
+            //Menu
+            buttonModbus.Enabled = true;
+            panelModbusSelected.Visible = false;
+            buttonModbus.BackColor = Color.Transparent;
+            buttonModbus.ForeColor = Color.White;
+
+            buttonProfinet.Enabled = false;
+            panelProfinetSelected.Visible = true;
+            buttonProfinet.BackColor = Color.WhiteSmoke;
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
@@ -78,7 +105,7 @@ namespace TCPClient
                 panelConnect.Enabled = false;
                 comboSlave.Enabled = false;
                 customTextBoxSlaveId.Enable = false;
-                buttonConnect.Text = "Disconnect";
+                buttonConnect.Text = " Disconnect";
                 labelStatus2.Text = "   Connected";
 
                 //panel Message
@@ -283,30 +310,6 @@ namespace TCPClient
             }
         }
 
-        private void buttonModbus_Click(object sender, EventArgs e)
-        {
-            //Menu
-            buttonModbus.Enabled = false;
-            panelModbusSelected.Visible = true;
-            buttonModbus.BackColor = Color.WhiteSmoke;
-
-            buttonProfinet.Enabled = true;
-            panelProfinetSelected.Visible = false;
-            buttonProfinet.BackColor = Color.Transparent;
-            buttonProfinet.ForeColor = Color.White;
-        }
-
-        private void buttonProfinet_Click(object sender, EventArgs e)
-        {
-            //Menu
-            buttonModbus.Enabled = true;
-            panelModbusSelected.Visible = false;
-            buttonModbus.BackColor = Color.Transparent;
-            buttonModbus.ForeColor = Color.White;
-
-            buttonProfinet.Enabled = false;
-            panelProfinetSelected.Visible = true;
-            buttonProfinet.BackColor = Color.WhiteSmoke;
-        }
+       
     }
 }
