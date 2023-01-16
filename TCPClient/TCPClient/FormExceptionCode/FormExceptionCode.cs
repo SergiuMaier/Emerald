@@ -17,11 +17,12 @@ namespace TCPClient
             InitializeComponent();
            
             labelExceptionTitle.Text = FormClient.ExceptionTitle;
-            labelExceptionText.Text = FormClient.ExceptionMessage;
+            labelExceptionMessage.Text = FormClient.ExceptionMessage;
         }
 
         private void FormExceptionCode_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            FormClient.ExceptionTitle = String.Empty;
             FormClient.ExceptionMessage = String.Empty;
         }
     }

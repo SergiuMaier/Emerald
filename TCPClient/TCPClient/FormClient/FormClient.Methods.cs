@@ -46,33 +46,54 @@ namespace TCPClient
             {
                 //HERE ADD NEW INFO BESIDES THIS
                 case 0x01:
-                    ExceptionTitle = "Exception Code 01: Illegal Function";
-                    ExceptionMessage = "'The function code received in the query is not an allowable action for the slave.'";
+                    ExceptionTitle = $"In response: {Environment.NewLine}" +
+                                     $"The function code has its highest bit set. {Environment.NewLine}" +
+                                     $"Exception Code 01: Illegal Function. {Environment.NewLine}";
+                     
+                    ExceptionMessage = $"Info: 'The function code received in the query is not an allowable action for the slave.' {Environment.NewLine}" +
+                                       $"-> received function code: {functionCode} ";
                     break;
 
                 case 0x02:
-                    ExceptionTitle = "Exception Code 02: Illegal Data Address";
-                    ExceptionMessage = "'The data address received in the query is not an allowable address for the slave.'";
+                    ExceptionTitle = $"In response: {Environment.NewLine}" +
+                                     $"The function code has its highest bit set. {Environment.NewLine}" +
+                                     $"Exception Code 02: Illegal Data Address.{Environment.NewLine}";
+                                         
+                    ExceptionMessage = $"Info: 'The data address received in the query is not an allowable address for the slave.' {Environment.NewLine}" +
+                                       $"-> address: {customTextBoxDataAddress.Texts}";
                     break;
 
                 case 0x03:
-                    ExceptionTitle = "Exception Code 03: Illegal Data Value";
-                    ExceptionMessage = "'A value contained in the query data field is not an allowable value for the slave.'";
+                    ExceptionTitle = $"In response: {Environment.NewLine} " +
+                                     $"The function code has its highest bit set. {Environment.NewLine}" +
+                                     $"Exception Code 03: Illegal Data Value.{Environment.NewLine}";
+
+                    ExceptionMessage = $"Info: 'A value contained in the query data field is not an allowable value for the slave.' {Environment.NewLine}" +
+                                       $"-> values: {customTextBoxDataValues.Texts}";
                     break;
 
                 case 0x04:
-                    ExceptionTitle = "Exception Code 04: Slave Device Failure";
-                    ExceptionMessage = "'An unrecoverable error occurred while the slave was attempting to perform the requested action.'";
+                    ExceptionTitle = $"In response:{Environment.NewLine}" +
+                                     $"The function code has its highest bit set. {Environment.NewLine}" +
+                                     "Exception Code 04: Slave Device Failure.{Environment.NewLine}";
+
+                    ExceptionMessage = $"Info: 'An unrecoverable error occurred while the slave was attempting to perform the requested action.' {Environment.NewLine}" +
+                                       $"-> device: {comboSlave.SelectedItem}, ID: {customTextBoxSlaveId.Text} {Environment.NewLine}" +
+                                       $"-> command: {comboFunctionCode.SelectedItem} {Environment.NewLine}";
                     break;
 
                 case 0x0A:
-                    ExceptionTitle = "Exception Code 0A: Gateway Path Unavailable";
-                    ExceptionMessage = "'The gateway was unable to allocate an internal communication path from the input port to the " +
-                                        "output port for processing the request.'";
+                    ExceptionTitle = $"In response: {Environment.NewLine} " +
+                                     $"The function code has its highest bit set. {Environment.NewLine}" +
+                                     $"Exception Code 0A: Gateway Path Unavailable.{Environment.NewLine}";
+
+                    ExceptionMessage = $"Info: 'The gateway was unable to allocate an internal communication path from the input port to the " +
+                                       $"output port for processing the request.'{Environment.NewLine}" +
+                                       $"-> device: {comboSlave.SelectedItem}, ID: {customTextBoxSlaveId.Texts}";
                     break;
 
                 default:
-                    customTextBoxPrintAnalyze.Texts = "Another exception code in response.";
+                    customTextBoxPrintAnalyze.Texts = "The function code in the response has its highest bit set.";
                     break;
             }
         }
@@ -93,7 +114,6 @@ namespace TCPClient
                     else if (response[(int)Message.FunctionCode] == highestBitSet + request[(int)Message.FunctionCode])
                     {
                         //this message goes to switch -> in the Exception Form (eg FC: 83 -> ....) 
-                        customTextBoxPrintAnalyze.Texts = $"The function code in the response has its highest bit set. {Environment.NewLine}";
 
                         VerifyExceptionCode(response, (int)(Message.FunctionCode + 1));
                         AddToHistory(request, response);

@@ -181,7 +181,7 @@
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPlus.ForeColor = System.Drawing.Color.White;
-            this.btnPlus.Location = new System.Drawing.Point(162, 15);
+            this.btnPlus.Location = new System.Drawing.Point(149, 15);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(15, 15);
             this.btnPlus.TabIndex = 31;
@@ -198,7 +198,7 @@
             this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinus.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMinus.ForeColor = System.Drawing.Color.White;
-            this.btnMinus.Location = new System.Drawing.Point(146, 15);
+            this.btnMinus.Location = new System.Drawing.Point(133, 15);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(15, 15);
             this.btnMinus.TabIndex = 30;
@@ -388,7 +388,7 @@
             this.customTextBoxDataRegisters.Name = "customTextBoxDataRegisters";
             this.customTextBoxDataRegisters.Padding = new System.Windows.Forms.Padding(7);
             this.customTextBoxDataRegisters.SelectionStartIndex = 0;
-            this.customTextBoxDataRegisters.Size = new System.Drawing.Size(56, 33);
+            this.customTextBoxDataRegisters.Size = new System.Drawing.Size(43, 33);
             this.customTextBoxDataRegisters.TabIndex = 44;
             this.customTextBoxDataRegisters.Texts = "1";
             this.customTextBoxDataRegisters.UnderlinedStyle = true;
