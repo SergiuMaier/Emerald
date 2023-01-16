@@ -35,8 +35,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonOpenFile = new TCPClient.CustomControls.CustomButton();
             this.buttonSave = new TCPClient.CustomControls.CustomButton();
-            this.buttonClear = new TCPClient.CustomControls.CustomButton();
             this.customButton1 = new TCPClient.CustomControls.CustomButton();
+            this.buttonClear = new TCPClient.CustomControls.CustomButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +78,7 @@
             this.buttonOpenFile.BackColor = System.Drawing.Color.Transparent;
             this.buttonOpenFile.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonOpenFile.BorderColor = System.Drawing.Color.White;
-            this.buttonOpenFile.BorderRadius = 5;
+            this.buttonOpenFile.BorderRadius = 10;
             this.buttonOpenFile.BorderSize = 1;
             this.buttonOpenFile.FlatAppearance.BorderSize = 0;
             this.buttonOpenFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(63)))));
@@ -99,7 +99,7 @@
             this.buttonSave.BackColor = System.Drawing.Color.Transparent;
             this.buttonSave.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonSave.BorderColor = System.Drawing.Color.White;
-            this.buttonSave.BorderRadius = 5;
+            this.buttonSave.BorderRadius = 10;
             this.buttonSave.BorderSize = 1;
             this.buttonSave.FlatAppearance.BorderSize = 0;
             this.buttonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
@@ -115,12 +115,32 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // customButton1
+            // 
+            this.customButton1.BackColor = System.Drawing.Color.Transparent;
+            this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
+            this.customButton1.BorderColor = System.Drawing.Color.White;
+            this.customButton1.BorderRadius = 10;
+            this.customButton1.BorderSize = 1;
+            this.customButton1.FlatAppearance.BorderSize = 0;
+            this.customButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.customButton1.ForeColor = System.Drawing.Color.White;
+            this.customButton1.Location = new System.Drawing.Point(562, 9);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.Size = new System.Drawing.Size(74, 37);
+            this.customButton1.TabIndex = 47;
+            this.customButton1.Text = "Close";
+            this.customButton1.TextColor = System.Drawing.Color.White;
+            this.customButton1.UseVisualStyleBackColor = false;
+            // 
             // buttonClear
             // 
             this.buttonClear.BackColor = System.Drawing.Color.Transparent;
             this.buttonClear.BackgroundColor = System.Drawing.Color.Transparent;
             this.buttonClear.BorderColor = System.Drawing.Color.White;
-            this.buttonClear.BorderRadius = 5;
+            this.buttonClear.BorderRadius = 10;
             this.buttonClear.BorderSize = 1;
             this.buttonClear.FlatAppearance.BorderSize = 0;
             this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(63)))));
@@ -135,26 +155,6 @@
             this.buttonClear.TextColor = System.Drawing.Color.White;
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // customButton1
-            // 
-            this.customButton1.BackColor = System.Drawing.Color.Transparent;
-            this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton1.BorderColor = System.Drawing.Color.White;
-            this.customButton1.BorderRadius = 5;
-            this.customButton1.BorderSize = 1;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(562, 9);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(74, 37);
-            this.customButton1.TabIndex = 47;
-            this.customButton1.Text = "Close";
-            this.customButton1.TextColor = System.Drawing.Color.White;
-            this.customButton1.UseVisualStyleBackColor = false;
             // 
             // FormHistory
             // 
