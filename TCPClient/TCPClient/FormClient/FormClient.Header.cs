@@ -57,8 +57,8 @@ namespace TCPClient
         byte lengthCase06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
         byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
-        private static string numberOfRegisters;
-        private static string addMessageToHistory;  // = "";  //the desired message is sent to FormHistory
+        private static string numberOfRegisters;    //the number of registers needs to be converted to hex before is sent (in the request)
+        private static string addMessageToHistory;  //the desired message is sent to FormHistory
         private static string exceptionTitle;       //used to send the exception message to FormException
         private static string exceptionMessage;     //used to send the exception message to FormException
 
@@ -102,13 +102,107 @@ namespace TCPClient
             }
         }
 
-        public int CounterTransactionId { get => counterTransactionId; set => counterTransactionId = value; }
-        public int CounterNoOfRegisters { get => counterNoOfRegisters; set => counterNoOfRegisters = value; }
-        public byte[] RequestBuffer { get => requestBuffer; set => requestBuffer = value; }
-        public byte[] ResponseBuffer { get => responseBuffer; set => responseBuffer = value; }
-        public short ProtocolId { get => protocolId; set => protocolId = value; }
-        public byte FunctionCode { get => functionCode; set => functionCode = value; }
-        public byte SlaveId { get => slaveId; set => slaveId = value; }
-        public static string NumberOfRegisters { get => numberOfRegisters; set => numberOfRegisters = value; }
+        public int CounterTransactionId
+        {
+            get
+            {
+                return counterTransactionId;
+            }
+
+            set
+            {
+                counterTransactionId = value;
+            }
+        }
+
+        public int CounterNoOfRegisters
+        {
+            get
+            {
+                return counterNoOfRegisters;
+            }
+
+            set
+            {
+                counterNoOfRegisters = value;
+            }
+        }
+
+        public byte[] RequestBuffer
+        {
+            get
+            {
+                return requestBuffer;
+            }
+
+            set
+            {
+                requestBuffer = value;
+            }
+        }
+
+        public byte[] ResponseBuffer
+        {
+            get
+            {
+                return responseBuffer;
+            }
+
+            set
+            {
+                responseBuffer = value;
+            }
+        }
+
+        public short ProtocolId
+        {
+            get
+            {
+                return protocolId;
+            }
+
+            set
+            {
+                protocolId = value;
+            }
+        }
+
+        public byte FunctionCode
+        {
+            get
+            {
+                return functionCode;
+            }
+
+            set
+            {
+                functionCode = value;
+            }
+        }
+
+        public byte SlaveId
+        {
+            get
+            {
+                return slaveId;
+            }
+
+            set
+            {
+                slaveId = value;
+            }
+        }
+        public static string NumberOfRegisters
+        {
+            get
+            {
+                return numberOfRegisters;
+            }
+
+            set
+            {
+                numberOfRegisters = value;
+            }
+        }
     }
 }
