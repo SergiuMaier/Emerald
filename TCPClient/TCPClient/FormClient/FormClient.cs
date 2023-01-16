@@ -19,12 +19,10 @@ namespace TCPClient
             toolTipForm.SetToolTip(buttonHistory, "View message history");
 
             buttonModbus.BackColor = Color.WhiteSmoke;
-            buttonModbus.ForeColor = Color.FromArgb(0, 153, 153);
+            buttonModbus.ForeColor = Color.DarkSlateGray;
 
-            //comboSlave.Enabled = true;
             comboSlave.SelectedIndex = 0; //load with COM100 by default
             customTextBoxSlaveId.Texts = "FF";
-            //buttonHistory.ForeColor = Color.White;
         }
 
         private void FormClient_Load(object sender, EventArgs e)
@@ -288,10 +286,11 @@ namespace TCPClient
         private void buttonModbus_Click(object sender, EventArgs e)
         {
             //Menu
+            buttonModbus.Enabled = false;
             panelModbusSelected.Visible = true;
             buttonModbus.BackColor = Color.WhiteSmoke;
-            buttonModbus.ForeColor = Color.FromArgb(0, 153, 153);
 
+            buttonProfinet.Enabled = true;
             panelProfinetSelected.Visible = false;
             buttonProfinet.BackColor = Color.Transparent;
             buttonProfinet.ForeColor = Color.White;
@@ -300,14 +299,14 @@ namespace TCPClient
         private void buttonProfinet_Click(object sender, EventArgs e)
         {
             //Menu
+            buttonModbus.Enabled = true;
             panelModbusSelected.Visible = false;
             buttonModbus.BackColor = Color.Transparent;
-            buttonProfinet.ForeColor = Color.White;
+            buttonModbus.ForeColor = Color.White;
 
+            buttonProfinet.Enabled = false;
             panelProfinetSelected.Visible = true;
             buttonProfinet.BackColor = Color.WhiteSmoke;
-            buttonProfinet.ForeColor = Color.FromArgb(0, 153, 153);
-
         }
     }
 }

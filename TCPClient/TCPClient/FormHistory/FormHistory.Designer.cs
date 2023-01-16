@@ -55,7 +55,7 @@
             this.customTextBoxHistory.Name = "customTextBoxHistory";
             this.customTextBoxHistory.Padding = new System.Windows.Forms.Padding(7);
             this.customTextBoxHistory.SelectionStartIndex = 0;
-            this.customTextBoxHistory.Size = new System.Drawing.Size(622, 317);
+            this.customTextBoxHistory.Size = new System.Drawing.Size(619, 317);
             this.customTextBoxHistory.TabIndex = 43;
             this.customTextBoxHistory.Texts = "";
             this.customTextBoxHistory.UnderlinedStyle = false;
@@ -66,8 +66,8 @@
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Controls.Add(this.buttonOpenFile);
             this.panel1.Controls.Add(this.buttonSave);
-            this.panel1.Controls.Add(this.buttonClear);
             this.panel1.Controls.Add(this.customButton1);
+            this.panel1.Controls.Add(this.buttonClear);
             this.panel1.Location = new System.Drawing.Point(-5, 335);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(652, 60);
@@ -140,7 +140,7 @@
             // 
             this.customButton1.BackColor = System.Drawing.Color.Transparent;
             this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.customButton1.BorderColor = System.Drawing.Color.White;
             this.customButton1.BorderRadius = 5;
             this.customButton1.BorderSize = 1;
             this.customButton1.FlatAppearance.BorderSize = 0;
@@ -148,7 +148,7 @@
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(563, 9);
+            this.customButton1.Location = new System.Drawing.Point(562, 9);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(74, 37);
             this.customButton1.TabIndex = 47;

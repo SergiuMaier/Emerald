@@ -73,7 +73,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonProfinet = new TCPClient.CustomControls.CustomButton();
             this.buttonModbus = new TCPClient.CustomControls.CustomButton();
@@ -353,7 +352,7 @@
             this.buttonConnect.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonConnect.ForeColor = System.Drawing.Color.White;
             this.buttonConnect.Image = ((System.Drawing.Image)(resources.GetObject("buttonConnect.Image")));
-            this.buttonConnect.Location = new System.Drawing.Point(17, 24);
+            this.buttonConnect.Location = new System.Drawing.Point(17, 26);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(160, 45);
             this.buttonConnect.TabIndex = 43;
@@ -438,9 +437,9 @@
             this.panelMessage.Controls.Add(this.label2);
             this.panelMessage.Enabled = false;
             this.panelMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.panelMessage.Location = new System.Drawing.Point(0, -1);
+            this.panelMessage.Location = new System.Drawing.Point(0, 0);
             this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(609, 192);
+            this.panelMessage.Size = new System.Drawing.Size(609, 191);
             this.panelMessage.TabIndex = 39;
             // 
             // customTextBoxDataAddress
@@ -497,7 +496,7 @@
             this.buttonSend.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSend.ForeColor = System.Drawing.Color.White;
             this.buttonSend.Image = ((System.Drawing.Image)(resources.GetObject("buttonSend.Image")));
-            this.buttonSend.Location = new System.Drawing.Point(17, 107);
+            this.buttonSend.Location = new System.Drawing.Point(17, 110);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(160, 45);
             this.buttonSend.TabIndex = 44;
@@ -555,9 +554,9 @@
             this.panelResponse.BackColor = System.Drawing.Color.White;
             this.panelResponse.Controls.Add(this.label9);
             this.panelResponse.Controls.Add(this.customTextBoxPrintRequest);
-            this.panelResponse.Location = new System.Drawing.Point(0, -1);
+            this.panelResponse.Location = new System.Drawing.Point(0, 0);
             this.panelResponse.Name = "panelResponse";
-            this.panelResponse.Size = new System.Drawing.Size(609, 64);
+            this.panelResponse.Size = new System.Drawing.Size(609, 63);
             this.panelResponse.TabIndex = 41;
             // 
             // label9
@@ -597,9 +596,9 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.customTextBoxPrintAnalyze);
-            this.panel1.Location = new System.Drawing.Point(0, -2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(609, 236);
+            this.panel1.Size = new System.Drawing.Size(609, 234);
             this.panel1.TabIndex = 40;
             // 
             // label5
@@ -647,7 +646,7 @@
             this.buttonHistory.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
             this.buttonHistory.Image = ((System.Drawing.Image)(resources.GetObject("buttonHistory.Image")));
-            this.buttonHistory.Location = new System.Drawing.Point(17, 209);
+            this.buttonHistory.Location = new System.Drawing.Point(17, 225);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(160, 45);
             this.buttonHistory.TabIndex = 46;
@@ -672,7 +671,7 @@
             this.buttonClear.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonClear.ForeColor = System.Drawing.Color.White;
             this.buttonClear.Image = ((System.Drawing.Image)(resources.GetObject("buttonClear.Image")));
-            this.buttonClear.Location = new System.Drawing.Point(17, 158);
+            this.buttonClear.Location = new System.Drawing.Point(17, 168);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(160, 45);
             this.buttonClear.TabIndex = 45;
@@ -687,7 +686,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Controls.Add(this.panelConnect);
-            this.panel3.Location = new System.Drawing.Point(218, 88);
+            this.panel3.Location = new System.Drawing.Point(215, 91);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(612, 70);
             this.panel3.TabIndex = 48;
@@ -696,7 +695,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.LightGray;
             this.panel5.Controls.Add(this.panelMessage);
-            this.panel5.Location = new System.Drawing.Point(218, 172);
+            this.panel5.Location = new System.Drawing.Point(215, 175);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(612, 194);
             this.panel5.TabIndex = 50;
@@ -705,7 +704,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.LightGray;
             this.panel6.Controls.Add(this.panelResponse);
-            this.panel6.Location = new System.Drawing.Point(218, 380);
+            this.panel6.Location = new System.Drawing.Point(215, 383);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(612, 66);
             this.panel6.TabIndex = 51;
@@ -718,7 +717,7 @@
             this.panel7.Controls.Add(this.buttonConnect);
             this.panel7.Controls.Add(this.buttonHistory);
             this.panel7.Controls.Add(this.buttonClear);
-            this.panel7.Location = new System.Drawing.Point(-1, 70);
+            this.panel7.Location = new System.Drawing.Point(-1, 71);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(192, 728);
             this.panel7.TabIndex = 52;
@@ -726,18 +725,10 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Location = new System.Drawing.Point(17, 1);
+            this.panel9.Location = new System.Drawing.Point(12, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(160, 1);
+            this.panel9.Size = new System.Drawing.Size(170, 1);
             this.panel9.TabIndex = 58;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.White;
-            this.panel10.Location = new System.Drawing.Point(191, 14);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1, 45);
-            this.panel10.TabIndex = 59;
             // 
             // label4
             // 
@@ -745,7 +736,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(35, 22);
+            this.label4.Location = new System.Drawing.Point(56, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 23);
             this.label4.TabIndex = 60;
@@ -797,7 +788,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.LightGray;
             this.panel8.Controls.Add(this.panelRequest);
-            this.panel8.Location = new System.Drawing.Point(218, 460);
+            this.panel8.Location = new System.Drawing.Point(215, 463);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(612, 67);
             this.panel8.TabIndex = 53;
@@ -806,7 +797,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Controls.Add(this.panel1);
-            this.panel4.Location = new System.Drawing.Point(218, 542);
+            this.panel4.Location = new System.Drawing.Point(215, 545);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(612, 237);
             this.panel4.TabIndex = 54;
@@ -817,7 +808,6 @@
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.Controls.Add(this.panelProfinetSelected);
             this.panel2.Controls.Add(this.panelModbusSelected);
-            this.panel2.Controls.Add(this.panel10);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.buttonModbus);
             this.panel2.Controls.Add(this.buttonProfinet);
@@ -830,18 +820,18 @@
             // panelProfinetSelected
             // 
             this.panelProfinetSelected.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelProfinetSelected.Location = new System.Drawing.Point(360, 56);
+            this.panelProfinetSelected.Location = new System.Drawing.Point(360, 44);
             this.panelProfinetSelected.Name = "panelProfinetSelected";
-            this.panelProfinetSelected.Size = new System.Drawing.Size(100, 23);
+            this.panelProfinetSelected.Size = new System.Drawing.Size(100, 31);
             this.panelProfinetSelected.TabIndex = 61;
             this.panelProfinetSelected.Visible = false;
             // 
             // panelModbusSelected
             // 
             this.panelModbusSelected.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelModbusSelected.Location = new System.Drawing.Point(227, 56);
+            this.panelModbusSelected.Location = new System.Drawing.Point(227, 44);
             this.panelModbusSelected.Name = "panelModbusSelected";
-            this.panelModbusSelected.Size = new System.Drawing.Size(100, 23);
+            this.panelModbusSelected.Size = new System.Drawing.Size(100, 32);
             this.panelModbusSelected.TabIndex = 59;
             // 
             // FormClient
@@ -941,7 +931,6 @@
         private CustomControls.CustomButton buttonModbus;
         private Panel panel9;
         private Label label4;
-        private Panel panel10;
         private Panel panelProfinetSelected;
         private Panel panelModbusSelected;
     }
