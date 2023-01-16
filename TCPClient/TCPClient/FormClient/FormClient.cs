@@ -18,10 +18,13 @@ namespace TCPClient
             toolTipForm.SetToolTip(buttonClear, "Clear text boxes");
             toolTipForm.SetToolTip(buttonHistory, "View message history");
 
-            comboSlave.Enabled = true;
+            buttonModbus.BackColor = Color.WhiteSmoke;
+            buttonModbus.ForeColor = Color.FromArgb(0, 153, 153);
+
+            //comboSlave.Enabled = true;
             comboSlave.SelectedIndex = 0; //load with COM100 by default
             customTextBoxSlaveId.Texts = "FF";
-            buttonHistory.ForeColor = Color.White;
+            //buttonHistory.ForeColor = Color.White;
         }
 
         private void FormClient_Load(object sender, EventArgs e)
@@ -280,6 +283,31 @@ namespace TCPClient
             {
                 MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonModbus_Click(object sender, EventArgs e)
+        {
+            //Menu
+            panelModbusSelected.Visible = true;
+            buttonModbus.BackColor = Color.WhiteSmoke;
+            buttonModbus.ForeColor = Color.FromArgb(0, 153, 153);
+
+            panelProfinetSelected.Visible = false;
+            buttonProfinet.BackColor = Color.Transparent;
+            buttonProfinet.ForeColor = Color.White;
+        }
+
+        private void buttonProfinet_Click(object sender, EventArgs e)
+        {
+            //Menu
+            panelModbusSelected.Visible = false;
+            buttonModbus.BackColor = Color.Transparent;
+            buttonProfinet.ForeColor = Color.White;
+
+            panelProfinetSelected.Visible = true;
+            buttonProfinet.BackColor = Color.WhiteSmoke;
+            buttonProfinet.ForeColor = Color.FromArgb(0, 153, 153);
+
         }
     }
 }
