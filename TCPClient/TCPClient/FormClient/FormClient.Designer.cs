@@ -83,7 +83,6 @@
             this.panelProfinetSelected = new System.Windows.Forms.Panel();
             this.panelModbusSelected = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelConnect.SuspendLayout();
             this.panelRegsNumber.SuspendLayout();
             this.panelValues.SuspendLayout();
@@ -361,7 +360,7 @@
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(160, 45);
             this.buttonConnect.TabIndex = 43;
-            this.buttonConnect.Text = "  Connect";
+            this.buttonConnect.Text = "   Connect";
             this.buttonConnect.TextColor = System.Drawing.Color.White;
             this.buttonConnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonConnect.UseVisualStyleBackColor = false;
@@ -750,7 +749,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(56, 25);
+            this.label4.Location = new System.Drawing.Point(54, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 23);
             this.label4.TabIndex = 60;
@@ -959,6 +958,5 @@
         private Panel panelModbusSelected;
         private Label label11;
         private Panel panelMenu;
-        private System.Windows.Forms.Timer timer1;
     }
 }

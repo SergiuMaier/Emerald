@@ -2,6 +2,8 @@ using SuperSimpleTcp;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
+using TCPClient.Classes;
 using TCPClient.CustomControls;
 using TCPClient.Profinet;
 
@@ -38,11 +40,13 @@ namespace TCPClient
             panelMenu.Controls.Add(userControl);
             userControl.Visible = true;
             userControl.BringToFront();
+
         }
 
         private void buttonModbus_Click(object sender, EventArgs e)
         {
-            profinetPage.Visible = false;
+            //profinetPage.Visible = false;
+            //Transitions.Animate(profinetPage, Transitions.Effect.Slide, 450, 90);
 
             //Menu
             buttonModbus.Enabled = false;
@@ -58,7 +62,7 @@ namespace TCPClient
 
         private void buttonProfinet_Click(object sender, EventArgs e)
         {
-            if (client.IsConnected)
+            if (connectionStatus)
             {
                 MessageBox.Show("You are connected.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

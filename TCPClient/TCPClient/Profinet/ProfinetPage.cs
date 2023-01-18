@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TCPClient.Classes;
 
 namespace TCPClient.Profinet
 {
@@ -20,6 +21,11 @@ namespace TCPClient.Profinet
 
         private void ProfinetPage_Load(object sender, EventArgs e)
         {
+        }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
