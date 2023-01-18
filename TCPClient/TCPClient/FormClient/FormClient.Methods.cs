@@ -78,7 +78,7 @@ namespace TCPClient
                                      "Exception Code 04: Slave Device Failure.{Environment.NewLine}";
 
                     ExceptionMessage = $"Info: 'An unrecoverable error occurred while the slave was attempting to perform the requested action.' {Environment.NewLine}" +
-                                       $"-> device: {comboSlave.SelectedItem}, ID: {customTextBoxSlaveId.Text} {Environment.NewLine}" +
+                                       $"-> device: {comboSlave.SelectedItem}, ID: {customTextBoxSlaveId.Texts} {Environment.NewLine}" +
                                        $"-> command: {comboFunctionCode.SelectedItem} {Environment.NewLine}";
                     break;
 

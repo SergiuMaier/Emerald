@@ -47,10 +47,21 @@ namespace TCPClient
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (File.Exists(path))
+            if (customTextBoxHistory.Texts != String.Empty)
             {
-                File.AppendAllText(path, customTextBoxHistory.Texts, Encoding.UTF8);
-                MessageBox.Show("The history was successfully saved to file.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (File.Exists(path))
+                {
+                    File.AppendAllText(path, customTextBoxHistory.Texts, Encoding.UTF8);
+                    MessageBox.Show("The history was successfully saved to file.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("The history can't be saved.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data recorded in the history.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -58,6 +69,5 @@ namespace TCPClient
         {
             Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
         }
-
     }
 }
