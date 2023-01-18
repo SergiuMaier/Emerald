@@ -12,9 +12,14 @@ namespace TCPClient.Profinet
 {
     public partial class ProfinetPage : UserControl
     {
+
         public ProfinetPage()
         {
             InitializeComponent();
+        }
+
+        private void ProfinetPage_Load(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -1,5 +1,6 @@
 using SuperSimpleTcp;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 using TCPClient.CustomControls;
 using TCPClient.Profinet;
@@ -57,17 +58,24 @@ namespace TCPClient
 
         private void buttonProfinet_Click(object sender, EventArgs e)
         {
-            addPage(profinetPage);
+            if (client.IsConnected)
+            {
+                MessageBox.Show("You are connected.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                addPage(profinetPage);
 
-            //Menu
-            buttonModbus.Enabled = true;
-            panelModbusSelected.Visible = false;
-            buttonModbus.BackColor = Color.Transparent;
-            buttonModbus.ForeColor = Color.White;
+                //Menu
+                buttonModbus.Enabled = true;
+                panelModbusSelected.Visible = false;
+                buttonModbus.BackColor = Color.Transparent;
+                buttonModbus.ForeColor = Color.White;
 
-            buttonProfinet.Enabled = false;
-            panelProfinetSelected.Visible = true;
-            buttonProfinet.BackColor = Color.WhiteSmoke;
+                buttonProfinet.Enabled = false;
+                panelProfinetSelected.Visible = true;
+                buttonProfinet.BackColor = Color.WhiteSmoke;
+            }
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
@@ -323,7 +331,5 @@ namespace TCPClient
                 MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-       
     }
 }

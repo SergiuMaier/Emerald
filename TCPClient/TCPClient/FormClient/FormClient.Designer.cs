@@ -83,6 +83,7 @@
             this.panelProfinetSelected = new System.Windows.Forms.Panel();
             this.panelModbusSelected = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelConnect.SuspendLayout();
             this.panelRegsNumber.SuspendLayout();
             this.panelValues.SuspendLayout();
@@ -767,7 +768,7 @@
             this.buttonProfinet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProfinet.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonProfinet.ForeColor = System.Drawing.Color.White;
-            this.buttonProfinet.Location = new System.Drawing.Point(349, 14);
+            this.buttonProfinet.Location = new System.Drawing.Point(350, 14);
             this.buttonProfinet.Name = "buttonProfinet";
             this.buttonProfinet.Size = new System.Drawing.Size(100, 45);
             this.buttonProfinet.TabIndex = 57;
@@ -833,7 +834,7 @@
             // panelProfinetSelected
             // 
             this.panelProfinetSelected.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelProfinetSelected.Location = new System.Drawing.Point(349, 44);
+            this.panelProfinetSelected.Location = new System.Drawing.Point(350, 44);
             this.panelProfinetSelected.Name = "panelProfinetSelected";
             this.panelProfinetSelected.Size = new System.Drawing.Size(100, 31);
             this.panelProfinetSelected.TabIndex = 61;
@@ -958,5 +959,6 @@
         private Panel panelModbusSelected;
         private Label label11;
         private Panel panelMenu;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -40,7 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(455, 127);
+            this.label1.Location = new System.Drawing.Point(227, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 32);
             this.label1.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(160, 45);
             this.buttonConnect.TabIndex = 43;
-            this.buttonConnect.Text = "  Connect";
+            this.buttonConnect.Text = "   Connect";
             this.buttonConnect.TextColor = System.Drawing.Color.White;
             this.buttonConnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonConnect.UseVisualStyleBackColor = false;
@@ -95,6 +95,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ProfinetPage";
             this.Size = new System.Drawing.Size(850, 730);
+            this.Load += new System.EventHandler(this.ProfinetPage_Load);
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
