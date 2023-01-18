@@ -82,6 +82,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelProfinetSelected = new System.Windows.Forms.Panel();
             this.panelModbusSelected = new System.Windows.Forms.Panel();
+            this.panelMenu = new System.Windows.Forms.Panel();
             this.panelConnect.SuspendLayout();
             this.panelRegsNumber.SuspendLayout();
             this.panelValues.SuspendLayout();
@@ -96,6 +97,7 @@
             this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboSlave
@@ -697,7 +699,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Controls.Add(this.panelConnect);
-            this.panel3.Location = new System.Drawing.Point(215, 91);
+            this.panel3.Location = new System.Drawing.Point(210, 17);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(612, 66);
             this.panel3.TabIndex = 48;
@@ -706,7 +708,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.LightGray;
             this.panel5.Controls.Add(this.panelMessage);
-            this.panel5.Location = new System.Drawing.Point(215, 170);
+            this.panel5.Location = new System.Drawing.Point(210, 96);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(612, 194);
             this.panel5.TabIndex = 50;
@@ -715,7 +717,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.LightGray;
             this.panel6.Controls.Add(this.panelResponse);
-            this.panel6.Location = new System.Drawing.Point(215, 378);
+            this.panel6.Location = new System.Drawing.Point(210, 304);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(612, 66);
             this.panel6.TabIndex = 51;
@@ -728,7 +730,7 @@
             this.panel7.Controls.Add(this.buttonConnect);
             this.panel7.Controls.Add(this.buttonHistory);
             this.panel7.Controls.Add(this.buttonClear);
-            this.panel7.Location = new System.Drawing.Point(-1, 72);
+            this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(192, 733);
             this.panel7.TabIndex = 52;
@@ -799,7 +801,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.LightGray;
             this.panel8.Controls.Add(this.panelRequest);
-            this.panel8.Location = new System.Drawing.Point(215, 458);
+            this.panel8.Location = new System.Drawing.Point(210, 384);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(612, 66);
             this.panel8.TabIndex = 53;
@@ -808,7 +810,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Controls.Add(this.panel1);
-            this.panel4.Location = new System.Drawing.Point(215, 541);
+            this.panel4.Location = new System.Drawing.Point(210, 467);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(612, 237);
             this.panel4.TabIndex = 54;
@@ -825,7 +827,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(848, 72);
+            this.panel2.Size = new System.Drawing.Size(839, 72);
             this.panel2.TabIndex = 55;
             // 
             // panelProfinetSelected
@@ -845,20 +847,29 @@
             this.panelModbusSelected.Size = new System.Drawing.Size(100, 32);
             this.panelModbusSelected.TabIndex = 59;
             // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelMenu.Controls.Add(this.panel4);
+            this.panelMenu.Controls.Add(this.panel7);
+            this.panelMenu.Controls.Add(this.panel3);
+            this.panelMenu.Controls.Add(this.panel5);
+            this.panelMenu.Controls.Add(this.panel6);
+            this.panelMenu.Controls.Add(this.panel8);
+            this.panelMenu.Location = new System.Drawing.Point(-2, 72);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(850, 730);
+            this.panelMenu.TabIndex = 56;
+            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(848, 799);
-            this.Controls.Add(this.panel7);
+            this.ClientSize = new System.Drawing.Size(839, 791);
+            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel3);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -888,6 +899,7 @@
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -945,5 +957,6 @@
         private Panel panelProfinetSelected;
         private Panel panelModbusSelected;
         private Label label11;
+        private Panel panelMenu;
     }
 }

@@ -2,12 +2,14 @@ using SuperSimpleTcp;
 using System.Globalization;
 using System.Text;
 using TCPClient.CustomControls;
+using TCPClient.Profinet;
 
 namespace TCPClient
 {
     public partial class FormClient : Form
     {
         SimpleTcpClient client;
+        ProfinetPage profinetPage = new ProfinetPage();
 
         public FormClient()
         {
@@ -29,8 +31,18 @@ namespace TCPClient
         {
         }
 
+        private void addPage(UserControl userControl)
+        {
+            userControl.Dock = DockStyle.Fill;
+            panelMenu.Controls.Add(userControl);
+            userControl.Visible = true;
+            userControl.BringToFront();
+        }
+
         private void buttonModbus_Click(object sender, EventArgs e)
         {
+            profinetPage.Visible = false;
+
             //Menu
             buttonModbus.Enabled = false;
             panelModbusSelected.Visible = true;
@@ -45,6 +57,8 @@ namespace TCPClient
 
         private void buttonProfinet_Click(object sender, EventArgs e)
         {
+            addPage(profinetPage);
+
             //Menu
             buttonModbus.Enabled = true;
             panelModbusSelected.Visible = false;
