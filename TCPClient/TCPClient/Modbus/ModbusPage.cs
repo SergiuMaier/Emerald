@@ -45,9 +45,9 @@ namespace TCPClient.Modbus
                 catch
                 {
                     if ((customTextBoxIP.Texts == String.Empty) && (customTextBoxPort.Text == String.Empty))
-                        MessageBox.Show("Please enter an IP Address and a Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("You must enter an IP address and port number to establish the connection.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
-                        MessageBox.Show("Please enter a correct IP Address and Port Number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Incorrect IP address or port number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -61,7 +61,7 @@ namespace TCPClient.Modbus
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred. Check the connection or try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace TCPClient.Modbus
                 }
                 catch
                 {
-                    MessageBox.Show($"You must fill in all required text boxes for the command '{comboFunctionCode.SelectedItem}'.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"You must fill in all required text boxes for the selected command '{comboFunctionCode.SelectedItem}'.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -167,11 +167,11 @@ namespace TCPClient.Modbus
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             //flags
-            selected03 = (comboFunctionCode.SelectedIndex == 0);
-            selected06 = (comboFunctionCode.SelectedIndex == 1);
-            selected16 = (comboFunctionCode.SelectedIndex == 2);
+            selected03 = (comboFunctionCode.SelectedIndex == 0); //fc03
+            selected06 = (comboFunctionCode.SelectedIndex == 1); //fc06
+            selected16 = (comboFunctionCode.SelectedIndex == 2); //fc16
 
-            //clear the fields every time a new command is selected
+            //clear the text boxes every time a command is selected
             customTextBoxPrintRequest.Texts = String.Empty;
             customTextBoxPrintResponse.Texts = String.Empty;
             customTextBoxPrintAnalyze.Texts = String.Empty;
@@ -268,7 +268,7 @@ namespace TCPClient.Modbus
                 }
                 catch
                 {
-                    MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred while opening the history page.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace TCPClient.Modbus
 {
     public partial class ModbusPage
     {
-        //combo elements
+        //Commands added to comboFunctionCode
         enum Commands
         {
             Read_Holding_Registers,
@@ -16,13 +16,14 @@ namespace TCPClient.Modbus
             Preset_Multiple_Registers
         }
 
+        //Deices added to comboSlave
         enum Devices
         {
             COM100,
             New_Device
         }
 
-        //Buffer indexes
+        //Buffer indexes from Modbus frame
         enum Message
         {
             TransactionId = 0,
@@ -32,6 +33,8 @@ namespace TCPClient.Modbus
             NumberOfBytes = 8,
             ContentOfFirstRegister = 9
         }
+
+        //Buffer indexes only for Data field in Modbus frame
         enum DataField
         {
             HiRegisterAddressByte = 8,
@@ -40,16 +43,14 @@ namespace TCPClient.Modbus
             LoByteOfRegister = 11
         }
 
-        
+        public bool connectionStatus = false;    //flag used to check whether the client is connected or not (client.isConnected method sometimes throws an exception)
+        private int counterTransactionId;        //counter incremented for each request. 
+        private int counterNoOfRegisters = 1;    //counter which stores the desired number of registers.
 
-        public bool connectionStatus = false;
-        private int counterTransactionId;        //this counter is incremented for each request. 
-        private int counterNoOfRegisters = 1;    //the value can increase or decrease, to get the desired number of registers.
+        bool selected03, selected06, selected16; //flags set when one of the commands is selected.
 
-        bool selected03, selected06, selected16; //flags set when one of the commands is selected
-
-        private byte[] requestBuffer;    //buffer used to store all bytes from the request message
-        private byte[] responseBuffer;   //buffer used to store all bytes from the response message
+        private byte[] requestBuffer;    //buffer used to store all bytes from the request message.
+        private byte[] responseBuffer;   //buffer used to store all bytes from the response message.
 
         private short protocolId;            //2 bytes, Modbus protocol, will allways be 00 00.
         public const byte COM100Id = 0xFF;   //1 byte, uniquely identify the Slave device.
@@ -58,25 +59,25 @@ namespace TCPClient.Modbus
         private byte functionCode;
         private byte slaveId;                     //the bytes for function code and slave id are stored here.
 
-        public const byte header_Length = 0x07;   //7 bytes, MBAP Header (transactionID + protocolID + Length + SlaveId)   
+        public const byte header_Length = 0x07;   //7 bytes for MBAP Header (transactionID + protocolID + Length + SlaveId).  
 
-        //the number of bytes for each element in the message that follow after the header
+        //the number of bytes for each element in the message that follow after the header.
         public const byte functionCode_Length = 0x01;
         public const byte dataAddress_Length = 0x02;
         public const byte dataRegisters_Length = 0x02;
         public const byte numberOfBytesToFollow_Length = 0x01;
         public const byte highestBitSet = 0x80;
 
-        //the buffer length varies depending on the selected command
+        //buffer's length varies depending on the selected command
         byte bufferLength;
         byte lengthCase03 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
         byte lengthCase06 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length;
         byte lengthCase16 = header_Length + functionCode_Length + dataAddress_Length + dataRegisters_Length + numberOfBytesToFollow_Length;
 
-        private static string numberOfRegisters;    //the number of registers needs to be converted to hex before is sent (in the request)
-        private static string addMessageToHistory;  //the desired message is sent to FormHistory
-        private static string exceptionTitle;       //used to send the exception message to FormException
-        private static string exceptionMessage;     //used to send the exception message to FormException
+        private static string numberOfRegisters;    //the number of registers needs to be converted to hex before is sent (in the request).
+        private static string addMessageToHistory;  //the desired message is sent to FormHistory.
+        private static string exceptionTitle;       //used to send the exception title to FormException.
+        private static string exceptionMessage;     //used to send the exception message to FormException.
 
         //Properties
         public static string AddMessageToHistory

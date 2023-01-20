@@ -12,17 +12,16 @@ namespace TCPClient
 {
     public partial class FormClient : Form
     {
-        ProfinetPage profinetPage = new ProfinetPage();
         ModbusPage modbusPage = new ModbusPage();
+        ProfinetPage profinetPage = new ProfinetPage();
 
         public FormClient()
         {
             InitializeComponent();
 
             addPage(modbusPage);
-
-            buttonModbus.Enabled = false;    //load with Modbus page enabled
-            buttonModbus.BackColor = Color.WhiteSmoke; 
+            buttonModbus.Enabled = false;
+            buttonModbus.BackColor = Color.WhiteSmoke;
         }
 
         private void FormClient_Load(object sender, EventArgs e)
@@ -31,6 +30,8 @@ namespace TCPClient
 
         private void addPage(UserControl userControl)
         {
+            //switch between pages in the same panel
+
             userControl.Dock = DockStyle.Fill;
             panelMenu.Controls.Add(userControl);
             userControl.Visible = true;
@@ -41,7 +42,7 @@ namespace TCPClient
         {
             addPage(modbusPage);
             
-            //Menu
+            //Menu properties
             buttonModbus.Enabled = false;
             panelModbusSelected.Visible = true;
             buttonModbus.BackColor = Color.WhiteSmoke;
@@ -57,14 +58,13 @@ namespace TCPClient
         {
             if (modbusPage.connectionStatus)
             {
-                MessageBox.Show("You are connected.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You cannot change pages if you are already connected to a device.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 addPage(profinetPage);
-                //Transitions.Animate(modbusPage, Transitions.Effect.Slide, 450, 90);
 
-                //Menu
+                //Menu properties
                 buttonModbus.Enabled = true;
                 panelModbusSelected.Visible = false;
                 buttonModbus.BackColor = Color.Transparent;
