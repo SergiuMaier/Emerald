@@ -22,8 +22,7 @@ namespace TCPClient.Modbus
 
             comboFunctionCode.DataSource = Enum.GetValues(typeof(Commands));
             comboSlave.DataSource = Enum.GetValues(typeof(Devices));
-
-            comboSlave.SelectedIndex = 0;    //load with COM100 by default
+            comboSlave.SelectedIndex = 0;
         }
 
         private void buttonConnect_Click_1(object sender, EventArgs e)
