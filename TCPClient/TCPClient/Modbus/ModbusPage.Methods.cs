@@ -74,13 +74,13 @@ namespace TCPClient.Modbus
                 case 0x04:
                     ExceptionTitle = $"In response:{Environment.NewLine}" +
                                      $"The function code has its highest bit set. {Environment.NewLine}" +
-                                     "Exception Code 04: Slave Device Failure.{Environment.NewLine}";
+                                     $"Exception Code 04: Slave Device Failure.{Environment.NewLine}";
 
                     ExceptionMessage = $"Info: 'An unrecoverable error occurred while the slave was attempting to perform the requested action.' {Environment.NewLine}" +
                                        $"-> device: {comboSlave.SelectedItem}, ID: {customTextBoxSlaveId.Texts} {Environment.NewLine}" +
                                        $"-> command: {comboFunctionCode.SelectedItem} {Environment.NewLine}";
                     break;
-
+                   
                 case 0x0A:
                     ExceptionTitle = $"In response: {Environment.NewLine} " +
                                      $"The function code has its highest bit set. {Environment.NewLine}" +

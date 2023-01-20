@@ -81,9 +81,9 @@ namespace TCPClient.Modbus
                 panelMessage.Enabled = true;
 
                 //panel Options
-                buttonHistory.Enabled = true;
-                buttonSend.Enabled = true;
-                buttonClear.Enabled = true;
+                //buttonHistory.Enabled = true;
+                //buttonSend.Enabled = true;
+                //buttonClear.Enabled = true;
             });
         }
 
@@ -101,15 +101,15 @@ namespace TCPClient.Modbus
                 panelMessage.Enabled = false;
 
                 //panel Options
-                buttonHistory.Enabled = false;
-                buttonSend.Enabled = false;
-                buttonClear.Enabled = false;
+                //buttonHistory.Enabled = false;
+                //buttonSend.Enabled = false;
+                //buttonClear.Enabled = false;
             });
         }
 
         private void buttonSend_Click_1(object sender, EventArgs e)
         {
-            if (client.IsConnected)
+            if (connectionStatus) 
             {
                 customTextBoxPrintRequest.Texts = String.Empty;
                 customTextBoxPrintResponse.Texts = String.Empty;
@@ -117,6 +117,7 @@ namespace TCPClient.Modbus
 
                 counterTransactionId++;
                 customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4");
+                NumberOfRegisters = counterNoOfRegisters.ToString("X4"); 
 
                 try
                 {
@@ -130,7 +131,7 @@ namespace TCPClient.Modbus
                 }
                 catch
                 {
-                    MessageBox.Show("Fill in all required text boxes.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"You must fill in all required text boxes for the command '{comboFunctionCode.SelectedItem}'.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -229,7 +230,6 @@ namespace TCPClient.Modbus
             {
                 counterNoOfRegisters--;
                 customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString(); //Showing the counter in int
-                NumberOfRegisters = counterNoOfRegisters.ToString("X4"); //using the counter in short/hex
             }
             else
                 btnMinus.Enabled = false;
@@ -249,7 +249,6 @@ namespace TCPClient.Modbus
 
             counterNoOfRegisters++;
             customTextBoxDataRegisters.Texts = counterNoOfRegisters.ToString();
-            NumberOfRegisters = counterNoOfRegisters.ToString("X4");    //using the counter in short/hex
 
             //changeing text box property and buffer lenght depending on the selected command
             if (selected16)
@@ -268,14 +267,17 @@ namespace TCPClient.Modbus
 
         private void buttonHistory_Click_1(object sender, EventArgs e)
         {
-            try
+            if (connectionStatus)
             {
-                FormHistory formHistory = new FormHistory();
-                formHistory.Show();
-            }
-            catch
-            {
-                MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    FormHistory formHistory = new FormHistory();
+                    formHistory.Show();
+                }
+                catch
+                {
+                    MessageBox.Show("An error occurred while opening the history", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

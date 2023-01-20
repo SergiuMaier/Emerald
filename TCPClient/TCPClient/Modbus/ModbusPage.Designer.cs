@@ -184,7 +184,6 @@
             this.buttonSend.BorderColor = System.Drawing.Color.White;
             this.buttonSend.BorderRadius = 10;
             this.buttonSend.BorderSize = 1;
-            this.buttonSend.Enabled = false;
             this.buttonSend.FlatAppearance.BorderSize = 0;
             this.buttonSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
             this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -231,7 +230,6 @@
             this.buttonHistory.BorderColor = System.Drawing.Color.White;
             this.buttonHistory.BorderRadius = 10;
             this.buttonHistory.BorderSize = 1;
-            this.buttonHistory.Enabled = false;
             this.buttonHistory.FlatAppearance.BorderSize = 0;
             this.buttonHistory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
             this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -255,7 +253,6 @@
             this.buttonClear.BorderColor = System.Drawing.Color.White;
             this.buttonClear.BorderRadius = 10;
             this.buttonClear.BorderSize = 1;
-            this.buttonClear.Enabled = false;
             this.buttonClear.FlatAppearance.BorderSize = 0;
             this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -642,7 +639,7 @@
             this.comboFunctionCode.ForeColor = System.Drawing.Color.Black;
             this.comboFunctionCode.FormattingEnabled = true;
             this.comboFunctionCode.Items.AddRange(new object[] {
-            "Read Holding Registers ",
+            "Read Holding Registers",
             "Preset Single Register",
             "Preset Multiple Registers"});
             this.comboFunctionCode.Location = new System.Drawing.Point(292, 16);
