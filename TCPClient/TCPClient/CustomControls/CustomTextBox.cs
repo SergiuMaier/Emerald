@@ -102,6 +102,20 @@ namespace TCPClient.CustomControls
         }
 
         [Category("Custom Control")]
+        public bool ReadOnly 
+        {
+            get
+            {
+                return textBox1.ReadOnly;
+            }
+
+            set
+            {
+                textBox1.ReadOnly = value;
+            }
+        }
+
+        [Category("Custom Control")]
         public override Color BackColor
         {
             get
