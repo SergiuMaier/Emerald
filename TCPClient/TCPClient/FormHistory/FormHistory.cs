@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TCPClient.Modbus;
 
 namespace TCPClient
 {
@@ -19,7 +20,7 @@ namespace TCPClient
         {
             InitializeComponent();
 
-            customTextBoxHistory.Texts = FormClient.AddMessageToHistory;
+            customTextBoxHistory.Texts = ModbusPage.AddMessageToHistory;//FormClient.AddMessageToHistory;
             customTextBoxHistory.SelectionStartIndex = 0; //overrided SelectionStart property for customTextBox. Fixed text highlighted bug when the form is displayed
             
             toolTipHistory.SetToolTip(buttonClear, "Clear the history");
@@ -41,7 +42,7 @@ namespace TCPClient
             if (MessageBox.Show("Are you sure you want to delete the history?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 customTextBoxHistory.Texts = String.Empty;
-                FormClient.AddMessageToHistory = String.Empty;
+                ModbusPage.AddMessageToHistory = String.Empty;
             }
         }
 

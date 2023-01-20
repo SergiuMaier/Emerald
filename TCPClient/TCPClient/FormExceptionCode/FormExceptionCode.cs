@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TCPClient.Modbus;
 
 namespace TCPClient
 {
@@ -15,15 +16,15 @@ namespace TCPClient
         public FormExceptionCode()
         {
             InitializeComponent();
-           
-            labelExceptionTitle.Text = FormClient.ExceptionTitle;
-            labelExceptionMessage.Text = FormClient.ExceptionMessage;
+
+            labelExceptionTitle.Text = ModbusPage.ExceptionTitle; //FormClient.ExceptionTitle;
+            labelExceptionMessage.Text = ModbusPage.ExceptionMessage;//FormClient.ExceptionMessage;
         }
 
         private void FormExceptionCode_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            FormClient.ExceptionTitle = String.Empty;
-            FormClient.ExceptionMessage = String.Empty;
+            ModbusPage.ExceptionTitle = String.Empty; //FormClient.ExceptionTitle = String.Empty;
+            ModbusPage.ExceptionMessage = String.Empty;
         }
     }
 }
