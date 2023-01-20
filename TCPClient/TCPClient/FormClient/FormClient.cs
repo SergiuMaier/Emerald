@@ -40,7 +40,6 @@ namespace TCPClient
         private void buttonModbus_Click(object sender, EventArgs e)
         {
             addPage(modbusPage);
-            //Transitions.Animate(profinetPage, Transitions.Effect.Slide, 450, 90);
             
             //Menu
             buttonModbus.Enabled = false;

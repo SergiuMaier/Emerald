@@ -8,6 +8,20 @@ namespace TCPClient.Modbus
 {
     public partial class ModbusPage
     {
+        //combo elements
+        enum Commands
+        {
+            Read_Holding_Registers,
+            Preset_Single_Register,
+            Preset_Multiple_Registers
+        }
+
+        enum Devices
+        {
+            COM100,
+            New_Device
+        }
+
         //Buffer indexes
         enum Message
         {
@@ -25,6 +39,8 @@ namespace TCPClient.Modbus
             HiByteOfRegister = 10,
             LoByteOfRegister = 11
         }
+
+        
 
         public bool connectionStatus = false;
         private int counterTransactionId;        //this counter is incremented for each request. 

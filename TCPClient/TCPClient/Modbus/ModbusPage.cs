@@ -20,8 +20,10 @@ namespace TCPClient.Modbus
         {
             InitializeComponent();
 
+            comboFunctionCode.DataSource = Enum.GetValues(typeof(Commands));
+            comboSlave.DataSource = Enum.GetValues(typeof(Devices));
+
             comboSlave.SelectedIndex = 0;    //load with COM100 by default
-            customTextBoxSlaveId.Texts = "FF";
         }
 
         private void buttonConnect_Click_1(object sender, EventArgs e)
@@ -79,11 +81,6 @@ namespace TCPClient.Modbus
                 //panel Message
                 comboFunctionCode.SelectedIndex = 0;
                 panelMessage.Enabled = true;
-
-                //panel Options
-                //buttonHistory.Enabled = true;
-                //buttonSend.Enabled = true;
-                //buttonClear.Enabled = true;
             });
         }
 
@@ -99,11 +96,6 @@ namespace TCPClient.Modbus
 
                 //panel Message
                 panelMessage.Enabled = false;
-
-                //panel Options
-                //buttonHistory.Enabled = false;
-                //buttonSend.Enabled = false;
-                //buttonClear.Enabled = false;
             });
         }
 
@@ -115,6 +107,7 @@ namespace TCPClient.Modbus
                 customTextBoxPrintResponse.Texts = String.Empty;
                 customTextBoxPrintAnalyze.Texts = String.Empty;
 
+                //some parapeters need to be loaded when the button is clicked
                 counterTransactionId++;
                 customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4");
                 NumberOfRegisters = counterNoOfRegisters.ToString("X4"); 
@@ -174,7 +167,7 @@ namespace TCPClient.Modbus
 
         private void comboFunctionCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //falgs
+            //flags
             selected03 = (comboFunctionCode.SelectedIndex == 0);
             selected06 = (comboFunctionCode.SelectedIndex == 1);
             selected16 = (comboFunctionCode.SelectedIndex == 2);

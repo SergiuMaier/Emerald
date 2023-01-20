@@ -386,9 +386,6 @@
             this.comboSlave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboSlave.ForeColor = System.Drawing.Color.Black;
             this.comboSlave.FormattingEnabled = true;
-            this.comboSlave.Items.AddRange(new object[] {
-            "COM100",
-            "New Device"});
             this.comboSlave.Location = new System.Drawing.Point(439, 21);
             this.comboSlave.Name = "comboSlave";
             this.comboSlave.Size = new System.Drawing.Size(111, 28);
@@ -638,10 +635,6 @@
             this.comboFunctionCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboFunctionCode.ForeColor = System.Drawing.Color.Black;
             this.comboFunctionCode.FormattingEnabled = true;
-            this.comboFunctionCode.Items.AddRange(new object[] {
-            "Read Holding Registers",
-            "Preset Single Register",
-            "Preset Multiple Registers"});
             this.comboFunctionCode.Location = new System.Drawing.Point(292, 16);
             this.comboFunctionCode.Name = "comboFunctionCode";
             this.comboFunctionCode.Size = new System.Drawing.Size(198, 28);
