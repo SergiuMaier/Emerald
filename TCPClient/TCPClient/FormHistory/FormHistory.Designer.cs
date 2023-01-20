@@ -49,13 +49,14 @@
             this.customTextBoxHistory.Enable = true;
             this.customTextBoxHistory.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customTextBoxHistory.ForeColor = System.Drawing.Color.Black;
-            this.customTextBoxHistory.Location = new System.Drawing.Point(12, 12);
+            this.customTextBoxHistory.Location = new System.Drawing.Point(13, 12);
             this.customTextBoxHistory.MaxLength = 4;
             this.customTextBoxHistory.Multiline = true;
             this.customTextBoxHistory.Name = "customTextBoxHistory";
             this.customTextBoxHistory.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxHistory.ReadOnly = true;
             this.customTextBoxHistory.SelectionStartIndex = 0;
-            this.customTextBoxHistory.Size = new System.Drawing.Size(619, 317);
+            this.customTextBoxHistory.Size = new System.Drawing.Size(620, 314);
             this.customTextBoxHistory.TabIndex = 43;
             this.customTextBoxHistory.Texts = "";
             this.customTextBoxHistory.UnderlinedStyle = false;
@@ -85,7 +86,7 @@
             this.buttonOpenFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenFile.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonOpenFile.ForeColor = System.Drawing.Color.White;
-            this.buttonOpenFile.Location = new System.Drawing.Point(97, 9);
+            this.buttonOpenFile.Location = new System.Drawing.Point(177, 9);
             this.buttonOpenFile.Name = "buttonOpenFile";
             this.buttonOpenFile.Size = new System.Drawing.Size(74, 37);
             this.buttonOpenFile.TabIndex = 49;
@@ -106,7 +107,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(177, 9);
+            this.buttonSave.Location = new System.Drawing.Point(97, 9);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(74, 37);
             this.buttonSave.TabIndex = 48;

@@ -149,6 +149,7 @@
             this.customTextBoxPrintAnalyze.Multiline = true;
             this.customTextBoxPrintAnalyze.Name = "customTextBoxPrintAnalyze";
             this.customTextBoxPrintAnalyze.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxPrintAnalyze.ReadOnly = true;
             this.customTextBoxPrintAnalyze.SelectionStartIndex = 0;
             this.customTextBoxPrintAnalyze.Size = new System.Drawing.Size(581, 195);
             this.customTextBoxPrintAnalyze.TabIndex = 43;
@@ -310,6 +311,7 @@
             this.customTextBoxPort.Multiline = false;
             this.customTextBoxPort.Name = "customTextBoxPort";
             this.customTextBoxPort.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxPort.ReadOnly = false;
             this.customTextBoxPort.SelectionStartIndex = 0;
             this.customTextBoxPort.Size = new System.Drawing.Size(65, 33);
             this.customTextBoxPort.TabIndex = 42;
@@ -330,6 +332,7 @@
             this.customTextBoxIP.Multiline = false;
             this.customTextBoxIP.Name = "customTextBoxIP";
             this.customTextBoxIP.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxIP.ReadOnly = false;
             this.customTextBoxIP.SelectionStartIndex = 0;
             this.customTextBoxIP.Size = new System.Drawing.Size(160, 33);
             this.customTextBoxIP.TabIndex = 45;
@@ -350,6 +353,7 @@
             this.customTextBoxSlaveId.Multiline = false;
             this.customTextBoxSlaveId.Name = "customTextBoxSlaveId";
             this.customTextBoxSlaveId.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxSlaveId.ReadOnly = false;
             this.customTextBoxSlaveId.SelectionStartIndex = 0;
             this.customTextBoxSlaveId.Size = new System.Drawing.Size(36, 33);
             this.customTextBoxSlaveId.TabIndex = 43;
@@ -447,6 +451,7 @@
             this.customTextBoxDataAddress.Multiline = false;
             this.customTextBoxDataAddress.Name = "customTextBoxDataAddress";
             this.customTextBoxDataAddress.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxDataAddress.ReadOnly = false;
             this.customTextBoxDataAddress.SelectionStartIndex = 0;
             this.customTextBoxDataAddress.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxDataAddress.TabIndex = 43;
@@ -467,6 +472,7 @@
             this.customTextBoxTransactionId.Multiline = false;
             this.customTextBoxTransactionId.Name = "customTextBoxTransactionId";
             this.customTextBoxTransactionId.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxTransactionId.ReadOnly = false;
             this.customTextBoxTransactionId.SelectionStartIndex = 0;
             this.customTextBoxTransactionId.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxTransactionId.TabIndex = 42;
@@ -530,6 +536,7 @@
             this.customTextBoxDataValues.Multiline = true;
             this.customTextBoxDataValues.Name = "customTextBoxDataValues";
             this.customTextBoxDataValues.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxDataValues.ReadOnly = false;
             this.customTextBoxDataValues.SelectionStartIndex = 0;
             this.customTextBoxDataValues.Size = new System.Drawing.Size(373, 90);
             this.customTextBoxDataValues.TabIndex = 42;
@@ -574,6 +581,7 @@
             this.customTextBoxDataRegisters.Multiline = false;
             this.customTextBoxDataRegisters.Name = "customTextBoxDataRegisters";
             this.customTextBoxDataRegisters.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxDataRegisters.ReadOnly = false;
             this.customTextBoxDataRegisters.SelectionStartIndex = 0;
             this.customTextBoxDataRegisters.Size = new System.Drawing.Size(43, 33);
             this.customTextBoxDataRegisters.TabIndex = 44;
@@ -709,6 +717,7 @@
             this.customTextBoxPrintRequest.Multiline = false;
             this.customTextBoxPrintRequest.Name = "customTextBoxPrintRequest";
             this.customTextBoxPrintRequest.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxPrintRequest.ReadOnly = true;
             this.customTextBoxPrintRequest.SelectionStartIndex = 0;
             this.customTextBoxPrintRequest.Size = new System.Drawing.Size(579, 33);
             this.customTextBoxPrintRequest.TabIndex = 46;
@@ -760,6 +769,7 @@
             this.customTextBoxPrintResponse.Multiline = false;
             this.customTextBoxPrintResponse.Name = "customTextBoxPrintResponse";
             this.customTextBoxPrintResponse.Padding = new System.Windows.Forms.Padding(7);
+            this.customTextBoxPrintResponse.ReadOnly = true;
             this.customTextBoxPrintResponse.SelectionStartIndex = 0;
             this.customTextBoxPrintResponse.Size = new System.Drawing.Size(581, 33);
             this.customTextBoxPrintResponse.TabIndex = 47;
