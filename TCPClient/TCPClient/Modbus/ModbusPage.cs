@@ -216,7 +216,7 @@ namespace TCPClient.Modbus
             }
         }
 
-        private void btnMinus_Click_1(object sender, EventArgs e)
+        private void btnMinus_Click(object sender, EventArgs e)
         {
             if (counterNoOfRegisters > 1)
             {
@@ -272,5 +272,6 @@ namespace TCPClient.Modbus
                 }
             }
         }
+
     }
 }

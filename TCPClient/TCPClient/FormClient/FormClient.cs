@@ -58,7 +58,7 @@ namespace TCPClient
         {
             if (modbusPage.connectionStatus)
             {
-                MessageBox.Show("You cannot change pages if you are already connected to a device.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You cannot change the page when you are connected to a device.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

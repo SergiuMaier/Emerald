@@ -609,6 +609,7 @@
             this.btnMinus.Text = "-";
             this.btnMinus.UseCompatibleTextRendering = true;
             this.btnMinus.UseVisualStyleBackColor = false;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // btnPlus
             // 
