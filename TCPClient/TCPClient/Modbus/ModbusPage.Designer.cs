@@ -466,7 +466,7 @@
             this.customTextBoxTransactionId.Multiline = false;
             this.customTextBoxTransactionId.Name = "customTextBoxTransactionId";
             this.customTextBoxTransactionId.Padding = new System.Windows.Forms.Padding(7);
-            this.customTextBoxTransactionId.ReadOnly = false;
+            this.customTextBoxTransactionId.ReadOnly = true;
             this.customTextBoxTransactionId.SelectionStartIndex = 0;
             this.customTextBoxTransactionId.Size = new System.Drawing.Size(56, 33);
             this.customTextBoxTransactionId.TabIndex = 42;

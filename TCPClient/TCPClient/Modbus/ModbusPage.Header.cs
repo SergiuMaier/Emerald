@@ -44,7 +44,7 @@ namespace TCPClient.Modbus
         }
 
         public bool connectionStatus = false;    //flag used to check whether the client is connected or not (client.isConnected method sometimes throws an exception)
-        private int counterTransactionId;        //counter incremented for each request. 
+        private int counterTransactionId = 0;        //counter incremented for each request. 
         private int counterNoOfRegisters = 1;    //counter which stores the desired number of registers.
 
         bool selected03, selected06, selected16; //flags set when one of the commands is selected.

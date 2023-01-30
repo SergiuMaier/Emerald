@@ -87,6 +87,9 @@ namespace TCPClient.Modbus
         {
             this.Invoke((MethodInvoker)delegate
             {
+                counterTransactionId = 0;
+                customTextBoxTransactionId.Texts = counterTransactionId.ToString("X4");
+
                 //panel Connection
                 panelConnect.Enabled = true;
                 comboSlave.Enabled = true;
