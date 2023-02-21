@@ -6,7 +6,7 @@
 
 ###----
 
-<img src = "/img/history_page.png" width= "650" height= "550" />
+<img src = "/img/history_page.png" width= "750" height= "450" />
 
 ###----
 
