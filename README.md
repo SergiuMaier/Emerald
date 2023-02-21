@@ -8,4 +8,4 @@
 
 ###----
 
-<img src = "/img/exception_code.png" width= "650" height= "650" />
+<img src = "/img/exception_code.png" width= "650" height= "550" />
