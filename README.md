@@ -1,6 +1,6 @@
 ## MODBUS TCP Client Software
 
-### Demo
+## Demo
 
 <img src = "/img/modbus_page.png" width= "650" height= "650" />
 
