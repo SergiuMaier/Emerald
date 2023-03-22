@@ -1,8 +1,10 @@
 ## MODBUS TCP Client Software
 
-Graphical interface used to send and receive messages to devices via MODBUS TCP
+🖥 Graphical user interface used to send and receive messages via MODBUS TCP.
 
 ## Demo
+
+### Main page
 
 <img src = "/img/modbus_page.png" width= "650" height= "650" />
 
