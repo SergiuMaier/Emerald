@@ -1,6 +1,7 @@
+# EMERALD
 ## MODBUS TCP Client Software
 
-🖥 Graphical user interface used to send and receive messages via MODBUS TCP.
+🖥 Graphical user interface used to test communication betweend industrial devices via MODBUS TCP.
 
 ## Demo
 
