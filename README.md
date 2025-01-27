@@ -1,8 +1,8 @@
 # EMERALD - a MODBUS TCP Client application
 
-Windows Forms application for connecting to industrial devices over TCP and sending MODBUS TCP requests for testing and analysis purposes
-Designed an intuitive user interface to easily construct MODBUS requests, making it simple to configure and test device communication
-Implemented functionality to analyze and log device responses in a text file and generate detailed history reports for tracking communication performance
+Windows Forms application for connecting to industrial devices over TCP and sending MODBUS TCP requests for testing and analysis purposes.
+Designed an intuitive user interface to easily construct MODBUS requests, making it simple to configure and test device communication.
+Implemented functionality to analyze and log device responses in a text file and generate detailed history reports for tracking communication performance.
 
 ### Main page
 
